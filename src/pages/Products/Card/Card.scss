@@ -1,0 +1,12 @@
+.card {
+  display: inline-block;
+  max-width: 285px;
+  margin: 10px;
+  text-align: center;
+
+  img {
+    width: 285px;
+    height: 285px;
+    object-fit: cover;
+  }
+}

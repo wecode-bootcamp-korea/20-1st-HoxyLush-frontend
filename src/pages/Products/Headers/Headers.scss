@@ -1,0 +1,37 @@
+@mixin flexCenter($direction) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: $direction;
+}
+
+header {
+  position: relative;
+  width: 100%;
+  // margin-top: 180px;
+
+  .text {
+    @include flexCenter(column);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+
+    h1 {
+      padding-bottom: 15px;
+      font-size: 68px;
+      font-weight: bold;
+      letter-spacing: 0.5em;
+    }
+
+    p {
+      font-size: 26px;
+      letter-spacing: 0.2em;
+    }
+  }
+
+  img {
+    height: 100%;
+  }
+}
