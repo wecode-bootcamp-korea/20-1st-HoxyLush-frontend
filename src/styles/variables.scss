@@ -3,3 +3,21 @@ $color-white: #ffffff;
 $color-point: #7441b8;
 $color-sub-bg: #f8f8f8;
 $color-grey: #333333;
+
+$fs-s: 12px;
+$fs-m: 14px;
+$fs-l: 18px;
+$fs-xl: 20px;
+
+@mixin flexCenter($direction: row) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: $direction;
+}
+
+@mixin flexBtw($just: space-between) {
+  display: flex;
+  align-items: center;
+  justify-content: $just;
+}
