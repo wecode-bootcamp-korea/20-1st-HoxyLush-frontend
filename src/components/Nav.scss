@@ -1,0 +1,86 @@
+@import '../../src/styles/variables.scss';
+
+.nav {
+  background-color: black;
+  color: white;
+
+  .topNav {
+    @include flexCenter();
+    height: 100px;
+    @media screen and (max-width: 1024px) {
+      padding: 0 20px;
+    }
+
+    ul {
+      @include flexBtw();
+      width: 540px;
+      margin: 6px 0 0 0;
+      @media screen and (max-width: 1024px) {
+        justify-content: space-evenly;
+      }
+    }
+
+    .mainPage {
+      width: 80px;
+      margin: 5px 285px 0 0;
+      font-size: 30px;
+      font-weight: 900;
+      text-align: center;
+      @media screen and (max-width: 1440px) {
+        margin: 5px 185px 0 0;
+      }
+      @media screen and (max-width: 1440px) {
+        margin: 5px 85px 0 0;
+      }
+      @media screen and (max-width: 1024px) {
+        margin: 5px 10px 0 0;
+      }
+    }
+
+    li {
+      min-width: fit-content;
+      font-weight: 400;
+      letter-spacing: 3px;
+      word-spacing: -3px;
+      @media screen and (max-width: 768px) {
+        letter-spacing: 1px;
+      }
+
+      &:nth-child(2) {
+        @media screen and (max-width: 1024px) {
+          display: none;
+        }
+      }
+      &:nth-child(3) {
+        @media screen and (max-width: 540px) {
+          display: none;
+        }
+      }
+    }
+
+    .navIcons {
+      @include flexBtw();
+      width: 150px;
+      margin: 0 0 0 116px;
+      @media screen and (max-width: 1024px) {
+        margin: 0 0 0 0;
+      }
+
+      a {
+        all: unset;
+        color: white;
+        font-size: 22px;
+        @media screen and (max-width: 768px) {
+          padding: 0 0 0 15px;
+        }
+      }
+    }
+  }
+
+  .eventBanner {
+    height: 80px;
+    @media screen and (max-width: 768px) {
+      display: none;
+    }
+  }
+}
