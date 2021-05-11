@@ -1,0 +1,20 @@
+@import './../../../../styles/variables.scss';
+
+.category {
+  margin: 60px 0;
+
+  span {
+    padding-right: 10px;
+  }
+
+  i {
+    padding: 0 10px;
+    color: #c6c6c6;
+  }
+
+  #select {
+    display: inline-block;
+    min-width: 115px;
+    border: 1px solid #c6c6c6;
+  }
+}

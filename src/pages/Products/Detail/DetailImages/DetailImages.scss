@@ -1,0 +1,27 @@
+@import './../../../../styles/variables.scss';
+
+.detailImage {
+  @include flexCenter(column);
+  margin-right: 130px;
+
+  .productImage {
+    width: 380px;
+    height: 380px;
+    object-fit: cover;
+
+    &.small {
+      width: 65px;
+      height: 65px;
+    }
+  }
+
+  .slider {
+    @include flexBtw(space-between);
+    width: 380px;
+
+    i {
+      color: #c6c6c6;
+      cursor: pointer;
+    }
+  }
+}

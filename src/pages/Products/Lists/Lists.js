@@ -9,16 +9,17 @@ class Lists extends Component {
       <ul className="lists">
         {productLists.slice(0, visibleCards).map(list => {
           return (
-            <Card
-              key={list.id}
-              img={list.imgUrl}
-              alt={list.imgAlt}
-              title={list.title}
-              price={list.price}
-              hashtag={list.hashtag}
-              tag={list.tag}
-              id={list.id}
-            />
+            // <Card
+            //   key={list.id}
+            //   img={list.imgUrl}
+            //   alt={list.imgAlt}
+            //   title={list.title}
+            //   price={list.price}
+            //   hashtag={list.hashtag}
+            //   tag={list.tag}
+            //   id={list.id}
+            // />
+            <Card list={list} />
           );
         })}
       </ul>

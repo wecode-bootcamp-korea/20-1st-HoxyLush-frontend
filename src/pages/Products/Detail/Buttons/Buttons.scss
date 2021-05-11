@@ -1,0 +1,21 @@
+@import './../../../../styles/variables.scss';
+
+.btns {
+  @include flexBtw(space-between);
+  width: 580px;
+
+  .btn {
+    width: 285px;
+    height: 50px;
+    background-color: transparent;
+    font-size: inherit;
+    font-weight: bold;
+    border: 1px solid;
+    cursor: pointer;
+
+    &.order {
+      background-color: $color-black;
+      color: $color-white;
+    }
+  }
+}

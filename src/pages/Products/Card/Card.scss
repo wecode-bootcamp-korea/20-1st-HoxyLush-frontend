@@ -1,3 +1,5 @@
+@import './../../../styles/variables.scss';
+
 .card {
   display: inline-block;
   max-width: 285px;
@@ -17,15 +19,16 @@
       height: 23px;
       padding: 3px;
       margin: 5px 3px;
-      color: white;
+      color: $color-white;
       background-color: #92ad00;
       border-radius: 15px;
-      font-size: 12px;
+      font-size: $fs-s;
       font-weight: bold;
+      text-transform: uppercase;
       line-height: 1.4em;
 
       &.new {
-        background-color: green;
+        background-color: #007929;
       }
 
       &.vegan {
@@ -33,7 +36,7 @@
       }
 
       &.best {
-        background-color: black;
+        background-color: $color-black;
       }
     }
   }

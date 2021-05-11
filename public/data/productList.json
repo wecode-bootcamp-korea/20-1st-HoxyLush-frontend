@@ -8,7 +8,7 @@
     "price": "₩25,000",
     "volume": { "1": "75g" },
     "rate": 4.8,
-    "tag": [{ "name": "BEST", "class": "best" }]
+    "tag": ["best"]
   },
   {
     "id": 2,
@@ -19,7 +19,7 @@
     "price": "₩30,000",
     "volume": { "1": "300g", "2": "600g: ₩+24,000" },
     "rate": 4.8,
-    "tag": [{ "name": "VEGAN", "class": "vegan" }]
+    "tag": ["new", "vegan"]
   },
   {
     "id": 3,
@@ -30,7 +30,7 @@
     "price": "₩28,000",
     "volume": { "1": "125g", "2": "315g: ₩+28,000" },
     "rate": 4.8,
-    "tag": [{ "name": "BEST", "class": "best" }]
+    "tag": ["best"]
   },
   {
     "id": 4,
@@ -41,7 +41,7 @@
     "price": "₩28,000",
     "volume": { "1": "110g", "2": "300g: ₩+23,000", "3": "600g: ₩+61,000" },
     "rate": 4.8,
-    "tag": [{ "name": "VEGAN" }]
+    "tag": ["vegan"]
   },
   {
     "id": 5,
@@ -52,7 +52,7 @@
     "price": "₩17,000",
     "volume": { "1": "180g" },
     "rate": 4.8,
-    "tag": [{ "name": "VEGAN", "class": "vegan" }]
+    "tag": ["vegan"]
   },
   {
     "id": 6,
@@ -63,10 +63,7 @@
     "price": "₩22,000",
     "volume": { "1": "200g" },
     "rate": 4.8,
-    "tag": [
-      { "name": "NEW", "class": "new" },
-      { "name": "VEGAN", "class": "vegan" }
-    ]
+    "tag": ["new", "vegan"]
   },
   {
     "id": 7,
@@ -77,10 +74,7 @@
     "price": "₩18,000",
     "volume": { "1": "200g" },
     "rate": 4.8,
-    "tag": [
-      { "name": "NEW", "class": "new" },
-      { "name": "VEGAN", "class": "vegan" }
-    ]
+    "tag": ["new", "vegan"]
   },
   {
     "id": 8,
@@ -91,10 +85,7 @@
     "price": "₩17,000",
     "volume": { "1": "170g" },
     "rate": 4.8,
-    "tag": [
-      { "name": "NEW", "class": "new" },
-      { "name": "VEGAN", "class": "vegan" }
-    ]
+    "tag": ["best", "vegan"]
   },
   {
     "id": 11,
@@ -105,7 +96,7 @@
     "price": "₩25,000",
     "volume": { "1": "75g" },
     "rate": 4.8,
-    "tag": [{ "name": "BEST", "class": "best" }]
+    "tag": ["best"]
   },
   {
     "id": 12,
@@ -116,7 +107,7 @@
     "price": "₩30,000",
     "volume": { "1": "300g", "2": "600g: ₩+24,000" },
     "rate": 4.8,
-    "tag": [{ "name": "VEGAN", "class": "vegan" }]
+    "tag": ["vegan"]
   },
   {
     "id": 13,
@@ -127,7 +118,7 @@
     "price": "₩28,000",
     "volume": { "1": "125g", "2": "315g: ₩+28,000" },
     "rate": 4.8,
-    "tag": [{ "name": "VEGAN", "class": "vegan" }]
+    "tag": ["new", "vegan"]
   },
   {
     "id": 14,
@@ -138,10 +129,7 @@
     "price": "₩28,000",
     "volume": { "1": "110g", "2": "300g: ₩+23,000", "3": "600g: ₩+61,000" },
     "rate": 4.8,
-    "tag": [
-      { "name": "NEW", "class": "new" },
-      { "name": "VEGAN", "class": "vegan" }
-    ]
+    "tag": ["vegan"]
   },
   {
     "id": 15,
@@ -152,7 +140,7 @@
     "price": "₩17,000",
     "volume": { "1": "180g" },
     "rate": 4.8,
-    "tag": [{ "name": "BEST", "class": "best" }]
+    "tag": ["best"]
   },
   {
     "id": 16,
@@ -163,10 +151,7 @@
     "price": "₩22,000",
     "volume": { "1": "200g" },
     "rate": 4.8,
-    "tag": [
-      { "name": "NEW", "class": "new" },
-      { "name": "VEGAN", "class": "vegan" }
-    ]
+    "tag": ["new", "vegan"]
   },
   {
     "id": 17,
@@ -177,7 +162,7 @@
     "price": "₩18,000",
     "volume": { "1": "200g" },
     "rate": 4.8,
-    "tag": [{ "name": "VEGAN", "class": "vegan" }]
+    "tag": ["vegan"]
   },
   {
     "id": 18,
@@ -188,9 +173,6 @@
     "price": "₩17,000",
     "volume": { "1": "170g" },
     "rate": 4.8,
-    "tag": [
-      { "name": "NEW", "class": "new" },
-      { "name": "VEGAN", "class": "vegan" }
-    ]
+    "tag": ["new", "vegan"]
   }
 ]

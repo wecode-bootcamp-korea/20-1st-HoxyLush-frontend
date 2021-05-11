@@ -8,7 +8,6 @@
 }
 
 .products {
-  // @include flexCenter(column);
   width: 100vw;
   height: 100vh;
   margin: 0 auto;
@@ -37,14 +36,15 @@
 
   button {
     display: block;
-    padding: 5px 20px;
+    padding: 5px 20px 10px;
     margin: 30px auto;
     color: $color-white;
     background-color: $color-grey;
     border: none;
-    border-radius: 5px;
+    border-radius: 3px;
     box-shadow: 5px 9px 8px -3px #979595;
     font-size: $fs-l;
+    letter-spacing: 1.5px;
     cursor: pointer;
     transition: transform 200ms ease-in;
     will-change: transform;

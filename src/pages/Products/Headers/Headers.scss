@@ -1,14 +1,9 @@
-@mixin flexCenter($direction) {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: $direction;
-}
+@import './../../../styles/variables.scss';
 
 header {
   position: relative;
   width: 100%;
-  // margin-top: 180px;
+  margin-top: 180px;
 
   .text {
     @include flexCenter(column);
@@ -16,7 +11,7 @@ header {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    color: white;
+    color: $color-white;
 
     h1 {
       padding-bottom: 15px;
