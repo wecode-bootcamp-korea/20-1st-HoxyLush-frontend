@@ -1,13 +1,4 @@
-@mixin flexCenter($direction) {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: $direction;
-}
-
 .lists {
-  // @include flexCenter(row);
-  // flex-wrap: wrap;
   max-width: 1220px;
   margin: 0 auto;
 }

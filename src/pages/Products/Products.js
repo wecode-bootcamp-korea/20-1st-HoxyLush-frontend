@@ -7,6 +7,7 @@ class Products extends Component {
   state = {
     selectedOption: '베스트',
     productLists: [],
+    visibleCards: 8,
   };
 
   componentDidMount() {
@@ -20,13 +21,21 @@ class Products extends Component {
       );
   }
 
+  handleLoadMoreBtn = () => {
+    const { visibleCards } = this.state;
+    this.setState({
+      visibleCards: visibleCards + 8,
+    });
+  };
+
   render() {
-    const { productLists, selectedOption } = this.state;
+    const { productLists, selectedOption, visibleCards } = this.state;
     return (
       <section className="products">
         <Headers selectedOption={selectedOption} />
         <div className="selectedOption"> {selectedOption}</div>
-        <Lists productLists={productLists} />
+        <Lists productLists={productLists} visibleCards={visibleCards} />
+        <button onClick={this.handleLoadMoreBtn}>Load More..</button>
       </section>
     );
   }

@@ -9,4 +9,47 @@
     height: 285px;
     object-fit: cover;
   }
+
+  .tag {
+    span {
+      display: inline-block;
+      width: 70px;
+      height: 23px;
+      padding: 3px;
+      margin: 5px 3px;
+      color: white;
+      background-color: #92ad00;
+      border-radius: 15px;
+      font-size: 12px;
+      font-weight: bold;
+      line-height: 1.4em;
+
+      &.new {
+        background-color: green;
+      }
+
+      &.vegan {
+        background-color: #92ad00;
+      }
+
+      &.best {
+        background-color: black;
+      }
+    }
+  }
+
+  .title {
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+
+  .hashtag {
+    margin-bottom: 20px;
+    color: grey;
+    font-size: 14px;
+  }
+
+  .price {
+    font-weight: bold;
+  }
 }

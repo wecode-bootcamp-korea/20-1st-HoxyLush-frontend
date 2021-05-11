@@ -4,10 +4,10 @@ import './Lists.scss';
 
 class Lists extends Component {
   render() {
-    const { productLists } = this.props;
+    const { productLists, visibleCards } = this.props;
     return (
       <ul className="lists">
-        {productLists.map(list => {
+        {productLists.slice(0, visibleCards).map(list => {
           return (
             <Card
               key={list.id}
