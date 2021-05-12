@@ -33,6 +33,11 @@
       span {
         font-size: 14px;
         float: right;
+        i {
+          padding-right: 8px;
+          color: red;
+          font-size: 1%;
+        }
       }
     }
     .tableBox {
@@ -52,7 +57,7 @@
         i {
           position: absolute;
           top: 25px;
-          left: 8px;
+          left: 6px;
           color: red;
           font-size: 1%;
         }
@@ -96,6 +101,15 @@
           border: 1px solid #ccc;
           display: inline-block;
           vertical-align: top;
+          padding-left: 8px;
+          line-height: 38px;
+          color: #717171;
+          font-size: 14px;
+          i {
+            color: #717171;
+            right: 20px;
+            font-size: 80%;
+          }
         }
         .textFieldPhoneNumber {
           width: 402px;

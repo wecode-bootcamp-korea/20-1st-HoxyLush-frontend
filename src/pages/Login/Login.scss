@@ -4,8 +4,8 @@
   .member {
     width: 600px;
 
-    h2 {
-      color: #222;
+    h1 {
+      color: $color-black;
       font-size: 28px;
       text-align: center;
       font-weight: bold;
@@ -19,8 +19,14 @@
       display: inline-block;
       font-size: 18px;
       padding: 0 40px;
-      a {
-        border-bottom: 1px solid black;
+      color: $color-black;
+      .mem {
+        border-bottom: 1px solid $color-black;
+        color: $color-black;
+      }
+      .nonmem {
+        border-bottom: 1px solid #8f8f8f;
+        color: #8f8f8f;
       }
     }
   }
