@@ -5,8 +5,8 @@ export default class Buttons extends Component {
   render() {
     return (
       <div className="btns">
-        <input className="btn cart" type="button" value="장바구니" />
-        <input className="btn order" type="button" value="주문하기" />
+        <button className="btn cart">장바구니</button>
+        <button className="btn order">주문하기</button>
       </div>
     );
   }

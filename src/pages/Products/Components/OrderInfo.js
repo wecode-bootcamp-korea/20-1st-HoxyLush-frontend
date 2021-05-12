@@ -53,7 +53,7 @@ export default class OrderInfo extends Component {
             <i class="far fa-heart"></i>
           </div>
         </header>
-        <div className="tag">#배스밤#놀라운배쓰아트</div>
+        <div className="hashTags">#배스밤#놀라운배쓰아트</div>
         <div className="infoWrap">
           <div className="row">
             <span className="col-1">판매가</span>

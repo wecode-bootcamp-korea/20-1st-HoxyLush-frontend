@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
-import DetailImages from './DetailImages/DetailImages';
-import DetailInfo from './DetailInfo/DetailInfo';
-import './DetailMain.scss';
+import DetailImages from './Components/DetailImages';
+import DetailInfo from './Components/DetailInfo';
+// import DetailYoutube from './DetailBody/DetailYoutube/DetailYoutube';
+import DetailNavi from './Components/DetailNavi';
+import './Detail.scss';
 
-export default class DetailMain extends Component {
+export default class Detail extends Component {
   state = {
     item: [],
   };
@@ -25,6 +27,10 @@ export default class DetailMain extends Component {
           <DetailImages />
           <DetailInfo />
         </main>
+        <article>
+          <DetailNavi />
+          {/* <DetailYoutube /> */}
+        </article>
       </section>
     );
   }

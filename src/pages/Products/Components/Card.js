@@ -4,20 +4,31 @@ import { Link } from 'react-router-dom';
 
 class Card extends Component {
   render() {
-    // const { img, alt, title, hashtag, price, tag, id } = this.props;
-
     const { list } = this.props;
+    const tagArr = list.tag.map(item => item.tag);
+    const showTagList = tagArr.map(tag => {
+      return (
+        <span id="tags" className={tag}>
+          {tag}
+        </span>
+      );
+    });
+
     return (
       <Link to={`/products/${list.id}`}>
         <li className="card" data-num={list.id}>
           <img src={list.imgUrl} alt={list.imgAlt} />
-          <div className="tag">
-            {list.tag.map(item => {
-              return <span className={item}>{item}</span>;
-            })}
+          <div>
+            {list.stock ? (
+              showTagList
+            ) : (
+              <span id="tags" className="soldOut">
+                Sold Out
+              </span>
+            )}
           </div>
           <h2 className="title">{list.title}</h2>
-          <div className="hashtag">{list.hashtag}</div>
+          <div className="hashTags small">{list.hashtag}</div>
           <div className="price">{list.price}</div>
         </li>
       </Link>

@@ -6,9 +6,10 @@
     "imgUrl": "https://lush.co.kr/data/goods/11/01/20/79/79_detail_085.jpg",
     "imgAlt": "러쉬",
     "price": "₩25,000",
-    "volume": { "1": "75g" },
+    "volume": [{ "1": "75g" }],
     "rate": 4.8,
-    "tag": ["best"]
+    "tag": [{ "tag": "best", "id": 1 }],
+    "stock": 0
   },
   {
     "id": 2,
@@ -17,9 +18,13 @@
     "imgUrl": "https://lush.co.kr/data/goods/11/08/03/93/93_detail_090.jpg",
     "imgAlt": "러쉬",
     "price": "₩30,000",
-    "volume": { "1": "300g", "2": "600g: ₩+24,000" },
+    "volume": [{ "1": "300g", "2": "600g: ₩+24,000" }],
     "rate": 4.8,
-    "tag": ["new", "vegan"]
+    "tag": [
+      { "tag": "new", "id": 2 },
+      { "tag": "vegan", "id": 3 }
+    ],
+    "stock": 1
   },
   {
     "id": 3,
@@ -28,9 +33,13 @@
     "imgUrl": "https://lush.co.kr/data/goods/20/10/43/1000001455/1000001455_detail_057.jpg",
     "imgAlt": "러쉬",
     "price": "₩28,000",
-    "volume": { "1": "125g", "2": "315g: ₩+28,000" },
+    "volume": [{ "1": "125g" }, { "2": "315g: ₩+28,000" }],
     "rate": 4.8,
-    "tag": ["best"]
+    "tag": [
+      { "tag": "new", "id": 2 },
+      { "tag": "vegan", "id": 3 }
+    ],
+    "stock": 1
   },
   {
     "id": 4,
@@ -39,9 +48,17 @@
     "imgUrl": "https://lush.co.kr/data/goods/20/10/43/1000001455/1000001455_detail_057.jpg",
     "imgAlt": "러쉬",
     "price": "₩28,000",
-    "volume": { "1": "110g", "2": "300g: ₩+23,000", "3": "600g: ₩+61,000" },
+    "volume": [
+      { "1": "110g" },
+      { "2": "300g: ₩+23,000" },
+      { "3": "600g: ₩+61,000" }
+    ],
     "rate": 4.8,
-    "tag": ["vegan"]
+    "tag": [
+      { "tag": "best", "id": 1 },
+      { "tag": "vegan", "id": 3 }
+    ],
+    "stock": 1
   },
   {
     "id": 5,
@@ -50,9 +67,10 @@
     "imgUrl": "https://lush.co.kr/data/goods/21/03/13/1000001745/1000001745_detail_01.jpg",
     "imgAlt": "러쉬",
     "price": "₩17,000",
-    "volume": { "1": "180g" },
+    "volume": [{ "1": "180g" }],
     "rate": 4.8,
-    "tag": ["vegan"]
+    "tag": [{ "tag": "vegan", "id": 3 }],
+    "stock": 1
   },
   {
     "id": 6,
@@ -61,9 +79,13 @@
     "imgUrl": "https://lush.co.kr/data/goods/20/10/43/1000001455/1000001455_detail_057.jpg",
     "imgAlt": "러쉬",
     "price": "₩22,000",
-    "volume": { "1": "200g" },
+    "volume": [{ "1": "200g" }],
     "rate": 4.8,
-    "tag": ["new", "vegan"]
+    "tag": [
+      { "tag": "new", "id": 2 },
+      { "tag": "vegan", "id": 3 }
+    ],
+    "stock": 1
   },
   {
     "id": 7,
@@ -72,9 +94,13 @@
     "imgUrl": "https://lush.co.kr/data/goods/20/02/09/1000001226/1000001226_detail_069.jpg",
     "imgAlt": "러쉬",
     "price": "₩18,000",
-    "volume": { "1": "200g" },
+    "volume": [{ "1": "200g" }],
     "rate": 4.8,
-    "tag": ["new", "vegan"]
+    "tag": [
+      { "tag": "new", "id": 2 },
+      { "tag": "vegan", "id": 3 }
+    ],
+    "stock": 1
   },
   {
     "id": 8,
@@ -83,9 +109,13 @@
     "imgUrl": "https://lush.co.kr/data/goods/20/01/03/1000001146/1000001146_detail_049.jpg",
     "imgAlt": "러쉬",
     "price": "₩17,000",
-    "volume": { "1": "170g" },
+    "volume": [{ "1": "170g" }],
     "rate": 4.8,
-    "tag": ["best", "vegan"]
+    "tag": [
+      { "tag": "new", "id": 2 },
+      { "tag": "vegan", "id": 3 }
+    ],
+    "stock": 1
   },
   {
     "id": 11,
@@ -96,7 +126,11 @@
     "price": "₩25,000",
     "volume": { "1": "75g" },
     "rate": 4.8,
-    "tag": ["best"]
+    "tag": [
+      { "tag": "new", "id": 2 },
+      { "tag": "vegan", "id": 3 }
+    ],
+    "stock": 1
   },
   {
     "id": 12,
@@ -105,9 +139,13 @@
     "imgUrl": "https://lush.co.kr/data/goods/11/08/03/93/93_detail_090.jpg",
     "imgAlt": "러쉬",
     "price": "₩30,000",
-    "volume": { "1": "300g", "2": "600g: ₩+24,000" },
+    "volume": [{ "1": "300g" }, { "2": "600g: ₩+24,000" }],
     "rate": 4.8,
-    "tag": ["vegan"]
+    "tag": [
+      { "tag": "new", "id": 2 },
+      { "tag": "vegan", "id": 3 }
+    ],
+    "stock": 1
   },
   {
     "id": 13,
@@ -116,9 +154,13 @@
     "imgUrl": "https://lush.co.kr/data/goods/20/10/43/1000001455/1000001455_detail_057.jpg",
     "imgAlt": "러쉬",
     "price": "₩28,000",
-    "volume": { "1": "125g", "2": "315g: ₩+28,000" },
+    "volume": [{ "1": "125g" }, { "2": "315g: ₩+28,000" }],
     "rate": 4.8,
-    "tag": ["new", "vegan"]
+    "tag": [
+      { "tag": "new", "id": 2 },
+      { "tag": "vegan", "id": 3 }
+    ],
+    "stock": 1
   },
   {
     "id": 14,
@@ -127,9 +169,17 @@
     "imgUrl": "https://lush.co.kr/data/goods/20/10/43/1000001455/1000001455_detail_057.jpg",
     "imgAlt": "러쉬",
     "price": "₩28,000",
-    "volume": { "1": "110g", "2": "300g: ₩+23,000", "3": "600g: ₩+61,000" },
+    "volume": [
+      { "1": "110g" },
+      { "2": "300g: ₩+23,000" },
+      { "3": "600g: ₩+61,000" }
+    ],
     "rate": 4.8,
-    "tag": ["vegan"]
+    "tag": [
+      { "tag": "new", "id": 2 },
+      { "tag": "vegan", "id": 3 }
+    ],
+    "stock": 1
   },
   {
     "id": 15,
@@ -138,9 +188,13 @@
     "imgUrl": "https://lush.co.kr/data/goods/21/03/13/1000001745/1000001745_detail_01.jpg",
     "imgAlt": "러쉬",
     "price": "₩17,000",
-    "volume": { "1": "180g" },
+    "volume": [{ "1": "180g" }],
     "rate": 4.8,
-    "tag": ["best"]
+    "tag": [
+      { "tag": "new", "id": 2 },
+      { "tag": "vegan", "id": 3 }
+    ],
+    "stock": 1
   },
   {
     "id": 16,
@@ -149,9 +203,13 @@
     "imgUrl": "https://lush.co.kr/data/goods/20/10/43/1000001455/1000001455_detail_057.jpg",
     "imgAlt": "러쉬",
     "price": "₩22,000",
-    "volume": { "1": "200g" },
+    "volume": [{ "1": "200g" }],
     "rate": 4.8,
-    "tag": ["new", "vegan"]
+    "tag": [
+      { "tag": "new", "id": 2 },
+      { "tag": "vegan", "id": 3 }
+    ],
+    "stock": 1
   },
   {
     "id": 17,
@@ -160,9 +218,13 @@
     "imgUrl": "https://lush.co.kr/data/goods/20/02/09/1000001226/1000001226_detail_069.jpg",
     "imgAlt": "러쉬",
     "price": "₩18,000",
-    "volume": { "1": "200g" },
+    "volume": [{ "1": "200g" }],
     "rate": 4.8,
-    "tag": ["vegan"]
+    "tag": [
+      { "tag": "new", "id": 2 },
+      { "tag": "vegan", "id": 3 }
+    ],
+    "stock": 1
   },
   {
     "id": 18,
@@ -171,8 +233,12 @@
     "imgUrl": "https://lush.co.kr/data/goods/20/01/03/1000001146/1000001146_detail_049.jpg",
     "imgAlt": "러쉬",
     "price": "₩17,000",
-    "volume": { "1": "170g" },
+    "volume": [{ "1": "170g" }],
     "rate": 4.8,
-    "tag": ["new", "vegan"]
+    "tag": [
+      { "tag": "new", "id": 2 },
+      { "tag": "vegan", "id": 3 }
+    ],
+    "stock": 1
   }
 ]

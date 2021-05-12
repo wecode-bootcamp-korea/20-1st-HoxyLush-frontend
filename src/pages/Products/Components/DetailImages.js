@@ -4,7 +4,7 @@ import './DetailImages.scss';
 export default class DetailImages extends Component {
   render() {
     return (
-      <div className="detailImage" onClick={console.log(1)}>
+      <div className="detailImage">
         <img
           className="productImage"
           src="https://lush.co.kr/data/goods/11/01/20/79/79_detail_085.jpg"

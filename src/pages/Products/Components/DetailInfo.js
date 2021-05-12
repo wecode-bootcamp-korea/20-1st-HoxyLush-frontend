@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import Buttons from '../Buttons/Buttons';
-import Category from '../Category/Category';
-import OrderInfo from '../OrderInfo/OrderInfo';
+import Buttons from './Buttons';
+import Category from './Category';
+import OrderInfo from './OrderInfo';
 
 export default class DetailInfo extends Component {
   render() {
