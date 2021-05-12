@@ -64,7 +64,7 @@ export default class OrderInfo extends Component {
             <span>185g</span>
           </div>
           <div className="row">
-            <span className="col-1">구매수량</span>d
+            <span className="col-1">구매수량</span>
             <form>
               <button onClick={this.handleDecreaseCount}>
                 <i class="fas fa-minus"></i>

@@ -2,7 +2,20 @@ import React, { Component } from 'react';
 import './Category.scss';
 
 export default class Category extends Component {
+  state = {
+    categories: [],
+  };
+
+  componentDidMount() {
+    const url = '/data/category.json';
+    fetch(url)
+      .then(res => res.json())
+      .then(data => this.setState({ categories: data }));
+  }
+
   render() {
+    const { categories } = this.state;
+    console.log(categories);
     return (
       <div className="category">
         <span>홈</span>
@@ -15,21 +28,15 @@ export default class Category extends Component {
         </select>
         <i class="fas fa-chevron-right"></i>
         <select name="1" id="select">
-          <option value="1">A</option>
-          <option value="1">B</option>
-          <option value="1" selected>
-            C
-          </option>
-          <option value="1">D</option>
+          {categories.map(category => {
+            return <option>{category.category}</option>;
+          })}
         </select>
         <i class="fas fa-chevron-right"></i>
         <select name="2" id="select">
-          <option value="1">A</option>
-          <option value="1">B</option>
-          <option value="1" selected>
-            C
-          </option>
-          <option value="1">D</option>
+          {categories.map(category => {
+            return <option>{category.category}</option>;
+          })}
         </select>
       </div>
     );

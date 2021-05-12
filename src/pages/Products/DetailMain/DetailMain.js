@@ -1,9 +1,23 @@
 import React, { Component } from 'react';
 import DetailImages from './DetailImages/DetailImages';
 import DetailInfo from './DetailInfo/DetailInfo';
-import './Detail.scss';
+import './DetailMain.scss';
 
-export default class Detail extends Component {
+export default class DetailMain extends Component {
+  state = {
+    item: [],
+  };
+
+  fetchItem = () => {
+    fetch('/public/data/productList.json/')
+      .then(res => res.json())
+      .then(data =>
+        this.setState({
+          item: data,
+        })
+      );
+  };
+
   render() {
     return (
       <section>
