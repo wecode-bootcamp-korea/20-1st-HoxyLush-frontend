@@ -47,7 +47,7 @@ export default class OrderInfo extends Component {
     return (
       <>
         <header className="orderInfo">
-          <h1>로즈 골드</h1>
+          <h1 className="productName">로즈 골드</h1>
           <div className="icons">
             <i class="fas fa-share-alt"></i>
             <i class="far fa-heart"></i>

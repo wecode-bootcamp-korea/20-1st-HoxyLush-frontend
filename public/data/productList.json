@@ -9,7 +9,8 @@
     "volume": [{ "1": "75g" }],
     "rate": 4.8,
     "tag": [{ "tag": "best", "id": 1 }],
-    "stock": 0
+    "stock": 0,
+    "youtubeUrl": "https://www.youtube.com/embed/q7dqUHYraJ0"
   },
   {
     "id": 2,
@@ -24,7 +25,8 @@
       { "tag": "new", "id": 2 },
       { "tag": "vegan", "id": 3 }
     ],
-    "stock": 1
+    "stock": 0,
+    "youtubeUrl": "https://www.youtube.com/embed/q7dqUHYraJ0"
   },
   {
     "id": 3,
@@ -39,7 +41,8 @@
       { "tag": "new", "id": 2 },
       { "tag": "vegan", "id": 3 }
     ],
-    "stock": 1
+    "stock": 0,
+    "youtubeUrl": "https://www.youtube.com/embed/q7dqUHYraJ0"
   },
   {
     "id": 4,
@@ -58,7 +61,8 @@
       { "tag": "best", "id": 1 },
       { "tag": "vegan", "id": 3 }
     ],
-    "stock": 1
+    "stock": 1,
+    "youtubeUrl": "https://www.youtube.com/embed/q7dqUHYraJ0"
   },
   {
     "id": 5,
@@ -70,7 +74,8 @@
     "volume": [{ "1": "180g" }],
     "rate": 4.8,
     "tag": [{ "tag": "vegan", "id": 3 }],
-    "stock": 1
+    "stock": 1,
+    "youtubeUrl": "https://www.youtube.com/embed/q7dqUHYraJ0"
   },
   {
     "id": 6,
@@ -85,7 +90,8 @@
       { "tag": "new", "id": 2 },
       { "tag": "vegan", "id": 3 }
     ],
-    "stock": 1
+    "stock": 1,
+    "youtubeUrl": "https://www.youtube.com/embed/q7dqUHYraJ0"
   },
   {
     "id": 7,
@@ -100,7 +106,8 @@
       { "tag": "new", "id": 2 },
       { "tag": "vegan", "id": 3 }
     ],
-    "stock": 1
+    "stock": 1,
+    "youtubeUrl": "https://www.youtube.com/embed/q7dqUHYraJ0"
   },
   {
     "id": 8,
@@ -115,7 +122,8 @@
       { "tag": "new", "id": 2 },
       { "tag": "vegan", "id": 3 }
     ],
-    "stock": 1
+    "stock": 1,
+    "youtubeUrl": "https://www.youtube.com/embed/q7dqUHYraJ0"
   },
   {
     "id": 11,
@@ -130,7 +138,8 @@
       { "tag": "new", "id": 2 },
       { "tag": "vegan", "id": 3 }
     ],
-    "stock": 1
+    "stock": 1,
+    "youtubeUrl": "https://www.youtube.com/embed/q7dqUHYraJ0"
   },
   {
     "id": 12,
@@ -145,7 +154,8 @@
       { "tag": "new", "id": 2 },
       { "tag": "vegan", "id": 3 }
     ],
-    "stock": 1
+    "stock": 1,
+    "youtubeUrl": "https://www.youtube.com/embed/q7dqUHYraJ0"
   },
   {
     "id": 13,
@@ -160,7 +170,8 @@
       { "tag": "new", "id": 2 },
       { "tag": "vegan", "id": 3 }
     ],
-    "stock": 1
+    "stock": 1,
+    "youtubeUrl": "https://www.youtube.com/embed/q7dqUHYraJ0"
   },
   {
     "id": 14,
@@ -179,7 +190,8 @@
       { "tag": "new", "id": 2 },
       { "tag": "vegan", "id": 3 }
     ],
-    "stock": 1
+    "stock": 1,
+    "youtubeUrl": "https://www.youtube.com/embed/q7dqUHYraJ0"
   },
   {
     "id": 15,
@@ -194,7 +206,8 @@
       { "tag": "new", "id": 2 },
       { "tag": "vegan", "id": 3 }
     ],
-    "stock": 1
+    "stock": 1,
+    "youtubeUrl": "https://www.youtube.com/embed/q7dqUHYraJ0"
   },
   {
     "id": 16,
@@ -209,7 +222,8 @@
       { "tag": "new", "id": 2 },
       { "tag": "vegan", "id": 3 }
     ],
-    "stock": 1
+    "stock": 1,
+    "youtubeUrl": "https://www.youtube.com/embed/q7dqUHYraJ0"
   },
   {
     "id": 17,
@@ -224,7 +238,8 @@
       { "tag": "new", "id": 2 },
       { "tag": "vegan", "id": 3 }
     ],
-    "stock": 1
+    "stock": 1,
+    "youtubeUrl": "https://www.youtube.com/embed/q7dqUHYraJ0"
   },
   {
     "id": 18,
@@ -239,6 +254,7 @@
       { "tag": "new", "id": 2 },
       { "tag": "vegan", "id": 3 }
     ],
-    "stock": 1
+    "stock": 1,
+    "youtubeUrl": "https://www.youtube.com/embed/q7dqUHYraJ0"
   }
 ]

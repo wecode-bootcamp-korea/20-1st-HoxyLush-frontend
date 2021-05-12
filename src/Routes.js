@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Login from './pages/Login/Login';
 import Main from './pages/Main/Main';
 import Products from './pages/Products/Products';
-import Detail from './pages/Products/Detail';
+import Detail from './pages/Products/Components/Detail';
 import Category from './pages/Products/Components/Category';
 
 class Routes extends Component {
@@ -14,9 +14,9 @@ class Routes extends Component {
           <Route exact path="/" component={Main} />
           <Route exact path="/Login" component={Login} />
           <Route exact path="/Products" component={Products} />
-          <Route exact path="/Products/detail" component={Detail} />
-          <Route exact path="/Products/category" component={Category} />
-          {/* <Route exact path="/Products/:id" component={Detail} /> */}
+          <Route exact path="/products/detail" component={Detail} />
+          <Route exact path="/products/category" component={Category} />
+          <Route exact path="/products/:id" component={Detail} />
         </Switch>
       </Router>
     );

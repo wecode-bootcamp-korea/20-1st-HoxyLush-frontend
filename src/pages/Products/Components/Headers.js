@@ -5,7 +5,7 @@ export default class Headers extends Component {
   render() {
     const { selectedOption } = this.props;
     return (
-      <header>
+      <header className="headers">
         <div className="text">
           <h1>{selectedOption}</h1>
           <p>누구나 좋아하는 인기 제품을 만나 보세요!</p>

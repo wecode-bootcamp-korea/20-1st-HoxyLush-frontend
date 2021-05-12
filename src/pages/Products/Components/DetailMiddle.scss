@@ -1,0 +1,79 @@
+@import '../../../styles/variables.scss';
+
+.detailMiddle {
+  .detailNavi {
+    @include flexCenter();
+    margin-bottom: 90px;
+
+    .menu {
+      @include flexCenter();
+      width: 393px;
+      height: 46px;
+      border-top: 1px solid #c6c6c6;
+      border-right: 1px solid #c6c6c6;
+      border-bottom: 1px solid $color-black;
+      font-size: $fs-m;
+      text-align: center;
+
+      &.default {
+        border: 1px solid black;
+        border-bottom: none;
+        font-weight: bold;
+      }
+    }
+  }
+
+  .youtube {
+    margin-bottom: 150px;
+  }
+
+  .productName {
+    @include flexCenter(column);
+    margin-bottom: 150px;
+
+    .productType {
+      font-size: $fs-l;
+      margin-bottom: 30px;
+    }
+
+    .productNameKR {
+      font-size: 36px;
+      font-weight: bold;
+      margin-bottom: 35px;
+    }
+
+    .productNameENG {
+      font-size: 24px;
+      font-weight: bold;
+    }
+  }
+
+  .bestReview {
+    position: relative;
+    margin-bottom: 130px;
+
+    img {
+      display: block;
+      width: 986px;
+      margin: 0 auto;
+    }
+
+    .bestReivewText {
+      position: absolute;
+      top: 40%;
+      left: -5%;
+      width: 480px;
+      min-height: 300px;
+      padding: 50px;
+      background-color: $color-white;
+      font-size: $fs-l;
+      line-height: 2em;
+
+      .reviewTitle {
+        margin-bottom: 35px;
+        font-size: 24px;
+        font-weight: bold;
+      }
+    }
+  }
+}

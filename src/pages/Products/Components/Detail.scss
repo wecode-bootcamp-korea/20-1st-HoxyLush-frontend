@@ -1,0 +1,11 @@
+@import '../../../styles/variables.scss';
+
+.detail {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.detailUpperMain {
+  @include flexCenter();
+  margin: 70px 0 120px;
+}

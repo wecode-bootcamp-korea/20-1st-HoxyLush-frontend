@@ -8,7 +8,7 @@ class Lists extends Component {
     return (
       <ul className="lists">
         {productLists.slice(0, visibleCards).map(list => {
-          return <Card list={list} />;
+          return <Card key={list.id} list={list} />;
         })}
       </ul>
     );

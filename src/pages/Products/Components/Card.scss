@@ -1,5 +1,10 @@
 @import '../../../styles/variables.scss';
 
+a {
+  color: inherit;
+}
+// common에 추가하기
+
 .card {
   display: inline-block;
   max-width: 285px;
@@ -10,6 +15,10 @@
     width: 285px;
     height: 285px;
     object-fit: cover;
+
+    &.opacity {
+      filter: opacity(40%);
+    }
   }
 
   #tags {

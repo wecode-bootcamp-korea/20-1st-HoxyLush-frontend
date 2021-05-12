@@ -15,9 +15,13 @@ class Card extends Component {
     });
 
     return (
-      <Link to={`/products/${list.id}`}>
+      <Link to={`/product/${list.id}`}>
         <li className="card" data-num={list.id}>
-          <img src={list.imgUrl} alt={list.imgAlt} />
+          <img
+            src={list.imgUrl}
+            alt={list.imgAlt}
+            className={!list.stock && 'opacity'}
+          />
           <div>
             {list.stock ? (
               showTagList

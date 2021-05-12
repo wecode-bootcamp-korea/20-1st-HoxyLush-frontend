@@ -36,7 +36,7 @@ class Products extends Component {
         <div className="selectedOption"> {selectedOption}</div>
         <Lists productLists={productLists} visibleCards={visibleCards} />
         <button onClick={this.handleLoadMoreBtn}>
-          <span>Load More..</span>
+          <span>Load More</span>
         </button>
       </section>
     );
