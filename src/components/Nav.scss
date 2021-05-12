@@ -1,51 +1,102 @@
 @import '../../src/styles/variables.scss';
 
 .nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
   background-color: black;
-  color: white;
 
   .topNav {
     @include flexCenter();
-    height: 100px;
-    @media screen and (max-width: 1024px) {
-      padding: 0 20px;
-    }
+    width: 1200px;
+    margin: 0 auto;
 
-    ul {
-      @include flexBtw();
-      width: 540px;
-      margin: 6px 0 0 0;
-      @media screen and (max-width: 1024px) {
-        justify-content: space-evenly;
-      }
-    }
-
-    .mainPage {
+    .siteTitle {
       width: 80px;
-      margin: 5px 285px 0 0;
+      margin: 0 285px 0 0;
       font-size: 30px;
       font-weight: 900;
-      text-align: center;
-      @media screen and (max-width: 1440px) {
-        margin: 5px 185px 0 0;
-      }
-      @media screen and (max-width: 1440px) {
-        margin: 5px 85px 0 0;
-      }
-      @media screen and (max-width: 1024px) {
-        margin: 5px 10px 0 0;
+
+      .goMain {
+        height: 100px;
+        color: white;
+        text-align: center;
       }
     }
 
-    li {
-      min-width: fit-content;
-      font-weight: 400;
-      letter-spacing: 3px;
-      word-spacing: -3px;
-      @media screen and (max-width: 768px) {
-        letter-spacing: 1px;
-      }
+    .navMenu {
+      @include flexBtw();
+      width: 540px;
+      height: 100px;
 
+      .categorys {
+        height: 100px;
+
+        .categoryLink {
+          position: relative;
+          color: white;
+          word-spacing: -3px;
+          letter-spacing: 3px;
+          line-height: 105px;
+        }
+
+        .Categoryvisible {
+          display: block;
+
+          .categorySelectArrow {
+            position: absolute;
+            top: 93px;
+            width: 16px;
+            height: 16px;
+            background-color: $color-grey;
+            transform: rotate(45deg);
+          }
+
+          .productDropMenu {
+            position: absolute;
+            top: 100px;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            background-color: $color-grey;
+            z-index: 5;
+
+            .best {
+              display: flex;
+              flex-direction: column;
+              align-items: flex-start;
+              height: 420px;
+              margin: 56px 10px 0 30px;
+
+              .categoryType1 {
+                font-size: $fs-l;
+                font-weight: 700;
+
+                a {
+                  color: white;
+                }
+              }
+
+              .categoryType2 {
+                margin: 24px 0 0 0;
+
+                a {
+                  color: #919191;
+                  letter-spacing: -1px;
+                  font-size: $fs-m;
+
+                  &:hover {
+                    color: white;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
       &:nth-child(2) {
         @media screen and (max-width: 1024px) {
           display: none;
@@ -57,10 +108,10 @@
         }
       }
     }
-
     .navIcons {
       @include flexBtw();
       width: 150px;
+      height: 100px;
       margin: 0 0 0 116px;
       @media screen and (max-width: 1024px) {
         margin: 0 0 0 0;
@@ -77,10 +128,30 @@
     }
   }
 
-  .eventBanner {
-    height: 80px;
-    @media screen and (max-width: 768px) {
-      display: none;
+  .eventBannerContainer {
+    padding: 0 auto;
+    background-color: #7441b8;
+
+    .eventBanner {
+      @include flexCenter();
+      width: 100%;
+      height: 80px;
+
+      @media screen and (max-width: 768px) {
+        display: none;
+      }
+    }
+    .goToEvent {
+      padding: 12px 0 0 0;
+      width: 147px;
+      height: 39px;
+      border: 1px solid white;
+      color: white;
+      font-size: $fs-m;
+      text-align: center;
     }
   }
+}
+.invisible {
+  display: none;
 }
