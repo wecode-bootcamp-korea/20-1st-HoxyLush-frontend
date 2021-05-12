@@ -11,6 +11,7 @@ export default class Headers extends Component {
           <p>누구나 좋아하는 인기 제품을 만나 보세요!</p>
         </div>
         <img
+          className="headerImg"
           src="https://lush.co.kr/data/editor/goods/200617/pc_cate_best01_163505.jpg"
           alt=""
         />

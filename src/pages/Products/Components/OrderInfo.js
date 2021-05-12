@@ -49,8 +49,8 @@ export default class OrderInfo extends Component {
         <header className="orderInfo">
           <h1 className="productName">로즈 골드</h1>
           <div className="icons">
-            <i class="fas fa-share-alt"></i>
-            <i class="far fa-heart"></i>
+            <i className="fas fa-share-alt"></i>
+            <i className="far fa-heart"></i>
           </div>
         </header>
         <div className="hashTags">#배스밤#놀라운배쓰아트</div>
@@ -67,11 +67,11 @@ export default class OrderInfo extends Component {
             <span className="col-1">구매수량</span>
             <form>
               <button onClick={this.handleDecreaseCount}>
-                <i class="fas fa-minus"></i>
+                <i className="fas fa-minus"></i>
               </button>
               <input type="text" value={count} />
               <button onClick={this.handleIncreaseCount}>
-                <i class="fas fa-plus"></i>
+                <i className="fas fa-plus"></i>
               </button>
             </form>
             <span className="sum">₩{totalPrice}</span>

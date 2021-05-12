@@ -33,11 +33,11 @@ export default class DetailMiddle extends Component {
           <div className="bestReivewText">
             <div className="reviewTitle">
               미리 써 본 후기
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
+              <i className="fas fa-star"></i>
+              <i className="fas fa-star"></i>
+              <i className="fas fa-star"></i>
+              <i className="fas fa-star"></i>
+              <i className="fas fa-star"></i>
             </div>
             <p>
               Lorem ipsum dolor sit amet, consectetur adipisicing elit.

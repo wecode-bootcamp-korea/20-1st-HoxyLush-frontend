@@ -11,7 +11,7 @@ export default class DetailImages extends Component {
           alt="러쉬"
         />
         <div className="slider">
-          <i class="fas fa-chevron-left"></i>
+          <i className="fas fa-chevron-left"></i>
           <div>
             <img
               className="productImage small"
@@ -24,7 +24,7 @@ export default class DetailImages extends Component {
               alt="러쉬"
             />
           </div>
-          <i class="fas fa-chevron-right"></i>
+          <i className="fas fa-chevron-right"></i>
         </div>
       </div>
     );

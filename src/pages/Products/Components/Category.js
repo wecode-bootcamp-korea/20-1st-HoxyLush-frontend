@@ -15,27 +15,34 @@ export default class Category extends Component {
 
   render() {
     const { categories } = this.state;
-    console.log(categories);
     return (
       <div className="category">
         <span>홈</span>
-        <i class="fas fa-chevron-right"></i>
+        <i className="fas fa-chevron-right"></i>
         <select name="1" id="select">
           <option value="1" selected>
             러쉬
           </option>
           <option value="1">LUSH SPA</option>
         </select>
-        <i class="fas fa-chevron-right"></i>
-        <select name="1" id="select">
+        <i className="fas fa-chevron-right"></i>
+        <select id="select">
           {categories.map(category => {
-            return <option>{category.category}</option>;
+            return (
+              <option key={category.id} value={category.category}>
+                {category.category}
+              </option>
+            );
           })}
         </select>
-        <i class="fas fa-chevron-right"></i>
-        <select name="2" id="select">
+        <i className="fas fa-chevron-right"></i>
+        <select id="select">
           {categories.map(category => {
-            return <option>{category.category}</option>;
+            return (
+              <option key={category.id} value={category.category}>
+                {category.category}
+              </option>
+            );
           })}
         </select>
       </div>
