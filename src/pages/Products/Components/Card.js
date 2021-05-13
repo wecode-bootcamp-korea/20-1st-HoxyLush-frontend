@@ -7,12 +7,9 @@ class Card extends Component {
     const { list } = this.props;
     const tagArr = list.tag.map(item => item.tag);
     const showTagList = tagArr.map(tag => {
-      return (
-        <span id="tags" className={tag}>
-          {tag}
-        </span>
-      );
+      return <span className={tag}>{tag}</span>;
     });
+    const showSoldOut = <span className="soldOut">Sold Out</span>;
 
     return (
       <Link to={`/product/${list.id}`}>
@@ -22,15 +19,7 @@ class Card extends Component {
             alt={list.imgAlt}
             className={!list.stock && 'opacity'}
           />
-          <div>
-            {list.stock ? (
-              showTagList
-            ) : (
-              <span id="tags" className="soldOut">
-                Sold Out
-              </span>
-            )}
-          </div>
+          <div className="tags">{list.stock ? showTagList : showSoldOut}</div>
           <h2 className="title">{list.title}</h2>
           <div className="hashTags small">{list.hashtag}</div>
           <div className="price">{list.price}</div>

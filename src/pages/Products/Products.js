@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Headers from './Components/Headers';
 import Lists from './Components/Lists';
+
 import './Products.scss';
 
 class Products extends Component {

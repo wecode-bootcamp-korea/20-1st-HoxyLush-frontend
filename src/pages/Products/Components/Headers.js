@@ -12,7 +12,7 @@ export default class Headers extends Component {
         </div>
         <img
           className="headerImg"
-          src="https://lush.co.kr/data/editor/goods/200617/pc_cate_best01_163505.jpg"
+          src="https://lush.co.kr/data/editor/goods/200617/pc_cate_new02_172432.jpg"
           alt=""
         />
       </header>

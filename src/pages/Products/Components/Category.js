@@ -10,11 +10,26 @@ export default class Category extends Component {
     const url = '/data/category.json';
     fetch(url)
       .then(res => res.json())
-      .then(data => this.setState({ categories: data }));
+      .then(categories => this.setState({ categories }));
   }
 
   render() {
     const { categories } = this.state;
+    const firstCategory = categories.map(category => {
+      return (
+        <option key={category.id} value={category.category}>
+          {category.category}
+        </option>
+      );
+    });
+    const secondCategory = categories.map(category => {
+      return (
+        <option key={category.id} value={category.category}>
+          {category.category}
+        </option>
+      );
+    });
+
     return (
       <div className="category">
         <span>홈</span>
@@ -26,25 +41,9 @@ export default class Category extends Component {
           <option value="1">LUSH SPA</option>
         </select>
         <i className="fas fa-chevron-right"></i>
-        <select id="select">
-          {categories.map(category => {
-            return (
-              <option key={category.id} value={category.category}>
-                {category.category}
-              </option>
-            );
-          })}
-        </select>
+        <select id="select">{firstCategory}</select>
         <i className="fas fa-chevron-right"></i>
-        <select id="select">
-          {categories.map(category => {
-            return (
-              <option key={category.id} value={category.category}>
-                {category.category}
-              </option>
-            );
-          })}
-        </select>
+        <select id="select">{secondCategory}</select>
       </div>
     );
   }

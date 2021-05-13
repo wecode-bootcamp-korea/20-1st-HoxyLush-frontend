@@ -9,7 +9,7 @@
       @include flexCenter();
       width: 393px;
       height: 46px;
-      border-top: 1px solid #c6c6c6;
+      border-top: 1px solid #c6c6c6; //common.scss에 추가하기
       border-right: 1px solid #c6c6c6;
       border-bottom: 1px solid $color-black;
       font-size: $fs-m;

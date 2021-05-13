@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
+import Modal from './Modal';
 import './OrderInfo.scss';
 
 export default class OrderInfo extends Component {
   state = {
     count: 1,
     unitPrice: 25000,
+    isModalOpen: false,
   };
 
   calculatePrice = () => {
@@ -21,11 +23,11 @@ export default class OrderInfo extends Component {
         count: count + 1,
       });
     } else {
-      alert('hey');
-      //이미지 모달창 구현 예정
       this.setState({
         count: 4,
       });
+
+      this.openModal();
     }
   };
 
@@ -38,6 +40,20 @@ export default class OrderInfo extends Component {
     const newCount = count - 1;
     this.setState({
       count: newCount,
+    });
+  };
+
+  openModal = () => {
+    const { isModalOpen } = this.state;
+    this.setState({
+      isModalOpen: !isModalOpen,
+    });
+  };
+
+  closeModal = () => {
+    const { isModalOpen } = this.state;
+    this.setState({
+      isModalOpen: !isModalOpen,
     });
   };
 
@@ -81,6 +97,14 @@ export default class OrderInfo extends Component {
           <span className="">총 제품 금액</span>
           <span className="totalPrice">₩{totalPrice}</span>
         </div>
+
+        {this.state.isModalOpen ? (
+          <Modal onClose={this.closeModal}>
+            <h1>잔여 재고 : 4개</h1>
+            <p>현재 4개 이상 주문이 어렵습니다.</p>
+            <button onClick={this.closeModal}>Close</button>
+          </Modal>
+        ) : null}
       </>
     );
   }

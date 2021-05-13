@@ -17,7 +17,7 @@
 
 .hashTags {
   position: relative;
-  margin-bottom: 25px;
+  margin-bottom: 20px;
   color: #808080;
   font-weight: bold;
 
@@ -28,7 +28,7 @@
 
 .infoWrap {
   padding-bottom: 5px;
-  border-top: 1px solid #e7e7e7;
+  border-top: 1px solid #e7e7e7; //commons.scss 추가하기
   border-bottom: 1px solid #e7e7e7;
 
   .row {
