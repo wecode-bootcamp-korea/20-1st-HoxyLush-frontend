@@ -47,7 +47,6 @@ export default class DetailMiddle extends Component {
             </p>
           </div>
         </div>
-        /
       </div>
     );
   }

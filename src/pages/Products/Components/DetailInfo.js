@@ -5,10 +5,25 @@ import OrderInfo from './OrderInfo';
 
 export default class DetailInfo extends Component {
   render() {
+    const {
+      increase,
+      decrease,
+      calculate,
+      selectedCount,
+      closeModal,
+      isModalOpen,
+    } = this.props;
     return (
       <div className="detailInfo">
         <Category />
-        <OrderInfo />
+        <OrderInfo
+          increase={increase}
+          decrease={decrease}
+          calculate={calculate}
+          selectedCount={selectedCount}
+          closeModal={closeModal}
+          isModalOpen={isModalOpen}
+        />
         <Buttons />
       </div>
     );
