@@ -10,9 +10,10 @@ export default class DetailInfo extends Component {
       decrease,
       calculate,
       selectedCount,
-      closeModal,
+      closeModalAlert,
       isModalOpen,
     } = this.props;
+
     return (
       <div className="detailInfo">
         <Category />
@@ -21,10 +22,15 @@ export default class DetailInfo extends Component {
           decrease={decrease}
           calculate={calculate}
           selectedCount={selectedCount}
-          closeModal={closeModal}
+          closeModalAlert={closeModalAlert}
           isModalOpen={isModalOpen}
         />
-        <Buttons />
+        <Buttons
+          leftBtn="장바구니"
+          rightBtn="주문하기"
+          leftLabel="cart"
+          rightLabel="order"
+        />
       </div>
     );
   }

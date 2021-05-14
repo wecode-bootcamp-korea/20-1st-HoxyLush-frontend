@@ -1,0 +1,23 @@
+@import '../../../styles/variables.scss';
+
+.detailNavi {
+  @include flexCenter();
+  margin-bottom: 90px;
+
+  .menu {
+    @include flexCenter();
+    width: 393px;
+    height: 46px;
+    border: 1px solid #c6c6c6; //common.scss에 추가하기
+    border-bottom: 1px solid $color-black;
+    font-size: $fs-m;
+    text-align: center;
+    cursor: pointer;
+
+    &.default {
+      border: 1px solid black;
+      border-bottom: none;
+      font-weight: bold;
+    }
+  }
+}

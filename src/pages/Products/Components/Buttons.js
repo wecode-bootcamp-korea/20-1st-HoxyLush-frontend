@@ -3,10 +3,20 @@ import './Buttons.scss';
 
 export default class Buttons extends Component {
   render() {
+    const { leftBtn, rightBtn, leftLabel, rightLabel, closeModalAlert } =
+      this.props;
     return (
       <div className="btns">
-        <button className="btn cart">장바구니</button>
-        <button className="btn order">주문하기</button>
+        <button className="btn leftBtn" id={leftLabel}>
+          {leftBtn}
+        </button>
+        <button
+          className="btn rightBtn"
+          id={rightLabel}
+          onClick={closeModalAlert}
+        >
+          {rightBtn}
+        </button>
       </div>
     );
   }

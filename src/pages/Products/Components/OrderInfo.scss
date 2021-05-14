@@ -82,7 +82,7 @@
 
 .total {
   @include flexBtw(flex-end);
-  margin: 30px 0;
+  margin-top: 30px;
 
   .totalPrice {
     width: 100px;
@@ -90,4 +90,17 @@
     text-align: end;
     margin-left: 20px;
   }
+}
+
+.outOfStockModal {
+  padding: 80px;
+}
+
+#outOfStockBtn {
+  border: none;
+  width: 160px;
+  height: 54px;
+  color: $color-white;
+  background-color: $color-black;
+  font-size: $fs-m;
 }

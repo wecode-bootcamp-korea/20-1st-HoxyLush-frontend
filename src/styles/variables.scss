@@ -21,3 +21,10 @@ $fs-xl: 20px;
   align-items: center;
   justify-content: $just;
 }
+
+@mixin flexJustDirection($just: space-between, $direction: row) {
+  display: flex;
+  align-items: center;
+  justify-content: $just;
+  flex-direction: $direction;
+}

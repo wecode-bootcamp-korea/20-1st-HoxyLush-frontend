@@ -4,72 +4,93 @@ a {
   color: inherit;
 }
 // common.scss에 추가하기
-
 .card {
-  display: inline-block;
+  position: relative;
   max-width: 285px;
-  margin: 10px;
-  text-align: center;
 
-  img {
-    width: 285px;
-    height: 285px;
-    object-fit: cover;
-
-    &.opacity {
-      filter: opacity(40%);
-    }
+  &:hover .cardIcons {
+    opacity: 1;
   }
 
-  .tags {
-    margin-bottom: 10px;
+  .cardWrapper {
+    margin: 10px;
+    text-align: center;
 
-    .new,
-    .vegan,
-    .best,
-    .soldOut {
-      display: inline-block;
-      width: 80px;
-      height: 23px;
-      padding: 3px;
-      margin: 0 3px;
-      color: $color-white;
-      border-radius: 15px;
-      font-size: $fs-s;
+    img {
+      width: 285px;
+      height: 285px;
+      object-fit: cover;
+
+      &.opacity {
+        filter: opacity(40%);
+      }
+    }
+
+    .tags {
+      margin-bottom: 10px;
+
+      .new,
+      .vegan,
+      .best,
+      .soldOut {
+        display: inline-block;
+        width: 80px;
+        height: 23px;
+        padding: 3px;
+        margin: 0 3px;
+        color: $color-white;
+        border-radius: 15px;
+        font-size: $fs-s;
+        font-weight: bold;
+        text-transform: uppercase;
+        line-height: 1.4em;
+      }
+
+      .new {
+        background-color: #007929;
+      }
+
+      .vegan {
+        background-color: #92ad00;
+      }
+
+      .best {
+        background-color: $color-black;
+      }
+
+      .soldOut {
+        background-color: #ff8a00;
+      }
+    }
+
+    .title {
+      margin-bottom: 5px;
       font-weight: bold;
-      text-transform: uppercase;
-      line-height: 1.4em;
     }
 
-    .new {
-      background-color: #007929;
+    .hashTags {
+      margin-bottom: 20px;
+      color: #8f8f8f;
+      font-size: 14px;
     }
 
-    .vegan {
-      background-color: #92ad00;
-    }
-
-    .best {
-      background-color: $color-black;
-    }
-
-    .soldOut {
-      background-color: #ff8a00;
+    .price {
+      font-weight: bold;
     }
   }
 
-  .title {
-    margin-bottom: 5px;
-    font-weight: bold;
-  }
+  .cardIcons {
+    @include flexCenter(column);
+    position: absolute;
+    top: 30px;
+    left: 40px;
+    color: #8f8f8f;
+    font-size: 22px;
+    opacity: 0;
 
-  .hashtag {
-    margin-bottom: 20px;
-    color: grey;
-    font-size: 14px;
-  }
-
-  .price {
-    font-weight: bold;
+    i {
+      margin-bottom: 15px;
+      cursor: pointer;
+    }
   }
 }

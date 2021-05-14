@@ -10,7 +10,7 @@ export default class Detail extends Component {
     selectedProduct: [],
     selectedCount: 1,
     unitPrice: 25000,
-    isModalOpen: false,
+    isModalAlertOpen: false,
   };
 
   componentDidMount() {
@@ -24,17 +24,17 @@ export default class Detail extends Component {
       );
   }
 
-  openModal = () => {
-    const { isModalOpen } = this.state;
+  openModalAlert = () => {
+    const { isModalAlertOpen } = this.state;
     this.setState({
-      isModalOpen: !isModalOpen,
+      isModalAlertOpen: !isModalAlertOpen,
     });
   };
 
-  closeModal = () => {
-    const { isModalOpen } = this.state;
+  closeModalAlert = () => {
+    const { isModalAlertOpen } = this.state;
     this.setState({
-      isModalOpen: !isModalOpen,
+      isModalAlertOpen: !isModalAlertOpen,
     });
   };
 
@@ -50,7 +50,7 @@ export default class Detail extends Component {
         selectedCount: 4,
       });
 
-      this.openModal();
+      this.openModalAlert();
     }
   };
 
@@ -75,7 +75,7 @@ export default class Detail extends Component {
   };
 
   render() {
-    const { selectedCount, isModalOpen } = this.state;
+    const { selectedCount, isModalAlertOpen } = this.state;
     return (
       <section className="detail">
         <main className="detailUpperMain">
@@ -85,8 +85,8 @@ export default class Detail extends Component {
             decrease={this.handleDecreaseCount}
             calculate={this.calculatePrice()}
             selectedCount={selectedCount}
-            closeModal={this.closeModal}
-            isModalOpen={isModalOpen}
+            closeModalAlert={this.closeModalAlert}
+            isModalOpen={isModalAlertOpen}
           />
         </main>
         <article className="detailLowerMain">

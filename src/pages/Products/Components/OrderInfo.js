@@ -9,9 +9,10 @@ export default class OrderInfo extends Component {
       decrease,
       calculate,
       selectedCount,
-      closeModal,
+      closeModalAlert,
       isModalOpen,
     } = this.props;
+
     return (
       <>
         <header className="orderInfo">
@@ -51,10 +52,19 @@ export default class OrderInfo extends Component {
         </div>
 
         {isModalOpen ? (
-          <Modal onClose={closeModal}>
-            <h1>잔여 재고 : 4개</h1>
-            <p>현재 4개 이상 주문이 어렵습니다.</p>
-            <button onClick={closeModal}>Close</button>
+          <Modal>
+            <div className="outOfStockModal">
+              <i
+                id="modalClose"
+                className="fas fa-times"
+                onClick={closeModalAlert}
+              ></i>
+              <h1>잔여 재고 : 4개</h1>
+              <p>현재 4개 이상 주문이 어렵습니다.</p>
+              <button id="outOfStockBtn" onClick={closeModalAlert}>
+                확인하기
+              </button>
+            </div>
           </Modal>
         ) : null}
       </>
