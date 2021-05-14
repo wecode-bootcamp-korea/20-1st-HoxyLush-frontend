@@ -1,25 +1,16 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import './Nav.scss';
-import PRODUCTCATEGORYS from './productCategorys';
-import INTRODUCELUSH from './introduceLush';
+import PRODUCT_CATEGORYS from './productCategories';
+import INTRODUCE_LUSH from './introduceLush';
 
 export default class Nav extends Component {
   constructor() {
     super();
     this.state = {
-      productCategory: [],
-      introduceLush: [],
       productCategoryWatch: '',
       introduceLushWatch: '',
     };
-  }
-
-  componentDidMount() {
-    this.setState({
-      productCategory: PRODUCTCATEGORYS,
-      introduceLush: INTRODUCELUSH,
-    });
   }
 
   mouseOnProductCategory = e => {
@@ -47,7 +38,7 @@ export default class Nav extends Component {
           </div>
           <ul className="navMenu">
             <li
-              className="categorys"
+              className="categories"
               onMouseOver={this.mouseOnProductCategory}
               onMouseOut={this.mouseOutProductCategory}
             >
@@ -61,20 +52,22 @@ export default class Nav extends Component {
               >
                 <div className="categorySelectArrow"></div>
                 <div className="productDropMenu">
-                  {this.state.productCategory.map(productCategory => {
+                  {PRODUCT_CATEGORYS.map(productCategorydata => {
                     return (
-                      <ul className="best">
-                        <li className="categoryType1">
-                          <Link>{productCategory.category}</Link>
+                      <ul key={productCategorydata.id} className="categoryList">
+                        <li className="categoryHead">
+                          <Link>{productCategorydata.category}</Link>
                         </li>
 
-                        {productCategory.types.map(productCategorytypes => {
-                          return (
-                            <li className="categoryType2">
-                              <Link>{productCategorytypes}</Link>
-                            </li>
-                          );
-                        })}
+                        {productCategorydata.types.map(
+                          (productCategorytypes, index) => {
+                            return (
+                              <li className="categoryDetail" key={index}>
+                                <Link>{productCategorytypes}</Link>
+                              </li>
+                            );
+                          }
+                        )}
                       </ul>
                     );
                   })}
@@ -82,7 +75,7 @@ export default class Nav extends Component {
               </div>
             </li>
             <li
-              className="categorys"
+              className="categories"
               onMouseOver={this.mouseOnIntroduceLushCategory}
               onMouseOut={this.mouseOutIntroduceLushCategory}
             >
@@ -96,46 +89,48 @@ export default class Nav extends Component {
               >
                 <div className="categorySelectArrow"></div>
                 <div className="productDropMenu">
-                  {this.state.introduceLush.map(introduceLush => {
+                  {INTRODUCE_LUSH.map(introduction => {
                     return (
-                      <ul className="best">
-                        <li className="categoryType1">
-                          <Link>{introduceLush.category}</Link>
+                      <ul className="categoryList" key={introduction.id}>
+                        <li className="categoryHead">
+                          <Link>{introduction.category}</Link>
                         </li>
 
-                        {introduceLush.types &&
-                          introduceLush.types.map(introduceLush => {
-                            return (
-                              <li className="categoryType2">
-                                <Link>{introduceLush}</Link>
-                              </li>
-                            );
-                          })}
+                        {introduction.types &&
+                          introduction.types.map(
+                            (introductiondetail, index) => {
+                              return (
+                                <li key={index} className="categoryDetail">
+                                  <Link>{introductiondetail}</Link>
+                                </li>
+                              );
+                            }
+                          )}
                       </ul>
                     );
                   })}
                 </div>
               </div>
             </li>
-            <li className="categorys">
+            <li className="categories">
               <Link className="categoryLink">매장 안내</Link>
             </li>
-            <li className="categorys">
+            <li className="categories">
               <Link className="categoryLink">스파</Link>
             </li>
-            <li className="categorys">
+            <li className="categories">
               <Link className="categoryLink">이벤트</Link>
             </li>
           </ul>
           <div className="navIcons">
             <Link>
-              <i class="fas fa-search"></i>
+              <i className="fas fa-search"></i>
             </Link>
             <Link>
-              <i class="fas fa-shopping-cart"></i>
+              <i className="fas fa-shopping-cart"></i>
             </Link>
             <Link>
-              <i class="fas fa-user-circle"></i>
+              <i className="fas fa-user-circle"></i>
             </Link>
           </div>
         </div>

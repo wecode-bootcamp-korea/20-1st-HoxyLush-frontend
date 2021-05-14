@@ -1,21 +1,21 @@
 @import '../../styles/variables.scss';
 
 .mainBanner {
-  position: relative;
+  position: absolute;
+  left: 0;
+  right: 0;
   @include flexCenter($direction: column);
   margin-top: 180px;
-  .topBannerImage {
-    width: 130%;
-  }
+  z-index: -1;
 
-  .topBannerimageButtonContainer {
+  .topBannerimageButtonList {
     position: absolute;
-    right: 200px;
+    right: 300px;
 
     .topBannerimageButton {
       width: 14px;
       height: 14px;
-      margin: 30px 0 0 0;
+      margin-top: 30px;
       border: 2px solid white;
       border-radius: 50%;
     }

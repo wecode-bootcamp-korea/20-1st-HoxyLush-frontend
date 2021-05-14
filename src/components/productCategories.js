@@ -1,5 +1,6 @@
-const PRODUCTCATEGORYS = [
+const PRODUCT_CATEGORYS = [
   {
+    id: 1,
     category: '베스트',
     types: [
       '주간베스트',
@@ -11,6 +12,7 @@ const PRODUCTCATEGORYS = [
     ],
   },
   {
+    id: 2,
     category: '신제품',
     types: [
       '디스커버리 키트',
@@ -21,10 +23,12 @@ const PRODUCTCATEGORYS = [
     ],
   },
   {
+    id: 3,
     category: '배쓰',
     types: ['배쓰 밤', '버블 바', '배쓰 오일', '펀'],
   },
   {
+    id: 4,
     category: '샤워',
     types: [
       '솝',
@@ -37,6 +41,7 @@ const PRODUCTCATEGORYS = [
     ],
   },
   {
+    id: 5,
     category: '보디',
     types: [
       '클렌저',
@@ -48,6 +53,7 @@ const PRODUCTCATEGORYS = [
     ],
   },
   {
+    id: 6,
     category: '페이스',
     types: [
       '클렌저',
@@ -60,10 +66,12 @@ const PRODUCTCATEGORYS = [
     ],
   },
   {
+    id: 7,
     category: '헤어',
     types: ['샴푸 바', '샴푸', '컨디셔너', '트리트먼트', '스타일링'],
   },
   {
+    id: 8,
     category: '메이크업',
     types: [
       '페이스 파우더',
@@ -75,6 +83,7 @@ const PRODUCTCATEGORYS = [
     ],
   },
   {
+    id: 9,
     category: '퍼퓸',
     types: [
       '보디 스프레이',
@@ -87,6 +96,7 @@ const PRODUCTCATEGORYS = [
     ],
   },
   {
+    id: 10,
     category: '기프트',
     types: [
       '기프트 베스트',
@@ -100,9 +110,10 @@ const PRODUCTCATEGORYS = [
     ],
   },
   {
+    id: 11,
     category: '비건',
     types: ['배쓰', '샤워', '보디', '페이스', '헤어', '메이크업', '퍼퓸'],
   },
 ];
 
-export default PRODUCTCATEGORYS;
+export default PRODUCT_CATEGORYS;
