@@ -42,15 +42,15 @@ export default class Nav extends Component {
               onMouseOver={this.mouseOnProductCategory}
               onMouseOut={this.mouseOutProductCategory}
             >
-              <Link className="categoryLink">제품</Link>
+              <div className="test222">
+                <div
+                  className={`categorySelectArrow ${this.state.productCategoryWatch}`}
+                />
+                <Link className="categoryLink">제품</Link>
+              </div>
               <div
-                className={
-                  this.state.productCategoryWatch
-                    ? 'Categoryvisible'
-                    : 'invisible'
-                }
+                className={`dropMenuContainer ${this.state.productCategoryWatch}`}
               >
-                <div className="categorySelectArrow"></div>
                 <div className="productDropMenu">
                   {PRODUCT_CATEGORYS.map(productCategorydata => {
                     return (
@@ -58,7 +58,6 @@ export default class Nav extends Component {
                         <li className="categoryHead">
                           <Link>{productCategorydata.category}</Link>
                         </li>
-
                         {productCategorydata.types.map(
                           (productCategorytypes, index) => {
                             return (
@@ -79,15 +78,15 @@ export default class Nav extends Component {
               onMouseOver={this.mouseOnIntroduceLushCategory}
               onMouseOut={this.mouseOutIntroduceLushCategory}
             >
-              <Link className="categoryLink">러쉬 소개</Link>
+              <div className="test222">
+                <div
+                  className={`categorySelectArrow ${this.state.introduceLushWatch}`}
+                />
+                <Link className="categoryLink">러쉬 소개</Link>
+              </div>
               <div
-                className={
-                  this.state.introduceLushWatch
-                    ? 'Categoryvisible'
-                    : 'invisible'
-                }
+                className={`dropMenuContainer ${this.state.introduceLushWatch}`}
               >
-                <div className="categorySelectArrow"></div>
                 <div className="productDropMenu">
                   {INTRODUCE_LUSH.map(introduction => {
                     return (

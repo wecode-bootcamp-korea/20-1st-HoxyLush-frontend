@@ -8,24 +8,6 @@ export default class Main extends Component {
     this.state = { topBannerImageId: 1 };
   }
 
-  
-
-function Carousel() {
-    firstval += 2;
-    parent = document.getElementById('container-carousel');
-    parent.style.left = "-" + firstval + "px";
-    if (!(firstval % 150)) {
-        setTimeout(Carousel, 3000);
-        firstval = 0;
-        var firstChild = parent.firstElementChild;
-        parent.appendChild(firstChild);
-        parent.style.left= 0;
-        return;
-    }
-    runCarousel = setTimeout(Carousel, 10);
-}
-
-
   componentDidMount() {
     const test = () => {
       if (this.state.topBannerImageId === 4) {
@@ -72,9 +54,7 @@ function Carousel() {
             })}
           </ul>
         </section>
-        <section className="test">
-        
-        </section>
+        <section className="test"></section>
       </div>
     );
   }

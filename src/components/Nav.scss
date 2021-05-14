@@ -36,17 +36,29 @@
           letter-spacing: 3px;
           line-height: 96px;
         }
-
-        .Categoryvisible {
-          display: block;
+        .test222 {
+          display: flex;
+          justify-content: center;
 
           .categorySelectArrow {
+            &.visible {
+              display: block;
+            }
+            display: none;
             position: absolute;
             top: 93px;
             width: 16px;
             height: 16px;
             background-color: $color-grey;
             transform: rotate(45deg);
+          }
+        }
+
+        .dropMenuContainer {
+          display: none;
+
+          &.visible {
+            display: block;
           }
 
           .productDropMenu {
@@ -142,7 +154,4 @@
       text-align: center;
     }
   }
-}
-.invisible {
-  display: none;
 }
