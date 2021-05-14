@@ -19,12 +19,6 @@ class Login extends Component {
   handleSubmit = e => {
     e.preventDefault();
     const { idValue, pwValue } = this.state;
-    if (!idValue) {
-      alert('아이디를 입력해주세요');
-    } else if (!pwValue) {
-      alert('패스워드를 입력해주세요');
-      return;
-    }
     fetch('API', {
       method: 'POST',
       body: JSON.stringify({
@@ -34,19 +28,37 @@ class Login extends Component {
     })
       .then(res => res.json())
       .then(res => {
-        if (res.MESSAGE === 'SUSSES') {
+        if (res.MESSAGE === 'SUCCESS') {
           this.props.history.push('/Main');
+          console.log(res);
         } else {
           alert('회원정보를 찾을수없습니다.');
         }
       });
   };
 
+  // .then(res => {
+  //    if (res.token) {
+  //     localStorage.setItem("token", res.token);
+  //     alert("성공");
+  //     this.props.history.push("/main");
+  //   } else {
+  //     alert("실패");
+  //   }
+  // });
+
   checkValid = () => {
+    console.log(this.state.idValue);
     const { idValue, pwValue } = this.state;
-    const reg = /^[a-z0-9_]{4,20}$/;
-    const isValidId = reg.test(idValue);
+    const regCheckID = /^[a-z0-9_]{4,20}$/;
+    const isValidId = regCheckID.test(idValue);
     const isValidPw = pwValue.length > 9;
+    if (!idValue) {
+      alert('아이디를 입력해주세요');
+    } else if (!pwValue) {
+      alert('패스워드를 입력해주세요');
+      return;
+    }
     return isValidId && isValidPw;
   };
 
@@ -59,14 +71,14 @@ class Login extends Component {
           <div className="loginBox">
             <ul>
               <li>
-                <a className="mem" href="#/">
+                <p className="mem" href="#/">
                   회원
-                </a>
+                </p>
               </li>
               <li>
-                <a className="nonmem" href="#/">
+                <p className="nonmem" href="#/">
                   비회원
-                </a>
+                </p>
               </li>
             </ul>
             <div className="loginInfo">
@@ -92,8 +104,10 @@ class Login extends Component {
                   />
                 </div>
                 <div className="saveIdBox">
-                  <input type="checkbox" id="saveId" />
-                  <label for="saveId">아이디저장</label>
+                  <label>
+                    <input type="checkbox" id="saveId" />
+                    아이디저장
+                  </label>
                 </div>
                 <button
                   onClick={this.handleSubmit}

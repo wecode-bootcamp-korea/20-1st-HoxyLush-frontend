@@ -43,7 +43,7 @@ class Signup extends Component {
     });
   };
 
-  checkValid = e => {
+  checkidValid = e => {
     const {
       idValue,
       // pwValue,
@@ -53,16 +53,19 @@ class Signup extends Component {
       // emailValue,
       // phoneNumberValue,
     } = this.state;
-    const delSpecialSymbol =
-      /[\{\}\[\]\/?.,;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]/gi;
+    const delSpecialSymbol = /[\{\}\[\]\/?.,;:|\)*~`!^\-_+<>\#$%&\\\=\(\'\"]/gi;
+
     console.log(delSpecialSymbol.test(idValue));
+    console.log(e.key);
     if (delSpecialSymbol.test(idValue)) {
-      return idValue.replace(delSpecialSymbol, '');
+      idValue.replace(delSpecialSymbol, '');
+    }
+    if (idValue.indexOf('@') > 2) {
+      alert('아이디는');
     }
   };
 
   render() {
-    console.log(this.state.idValue);
     return (
       <div className="LoginsignupContainer">
         <div className="content">
@@ -96,7 +99,6 @@ class Signup extends Component {
                         type={data.type}
                         name={data.text}
                         onChange={this.handleInput}
-                        onKeyPress={this.checkValid}
                       ></input>
                     </div>
                   </td>
