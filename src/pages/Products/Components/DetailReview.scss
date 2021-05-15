@@ -48,7 +48,7 @@
   }
 
   .textAreaForm {
-    border: 1px solid $color-border-darken;
+    border: 1px solid $color-border-dark;
 
     #textArea {
       width: 100%;
@@ -60,7 +60,7 @@
     .textAreaSubmit {
       @include flexBtw();
       height: 60px;
-      border-top: 1px solid $color-border-darken;
+      border-top: 1px solid $color-border-dark;
 
       #file {
         display: none;
@@ -68,7 +68,7 @@
 
       .fileUpload {
         padding: 20px;
-        color: $color-border-darken;
+        color: $color-border-dark;
         font-size: 30px;
       }
 

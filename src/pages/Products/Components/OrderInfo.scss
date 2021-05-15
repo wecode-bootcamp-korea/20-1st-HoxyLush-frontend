@@ -10,15 +10,14 @@
 
   .icons i {
     padding-left: 15px;
-    color: #999999;
+    color: $color-border-dark;
     font-size: $fs-xl;
   }
 }
 
 .hashTags {
-  position: relative;
   margin-bottom: 20px;
-  color: #808080;
+  color: $color-border-dark;
   font-weight: bold;
 
   &.small {

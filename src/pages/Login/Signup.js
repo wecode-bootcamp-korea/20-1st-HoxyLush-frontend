@@ -53,7 +53,7 @@ class Signup extends Component {
       // emailValue,
       // phoneNumberValue,
     } = this.state;
-    const delSpecialSymbol = /[\{\}\[\]\/?.,;:|\)*~`!^\-_+<>\#$%&\\\=\(\'\"]/gi;
+    const delSpecialSymbol = /[a]/gi;
 
     console.log(delSpecialSymbol.test(idValue));
     console.log(e.key);

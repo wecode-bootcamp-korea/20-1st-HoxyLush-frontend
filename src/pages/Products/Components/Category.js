@@ -15,17 +15,18 @@ export default class Category extends Component {
 
   render() {
     const { categories } = this.state;
-    const firstCategory = categories.map(category => {
+    const mainCategory = categories.map(({ category, id }) => {
       return (
-        <option key={category.id} value={category.category}>
-          {category.category}
+        <option key={id} value={category}>
+          {category}
         </option>
       );
     });
-    const secondCategory = categories.map(category => {
+
+    const subCategory = categories.map(({ category, id }) => {
       return (
-        <option key={category.id} value={category.category}>
-          {category.category}
+        <option key={id} value={category}>
+          {category}
         </option>
       );
     });
@@ -34,16 +35,14 @@ export default class Category extends Component {
       <div className="category">
         <span>홈</span>
         <i className="fas fa-chevron-right"></i>
-        <select name="1" id="select">
-          <option value="1" selected>
-            러쉬
-          </option>
-          <option value="1">LUSH SPA</option>
+        <select className="select">
+          <option selected>러쉬</option>
+          <option>LUSH SPA</option>
         </select>
         <i className="fas fa-chevron-right"></i>
-        <select id="select">{firstCategory}</select>
+        <select id="select">{mainCategory}</select>
         <i className="fas fa-chevron-right"></i>
-        <select id="select">{secondCategory}</select>
+        <select id="select">{subCategory}</select>
       </div>
     );
   }

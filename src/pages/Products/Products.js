@@ -64,7 +64,6 @@ class Products extends Component {
   };
 
   handleIncreaseCount = e => {
-    e.preventDefault();
     const { selectedCount } = this.state;
     if (selectedCount < 4) {
       this.setState({
@@ -80,7 +79,6 @@ class Products extends Component {
   };
 
   handleDecreaseCount = e => {
-    e.preventDefault();
     const { selectedCount } = this.state;
     if (selectedCount - 1 < 1) return;
 

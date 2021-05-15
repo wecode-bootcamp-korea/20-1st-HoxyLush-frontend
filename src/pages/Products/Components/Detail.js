@@ -39,7 +39,6 @@ export default class Detail extends Component {
   };
 
   handleIncreaseCount = e => {
-    e.preventDefault();
     const { selectedCount } = this.state;
     if (selectedCount < 4) {
       this.setState({
@@ -55,7 +54,6 @@ export default class Detail extends Component {
   };
 
   handleDecreaseCount = e => {
-    e.preventDefault();
     const { selectedCount } = this.state;
     if (selectedCount - 1 < 1) return;
 

@@ -1,0 +1,133 @@
+@import '../../../styles/variables.scss';
+
+.cartList {
+  .cartListProduct {
+    position: relative;
+    margin-bottom: 20px;
+    font-size: 28px;
+    font-weight: bold;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -20px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background-color: $color-black;
+    }
+  }
+
+  .cartTable {
+    width: 100%;
+
+    .cartTableHead {
+      font-size: $fs-m;
+
+      tr,
+      th {
+        text-align: center;
+        padding: 20px 0;
+        color: $color-border-dark;
+      }
+    }
+
+    .cartTableBody {
+      border-top: 1px solid $color-border-dark;
+      tr {
+        height: 155px;
+        border-top: 1px solid $color-border-dark;
+
+        .ProductNameInCart {
+          font-size: $fs-l;
+          font-weight: bold;
+          text-align: left;
+        }
+
+        .imageInCart {
+          img {
+            width: 115px;
+            height: 115px;
+          }
+        }
+
+        .deliveryPrice {
+          color: $color-border-dark;
+          font-size: $fs-m;
+          font-weight: bold;
+        }
+
+        td {
+          text-align: center;
+          vertical-align: middle;
+
+          form {
+            display: inline-block;
+            border: 1px solid $color-border-light;
+            border-radius: 3px;
+
+            button {
+              width: 38px;
+              height: 38px;
+              background-color: transparent;
+
+              i {
+                color: $color-border-dark;
+                font-size: 10px;
+              }
+            }
+
+            input {
+              width: 48px;
+              height: 38px;
+              border: none;
+              font-size: $fs-m;
+              text-align: center;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .emptyCart {
+    @include flexCenter(column);
+    height: 200px;
+    font-size: 22px;
+    font-weight: bold;
+  }
+
+  .totalPriceInCart {
+    @include flexCenter();
+    height: 95px;
+    background-color: $color-border-light;
+
+    span {
+      margin-right: 20px;
+      font-size: $fs-l;
+    }
+
+    .price,
+    .totalOrderPriceText {
+      font-weight: bold;
+    }
+
+    .totalOrderPrice {
+      font-size: 22px;
+    }
+  }
+
+  #resetCartBtn {
+    margin-top: 10px;
+    border-bottom: 1px solid $color-border-dark;
+    font-size: $fs-m;
+    color: $color-border-dark;
+    transition: color 150ms ease-in;
+
+    &:hover {
+      border-bottom: 1px solid $color-black;
+      color: $color-black;
+      cursor: pointer;
+    }
+  }
+}

@@ -32,11 +32,11 @@ export default class AddToCart extends Component {
             <div className="underline"></div>
             <div className="orderNumberForm">
               <form>
-                <button onClick={decrease}>
+                <button type="button" onClick={decrease}>
                   <i className="fas fa-minus"></i>
                 </button>
                 <input type="text" value={selectedCount} />
-                <button onClick={increase}>
+                <button type="button" onClick={increase}>
                   <i className="fas fa-plus"></i>
                 </button>
               </form>
@@ -46,13 +46,14 @@ export default class AddToCart extends Component {
         </section>
         <div className="btns">
           <button
+            type="button"
             className="btn leftBtn"
             id="cancel"
             onClick={onCloseModalCart}
           >
             취소하기
           </button>
-          <button className="btn rightBtn" id="close">
+          <button type="submit" className="btn rightBtn" id="close">
             담기
           </button>
         </div>
@@ -67,7 +68,11 @@ export default class AddToCart extends Component {
               ></i>
               <h1>잔여 재고 : 4개</h1>
               <p>현재 4개 이상 주문이 어렵습니다.</p>
-              <button id="outOfStockBtn" onClick={onCloseModalAlert}>
+              <button
+                type="button"
+                id="outOfStockBtn"
+                onClick={onCloseModalAlert}
+              >
                 확인하기
               </button>
             </div>

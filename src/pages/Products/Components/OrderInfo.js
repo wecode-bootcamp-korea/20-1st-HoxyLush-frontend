@@ -35,11 +35,11 @@ export default class OrderInfo extends Component {
           <div className="row">
             <span className="col-1">구매수량</span>
             <form>
-              <button onClick={decrease}>
+              <button type="button" onClick={decrease}>
                 <i className="fas fa-minus"></i>
               </button>
               <input type="text" value={selectedCount} />
-              <button onClick={increase}>
+              <button type="button" onClick={increase}>
                 <i className="fas fa-plus"></i>
               </button>
             </form>

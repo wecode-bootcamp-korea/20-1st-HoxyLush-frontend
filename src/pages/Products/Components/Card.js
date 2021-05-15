@@ -18,7 +18,7 @@ class Card extends Component {
             <img
               src={list.imgUrl}
               alt={list.imgAlt}
-              className={!list.stock && 'opacity'}
+              className={list.stock ? '' : 'opacity'}
             />
             <div className="tags">{list.stock ? showTagList : showSoldOut}</div>
             <h2 className="title">{list.title}</h2>

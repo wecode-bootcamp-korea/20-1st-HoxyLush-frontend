@@ -30,6 +30,8 @@ export default class DetailInfo extends Component {
           rightBtn="주문하기"
           leftLabel="cart"
           rightLabel="order"
+          btnTypeButton="button"
+          btnTypeSubmit="submit"
         />
       </div>
     );

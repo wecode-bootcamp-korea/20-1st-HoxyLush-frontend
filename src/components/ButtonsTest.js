@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import './Buttons.scss';
+import './ButtonsTest.scss';
 
-export default class Buttons extends Component {
+export default class ButtonsTest extends Component {
   render() {
     const {
       leftBtn,
@@ -12,6 +12,7 @@ export default class Buttons extends Component {
       btnTypeButton,
       btnTypeSubmit,
     } = this.props;
+
     return (
       <div className="btns">
         <button type={btnTypeButton} className="btn leftBtn" id={leftLabel}>
