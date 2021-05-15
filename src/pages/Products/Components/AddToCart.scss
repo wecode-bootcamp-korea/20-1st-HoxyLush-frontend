@@ -7,7 +7,7 @@
     @include flexCenter();
     padding: 30px 0 100px;
     border-top: 1px solid $color-black;
-    border-bottom: 1px solid #e7e7e7;
+    border-bottom: 1px solid $color-border-light;
 
     img {
       width: 100px;
@@ -29,7 +29,7 @@
       }
 
       .productHashTags {
-        color: #8f8f8f;
+        color: $color-border-dark;
         font-size: $fs-m;
       }
 
@@ -37,7 +37,7 @@
         width: 360px;
         height: 1px;
         margin: 20px 0;
-        background-color: #e7e7e7;
+        background-color: $color-border-light;
       }
       .orderNumberForm {
         @include flexBtw();
@@ -45,14 +45,13 @@
 
         form {
           @include flexCenter();
-          border: 1px solid #e7e7e7;
+          border: 1px solid $color-border-light;
           border-radius: 3px;
 
           button {
             width: 50px;
             height: 40px;
             background-color: transparent;
-            border: none; //common
 
             i {
               color: $color-grey;
@@ -66,7 +65,6 @@
             border: none;
             font-size: $fs-l;
             text-align: center;
-            outline: none; // common
           }
         }
       }

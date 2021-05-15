@@ -5,10 +5,15 @@
   font-family: 'Noto Sans KR', sans-serif;
 }
 
-button {
+button,
+input {
+  background-color: transparent;
   outline: none;
+  border: none;
+  font-size: inherit;
 }
 
 a {
+  color: inherit;
   text-decoration: none;
 }

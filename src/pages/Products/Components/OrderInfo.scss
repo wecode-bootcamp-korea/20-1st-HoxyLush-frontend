@@ -28,8 +28,8 @@
 
 .infoWrap {
   padding-bottom: 5px;
-  border-top: 1px solid #e7e7e7; //commons.scss 추가하기
-  border-bottom: 1px solid #e7e7e7;
+  border-top: 1px solid $color-border-light;
+  border-bottom: 1px solid $color-border-light;
 
   .row {
     @include flexBtw(flex-start);
@@ -47,7 +47,7 @@
     }
 
     form {
-      border: 1px solid #e7e7e7;
+      border: 1px solid $color-border-light;
       border-radius: 3px;
       max-width: 155px;
 
@@ -55,7 +55,6 @@
         width: 50px;
         height: 40px;
         background-color: transparent;
-        border: none; //common
 
         i {
           color: $color-grey;

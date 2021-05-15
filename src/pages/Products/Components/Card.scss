@@ -1,9 +1,5 @@
 @import '../../../styles/variables.scss';
 
-a {
-  color: inherit;
-}
-// common.scss에 추가하기
 .card {
   position: relative;
   max-width: 285px;
@@ -70,7 +66,7 @@ a {
 
     .hashTags {
       margin-bottom: 20px;
-      color: #8f8f8f;
+      color: $color-border-dark;
       font-size: 14px;
     }
 
@@ -84,7 +80,7 @@ a {
     position: absolute;
     top: 30px;
     left: 40px;
-    color: #8f8f8f;
+    color: $color-border-dark;
     font-size: 22px;
     opacity: 0;
 
