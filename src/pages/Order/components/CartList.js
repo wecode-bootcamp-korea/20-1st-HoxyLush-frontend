@@ -115,14 +115,20 @@ export default class CartList extends Component {
         )}
 
         <div className="totalPriceInCart">
-          <span className="">총 {productInCart.length} 개의 금액 </span>
-          <span>₩</span>
+          <span>
+            총 <strong>{productInCart.length} </strong>개의 금액
+          </span>
+          {/* <span>₩</span> */}
           <span className="totalPriceInCart price">{total_price}</span>
           <span>+</span>
           <span>배송비 </span>
-          <span className="price">무료</span>
+          <span>
+            <strong>무료</strong>
+          </span>
           <span>=</span>
-          <span className="totalOrderPriceText">총 주문금액</span>
+          <span>
+            <strong>총 주문금액</strong>
+          </span>
           <span className="totalOrderPrice price">₩ {total_price}</span>
         </div>
 

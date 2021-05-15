@@ -34,8 +34,18 @@ export default class ProductInCart extends Component {
             </button>
           </form>
         </td>
-        <td className="unitPrice">{product.price}</td>
-        <td className="totalPrice">{product.total_price}</td>
+        <td className="unitPrice">
+          {new Intl.NumberFormat('ko-KR', {
+            style: 'currency',
+            currency: 'KRW',
+          }).format(product.price)}
+        </td>
+        <td className="totalPrice">
+          {new Intl.NumberFormat('ko-KR', {
+            style: 'currency',
+            currency: 'KRW',
+          }).format(product.total_price)}
+        </td>
       </tr>
     );
   }
