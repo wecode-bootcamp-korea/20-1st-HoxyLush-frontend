@@ -25,3 +25,26 @@
     background-color: white;
   }
 }
+
+.bigbigcont {
+  // margin-top: 760px;
+  width: 43%;
+  overflow: hidden;
+}
+
+.bigcont {
+  width: 100%;
+  display: flex;
+}
+
+.cont {
+  width: 100%;
+  height: 70vh;
+  display: flex;
+  flex-direction: column;
+  transform: translateX(-200%);
+}
+
+button {
+  all: unset;
+}
