@@ -19,15 +19,16 @@ export default class DetailReview extends Component {
     e.preventDefault();
   };
 
-  rateStars = () => {
-    const { reviews } = this.state;
-    const star = [];
-    for (let x = 0; x < reviews.rate; x++) {
-      star.push(<i className="fas fa-star"></i>);
-    }
-    console.log(star);
-    return star;
-  };
+  // rateStars = () => {
+  //   // const { reviews } = this.state;
+  //   console.log(reviews.rate)
+  //   const star = [];
+  //   for (let x = 0; x < 3; x++) {
+  //     star.push(<i className="fas fa-star" />);
+  //   }
+  //   console.log(star);
+  //   return star;
+  // };
 
   render() {
     const { reviews } = this.state;

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Buttons from './Buttons';
-import Category from './Category';
 import OrderInfo from './OrderInfo';
 
 export default class DetailInfo extends Component {
@@ -16,7 +15,6 @@ export default class DetailInfo extends Component {
 
     return (
       <div className="detailInfo">
-        <Category />
         <OrderInfo
           increase={increase}
           decrease={decrease}

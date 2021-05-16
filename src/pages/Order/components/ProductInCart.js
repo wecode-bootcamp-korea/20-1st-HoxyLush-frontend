@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 export default class ProductInCart extends Component {
   render() {
-    const { product, handleCheckBox } = this.props;
+    const { product, handleCheckBox, productCount } = this.props;
     return (
       <tr>
         <td>

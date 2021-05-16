@@ -111,6 +111,7 @@ export default class CartList extends Component {
                     product={product}
                     key={product.id}
                     handleCheckBox={this.handleCheckBox}
+                    productCount={productInCart.length}
                   />
                 );
               })}
