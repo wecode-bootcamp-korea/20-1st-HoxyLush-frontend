@@ -1,16 +1,44 @@
 import React, { Component } from 'react';
 import './DetailReview.scss';
+import Review from './Review';
 
 export default class DetailReview extends Component {
+  state = {
+    reviews: [],
+  };
+
+  componentDidMount() {
+    const url = '/data/review.json';
+    fetch(url)
+      .then(res => res.json())
+      .then(data => data.review)
+      .then(reviews => this.setState({ reviews }));
+  }
+
   uploadReview = e => {
     e.preventDefault();
   };
 
+  rateStars = () => {
+    const { reviews } = this.state;
+    const star = [];
+    for (let x = 0; x < reviews.rate; x++) {
+      star.push(<i className="fas fa-star"></i>);
+    }
+    console.log(star);
+    return star;
+  };
+
   render() {
+    const { reviews } = this.state;
+    const { reviewRef, moveToDetailSection } = this.props;
+
     return (
-      <div className="detailReview">
+      <div className="detailReview" ref={reviewRef}>
         <div className="detailNavi">
-          <div className="menu">상품상세정보</div>
+          <div className="menu" onClick={moveToDetailSection}>
+            상품상세정보
+          </div>
           <div className="menu default">상품후기</div>
           <div className="menu">배송/교환 및 반품안내</div>
         </div>
@@ -42,116 +70,15 @@ export default class DetailReview extends Component {
           </div>
         </form>
         <ul className="reviewContainer">
-          <li className="reviewWrapper">
-            <div className="reviewLeft">
-              <span className="stars">
-                <i className="fas fa-star"></i>
-                <i className="fas fa-star"></i>
-                <i className="fas fa-star"></i>
-                <i className="fas fa-star"></i>
-              </span>
-              <span className="reveiwedDate">2021.05.12</span>
-              <span className="reveiwFrom">네이버페이 구매자</span>
-            </div>
-            <div className="reviewRight">
-              <div className="reveiwContent">
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                Tempora voluptas molestias iste cum veniam eligendi placeat,
-                culpa aliquid officia ut. Maxime voluptatibus voluptatum debitis
-                asperiores! Enim soluta nulla illo provident quaerat corporis
-                molestias ipsam, eum autem, architecto quam placeat aut odio,
-                aliquam ab doloremque. Labore rerum nostrum ratione ipsam quis!
-              </div>
-            </div>
-          </li>
-          <li className="reviewWrapper">
-            <div className="reviewLeft">
-              <span className="stars">
-                <i className="fas fa-star"></i>
-                <i className="fas fa-star"></i>
-                <i className="fas fa-star"></i>
-                <i className="fas fa-star"></i>
-              </span>
-              <span className="reveiwedDate">2021.05.12</span>
-              <span className="reveiwFrom">네이버페이 구매자</span>
-            </div>
-            <div className="reviewRight">
-              <div className="reveiwContent">
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                Tempora voluptas molestias iste cum veniam eligendi placeat,
-                culpa aliquid officia ut. Maxime voluptatibus voluptatum debitis
-                asperiores! Enim soluta nulla illo provident quaerat corporis
-                molestias ipsam, eum autem, architecto quam placeat aut odio,
-                aliquam ab doloremque. Labore rerum nostrum ratione ipsam quis!
-              </div>
-            </div>
-          </li>{' '}
-          <li className="reviewWrapper">
-            <div className="reviewLeft">
-              <span className="stars">
-                <i className="fas fa-star"></i>
-                <i className="fas fa-star"></i>
-                <i className="fas fa-star"></i>
-                <i className="fas fa-star"></i>
-              </span>
-              <span className="reveiwedDate">2021.05.12</span>
-              <span className="reveiwFrom">네이버페이 구매자</span>
-            </div>
-            <div className="reviewRight">
-              <div className="reveiwContent">
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                Tempora voluptas molestias iste cum veniam eligendi placeat,
-                culpa aliquid officia ut. Maxime voluptatibus voluptatum debitis
-                asperiores! Enim soluta nulla illo provident quaerat corporis
-                molestias ipsam, eum autem, architecto quam placeat aut odio,
-                aliquam ab doloremque. Labore rerum nostrum ratione ipsam quis!
-              </div>
-            </div>
-          </li>
-          <li className="reviewWrapper">
-            <div className="reviewLeft">
-              <span className="stars">
-                <i className="fas fa-star"></i>
-                <i className="fas fa-star"></i>
-                <i className="fas fa-star"></i>
-                <i className="fas fa-star"></i>
-              </span>
-              <span className="reveiwedDate">2021.05.12</span>
-              <span className="reveiwFrom">네이버페이 구매자</span>
-            </div>
-            <div className="reviewRight">
-              <div className="reveiwContent">
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                Tempora voluptas molestias iste cum veniam eligendi placeat,
-                culpa aliquid officia ut. Maxime voluptatibus voluptatum debitis
-                asperiores! Enim soluta nulla illo provident quaerat corporis
-                molestias ipsam, eum autem, architecto quam placeat aut odio,
-                aliquam ab doloremque. Labore rerum nostrum ratione ipsam quis!
-              </div>
-            </div>
-          </li>
-          <li className="reviewWrapper">
-            <div className="reviewLeft">
-              <span className="stars">
-                <i className="fas fa-star"></i>
-                <i className="fas fa-star"></i>
-                <i className="fas fa-star"></i>
-                <i className="fas fa-star"></i>
-              </span>
-              <span className="reveiwedDate">2021.05.12</span>
-              <span className="reveiwFrom">네이버페이 구매자</span>
-            </div>
-            <div className="reviewRight">
-              <div className="reveiwContent">
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                Tempora voluptas molestias iste cum veniam eligendi placeat,
-                culpa aliquid officia ut. Maxime voluptatibus voluptatum debitis
-                asperiores! Enim soluta nulla illo provident quaerat corporis
-                molestias ipsam, eum autem, architecto quam placeat aut odio,
-                aliquam ab doloremque. Labore rerum nostrum ratione ipsam quis!
-              </div>
-            </div>
-          </li>
+          {reviews.map(review => {
+            return (
+              <Review
+                key={review.id}
+                review={review}
+                rateStars={this.rateStars}
+              />
+            );
+          })}
           {/* pagination 구현 예정 */}
         </ul>
       </div>

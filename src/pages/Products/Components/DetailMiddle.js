@@ -3,11 +3,17 @@ import './DetailMiddle.scss';
 
 export default class DetailMiddle extends Component {
   render() {
+    const { moveToReviewSection, detailRef } = this.props;
+
     return (
       <div className="detailMiddle">
         <div className="detailNavi">
-          <div className="menu default">상품상세정보</div>
-          <div className="menu">상품후기</div>
+          <div className="menu default" ref={detailRef}>
+            상품상세정보
+          </div>
+          <div className="menu" onClick={moveToReviewSection}>
+            상품후기
+          </div>
           <div className="menu">배송/교환 및 반품안내</div>
         </div>
         <iframe

@@ -13,6 +13,9 @@ export default class Detail extends Component {
     isModalAlertOpen: false,
   };
 
+  reviewRef = React.createRef();
+  detailRef = React.createRef();
+
   componentDidMount() {
     const url = '/data/productList.json';
     fetch(url)
@@ -72,6 +75,14 @@ export default class Detail extends Component {
     }).format(total);
   };
 
+  moveToReviewSection = () => {
+    this.reviewRef.current.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  moveToDetailSection = () => {
+    this.detailRef.current.scrollIntoView({ behavior: 'smooth' });
+  };
+
   render() {
     const { selectedCount, isModalAlertOpen } = this.state;
     return (
@@ -88,8 +99,14 @@ export default class Detail extends Component {
           />
         </main>
         <article className="detailLowerMain">
-          <DetailMiddle />
-          <DetailReview />
+          <DetailMiddle
+            moveToReviewSection={this.moveToReviewSection}
+            detailRef={this.detailRef}
+          />
+          <DetailReview
+            reviewRef={this.reviewRef}
+            moveToDetailSection={this.moveToDetailSection}
+          />
         </article>
       </section>
     );

@@ -18,9 +18,10 @@ class Products extends Component {
   };
 
   componentDidMount() {
-    const url = '/data/productList.json';
+    const url = 'http://192.168.255.253:8000/products/products-list';
     fetch(url)
       .then(res => res.json())
+      .then(data => data.product_info)
       .then(productLists =>
         this.setState({
           productLists,
@@ -112,6 +113,15 @@ class Products extends Component {
         <section className="products">
           <Headers selectedOption={selectedOption} />
           <div className="selectedOption"> {selectedOption}</div>
+          <ul className="subCategories">
+            <li>전체</li>
+            <li>주간베스트</li>
+            <li>별 다섯개 후기</li>
+            <li>온라인 전용</li>
+            <li>국내제조</li>
+            <li>네이키드</li>
+            <li>리틀 러쉬</li>
+          </ul>
           <Lists
             productLists={productLists}
             visibleCards={visibleCards}

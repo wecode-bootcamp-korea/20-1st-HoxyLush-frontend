@@ -4,7 +4,7 @@ import './Lists.scss';
 
 class Lists extends Component {
   render() {
-    const { productLists, visibleCards, openModalAlert, openModalCart } =
+    const { productLists, openModalAlert, openModalCart, visibleCards } =
       this.props;
 
     return (
@@ -12,7 +12,7 @@ class Lists extends Component {
         {productLists.slice(0, visibleCards).map(list => {
           return (
             <Card
-              key={list.id}
+              key={list.product_id}
               list={list}
               openModalAlert={openModalAlert}
               openModalCart={openModalCart}

@@ -9,6 +9,7 @@
   }
 
   .cardWrapper {
+    width: 100%;
     margin: 10px;
     text-align: center;
 
@@ -38,7 +39,6 @@
         border-radius: 15px;
         font-size: $fs-s;
         font-weight: bold;
-        text-transform: uppercase;
         line-height: 1.4em;
       }
 

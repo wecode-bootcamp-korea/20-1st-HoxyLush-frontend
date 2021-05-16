@@ -40,9 +40,9 @@ export default class Category extends Component {
           <option>LUSH SPA</option>
         </select>
         <i className="fas fa-chevron-right"></i>
-        <select id="select">{mainCategory}</select>
+        <select className="select">{mainCategory}</select>
         <i className="fas fa-chevron-right"></i>
-        <select id="select">{subCategory}</select>
+        <select className="select">{subCategory}</select>
       </div>
     );
   }
