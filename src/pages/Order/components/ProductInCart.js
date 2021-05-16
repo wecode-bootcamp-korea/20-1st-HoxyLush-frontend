@@ -8,8 +8,7 @@ export default class ProductInCart extends Component {
         <td>
           <input
             type="checkbox"
-            name=""
-            id=""
+            id="checkbox"
             onChange={handleCheckBox}
             value={product.name}
             checked={product.is_checked}

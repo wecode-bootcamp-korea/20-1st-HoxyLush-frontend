@@ -21,6 +21,11 @@
   .cartTable {
     width: 100%;
 
+    #checkbox {
+      width: 20px;
+      height: 20px;
+    }
+
     .cartTableHead {
       font-size: $fs-m;
 
@@ -105,11 +110,6 @@
     span {
       margin-right: 20px;
       font-size: $fs-l;
-    }
-
-    .price,
-    .totalOrderPriceText {
-      font-weight: bold;
     }
 
     .totalOrderPrice {

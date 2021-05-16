@@ -24,12 +24,11 @@ export default class CartList extends Component {
       );
   }
 
-  //모두 true인지 아닌 지 확인 후 main check box 상태 변경
   handleBoxStatusCheck = () => {
     const { productInCart } = this.state;
 
     const seeIfAllChecked = productInCart.every(
-      product => (product.is_checked = true)
+      product => product.is_checked === true
     );
 
     console.log(seeIfAllChecked);
@@ -61,6 +60,8 @@ export default class CartList extends Component {
     this.setState({
       productInCart: productInCart,
     });
+
+    this.handleBoxStatusCheck();
   };
 
   clearCart = () => {
@@ -72,9 +73,13 @@ export default class CartList extends Component {
       });
   };
 
+  calculateTotalPriceInCart = () => {
+    const { productInCart } = this.state;
+    return productInCart.reduce((acc, cur) => acc + cur.total_price, 0);
+  };
+
   render() {
     const { productInCart, isAllChecked } = this.state;
-    const { total_price } = this.props;
 
     return (
       <section className="cartList">
@@ -87,6 +92,7 @@ export default class CartList extends Component {
                   <input
                     onChange={this.handleAllCheckedBox}
                     type="checkbox"
+                    id="checkbox"
                     value="checkedAll"
                     checked={isAllChecked}
                   />
@@ -118,8 +124,14 @@ export default class CartList extends Component {
           <span>
             총 <strong>{productInCart.length} </strong>개의 금액
           </span>
-          {/* <span>₩</span> */}
-          <span className="totalPriceInCart price">{total_price}</span>
+          <span className="totalPriceInCart price">
+            <strong>
+              {new Intl.NumberFormat('ko-KR', {
+                style: 'currency',
+                currency: 'KRW',
+              }).format(this.calculateTotalPriceInCart())}
+            </strong>
+          </span>
           <span>+</span>
           <span>배송비 </span>
           <span>
@@ -129,7 +141,14 @@ export default class CartList extends Component {
           <span>
             <strong>총 주문금액</strong>
           </span>
-          <span className="totalOrderPrice price">₩ {total_price}</span>
+          <span className="totalOrderPrice">
+            <strong>
+              {new Intl.NumberFormat('ko-KR', {
+                style: 'currency',
+                currency: 'KRW',
+              }).format(this.calculateTotalPriceInCart())}
+            </strong>
+          </span>
         </div>
 
         <button type="button" id="resetCartBtn" onClick={this.clearCart}>
