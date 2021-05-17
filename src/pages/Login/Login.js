@@ -35,7 +35,7 @@ class Login extends Component {
       })
         .then(res => res.json())
         .then(submitResult => {
-          if (submitResult.MESSAGE == 'SUCCESS') {
+          if (submitResult.MESSAGE === 'SUCCESS') {
             localStorage.setItem('wtwToken', submitResult.token);
             this.props.history.push('/');
           } else {

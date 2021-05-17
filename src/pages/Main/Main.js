@@ -234,7 +234,7 @@ export default class Main extends Component {
               asideProductdata => {
                 return (
                   <img
-                    alt="main page aside product image"
+                    alt="main page aside product"
                     key={asideProductdata.id}
                     className={`${this.state.slidestatus} asideProduct`}
                     style={this.isMovedAsideSlide()}
@@ -246,7 +246,7 @@ export default class Main extends Component {
             {ASIDEDATA.map(asideProductdata => {
               return (
                 <img
-                  alt="main page aside product image"
+                  alt="main page aside product"
                   key={asideProductdata.id}
                   className={`${this.state.slidestatus} asideProduct`}
                   style={this.isMovedAsideSlide()}
@@ -258,7 +258,7 @@ export default class Main extends Component {
             {ASIDEDATA.slice(0, 1).map(asideProductdata => {
               return (
                 <img
-                  alt="main page aside product image"
+                  alt="main page aside product"
                   key={asideProductdata.id}
                   className={`${this.state.slidestatus} asideProduct`}
                   style={this.isMovedAsideSlide()}

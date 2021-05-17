@@ -1,0 +1,129 @@
+@import '../../../styles/variables.scss';
+
+.detailReview {
+  .detailNavi {
+    @include flexCenter();
+    margin-bottom: 90px;
+
+    .menu {
+      @include flexCenter();
+      width: 393px;
+      height: 46px;
+      border: 1px solid $color-border;
+      border-bottom: 1px solid $color-black;
+      font-size: $fs-m;
+      text-align: center;
+      cursor: pointer;
+
+      &.default {
+        border: 1px solid black;
+        border-bottom: none;
+        font-weight: bold;
+      }
+    }
+  }
+
+  .reviewHead {
+    display: flex;
+    align-items: baseline;
+    margin-bottom: 20px;
+
+    .title {
+      font-size: 30px;
+      margin-right: 20px;
+    }
+
+    .stars {
+      margin-right: 20px;
+    }
+
+    .totalReviewNumber {
+      font-weight: bold;
+    }
+  }
+  .subtitle {
+    margin-bottom: 20px;
+    font-size: 18px;
+    font-weight: bold;
+  }
+
+  .textAreaForm {
+    border: 1px solid $color-border-dark;
+
+    #textArea {
+      width: 100%;
+      padding: 30px;
+      outline: none;
+      border: none;
+    }
+
+    .textAreaSubmit {
+      @include flexBtw();
+      height: 60px;
+      border-top: 1px solid $color-border-dark;
+
+      #file {
+        display: none;
+      }
+
+      .fileUpload {
+        padding: 20px;
+        color: $color-border-dark;
+        font-size: 30px;
+      }
+
+      #reviewSubmitBtn {
+        width: 140px;
+        height: 60px;
+        border: 1px solid $color-grey;
+        font-weight: bold;
+      }
+    }
+  }
+
+  .reviewContainer {
+    margin: 30px 0 60px;
+    border-top: 2px solid $color-border;
+
+    .reviewWrapper {
+      display: flex;
+      min-height: 160px;
+      padding: 30px 20px;
+      border-bottom: 1px solid $color-border;
+
+      &:nth-child(odd) {
+        background-color: $color-sub-bg;
+      }
+
+      &:nth-child(even) {
+        background-color: $color-white;
+      }
+
+      .reviewLeft {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        flex: 15%;
+
+        .stars {
+          margin-bottom: 20px;
+        }
+
+        .reveiwedDate {
+          margin-bottom: 5px;
+        }
+
+        .reveiwFrom {
+          font-size: $fs-m;
+        }
+      }
+
+      .reviewRight {
+        display: flex;
+        align-items: center;
+        flex: 85%;
+      }
+    }
+  }
+}
