@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import './Login.scss';
+import { API } from '../../config';
 
 class Login extends Component {
   constructor() {
@@ -25,7 +26,7 @@ class Login extends Component {
     } else if (!pw) {
       alert('패스워드를 입력해주세요');
     } else {
-      fetch('http://192.168.255.139:8000/users/login', {
+      fetch(`${API}/users/login`, {
         method: 'POST',
         body: JSON.stringify({
           account: id,
@@ -34,7 +35,6 @@ class Login extends Component {
       })
         .then(res => res.json())
         .then(submitResult => {
-          console.log(submitResult);
           if (submitResult.MESSAGE == 'SUCCESS') {
             localStorage.setItem('wtwToken', submitResult.token);
             this.props.history.push('/');
@@ -48,8 +48,6 @@ class Login extends Component {
   render() {
     const { id, pw } = this.state;
     const { handleInput, handleSubmit } = this;
-    console.log(this.state.id);
-    console.log(this.state.pw);
     return (
       <div className="loginContainer">
         <div className="Title">
@@ -85,7 +83,7 @@ class Login extends Component {
           </div>
           <div className="saveIdBox">
             <label>
-              <input type="checkbox" id="saveId" />
+              <input type="checkbox" className="saveId" />
               <span className="styledCheckBox"></span>
             </label>
             아이디 저장

@@ -33,15 +33,12 @@
 }
 
 .loginInfo {
-  // margin-top: 66px;
-
   margin: 66px auto auto 0;
   .inputLogin {
     position: relative;
     margin: 10px auto auto 0px;
     height: 50px;
     border: 1px solid #8f8f8f;
-    // padding-left: 44px;
 
     i {
       position: absolute;
@@ -86,7 +83,7 @@
     font-size: 14px;
     color: #aeaeae;
 
-    #saveId {
+    .saveId {
       display: none;
     }
 

@@ -5,6 +5,9 @@ import './Main.scss';
 import PRODATA from './mainproductdata';
 import ASIDEDATA from './mainasideproductdata';
 
+const topBannerImageIdList = [1, 2, 3, 4];
+const recommendProductSliderIDList = [0, 1, 2, 3];
+
 export default class Main extends Component {
   constructor() {
     super();
@@ -116,8 +119,6 @@ export default class Main extends Component {
   };
 
   render() {
-    const topBannerImageIdList = [1, 2, 3, 4];
-    const recommendProductSliderIDList = [0, 1, 2, 3];
     const { topBannerImageId } = this.state;
     return (
       <div className="mainContainer">
@@ -227,48 +228,42 @@ export default class Main extends Component {
             </div>
           </section>
         </section>
-        <section className="test123">
-          <div className="test234">
+        <section className="asideContainer">
+          <div className="asides">
             {ASIDEDATA.slice(ASIDEDATA.length - 1, ASIDEDATA.length).map(
               asideProductdata => {
                 return (
-                  <Link>
-                    <img
-                      alt="main page aside product image"
-                      key={asideProductdata.id}
-                      className={`${this.state.slidestatus} asideProduct`}
-                      style={this.isMovedAsideSlide()}
-                      src={asideProductdata.url}
-                    />
-                  </Link>
+                  <img
+                    alt="main page aside product image"
+                    key={asideProductdata.id}
+                    className={`${this.state.slidestatus} asideProduct`}
+                    style={this.isMovedAsideSlide()}
+                    src={asideProductdata.url}
+                  />
                 );
               }
             )}
             {ASIDEDATA.map(asideProductdata => {
               return (
-                <Link>
-                  <img
-                    alt="main page aside product image"
-                    key={asideProductdata.id}
-                    className={`${this.state.slidestatus} asideProduct`}
-                    style={this.isMovedAsideSlide()}
-                    src={asideProductdata.url}
-                  />
-                </Link>
+                <img
+                  alt="main page aside product image"
+                  key={asideProductdata.id}
+                  className={`${this.state.slidestatus} asideProduct`}
+                  style={this.isMovedAsideSlide()}
+                  src={asideProductdata.url}
+                />
               );
             })}
 
             {ASIDEDATA.slice(0, 1).map(asideProductdata => {
               return (
-                <Link>
-                  <img
-                    alt="main page aside product image"
-                    key={asideProductdata.id}
-                    className={`${this.state.slidestatus} asideProduct`}
-                    style={this.isMovedAsideSlide()}
-                    src={asideProductdata.url}
-                  />
-                </Link>
+                <img
+                  alt="main page aside product image"
+                  key={asideProductdata.id}
+                  className={`${this.state.slidestatus} asideProduct`}
+                  style={this.isMovedAsideSlide()}
+                  src={asideProductdata.url}
+                />
               );
             })}
           </div>
