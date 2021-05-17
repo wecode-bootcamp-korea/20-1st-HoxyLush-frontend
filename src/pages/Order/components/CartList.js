@@ -4,22 +4,18 @@ import ProductInCart from './ProductInCart';
 import './CartList.scss';
 
 export default class CartList extends Component {
-  static defaultProps = { total_price: 0 };
-
   state = {
     productInCart: [],
     isAllChecked: true,
   };
-  // data를 받아 올 위치 정해지면 props로 전달받을 예정
 
   componentDidMount() {
     const url = '/data/cart.json';
     fetch(url)
       .then(res => res.json())
-      .then(data => data.cart_info)
-      .then(productInCart =>
+      .then(data =>
         this.setState({
-          productInCart,
+          productInCart: data.cart_info,
         })
       );
   }
@@ -27,15 +23,9 @@ export default class CartList extends Component {
   handleBoxStatusCheck = () => {
     const { productInCart } = this.state;
 
-    const seeIfAllChecked = productInCart.every(
-      product => product.is_checked === true
-    );
+    const isAllChecked = productInCart.every(product => !!product.is_checked);
 
-    console.log(seeIfAllChecked);
-
-    seeIfAllChecked
-      ? this.setState({ isAllChecked: true })
-      : this.setState({ isAllChecked: false });
+    this.setState({ isAllChecked });
   };
 
   handleAllCheckedBox = e => {
@@ -57,9 +47,7 @@ export default class CartList extends Component {
       }
     });
 
-    this.setState({
-      productInCart: productInCart,
-    });
+    this.setState({ productInCart });
 
     this.handleBoxStatusCheck();
   };

@@ -21,10 +21,9 @@ class Products extends Component {
     const url = 'http://192.168.255.253:8000/products/products-list';
     fetch(url)
       .then(res => res.json())
-      .then(data => data.product_info)
-      .then(productLists =>
+      .then(data =>
         this.setState({
-          productLists,
+          productLists: data.product_info,
         })
       );
   }
@@ -36,14 +35,7 @@ class Products extends Component {
     });
   };
 
-  openModalAlert = () => {
-    const { isModalAlertOpen } = this.state;
-    this.setState({
-      isModalAlertOpen: !isModalAlertOpen,
-    });
-  };
-
-  closeModalAlert = () => {
+  toggleModalAlert = () => {
     const { isModalAlertOpen } = this.state;
     this.setState({
       isModalAlertOpen: !isModalAlertOpen,
@@ -57,7 +49,7 @@ class Products extends Component {
     });
   };
 
-  closeModalCart = () => {
+  toggleModalCart = () => {
     const { isModalCartOpen } = this.state;
     this.setState({
       isModalCartOpen: !isModalCartOpen,
@@ -75,7 +67,7 @@ class Products extends Component {
         selectedCount: 4,
       });
 
-      this.openModalAlert();
+      this.toggleModalAlert();
     }
   };
 
@@ -125,7 +117,7 @@ class Products extends Component {
           <Lists
             productLists={productLists}
             visibleCards={visibleCards}
-            openModalAlert={this.openModalAlert}
+            toggleModalAlert={this.toggleModalAlert}
             openModalCart={this.openModalCart}
           />
           <button id="loadMore" onClick={this.handleLoadMoreBtn}>
@@ -133,13 +125,13 @@ class Products extends Component {
           </button>
         </section>
         {isModalCartOpen ? (
-          <Modal onClose={this.closeModalAlert}>
+          <Modal onClose={this.toggleModalAlert}>
             <AddToCart
               increase={this.handleIncreaseCount}
               decrease={this.handleDecreaseCount}
               calculate={this.calculatePrice}
               selectedCount={selectedCount}
-              onCloseModalAlert={this.closeModalAlert}
+              toggleModalAlert={this.toggleModalAlertt}
               onCloseModalCart={this.closeModalCart}
               isModalAlertOpen={isModalAlertOpen}
             />
