@@ -1,0 +1,32 @@
+@import '../../../styles/variables.scss';
+
+.headers {
+  position: relative;
+  width: 100%;
+  margin-top: 180px;
+
+  .text {
+    @include flexCenter(column);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: $color-white;
+
+    h1 {
+      padding-bottom: 15px;
+      font-size: 68px;
+      font-weight: bold;
+      letter-spacing: 0.5em;
+    }
+
+    p {
+      font-size: 26px;
+      letter-spacing: 0.2em;
+    }
+  }
+
+  .headerImg {
+    height: 100%;
+  }
+}

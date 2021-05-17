@@ -1,0 +1,56 @@
+@import '../styles/variables.scss';
+
+.modal {
+  @include flexCenter(column);
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 100;
+
+  .modalBackdrop {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+    filter: blur(3px);
+  }
+
+  .modalBox {
+    @include flexCenter(column);
+    position: relative;
+    min-width: 460px;
+    min-height: 310px;
+    background-color: $color-white;
+    text-align: center;
+
+    h1 {
+      font-size: 22px;
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      padding-bottom: 30px;
+      font-size: 22px;
+      text-align: left;
+    }
+
+    p {
+      font-size: $fs-l;
+      max-width: 400px;
+      margin-bottom: 40px;
+      white-space: pre-wrap;
+    }
+
+    #modalClose {
+      position: absolute;
+      top: 30px;
+      right: 30px;
+      color: $color-border-dark;
+      font-size: $fs-xl;
+    }
+  }
+}
