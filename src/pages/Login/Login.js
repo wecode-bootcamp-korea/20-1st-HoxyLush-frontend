@@ -59,7 +59,7 @@ class Login extends Component {
         </ul>
 
         <div className="loginInfo">
-          <div className="inputLogin">
+          <div className="inputLoginInfo">
             <i class="fas fa-user-circle fa-lg"></i>
             <input
               className="id"
@@ -70,12 +70,12 @@ class Login extends Component {
               value={id}
             />
           </div>
-          <div className="inputLogin">
+          <div className="inputLoginInfo">
             <i class="fas fa-lock fa-lg"></i>
             <input
               className="pw"
               type="text"
-              placeholder="패스워드"
+              placeholder="비밀번호"
               onChange={handleInput}
               name="pw"
               value={pw}

@@ -10,8 +10,25 @@ export default class Nav extends Component {
     this.state = {
       productCategoryWatch: '',
       introduceLushWatch: '',
+      basketProductCount: '',
     };
   }
+
+  // componentDidMount() {
+  //   if (localStorage.getItem('wtwToken')) {
+  //     fetch('API주소', {
+  //       method: 'POST',
+  //       headers: {
+  //         Authorization: localStorage.getItem('wtwToken'),
+  //       },
+  //     })
+  //       .then(response => response.json())
+  //       .then(loginUserInfo => {
+  //         this.setState({ feedList: feedData })
+  //         이 부분을 받는 데이터 형태를 보고 수정해야함
+  //       });
+  //   }
+  // }
 
   mouseOnProductCategory = e => {
     this.setState({ productCategoryWatch: 'visible' });
@@ -42,7 +59,7 @@ export default class Nav extends Component {
               onMouseOver={this.mouseOnProductCategory}
               onMouseOut={this.mouseOutProductCategory}
             >
-              <div className="test222">
+              <div className="categoryContainer">
                 <div
                   className={`categorySelectArrow ${this.state.productCategoryWatch}`}
                 />
@@ -78,7 +95,7 @@ export default class Nav extends Component {
               onMouseOver={this.mouseOnIntroduceLushCategory}
               onMouseOut={this.mouseOutIntroduceLushCategory}
             >
-              <div className="test222">
+              <div className="categoryContainer">
                 <div
                   className={`categorySelectArrow ${this.state.introduceLushWatch}`}
                 />
@@ -125,8 +142,9 @@ export default class Nav extends Component {
             <Link>
               <i className="fas fa-search"></i>
             </Link>
-            <Link>
+            <Link className="shoppingBasket">
               <i className="fas fa-shopping-cart"></i>
+              <div className="basketProductNumber">5</div>
             </Link>
             <Link>
               <i className="fas fa-user-circle"></i>
