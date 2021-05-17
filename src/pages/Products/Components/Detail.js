@@ -26,7 +26,7 @@ export default class Detail extends Component {
       );
   }
 
-  openModalAlert = () => {
+  toggleModalAlert = () => {
     const { isModalAlertOpen } = this.state;
     this.setState({
       isModalAlertOpen: !isModalAlertOpen,
@@ -56,8 +56,7 @@ export default class Detail extends Component {
           <DetailImages />
           <DetailInfo
             selectedProduct={selectedProduct}
-            openModalAlert={this.openModalAlert}
-            closeModalAlert={this.closeModalAlert}
+            toggleModalAlert={this.toggleModalAlert}
             isModalOpen={isModalAlertOpen}
           />
         </main>

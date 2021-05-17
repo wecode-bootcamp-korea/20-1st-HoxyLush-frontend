@@ -4,15 +4,13 @@ import OrderInfo from './OrderInfo';
 
 export default class DetailInfo extends Component {
   render() {
-    const { selectedProduct, openModalAlert, closeModalAlert, isModalOpen } =
-      this.props;
+    const { selectedProduct, toggleModalAlert, isModalOpen } = this.props;
 
     return (
       <div className="detailInfo">
         <OrderInfo
           selectedProduct={selectedProduct}
-          openModalAlert={openModalAlert}
-          closeModalAlert={closeModalAlert}
+          toggleModalAlert={toggleModalAlert}
           isModalOpen={isModalOpen}
         />
         <Buttons

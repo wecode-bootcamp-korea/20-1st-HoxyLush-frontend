@@ -23,12 +23,11 @@ export default class AddToCart extends Component {
   };
 
   calculatePrice = () => {
-    const { selectedCount } = this.state;
-    const { selectedProduct } = this.props;
-
-    const total = selectedCount * selectedProduct.option;
-
-    console.log(selectedProduct.option);
+    // const { selectedCount } = this.state;
+    // const { selectedProduct } = this.props;
+    // console.log(selectedCount);
+    // const total = selectedCount * selectedProduct.option;
+    const total = 10_000;
     return new Intl.NumberFormat('ko-KR', {
       style: 'currency',
       currency: 'KRW',
@@ -39,10 +38,9 @@ export default class AddToCart extends Component {
     const { selectedCount } = this.state;
     const {
       selectedProduct,
-      closeModalCart,
-      closeModalAlert,
+      toggleModalCart,
+      toggleModalAlert,
       isModalAlertOpen,
-      openModalAlert,
     } = this.props;
 
     return (
@@ -51,7 +49,7 @@ export default class AddToCart extends Component {
         <i
           id="modalClose"
           className="fas fa-times"
-          onClick={closeModalCart}
+          onClick={toggleModalCart}
         ></i>
         <section className="cartModal">
           <img
@@ -66,7 +64,7 @@ export default class AddToCart extends Component {
               <OrderCountControler
                 selectedProduct={selectedProduct}
                 selectedCount={selectedCount}
-                openModalAlert={openModalAlert}
+                toggleModalAlert={toggleModalAlert}
                 increaseCount={this.increaseCount}
                 decreaseCount={this.decreaseCount}
               />
@@ -79,7 +77,7 @@ export default class AddToCart extends Component {
             type="button"
             className="btn leftBtn"
             id="cancel"
-            onClick={closeModalCart}
+            onClick={toggleModalCart}
           >
             취소하기
           </button>
@@ -88,26 +86,26 @@ export default class AddToCart extends Component {
           </button>
         </div>
 
-        {isModalAlertOpen ? (
-          <Modal onClose={closeModalAlert}>
+        {isModalAlertOpen && (
+          <Modal onClose={toggleModalAlert}>
             <div className="outOfStockModal">
               <i
                 id="modalClose"
                 className="fas fa-times"
-                onClick={closeModalAlert}
+                onClick={toggleModalAlert}
               ></i>
               <h1>잔여 재고 : {selectedProduct.option} 개</h1>
               <p>현재 {selectedProduct.stock}개 이상 주문이 어렵습니다.</p>
               <button
                 type="button"
                 id="outOfStockBtn"
-                onClick={closeModalAlert}
+                onClick={toggleModalAlert}
               >
                 확인하기
               </button>
             </div>
           </Modal>
-        ) : null}
+        )}
       </div>
     );
   }

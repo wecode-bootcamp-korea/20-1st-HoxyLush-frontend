@@ -2,13 +2,13 @@ import React, { Component } from 'react';
 
 export default class OrderCountControler extends Component {
   handleIncreaseCount = e => {
-    const { selectedProduct, selectedCount, increaseCount, openModalAlert } =
+    const { selectedProduct, selectedCount, increaseCount, toggleModalAlert } =
       this.props;
 
     if (selectedCount < selectedProduct.stock) {
       increaseCount();
     } else {
-      openModalAlert();
+      toggleModalAlert();
     }
   };
 

@@ -1,0 +1,123 @@
+@import '../../styles/variables.scss';
+.mainContainer {
+  .mainBanner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    @include flexCenter($direction: column);
+    margin-top: 180px;
+    overflow: hidden;
+
+    .topBannerimageButtonList {
+      position: absolute;
+      right: 250px;
+
+      .topBannerimageButton {
+        width: 14px;
+        height: 14px;
+        margin-top: 30px;
+        border: 2px solid white;
+        border-radius: 50%;
+      }
+    }
+
+    .selectedBannerImageButton {
+      background-color: white;
+    }
+  }
+
+  .mainPageProducts {
+    display: inline-block;
+    width: 940px;
+    margin: 760px 0 100px 400px;
+    padding-top: 90px;
+
+    .recommendProductTitle {
+      font-size: 40px;
+      font-weight: 900;
+    }
+    .recommendProducts {
+      margin-top: 20px;
+
+      .bigbigcont {
+        overflow: hidden;
+
+        .recommendProductInfoContainer {
+          display: flex;
+          position: relative;
+          z-index: -1;
+
+          .recommendProductInfo {
+            padding-left: 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            .recommendProductPrice {
+              margin-top: 20px;
+            }
+          }
+        }
+        .recommendProductSliderButtonList {
+          margin-top: 50px;
+          text-align: center;
+          .recommendProductSliderButton {
+            display: inline-block;
+            width: 14px;
+            height: 14px;
+            margin-left: 10px;
+            border: 2px solid black;
+            border-radius: 50%;
+          }
+        }
+        .selectedRecommendProductSliderButton {
+          background-color: black;
+        }
+        button {
+          all: unset;
+        }
+      }
+    }
+  }
+  .asideContainer {
+    display: inline-block;
+    width: 280px;
+    margin-left: 40px;
+    position: relative;
+    .asides {
+      display: flex;
+      overflow: hidden;
+      position: relative;
+      z-index: 5;
+      .minus {
+        transition: all 0s ease-in-out 0s !important;
+      }
+    }
+    .asideSlideButtons {
+      position: absolute;
+      right: 8px;
+      bottom: 20px;
+      display: flex;
+      align-items: center;
+      z-index: 10;
+
+      .goToPrevAsideSlide {
+        color: white;
+        font-size: 28px;
+      }
+      .currentAsideSlideNumber {
+        color: white;
+        margin-left: 12px;
+        font-size: 16px;
+      }
+      .goToNextAsideSlide {
+        color: white;
+        margin-left: 12px;
+        font-size: 28px;
+      }
+      button {
+        all: unset;
+      }
+    }
+  }
+}

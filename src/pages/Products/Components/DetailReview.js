@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import './DetailReview.scss';
 import Review from './Review';
+import './DetailReview.scss';
 
 export default class DetailReview extends Component {
   state = {
@@ -11,24 +11,12 @@ export default class DetailReview extends Component {
     const url = '/data/review.json';
     fetch(url)
       .then(res => res.json())
-      .then(data => data.review)
-      .then(reviews => this.setState({ reviews }));
+      .then(data => this.setState({ reviews: data.review }));
   }
 
   uploadReview = e => {
     e.preventDefault();
   };
-
-  // rateStars = () => {
-  //   // const { reviews } = this.state;
-  //   console.log(reviews.rate)
-  //   const star = [];
-  //   for (let x = 0; x < 3; x++) {
-  //     star.push(<i className="fas fa-star" />);
-  //   }
-  //   console.log(star);
-  //   return star;
-  // };
 
   render() {
     const { reviews } = this.state;

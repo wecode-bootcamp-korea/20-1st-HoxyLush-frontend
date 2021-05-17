@@ -3,6 +3,7 @@ import Modal from '../../components/Modal';
 import AddToCart from './Components/AddToCart';
 import Headers from './Components/Headers';
 import Lists from './Components/Lists';
+import { PRODUCT_API } from '../../config';
 
 import './Products.scss';
 
@@ -17,14 +18,12 @@ class Products extends Component {
   };
 
   componentDidMount() {
-    const url = 'http://10.58.2.127:8000/products/product-list';
     // const url = '/data/productList.json';
-    fetch(url)
+    fetch(`${PRODUCT_API}/products`)
       .then(res => res.json())
-      .then(data => data.product_info)
-      .then(productLists =>
+      .then(data =>
         this.setState({
-          productLists,
+          productLists: data.product_info,
         })
       );
   }
@@ -36,21 +35,14 @@ class Products extends Component {
     });
   };
 
-  openModalAlert = () => {
+  toggleModalAlert = () => {
     const { isModalAlertOpen } = this.state;
     this.setState({
       isModalAlertOpen: !isModalAlertOpen,
     });
   };
 
-  closeModalAlert = () => {
-    const { isModalAlertOpen } = this.state;
-    this.setState({
-      isModalAlertOpen: !isModalAlertOpen,
-    });
-  };
-
-  openModalCart = id => {
+  toggleModalCart = id => {
     const { isModalCartOpen } = this.state;
     this.setState({
       isModalCartOpen: !isModalCartOpen,
@@ -67,13 +59,6 @@ class Products extends Component {
       );
   };
 
-  closeModalCart = () => {
-    const { isModalCartOpen } = this.state;
-    this.setState({
-      isModalCartOpen: !isModalCartOpen,
-    });
-  };
-
   handleIncreaseCount = e => {
     const { selectedCount } = this.state;
     if (selectedCount < 4) {
@@ -85,7 +70,7 @@ class Products extends Component {
         selectedCount: 4,
       });
 
-      this.openModalAlert();
+      this.toggleModalAlertAlert();
     }
   };
 
@@ -136,27 +121,26 @@ class Products extends Component {
           <Lists
             productLists={productLists}
             visibleCards={visibleCards}
-            openModalAlert={this.openModalAlert}
-            openModalCart={this.openModalCart}
+            toggleModalAlert={this.toggleModalAlert}
+            toggleModalCart={this.toggleModalCart}
           />
           <button id="loadMore" onClick={this.handleLoadMoreBtn}>
             <span>Load More</span>
           </button>
         </section>
-        {isModalCartOpen ? (
-          <Modal onClose={this.closeModalAlert}>
+        {isModalCartOpen && (
+          <Modal onClose={this.toggleModalAlert}>
             <AddToCart
               increase={this.handleIncreaseCount}
               decrease={this.handleDecreaseCount}
               // calculate={this.calculatePrice}
               selectedProduct={selectedProduct}
-              closeModalAlert={this.closeModalAlert}
-              closeModalCart={this.closeModalCart}
-              openModalAlert={this.openModalAlert}
+              toggleModalCart={this.toggleModalCart}
+              toggleModalAlert={this.toggleModalAlert}
               isModalAlertOpen={isModalAlertOpen}
             />
           </Modal>
-        ) : null}
+        )}
       </>
     );
   }

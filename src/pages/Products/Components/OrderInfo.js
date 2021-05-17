@@ -35,8 +35,7 @@ export default class OrderInfo extends Component {
 
   render() {
     const { selectedCount } = this.state;
-    const { selectedProduct, openModalAlert, closeModalAlert, isModalOpen } =
-      this.props;
+    const { selectedProduct, toggleModalAlert, isModalOpen } = this.props;
 
     return (
       <>
@@ -67,7 +66,7 @@ export default class OrderInfo extends Component {
             <OrderCountControler
               selectedProduct={selectedProduct}
               selectedCount={selectedCount}
-              openModalAlert={openModalAlert}
+              toggleModalAlert={toggleModalAlert}
               increaseCount={this.increaseCount}
               decreaseCount={this.decreaseCount}
             />
@@ -85,11 +84,11 @@ export default class OrderInfo extends Component {
               <i
                 id="modalClose"
                 className="fas fa-times"
-                onClick={closeModalAlert}
+                onClick={toggleModalAlert}
               ></i>
               <h1>잔여 재고 : {selectedProduct.quantity}개</h1>
               <p>현재 {selectedProduct.quantity}개 이상 주문이 어렵습니다.</p>
-              <button id="outOfStockBtn" onClick={closeModalAlert}>
+              <button id="outOfStockBtn" onClick={toggleModalAlert}>
                 확인하기
               </button>
             </div>

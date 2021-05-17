@@ -4,9 +4,8 @@ import './Lists.scss';
 
 class Lists extends Component {
   render() {
-    const { productLists, openModalAlert, openModalCart, visibleCards } =
+    const { productLists, toggleModalAlert, toggleModalCart, visibleCards } =
       this.props;
-
     return (
       <ul className="lists">
         {productLists.slice(0, visibleCards).map(list => {
@@ -14,8 +13,8 @@ class Lists extends Component {
             <Card
               key={list.product_id}
               list={list}
-              openModalAlert={openModalAlert}
-              openModalCart={openModalCart}
+              toggleModalAlert={toggleModalAlert}
+              toggleModalCart={toggleModalCart}
             />
           );
         })}
