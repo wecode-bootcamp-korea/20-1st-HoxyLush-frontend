@@ -6,8 +6,9 @@ import './CartList.scss';
 export default class CartList extends Component {
   state = {
     productInCart: [],
-    isAllChecked: true,
   };
+
+  inputRef = React.createRef();
 
   componentDidMount() {
     const url = '/data/cart.json';
@@ -24,8 +25,7 @@ export default class CartList extends Component {
     const { productInCart } = this.state;
 
     const isAllChecked = productInCart.every(product => !!product.is_checked);
-
-    this.setState({ isAllChecked });
+    this.inputRef.current.checked = isAllChecked;
   };
 
   handleAllCheckedBox = e => {
@@ -33,7 +33,7 @@ export default class CartList extends Component {
 
     productInCart.forEach(product => (product.is_checked = e.target.checked));
     this.setState({
-      productInCart: productInCart,
+      productInCart,
       isAllChecked: !isAllChecked,
     });
   };
@@ -48,8 +48,14 @@ export default class CartList extends Component {
     });
 
     this.setState({ productInCart });
-
     this.handleBoxStatusCheck();
+  };
+
+  removeProduct = () => {
+    const { productInCart } = this.state;
+    this.setState({
+      productInCart: productInCart.filter(item => !item.is_checked),
+    });
   };
 
   clearCart = () => {
@@ -63,11 +69,14 @@ export default class CartList extends Component {
 
   calculateTotalPriceInCart = () => {
     const { productInCart } = this.state;
-    return productInCart.reduce((acc, cur) => acc + cur.total_price, 0);
+    const checkedProduct = [];
+    productInCart.forEach(item => item.is_checked && checkedProduct.push(item));
+
+    return checkedProduct.reduce((acc, cur) => acc + cur.total_price, 0);
   };
 
   render() {
-    const { productInCart, isAllChecked } = this.state;
+    const { productInCart } = this.state;
 
     return (
       <section className="cartList">
@@ -78,11 +87,12 @@ export default class CartList extends Component {
               <tr>
                 <th>
                   <input
+                    ref={this.inputRef}
                     onChange={this.handleAllCheckedBox}
                     type="checkbox"
-                    id="checkbox"
+                    className="checkbox"
                     value="checkedAll"
-                    checked={isAllChecked}
+                    checked={productInCart.every(product => product.is_checked)}
                   />
                 </th>
                 <th colspan="2">제품정보</th>
@@ -140,7 +150,14 @@ export default class CartList extends Component {
           </span>
         </div>
 
-        <button type="button" id="resetCartBtn" onClick={this.clearCart}>
+        <button
+          type="button"
+          className="removeProductBtn"
+          onClick={this.removeProduct}
+        >
+          삭제하기
+        </button>
+        <button type="button" className="resetCartBtn" onClick={this.clearCart}>
           장바구니 비우기
         </button>
         <ButtonsTest

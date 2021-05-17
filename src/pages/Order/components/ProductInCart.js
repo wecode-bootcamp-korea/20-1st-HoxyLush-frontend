@@ -2,13 +2,13 @@ import React, { Component } from 'react';
 
 export default class ProductInCart extends Component {
   render() {
-    const { product, handleCheckBox, productCount } = this.props;
+    const { product, handleCheckBox } = this.props;
     return (
       <tr>
         <td>
           <input
             type="checkbox"
-            id="checkbox"
+            className="checkbox"
             onChange={handleCheckBox}
             value={product.name}
             checked={product.is_checked}
