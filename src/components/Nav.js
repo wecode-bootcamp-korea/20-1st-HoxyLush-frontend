@@ -34,7 +34,9 @@ export default class Nav extends Component {
       <nav className="nav">
         <div className="topNav">
           <div className="siteTitle">
-            <Link className="goMain">HOXY LUSH</Link>
+            <Link className="goMain" to="/">
+              HOXY LUSH
+            </Link>
           </div>
           <ul className="navMenu">
             <li

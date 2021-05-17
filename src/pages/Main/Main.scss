@@ -81,14 +81,16 @@
   }
   .asideContainer {
     display: inline-block;
+    position: relative;
     width: 280px;
     margin-left: 40px;
-    position: relative;
+
     .asides {
       display: flex;
-      overflow: hidden;
       position: relative;
+      overflow: hidden;
       z-index: 5;
+
       .minus {
         transition: all 0s ease-in-out 0s !important;
       }
