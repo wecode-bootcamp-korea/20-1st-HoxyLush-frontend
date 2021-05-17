@@ -8,7 +8,8 @@ class Lists extends Component {
       this.props;
     return (
       <ul className="lists">
-        {productLists.slice(0, visibleCards).map(list => {
+        {/* {productLists.slice(0, visibleCards).map(list => { */}
+        {productLists.map(list => {
           return (
             <Card
               key={list.product_id}

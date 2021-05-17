@@ -117,7 +117,7 @@
     }
   }
 
-  #resetCartBtn {
+  .resetCartBtn {
     margin-top: 10px;
     border-bottom: 1px solid $color-border-dark;
     font-size: $fs-m;
@@ -129,5 +129,11 @@
       color: $color-black;
       cursor: pointer;
     }
+  }
+
+  .btnWrapperInCart {
+    display: flex;
+    justify-content: center;
+    padding-top: 30px;
   }
 }

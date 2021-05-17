@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import BasicButton from '../../../components/BasicButton';
 import Modal from '../../../components/Modal';
 import OrderCountControler from '../../../components/OrderCountControler';
 import './AddToCart.scss';
@@ -73,17 +74,8 @@ export default class AddToCart extends Component {
           </article>
         </section>
         <div className="btns">
-          <button
-            type="button"
-            className="btn leftBtn"
-            id="cancel"
-            onClick={toggleModalCart}
-          >
-            취소하기
-          </button>
-          <button type="submit" className="btn rightBtn" id="close">
-            담기
-          </button>
+          <BasicButton buttonName="취소하기" buttonInfo="cancel" />
+          <BasicButton buttonName="담기" buttonInfo="putInCart" />
         </div>
 
         {isModalAlertOpen && (

@@ -18,18 +18,18 @@ class Card extends Component {
             <img
               src={list.image_url}
               alt="러쉬"
-              className={list.option[0].quantity ? '' : 'opacity'}
+              // className={list.option[0].quantity ? '' : 'opacity'}
             />
             <div className="tags">
-              {list.option[0].quantity ? showTagList : showSoldOut}
+              {/* {list.option[0].quantity ? showTagList : showSoldOut} */}
             </div>
             <h2 className="title">{list.name}</h2>
             <div className="hashTags small">{list.hashtag}</div>
             <div className="price">
-              {new Intl.NumberFormat('ko-KR', {
+              {/* {new Intl.NumberFormat('ko-KR', {
                 style: 'currency',
                 currency: 'KRW',
-              }).format(list.option[0].price)}
+              }).format(list.option[0].price)} */}
             </div>
           </Link>
         </li>

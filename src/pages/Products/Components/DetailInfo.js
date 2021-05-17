@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Buttons from './Buttons';
+import BasicButton from '../../../components/BasicButton';
 import OrderInfo from './OrderInfo';
 
 export default class DetailInfo extends Component {
@@ -13,14 +13,11 @@ export default class DetailInfo extends Component {
           toggleModalAlert={toggleModalAlert}
           isModalOpen={isModalOpen}
         />
-        <Buttons
-          leftBtn="장바구니"
-          rightBtn="주문하기"
-          leftLabel="cart"
-          rightLabel="order"
-          btnTypeButton="button"
-          btnTypeSubmit="submit"
-        />
+        <div className="btnWrapperInDetail">
+          <BasicButton buttonName="장바구니" buttonInfo="cart" />
+          <BasicButton buttonName="주문하기" buttonInfo="order" />
+          {/* type:submit */}
+        </div>
       </div>
     );
   }

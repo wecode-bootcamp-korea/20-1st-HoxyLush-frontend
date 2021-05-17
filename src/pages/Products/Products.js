@@ -18,12 +18,14 @@ class Products extends Component {
   };
 
   componentDidMount() {
-    // const url = '/data/productList.json';
-    fetch(`${PRODUCT_API}/products`)
+    const url = '/data/productList.json';
+    // fetch(`${PRODUCT_API}/products`)
+    fetch(url)
       .then(res => res.json())
       .then(data =>
         this.setState({
-          productLists: data.product_info,
+          // productLists: data.product_info,
+          productLists: data,
         })
       );
   }
