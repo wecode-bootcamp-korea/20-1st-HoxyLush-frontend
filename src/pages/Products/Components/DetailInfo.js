@@ -4,22 +4,14 @@ import OrderInfo from './OrderInfo';
 
 export default class DetailInfo extends Component {
   render() {
-    const {
-      increase,
-      decrease,
-      calculate,
-      selectedCount,
-      closeModalAlert,
-      isModalOpen,
-    } = this.props;
+    const { selectedProduct, openModalAlert, closeModalAlert, isModalOpen } =
+      this.props;
 
     return (
       <div className="detailInfo">
         <OrderInfo
-          increase={increase}
-          decrease={decrease}
-          calculate={calculate}
-          selectedCount={selectedCount}
+          selectedProduct={selectedProduct}
+          openModalAlert={openModalAlert}
           closeModalAlert={closeModalAlert}
           isModalOpen={isModalOpen}
         />

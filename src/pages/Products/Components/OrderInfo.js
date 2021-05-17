@@ -1,17 +1,42 @@
 import React, { Component } from 'react';
 import Modal from '../../../components/Modal';
+import OrderCountControler from '../../../components/OrderCountControler';
 import './OrderInfo.scss';
 
 export default class OrderInfo extends Component {
+  state = {
+    selectedCount: 1,
+  };
+
+  increaseCount = () => {
+    const { selectedCount } = this.state;
+    this.setState({
+      selectedCount: selectedCount + 1,
+    });
+  };
+
+  decreaseCount = () => {
+    const { selectedCount } = this.state;
+    this.setState({
+      selectedCount: selectedCount - 1,
+    });
+  };
+
+  calculatePrice = () => {
+    const { selectedCount } = this.state;
+    const { selectedProduct } = this.props;
+
+    const total = selectedCount * selectedProduct.price;
+    return new Intl.NumberFormat('ko-KR', {
+      style: 'currency',
+      currency: 'KRW',
+    }).format(total);
+  };
+
   render() {
-    const {
-      increase,
-      decrease,
-      calculate,
-      selectedCount,
-      closeModalAlert,
-      isModalOpen,
-    } = this.props;
+    const { selectedCount } = this.state;
+    const { selectedProduct, openModalAlert, closeModalAlert, isModalOpen } =
+      this.props;
 
     return (
       <>
@@ -26,29 +51,32 @@ export default class OrderInfo extends Component {
         <div className="infoWrap">
           <div className="row">
             <span className="col-1">판매가</span>
-            <span className="price">₩25,000</span>
+            <span className="price">
+              {new Intl.NumberFormat('ko-KR', {
+                style: 'currency',
+                currency: 'KRW',
+              }).format(selectedProduct.price)}
+            </span>
           </div>
           <div className="row">
-            <span className="col-1">상품무게</span>
-            <span>185g</span>
+            <span className="col-1">용량</span>
+            <span>75g</span>
           </div>
           <div className="row">
             <span className="col-1">구매수량</span>
-            <form>
-              <button type="button" onClick={decrease}>
-                <i className="fas fa-minus"></i>
-              </button>
-              <input type="text" value={selectedCount} />
-              <button type="button" onClick={increase}>
-                <i className="fas fa-plus"></i>
-              </button>
-            </form>
-            <span className="sum">{calculate}</span>
+            <OrderCountControler
+              selectedProduct={selectedProduct}
+              selectedCount={selectedCount}
+              openModalAlert={openModalAlert}
+              increaseCount={this.increaseCount}
+              decreaseCount={this.decreaseCount}
+            />
+            <span className="sum">{this.calculatePrice()}</span>
           </div>
         </div>
         <div className="total">
           <span className="">총 제품 금액</span>
-          <span className="totalPrice">{calculate}</span>
+          <span className="totalPrice">{this.calculatePrice()}</span>
         </div>
 
         {isModalOpen ? (
@@ -59,8 +87,8 @@ export default class OrderInfo extends Component {
                 className="fas fa-times"
                 onClick={closeModalAlert}
               ></i>
-              <h1>잔여 재고 : 4개</h1>
-              <p>현재 4개 이상 주문이 어렵습니다.</p>
+              <h1>잔여 재고 : {selectedProduct.quantity}개</h1>
+              <p>현재 {selectedProduct.quantity}개 이상 주문이 어렵습니다.</p>
               <button id="outOfStockBtn" onClick={closeModalAlert}>
                 확인하기
               </button>

@@ -11,19 +11,20 @@ class Products extends Component {
     selectedOption: '베스트',
     productLists: [],
     visibleCards: 8,
-    selectedCount: 1,
-    unitPrice: 25000,
     isModalAlertOpen: false,
     isModalCartOpen: false,
+    selectedProduct: [],
   };
 
   componentDidMount() {
-    const url = 'http://192.168.255.253:8000/products/products-list';
+    const url = 'http://10.58.2.127:8000/products/product-list';
+    // const url = '/data/productList.json';
     fetch(url)
       .then(res => res.json())
-      .then(data =>
+      .then(data => data.product_info)
+      .then(productLists =>
         this.setState({
-          productLists: data.product_info,
+          productLists,
         })
       );
   }
@@ -35,21 +36,38 @@ class Products extends Component {
     });
   };
 
-  toggleModalAlert = () => {
+  openModalAlert = () => {
     const { isModalAlertOpen } = this.state;
     this.setState({
       isModalAlertOpen: !isModalAlertOpen,
     });
   };
 
-  openModalCart = () => {
+  closeModalAlert = () => {
+    const { isModalAlertOpen } = this.state;
+    this.setState({
+      isModalAlertOpen: !isModalAlertOpen,
+    });
+  };
+
+  openModalCart = id => {
     const { isModalCartOpen } = this.state;
     this.setState({
       isModalCartOpen: !isModalCartOpen,
     });
+
+    const url = '/data/selectedProduct.json'; //전달받은 id로 데이터 받아오기
+    fetch(url)
+      .then(res => res.json())
+      .then(data => data.product[0])
+      .then(selectedProduct =>
+        this.setState({
+          selectedProduct,
+        })
+      );
   };
 
-  toggleModalCart = () => {
+  closeModalCart = () => {
     const { isModalCartOpen } = this.state;
     this.setState({
       isModalCartOpen: !isModalCartOpen,
@@ -67,7 +85,7 @@ class Products extends Component {
         selectedCount: 4,
       });
 
-      this.toggleModalAlert();
+      this.openModalAlert();
     }
   };
 
@@ -82,8 +100,9 @@ class Products extends Component {
   };
 
   calculatePrice = () => {
-    const { selectedCount, unitPrice } = this.state;
-    const total = selectedCount * unitPrice;
+    const { selectedCount, selectedProduct } = this.state;
+    const total = selectedCount * selectedProduct.price;
+    console.log(total);
     return new Intl.NumberFormat('ko-KR', {
       style: 'currency',
       currency: 'KRW',
@@ -95,7 +114,7 @@ class Products extends Component {
       productLists,
       selectedOption,
       visibleCards,
-      selectedCount,
+      selectedProduct,
       isModalCartOpen,
       isModalAlertOpen,
     } = this.state;
@@ -117,7 +136,7 @@ class Products extends Component {
           <Lists
             productLists={productLists}
             visibleCards={visibleCards}
-            toggleModalAlert={this.toggleModalAlert}
+            openModalAlert={this.openModalAlert}
             openModalCart={this.openModalCart}
           />
           <button id="loadMore" onClick={this.handleLoadMoreBtn}>
@@ -125,14 +144,15 @@ class Products extends Component {
           </button>
         </section>
         {isModalCartOpen ? (
-          <Modal onClose={this.toggleModalAlert}>
+          <Modal onClose={this.closeModalAlert}>
             <AddToCart
               increase={this.handleIncreaseCount}
               decrease={this.handleDecreaseCount}
-              calculate={this.calculatePrice}
-              selectedCount={selectedCount}
-              toggleModalAlert={this.toggleModalAlertt}
-              onCloseModalCart={this.closeModalCart}
+              // calculate={this.calculatePrice}
+              selectedProduct={selectedProduct}
+              closeModalAlert={this.closeModalAlert}
+              closeModalCart={this.closeModalCart}
+              openModalAlert={this.openModalAlert}
               isModalAlertOpen={isModalAlertOpen}
             />
           </Modal>

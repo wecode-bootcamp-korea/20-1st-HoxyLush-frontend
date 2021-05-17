@@ -8,8 +8,6 @@ import './Detail.scss';
 export default class Detail extends Component {
   state = {
     selectedProduct: [],
-    selectedCount: 1,
-    unitPrice: 25000,
     isModalAlertOpen: false,
   };
 
@@ -17,9 +15,10 @@ export default class Detail extends Component {
   detailRef = React.createRef();
 
   componentDidMount() {
-    const url = '/data/productList.json';
+    const url = '/data/selectedProduct.json';
     fetch(url)
       .then(res => res.json())
+      .then(data => data.product[0])
       .then(selectedProduct =>
         this.setState({
           selectedProduct,
@@ -41,40 +40,6 @@ export default class Detail extends Component {
     });
   };
 
-  handleIncreaseCount = e => {
-    const { selectedCount } = this.state;
-    if (selectedCount < 4) {
-      this.setState({
-        selectedCount: selectedCount + 1,
-      });
-    } else {
-      this.setState({
-        selectedCount: 4,
-      });
-
-      this.openModalAlert();
-    }
-  };
-
-  handleDecreaseCount = e => {
-    const { selectedCount } = this.state;
-    if (selectedCount - 1 < 1) return;
-
-    const revisedCount = selectedCount - 1;
-    this.setState({
-      selectedCount: revisedCount,
-    });
-  };
-
-  calculatePrice = () => {
-    const { selectedCount, unitPrice } = this.state;
-    const total = selectedCount * unitPrice;
-    return new Intl.NumberFormat('ko-KR', {
-      style: 'currency',
-      currency: 'KRW',
-    }).format(total);
-  };
-
   moveToReviewSection = () => {
     this.reviewRef.current.scrollIntoView({ behavior: 'smooth' });
   };
@@ -84,16 +49,14 @@ export default class Detail extends Component {
   };
 
   render() {
-    const { selectedCount, isModalAlertOpen } = this.state;
+    const { selectedProduct, isModalAlertOpen } = this.state;
     return (
       <section className="detail">
         <main className="detailUpperMain">
           <DetailImages />
           <DetailInfo
-            increase={this.handleIncreaseCount}
-            decrease={this.handleDecreaseCount}
-            calculate={this.calculatePrice()}
-            selectedCount={selectedCount}
+            selectedProduct={selectedProduct}
+            openModalAlert={this.openModalAlert}
             closeModalAlert={this.closeModalAlert}
             isModalOpen={isModalAlertOpen}
           />
