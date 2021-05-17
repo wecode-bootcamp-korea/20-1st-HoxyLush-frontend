@@ -1,23 +1,22 @@
 @import '../../styles/variables.scss';
 
 .LoginsignupContainer {
+  margin-top: 300px;
   .content {
-    width: 1080px;
-
-    .topBox {
-      width: 1080px;
-      height: 240px;
+    .signUpTitle {
+      width: 80%;
+      margin: 50px auto 0 auto;
       text-align: center;
-      padding: 40px 0 90px;
 
       h2 {
-        display: block;
         font-size: 42px;
       }
 
-      div {
-        padding-top: 30px;
-        text-align: center;
+      .subTitle {
+        margin-top: 30px;
+        .currentPhase {
+          font-weight: 700;
+        }
 
         span {
           font-size: 16px;
@@ -25,10 +24,11 @@
       }
     }
 
-    .title {
-      width: 100%;
-      height: 54px;
+    .userInfoInputTitle {
+      width: 70%;
+      margin: 90px auto 0 auto;
       padding-bottom: 15px;
+      border-bottom: 1px solid #000;
 
       h3 {
         display: inline-block;
@@ -36,8 +36,8 @@
       }
 
       span {
-        font-size: 14px;
         float: right;
+        font-size: 14px;
 
         i {
           padding-right: 8px;
@@ -47,164 +47,109 @@
       }
     }
 
-    .tableBox {
-      padding: 20px 0;
-      border-top: 1px solid #000;
-      border-bottom: 1px solid #e7e7e7;
+    .userInfoInputHere {
+      width: 70%;
+      margin: 0 auto;
+      padding-left: 20px;
 
-      th {
-        width: 155px;
-        height: 60px;
-        padding: 10px 0 10px 23px;
-        line-height: 40px;
-        color: #333;
-        font-size: 14px;
-        font-weight: normal;
-        text-align: left;
-        position: relative;
+      .errorMessage {
+        color: red;
+        margin: 10px 0 0 160px;
+      }
+
+      .solveError {
+        color: green;
+        margin: 10px 0 0 160px;
+      }
+
+      .inputContainer {
+        margin-top: 20px;
 
         i {
-          position: absolute;
-          top: 25px;
-          left: 6px;
+          margin-right: 10px;
           color: red;
           font-size: 1%;
         }
-      }
-
-      td {
-        width: 925px;
-        height: 60px;
-        padding: 10px 0;
-
-        .textField {
-          width: 402px;
-          height: 40px;
-          border: 1px solid #ccc;
-          padding: 0 10px;
-
-          input {
-            width: 382px;
-            height: 38px;
-            font-size: 14px;
-            border: none;
-            outline: none;
-          }
-        }
-
-        .textFieldEmail {
-          width: 272px;
-          height: 40px;
-          border: 1px solid #ccc;
-          padding: 0 10px;
+        label {
           display: inline-block;
-
-          input {
-            width: 252px;
-            height: 38px;
-            font-size: 14px;
-            border: none;
-            outline: none;
-          }
-        }
-
-        .chooseEmail {
-          width: 120px;
-          height: 40px;
-          margin-left: 10px;
-          border: 1px solid #ccc;
-          display: inline-block;
-          vertical-align: top;
-          padding-left: 8px;
-          line-height: 38px;
-          color: #717171;
           font-size: 14px;
-
-          i {
-            color: #717171;
-            right: 20px;
-            font-size: 80%;
-          }
+          width: 140px;
         }
-
-        .textFieldPhoneNumber {
-          width: 402px;
+        .inputField {
+          width: 380px;
           height: 40px;
           border: 1px solid #ccc;
-          padding: 0 10px;
-          display: inline-block;
-
-          .phoneNumber {
-            width: 382px;
-            height: 38px;
-            font-size: 14px;
-            border: none;
-            outline: none;
-          }
+          padding: 12px;
         }
-
-        .formCheckBox {
-          width: auto;
-          height: auto;
-          display: inline-block;
-          margin-left: 20px;
-
-          label {
-            color: #333;
-          }
+        &:nth-child(10) {
+          margin-left: 18px;
         }
-
-        .textFieldAdressTop {
-          .textFieldAdress {
-            width: 272px;
-            height: 40px;
-            border: 1px solid #ccc;
-            padding: 0 10px;
-            display: inline-block;
-
-            input {
-              width: 252px;
-              height: 38px;
-              font-size: 14px;
-              border: none;
-              outline: none;
-            }
+        &:nth-child(11) {
+          #userEmail {
+            width: 250px;
           }
-
-          button {
+          .chooseEmail {
             width: 120px;
             height: 40px;
             margin-left: 10px;
+            border: 1px solid #ccc;
             display: inline-block;
-            background: none;
-            border: 1px solid #000;
+            vertical-align: top;
+            padding-left: 8px;
+            line-height: 38px;
+            color: #717171;
+            font-size: 14px;
+
+            i {
+              color: #717171;
+              font-size: 80%;
+            }
           }
         }
-      }
+        &:nth-child(14) {
+          margin-left: 18px;
+          #addressInputHere {
+            width: 270px;
+          }
+          button {
+            display: inline-block;
+            width: 120px;
+            height: 38px;
+            margin-left: 10px;
+            background: none;
+            border: 1px solid #000;
+            font-size: 14px;
+            text-align: center;
+          }
+        }
+        .formCheckBox {
+          display: inline-block;
+          margin-left: 20px;
+        }
+        .advertisementReceiveCheck {
+          margin-left: 8px;
+          width: 300px;
+          font-size: 16px;
+          color: #333;
+        }
+        &:nth-child(15) {
+          margin-left: 158px;
 
-      .textFieldAdressBottom {
-        width: 440px;
-        height: 40px;
-        border: 1px solid #ccc;
-        padding: 0 10px;
-        margin: 8px 0;
-        display: inline-block;
-
-        input {
-          width: 420px;
-          height: 38px;
-          font-size: 14px;
-          border: none;
-          outline: none;
+          #detailAddress {
+            margin-left: 10px;
+          }
         }
       }
     }
   }
 
-  .btn {
+  .signUpButton {
+    width: 70%;
+    margin: 50px auto;
     height: 103;
-    padding-top: 40px;
+    padding-top: 50px;
     text-align: center;
+    border-top: 1px solid #ccc;
 
     button {
       width: 280px;

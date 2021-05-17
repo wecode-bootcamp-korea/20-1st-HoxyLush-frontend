@@ -1,0 +1,88 @@
+const PRODATA = [
+  {
+    id: 1,
+    title: '비비 씨위드',
+    description: '#장미의촉촉함 #해초팩# 건강한피부1',
+    url: 'https://lush.co.kr/data/goods/11/01/20/37/37_main_019.jpg',
+    price: 25000,
+  },
+  {
+    id: 2,
+    title: '마스크 오브 매그너민티 125g/315g',
+    description: '#꿀의촉촉함 #데일리팩 #민트팩',
+    url: 'http://lush.co.kr/data/goods/12/03/07/97/97_main_074.jpg',
+    price: 20000,
+  },
+  {
+    id: 3,
+    title: '더티',
+    description: '#기프트 #상쾌함이가득한더티',
+    url: 'https://lush.co.kr/data/goods/21/04/14/1000001770/1000001770_main_087.jpg',
+    price: 45000,
+  },
+  {
+    id: 4,
+    title: '비비 씨위드',
+    description: '#장미의촉촉함 #해초팩# 건강한피부4',
+    url: 'https://lush.co.kr/data/goods/11/01/20/37/37_main_019.jpg',
+    price: 25000,
+  },
+  {
+    id: 5,
+    title: '비비 씨위드',
+    description: '#장미의촉촉함 #해초팩# 건강한피부5',
+    url: 'https://lush.co.kr/data/goods/11/01/20/37/37_main_019.jpg',
+    price: 25000,
+  },
+  {
+    id: 6,
+    title: '비비 씨위드',
+    description: '#장미의촉촉함 #해초팩# 건강한피부6',
+    url: 'https://lush.co.kr/data/goods/11/01/20/37/37_main_019.jpg',
+    price: 25000,
+  },
+  {
+    id: 7,
+    title: '비비 씨위드',
+    description: '#장미의촉촉함 #해초팩# 건강한피부7',
+    url: 'https://lush.co.kr/data/goods/11/01/20/37/37_main_019.jpg',
+    price: 25000,
+  },
+  {
+    id: 8,
+    title: '비비 씨위드',
+    description: '#장미의촉촉함 #해초팩# 건강한피부8',
+    url: 'https://lush.co.kr/data/goods/11/01/20/37/37_main_019.jpg',
+    price: 25000,
+  },
+  {
+    id: 9,
+    title: '비비 씨위드',
+    description: '#장미의촉촉함 #해초팩# 건강한피부9',
+    url: 'https://lush.co.kr/data/goods/11/01/20/37/37_main_019.jpg',
+    price: 25000,
+  },
+  {
+    id: 10,
+    title: '비비 씨위드',
+    description: '#장미의촉촉함 #해초팩# 건강한피부10',
+    url: 'https://lush.co.kr/data/goods/11/01/20/37/37_main_019.jpg',
+    price: 25000,
+  },
+  {
+    id: 11,
+    title: '비비 씨위드',
+    description: '#장미의촉촉함 #해초팩# 건강한피부11',
+    url: 'https://lush.co.kr/data/goods/11/01/20/37/37_main_019.jpg',
+    price: 25000,
+  },
+  {
+    id: 12,
+    title: '비비 씨위드',
+    description: '#장미의촉촉함 #해초팩# 건강한피부12',
+    url: 'https://lush.co.kr/data/goods/11/01/20/37/37_main_019.jpg',
+    price: 25000,
+  },
+];
+
+export default PRODATA;
