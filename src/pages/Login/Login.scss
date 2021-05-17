@@ -1,166 +1,153 @@
 @import '../../styles/variables.scss';
 
 .loginContainer {
-  .member {
-    width: 600px;
-
+  width: 24%;
+  margin: 288px auto 0 auto;
+  .Title {
     h1 {
       color: $color-black;
-      font-size: 28px;
+      font-size: 29px;
       text-align: center;
       font-weight: bold;
     }
   }
-
-  ul {
-    padding: 55px 0 0;
-    text-align: center;
-
-    li {
-      display: inline-block;
-      font-size: 18px;
-      padding: 0 40px;
-      color: $color-black;
-
-      .mem {
-        border-bottom: 1px solid $color-black;
-        color: $color-black;
-      }
-
-      .nonmem {
-        border-bottom: 1px solid #8f8f8f;
-        color: #8f8f8f;
-      }
-    }
+}
+.userType {
+  margin-top: 62px;
+  text-align: center;
+  .member {
+    display: inline-block;
+    margin: 0 42px;
+    border-bottom: 1px solid $color-black;
+    color: $color-black;
+    font-size: 18px;
   }
 
-  .loginInfoContainer {
-    width: 335px;
-    margin: 55px auto 0;
-    display: block;
-
-    .inputLogin {
-      height: 50px;
-      border: 1px solid #8f8f8f;
-      padding-left: 44px;
-      margin-top: 10px;
-      position: relative;
-
-      i {
-        position: absolute;
-        top: 15px;
-        left: 12px;
-      }
-
-      .id {
-        width: 245px;
-        height: 48px;
-        text-align: center;
-        font-size: 16px;
-        color: #8c8c8c;
-        outline: none;
-        border: none;
-      }
-
-      .pw {
-        width: 245px;
-        height: 48px;
-        text-align: center;
-        font-size: 16px;
-        color: #8c8c8c;
-        outline: none;
-        border: none;
-      }
-    }
-
-    .saveIdBox {
-      margin-top: 20px;
-      font-size: 14px;
-
-      label {
-        display: inline-block;
-        height: 20px;
-        color: #8c8c8c;
-        padding-left: 10px;
-        cursor: pointer;
-      }
-    }
-
-    .loginButton {
-      width: 100%;
-      height: 55px;
-      margin-top: 20px;
-      color: white;
-      background: black;
-      font-size: 16px;
-      border: none;
-      cursor: pointer;
-    }
-
-    .loginMenu {
-      width: 100%;
-      height: 39px;
-      text-align: center;
-
-      .findId {
-        outline: none;
-        margin-top: 20px;
-        padding-left: 8px;
-        cursor: pointer;
-        background: none;
-        color: #8f8f8f;
-        font-size: 14px;
-        border: none;
-        margin-left: 10px;
-        border-left: 1px solid #8f8f8f;
-        padding-left: 8px;
-        line-height: 15px;
-      }
-
-      .signUp {
-        outline: none;
-        margin-top: 20px;
-        padding-left: 8;
-        cursor: pointer;
-        background: none;
-        color: #8f8f8f;
-        font-size: 14px;
-        border: none;
-      }
-      .findPw {
-        outline: none;
-        margin-top: 20px;
-        padding-left: 8;
-        cursor: pointer;
-        background: none;
-        color: #8f8f8f;
-        font-size: 14px;
-        border: none;
-        margin-left: 10px;
-        border-left: 1px solid #8f8f8f;
-        padding-left: 8px;
-        line-height: 15px;
-      }
-    }
-  }
-
-  .naverLoginBox {
-    display: block;
-    height: 57px;
-    width: 335px;
-    margin: 50px auto 0;
-    border: 1px solid #c3c3c3;
+  .noMember {
+    display: inline-block;
+    margin: 0 42px;
+    border-bottom: 1px solid #8f8f8f;
     color: #8f8f8f;
-    font-size: 14px;
+    font-size: 18px;
+  }
+}
+
+.loginInfo {
+  // margin-top: 66px;
+
+  margin: 66px auto auto 0;
+  .inputLogin {
+    position: relative;
+    margin: 10px auto auto 0px;
+    height: 50px;
+    border: 1px solid #8f8f8f;
+    // padding-left: 44px;
 
     i {
+      position: absolute;
+      top: 16px;
+      left: 12px;
+    }
+
+    .id {
+      width: 100%;
+      height: 48px;
+      text-align: center;
+      font-size: 16px;
+      color: #8c8c8c;
+      outline: none;
+      border: none;
+    }
+
+    .pw {
+      width: 100%;
+      height: 48px;
+      text-align: center;
+      font-size: 16px;
+      color: #8c8c8c;
+      outline: none;
+      border: none;
+    }
+  }
+
+  .loginButton {
+    width: 100%;
+    height: 55px;
+    margin-top: 20px;
+    color: white;
+    background: black;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+  }
+
+  .saveIdBox {
+    margin-top: 20px;
+    font-size: 14px;
+    color: #aeaeae;
+
+    #saveId {
+      display: none;
+    }
+
+    label {
       display: inline-block;
-      border-right: 1px solid #c3c3c3;
-      padding: 0 5px 0 8px;
-      margin: 10px 15px 10px 0;
-      font-size: 35px;
-      line-height: 35px;
+      height: 20px;
+      color: #d2d2d2;
+      cursor: pointer;
+    }
+    .styledCheckBox {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      margin-right: 8px;
+      border: 1px solid #aeaeae;
+      background-color: white;
       vertical-align: middle;
+    }
+
+    #saveId:checked ~ .styledCheckBox {
+      background-color: black;
+    }
+  }
+
+  .loginButton {
+    text-align: center;
+    font-size: 17px;
+    line-height: 60px;
+  }
+
+  .loginMenu {
+    width: 100%;
+    text-align: center;
+    font-size: 14px;
+    margin: 24px 0 300px 0;
+
+    .findId {
+      all: unset;
+      padding-left: 8px;
+      cursor: pointer;
+      color: #8f8f8f;
+      margin-left: 10px;
+      border-left: 1px solid #8f8f8f;
+      padding-left: 10px;
+    }
+
+    .signUp {
+      all: unset;
+      padding-left: 8px;
+      margin-right: 2px;
+      cursor: pointer;
+      color: #8f8f8f;
+    }
+    .findPw {
+      all: unset;
+      padding-left: 8;
+      cursor: pointer;
+      color: #8f8f8f;
+      margin-left: 10px;
+      border-left: 1px solid #8f8f8f;
+      padding-left: 10px;
     }
   }
 }

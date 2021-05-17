@@ -1,50 +1,123 @@
 @import '../../styles/variables.scss';
-
-.mainBanner {
-  position: absolute;
-  left: 0;
-  right: 0;
-  @include flexCenter($direction: column);
-  margin-top: 180px;
-  z-index: -1;
-
-  .topBannerimageButtonList {
+.mainContainer {
+  .mainBanner {
     position: absolute;
-    right: 300px;
+    top: 0;
+    left: 0;
+    right: 0;
+    @include flexCenter($direction: column);
+    margin-top: 180px;
+    overflow: hidden;
 
-    .topBannerimageButton {
-      width: 14px;
-      height: 14px;
-      margin-top: 30px;
-      border: 2px solid white;
-      border-radius: 50%;
+    .topBannerimageButtonList {
+      position: absolute;
+      right: 250px;
+
+      .topBannerimageButton {
+        width: 14px;
+        height: 14px;
+        margin-top: 30px;
+        border: 2px solid white;
+        border-radius: 50%;
+      }
+    }
+
+    .selectedBannerImageButton {
+      background-color: white;
     }
   }
 
-  .selectedBannerImageButton {
-    background-color: white;
+  .mainPageProducts {
+    display: inline-block;
+    width: 940px;
+    margin: 760px 0 100px 400px;
+    padding-top: 90px;
+
+    .recommendProductTitle {
+      font-size: 40px;
+      font-weight: 900;
+    }
+    .recommendProducts {
+      margin-top: 20px;
+
+      .bigbigcont {
+        overflow: hidden;
+
+        .recommendProductInfoContainer {
+          display: flex;
+          position: relative;
+          z-index: -1;
+
+          .recommendProductInfo {
+            padding-left: 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            .recommendProductPrice {
+              margin-top: 20px;
+            }
+          }
+        }
+        .recommendProductSliderButtonList {
+          margin-top: 50px;
+          text-align: center;
+          .recommendProductSliderButton {
+            display: inline-block;
+            width: 14px;
+            height: 14px;
+            margin-left: 10px;
+            border: 2px solid black;
+            border-radius: 50%;
+          }
+        }
+        .selectedRecommendProductSliderButton {
+          background-color: black;
+        }
+        button {
+          all: unset;
+        }
+      }
+    }
   }
-}
+  .test123 {
+    display: inline-block;
+    width: 280px;
+    margin-left: 40px;
+    position: relative;
+    .test234 {
+      display: flex;
+      overflow: hidden;
+      position: relative;
+      z-index: 5;
+      .minus {
+        transition: all 0s ease-in-out 0s !important;
+      }
+    }
+    .asideSlideButtons {
+      position: absolute;
+      right: 8px;
+      bottom: 20px;
+      display: flex;
+      align-items: center;
+      z-index: 10;
 
-.bigbigcont {
-  // margin-top: 760px;
-  width: 43%;
-  overflow: hidden;
-}
-
-.bigcont {
-  width: 100%;
-  display: flex;
-}
-
-.cont {
-  width: 100%;
-  height: 70vh;
-  display: flex;
-  flex-direction: column;
-  transform: translateX(-200%);
-}
-
-button {
-  all: unset;
+      .goToPrevAsideSlide {
+        color: white;
+        font-size: 28px;
+      }
+      .currentAsideSlideNumber {
+        color: white;
+        margin-left: 12px;
+        font-size: 16px;
+      }
+      .goToNextAsideSlide {
+        color: white;
+        margin-left: 12px;
+        font-size: 28px;
+      }
+      button {
+        all: unset;
+      }
+    }
+  }
 }
