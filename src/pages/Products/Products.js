@@ -13,7 +13,7 @@ class Products extends Component {
   state = {
     selectedOption: '베스트', //수정 예정
     productLists: [],
-    selectedProduct: {},
+    selectedProduct: '',
     isModalAlertOpen: false,
     isModalCartOpen: false,
   };

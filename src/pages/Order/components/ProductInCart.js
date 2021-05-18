@@ -12,13 +12,11 @@ export default class ProductInCart extends Component {
     const { product } = this.props;
     this.setState({
       selectedProductQtyInCart: product.quantity,
-      selectedProductPriceInCart: product.total_price,
     });
   }
 
   increaseCount = () => {
     const { selectedProductQtyInCart } = this.state;
-
     this.setState({
       selectedProductQtyInCart: selectedProductQtyInCart + 1,
     });
@@ -92,7 +90,7 @@ export default class ProductInCart extends Component {
           <td className="totalPrice">{this.calculatePrice()}</td>
         </tr>
 
-        {isModalAlertOpen ? (
+        {isModalAlertOpen && (
           <Modal>
             <div className="outOfStockModal">
               <i
@@ -106,7 +104,7 @@ export default class ProductInCart extends Component {
               </button>
             </div>
           </Modal>
-        ) : null}
+        )}
       </>
     );
   }
