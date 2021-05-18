@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import './Nav.scss';
 import PRODUCT_CATEGORYS from './productCategories';
 import INTRODUCE_LUSH from './introduceLush';
+import { BASCKET_API } from '../config';
+import Modal from './Modal';
 
 export default class Nav extends Component {
   constructor() {
@@ -15,19 +17,34 @@ export default class Nav extends Component {
   }
 
   componentDidMount() {
-    if (localStorage.getItem('wtwToken')) {
-      fetch('API주소', {
-        method: 'POST',
+    if (localStorage.getItem('accessToken')) {
+      fetch(`${BASCKET_API}/orders/cart`, {
+        method: 'GET',
         headers: {
-          Authorization: localStorage.getItem('wtwToken'),
+          Authorization: localStorage.getItem('accessToken'),
         },
       })
         .then(response => response.json())
         .then(loginUserInfo => {
-          this.setState({ basketProductCount: loginUserInfo.length - 1 });
+          this.setState({
+            basketProductCount: loginUserInfo.selectedQty.length,
+          });
         });
     }
   }
+
+  // gettoken = e => {
+  //   fetch(`${API}/users/login`)
+  //     .then(res => res.json())
+  //     .then(submitResult => {
+  //       if (submitResult.MESSAGE === 'SUCCESS') {
+  //         localStorage.setItem('wtwToken', submitResult.token);
+  //         // this.props.history.push('/');
+  //       } else {
+  //         alert('회원정보를 찾을 수 없습니다.');
+  //       }
+  //     });
+  // };
 
   mouseOnProductCategory = e => {
     this.setState({ productCategoryWatch: 'visible' });
@@ -152,6 +169,7 @@ export default class Nav extends Component {
             <Link className="goToEvent">이벤트 참여하기</Link>
           </div>
         </div>
+        <Modal />
       </nav>
     );
   }
