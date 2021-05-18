@@ -1,6 +1,12 @@
 @import '../../../styles/variables.scss';
 
 .detailInfo {
-  position: relative;
-  width: 580px;
+  @include flexCenter(column);
+  width: 620px;
+  margin-top: 40px;
+
+  .btnWrapperInDetail {
+    display: flex;
+    padding-top: 30px;
+  }
 }

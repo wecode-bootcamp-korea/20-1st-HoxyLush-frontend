@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Button from '../../../components/Button';
 import Modal from '../../../components/Modal';
 import OrderCountControler from '../../../components/OrderCountControler';
 import './AddToCart.scss';
@@ -10,6 +11,12 @@ export default class AddToCart extends Component {
 
   increaseCount = () => {
     const { selectedCount } = this.state;
+    const { selectedProduct, toggleModalAlert } = this.props;
+
+    const isOutOfStock = selectedProduct.option[0].quantity;
+    const isLimitedStock = selectedCount === selectedProduct.option[0].quantity;
+    if (isOutOfStock || isLimitedStock) return toggleModalAlert();
+
     this.setState({
       selectedCount: selectedCount + 1,
     });
@@ -17,17 +24,16 @@ export default class AddToCart extends Component {
 
   decreaseCount = () => {
     const { selectedCount } = this.state;
+    if (selectedCount < 1) return;
     this.setState({
       selectedCount: selectedCount - 1,
     });
   };
 
   calculatePrice = () => {
-    // const { selectedCount } = this.state;
-    // const { selectedProduct } = this.props;
-    // console.log(selectedCount);
-    // const total = selectedCount * selectedProduct.option;
-    const total = 10_000;
+    const { selectedCount } = this.state;
+    const { selectedProduct } = this.props;
+    const total = selectedCount * selectedProduct.option[0].price;
     return new Intl.NumberFormat('ko-KR', {
       style: 'currency',
       currency: 'KRW',
@@ -46,19 +52,12 @@ export default class AddToCart extends Component {
     return (
       <div className="addToCart">
         <h2>장바구니 담기</h2>
-        <i
-          id="modalClose"
-          className="fas fa-times"
-          onClick={toggleModalCart}
-        ></i>
+        <i className="fas fa-times modalClose" onClick={toggleModalCart}></i>
         <section className="cartModal">
-          <img
-            alt="러쉬"
-            src="https://lush.co.kr/data/goods/11/01/20/79/79_detail_085.jpg"
-          />
+          <img alt="러쉬" src={selectedProduct.image_url} />
           <article>
             <div className="productName">{selectedProduct.name}</div>
-            <div className="productHashTags">#배쓰밤 #고운바닷소금가득</div>
+            <div className="productHashTags">{selectedProduct.hashtag}</div>
             <div className="underline"></div>
             <div className="orderNumberForm">
               <OrderCountControler
@@ -73,32 +72,25 @@ export default class AddToCart extends Component {
           </article>
         </section>
         <div className="btns">
-          <button
-            type="button"
-            className="btn leftBtn"
-            id="cancel"
-            onClick={toggleModalCart}
-          >
-            취소하기
-          </button>
-          <button type="submit" className="btn rightBtn" id="close">
-            담기
-          </button>
+          <Button name="취소하기" info="cancel" event={toggleModalCart} />
+          <Button name="담기" info="putInCart" />
         </div>
 
         {isModalAlertOpen && (
           <Modal onClose={toggleModalAlert}>
             <div className="outOfStockModal">
               <i
-                id="modalClose"
-                className="fas fa-times"
+                className="fas fa-times modalClose"
                 onClick={toggleModalAlert}
               ></i>
-              <h1>잔여 재고 : {selectedProduct.option} 개</h1>
-              <p>현재 {selectedProduct.stock}개 이상 주문이 어렵습니다.</p>
+              <h1>잔여 재고 : {selectedProduct.option[0].quantity} 개</h1>
+              <p>
+                현재 {selectedProduct.option[0].quantity}개 이상 주문이
+                어렵습니다.
+              </p>
               <button
                 type="button"
-                id="outOfStockBtn"
+                className="outOfStockBtn"
                 onClick={toggleModalAlert}
               >
                 확인하기

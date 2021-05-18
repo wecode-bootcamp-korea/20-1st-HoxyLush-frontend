@@ -3,22 +3,22 @@ import Modal from '../../components/Modal';
 import AddToCart from './Components/AddToCart';
 import Headers from './Components/Headers';
 import Lists from './Components/Lists';
+import Button from '../../components/Button';
+// import Button from '../';
 import { PRODUCT_API } from '../../config';
 
 import './Products.scss';
 
 class Products extends Component {
   state = {
-    selectedOption: '베스트',
+    selectedOption: '베스트', //수정 예정
     productLists: [],
-    visibleCards: 8,
+    selectedProduct: {},
     isModalAlertOpen: false,
     isModalCartOpen: false,
-    selectedProduct: [],
   };
 
   componentDidMount() {
-    // const url = '/data/productList.json';
     fetch(`${PRODUCT_API}/products`)
       .then(res => res.json())
       .then(data =>
@@ -29,10 +29,14 @@ class Products extends Component {
   }
 
   handleLoadMoreBtn = () => {
-    const { visibleCards } = this.state;
-    this.setState({
-      visibleCards: visibleCards + 8,
-    });
+    const { productLists } = this.state;
+    fetch(`${PRODUCT_API}/products?pagination=1&limit=13`)
+      .then(res => res.json())
+      .then(data =>
+        this.setState({
+          productLists: [...productLists, ...data.product_info],
+        })
+      );
   };
 
   toggleModalAlert = () => {
@@ -43,44 +47,32 @@ class Products extends Component {
   };
 
   toggleModalCart = id => {
-    const { isModalCartOpen } = this.state;
+    const { isModalCartOpen, productLists } = this.state;
     this.setState({
       isModalCartOpen: !isModalCartOpen,
+      selectedProduct: productLists.find(product => product.id === id),
     });
-
-    const url = '/data/selectedProduct.json'; //전달받은 id로 데이터 받아오기
-    fetch(url)
-      .then(res => res.json())
-      .then(data => data.product[0])
-      .then(selectedProduct =>
-        this.setState({
-          selectedProduct,
-        })
-      );
   };
 
   handleIncreaseCount = e => {
-    const { selectedCount } = this.state;
-    if (selectedCount < 4) {
-      this.setState({
-        selectedCount: selectedCount + 1,
-      });
-    } else {
-      this.setState({
-        selectedCount: 4,
-      });
+    const { selectedCount, selectedProduct } = this.state;
 
+    if (selectedCount === selectedProduct.option[0].stock) {
       this.toggleModalAlertAlert();
+      return;
     }
+
+    this.setState({
+      selectedCount: selectedCount + 1,
+    });
   };
 
   handleDecreaseCount = e => {
     const { selectedCount } = this.state;
     if (selectedCount - 1 < 1) return;
 
-    const revisedCount = selectedCount - 1;
     this.setState({
-      selectedCount: revisedCount,
+      selectedCount: selectedCount - 1,
     });
   };
 
@@ -98,7 +90,6 @@ class Products extends Component {
     const {
       productLists,
       selectedOption,
-      visibleCards,
       selectedProduct,
       isModalCartOpen,
       isModalAlertOpen,
@@ -120,20 +111,24 @@ class Products extends Component {
           </ul>
           <Lists
             productLists={productLists}
-            visibleCards={visibleCards}
             toggleModalAlert={this.toggleModalAlert}
             toggleModalCart={this.toggleModalCart}
           />
-          <button id="loadMore" onClick={this.handleLoadMoreBtn}>
+          <button
+            type="submit"
+            className="loadMore"
+            onClick={this.handleLoadMoreBtn}
+          >
             <span>Load More</span>
           </button>
+
+          <Button />
         </section>
         {isModalCartOpen && (
           <Modal onClose={this.toggleModalAlert}>
             <AddToCart
               increase={this.handleIncreaseCount}
               decrease={this.handleDecreaseCount}
-              // calculate={this.calculatePrice}
               selectedProduct={selectedProduct}
               toggleModalCart={this.toggleModalCart}
               toggleModalAlert={this.toggleModalAlert}
