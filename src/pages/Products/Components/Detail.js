@@ -3,7 +3,7 @@ import DetailImages from './DetailImages';
 import DetailInfo from './DetailInfo';
 import DetailMiddle from './DetailMiddle';
 import DetailReview from './DetailReview';
-import { API_URL_yo } from '../../../config';
+import { PRODUCT_API_yo } from '../../../config';
 import './Detail.scss';
 
 export default class Detail extends Component {
@@ -16,11 +16,11 @@ export default class Detail extends Component {
   detailRef = React.createRef();
 
   componentDidMount() {
-    fetch(API_URL_yo)
+    fetch(`PRODUCT_API_yo/products/1`)
       .then(res => res.json())
       .then(data =>
         this.setState({
-          selectedProduct: data.product,
+          selectedProduct: data.result,
         })
       );
   }
