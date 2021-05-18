@@ -14,21 +14,20 @@ export default class Nav extends Component {
     };
   }
 
-  // componentDidMount() {
-  //   if (localStorage.getItem('wtwToken')) {
-  //     fetch('API주소', {
-  //       method: 'POST',
-  //       headers: {
-  //         Authorization: localStorage.getItem('wtwToken'),
-  //       },
-  //     })
-  //       .then(response => response.json())
-  //       .then(loginUserInfo => {
-  //         this.setState({ feedList: feedData })
-  //         이 부분을 받는 데이터 형태를 보고 수정해야함
-  //       });
-  //   }
-  // }
+  componentDidMount() {
+    if (localStorage.getItem('wtwToken')) {
+      fetch('API주소', {
+        method: 'POST',
+        headers: {
+          Authorization: localStorage.getItem('wtwToken'),
+        },
+      })
+        .then(response => response.json())
+        .then(loginUserInfo => {
+          this.setState({ basketProductCount: loginUserInfo.length - 1 });
+        });
+    }
+  }
 
   mouseOnProductCategory = e => {
     this.setState({ productCategoryWatch: 'visible' });
@@ -47,6 +46,8 @@ export default class Nav extends Component {
   };
 
   render() {
+    const { productCategoryWatch, introduceLushWatch, basketProductCount } =
+      this.state;
     return (
       <nav className="nav">
         <div className="topNav">
@@ -61,13 +62,11 @@ export default class Nav extends Component {
             >
               <div className="categoryContainer">
                 <div
-                  className={`categorySelectArrow ${this.state.productCategoryWatch}`}
+                  className={`categorySelectArrow ${productCategoryWatch}`}
                 />
                 <Link className="categoryLink">제품</Link>
               </div>
-              <div
-                className={`dropMenuContainer ${this.state.productCategoryWatch}`}
-              >
+              <div className={`dropMenuContainer ${productCategoryWatch}`}>
                 <div className="productDropMenu">
                   {PRODUCT_CATEGORYS.map(productCategorydata => {
                     return (
@@ -96,14 +95,10 @@ export default class Nav extends Component {
               onMouseOut={this.mouseOutIntroduceLushCategory}
             >
               <div className="categoryContainer">
-                <div
-                  className={`categorySelectArrow ${this.state.introduceLushWatch}`}
-                />
+                <div className={`categorySelectArrow ${introduceLushWatch}`} />
                 <Link className="categoryLink">러쉬 소개</Link>
               </div>
-              <div
-                className={`dropMenuContainer ${this.state.introduceLushWatch}`}
-              >
+              <div className={`dropMenuContainer ${introduceLushWatch}`}>
                 <div className="productDropMenu">
                   {INTRODUCE_LUSH.map(introduction => {
                     return (
@@ -144,7 +139,7 @@ export default class Nav extends Component {
             </Link>
             <Link className="shoppingBasket">
               <i className="fas fa-shopping-cart"></i>
-              <div className="basketProductNumber">5</div>
+              <div className="basketProductNumber">{basketProductCount}</div>
             </Link>
             <Link>
               <i className="fas fa-user-circle"></i>
