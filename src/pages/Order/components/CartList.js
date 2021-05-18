@@ -33,7 +33,7 @@ export default class CartList extends Component {
 
     productInCart.forEach(product => (product.is_checked = e.target.checked));
     this.setState({
-      productInCart: productInCart,
+      productInCart,
       isAllChecked: !isAllChecked,
     });
   };
@@ -100,6 +100,7 @@ export default class CartList extends Component {
                     key={product.id}
                     handleCheckBox={this.handleCheckBox}
                     productCount={productInCart.length}
+                    calculateTotalPriceInCart={this.calculateTotalPriceInCart}
                   />
                 );
               })}
