@@ -3,9 +3,11 @@ import Modal from '../../components/Modal';
 import AddToCart from './Components/AddToCart';
 import Headers from './Components/Headers';
 import Lists from './Components/Lists';
+// import Button from '../';
 import { PRODUCT_API } from '../../config';
 
 import './Products.scss';
+import Button from '../../components/Button';
 
 class Products extends Component {
   state = {
@@ -17,7 +19,7 @@ class Products extends Component {
   };
 
   componentDidMount() {
-    fetch(`${PRODUCT_API}/products`)
+    fetch(`${PRODUCT_API}/products`, { method: 'POST' })
       .then(res => res.json())
       .then(data =>
         this.setState({
@@ -29,12 +31,11 @@ class Products extends Component {
   handleLoadMoreBtn = () => {
     const { productLists } = this.state;
     const option = {
-      method: 'GET',
-      // headers: {},
-      body: JSON.stringify({ pagination: 1 }),
+      method: 'POST',
+      body: JSON.stringify({ pagination: '1', limit: '8' }), //설정값 체크하기
     };
     fetch(`${PRODUCT_API}/products`, option)
-      .then(res => res.JSON())
+      .then(res => res.json())
       .then(data =>
         this.setState({
           productLists: [...productLists, ...data.product_info],
@@ -124,6 +125,8 @@ class Products extends Component {
           >
             <span>Load More</span>
           </button>
+
+          <Button />
         </section>
         {isModalCartOpen && (
           <Modal onClose={this.toggleModalAlert}>
