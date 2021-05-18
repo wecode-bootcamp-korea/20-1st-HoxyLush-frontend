@@ -1,0 +1,50 @@
+.footer {
+  .footerBannerImage {
+    width: 100%;
+    height: 170px;
+  }
+  .footerContainer {
+    .leftFooterContainer {
+      display: inline-block;
+      width: 200px;
+      .leftFooter {
+        display: flex;
+        flex-direction: column;
+        .hoxylushTitle {
+          font-size: 30px;
+          font-weight: 900;
+        }
+        .hoxylushOperationInfo {
+          margin-top: 30px;
+          li:nth-child(1) {
+          }
+          li:nth-child(2) {
+            margin-top: 8px;
+            text-decoration: underline;
+          }
+          li:nth-child(3) {
+            margin-top: 10px;
+          }
+          li:nth-child(4) {
+            margin-top: 4px;
+          }
+          li:nth-child(5) {
+            margin-top: 30px;
+          }
+        }
+      }
+    }
+    .rightFooterContainer {
+      display: inline-block;
+      .rightFooter {
+        display: flex;
+        flex-direction: column;
+        .companyInfoList {
+          .companyInfo {
+            display: inline-block;
+          }
+        }
+      }
+    }
+  }
+}
