@@ -101,7 +101,7 @@ export default class ProductInCart extends Component {
               ></i>
               <h1>잔여 재고 : {product.stock}개</h1>
               <p>현재 {product.stock}개 이상 주문이 어렵습니다.</p>
-              <button id="outOfStockBtn" onClick={this.toggleModalAlert}>
+              <button className="outOfStockBtn" onClick={this.toggleModalAlert}>
                 확인하기
               </button>
             </div>
