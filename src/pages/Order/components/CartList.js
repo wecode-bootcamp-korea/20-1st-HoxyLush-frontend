@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import ButtonsTest from '../../../components/ButtonsTest';
 import ProductInCart from './ProductInCart';
+import Button from '../../../components/Button';
 import './CartList.scss';
 
 export default class CartList extends Component {
@@ -110,6 +110,7 @@ export default class CartList extends Component {
                     key={product.id}
                     handleCheckBox={this.handleCheckBox}
                     productCount={productInCart.length}
+                    calculateTotalPriceInCart={this.calculateTotalPriceInCart}
                   />
                 );
               })}
@@ -160,14 +161,10 @@ export default class CartList extends Component {
         <button type="button" className="resetCartBtn" onClick={this.clearCart}>
           장바구니 비우기
         </button>
-        <ButtonsTest
-          btnTypeSubmit="submit"
-          btnTypeButton="button"
-          leftBtn="쇼핑계속하기"
-          rightBtn="주문하기"
-          leftLabel="shoppingMore"
-          rightLabel="order"
-        />
+        <div className="btnWrapperInCart">
+          <Button name="쇼핑 계속하기" info="shoppingMore" />
+          <Button name="주문하기" info="order" />
+        </div>
       </section>
     );
   }
