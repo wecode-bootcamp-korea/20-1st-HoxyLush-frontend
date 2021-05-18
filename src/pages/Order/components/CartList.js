@@ -8,8 +8,6 @@ export default class CartList extends Component {
     productInCart: [],
   };
 
-  inputRef = React.createRef();
-
   componentDidMount() {
     const url = '/data/cart.json';
     fetch(url)
@@ -21,34 +19,17 @@ export default class CartList extends Component {
       );
   }
 
-  handleBoxStatusCheck = () => {
-    const { productInCart } = this.state;
-
-    const isAllChecked = productInCart.every(product => !!product.is_checked);
-    this.inputRef.current.checked = isAllChecked;
-  };
-
-  handleAllCheckedBox = e => {
-    const { productInCart, isAllChecked } = this.state;
-
-    productInCart.forEach(product => (product.is_checked = e.target.checked));
-    this.setState({
-      productInCart,
-      isAllChecked: !isAllChecked,
-    });
-  };
-
   handleCheckBox = e => {
     const { productInCart } = this.state;
-
-    productInCart.forEach(product => {
-      if (product.name === e.target.value) {
-        product.is_checked = e.target.checked;
+    const arr = productInCart.map(item => {
+      if (item.name === e.target.value) {
+        return { ...item, is_checked: !item.is_checked };
+      } else {
+        return item;
       }
     });
 
-    this.setState({ productInCart });
-    this.handleBoxStatusCheck();
+    this.setState({ productInCart: arr });
   };
 
   removeProduct = () => {
@@ -77,7 +58,6 @@ export default class CartList extends Component {
 
   render() {
     const { productInCart } = this.state;
-
     return (
       <section className="cartList">
         <div className="cartListProduct">제품</div>
@@ -87,7 +67,6 @@ export default class CartList extends Component {
               <tr>
                 <th>
                   <input
-                    ref={this.inputRef}
                     onChange={this.handleAllCheckedBox}
                     type="checkbox"
                     className="checkbox"
