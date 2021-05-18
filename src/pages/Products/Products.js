@@ -4,7 +4,6 @@ import AddToCart from './Components/AddToCart';
 import Headers from './Components/Headers';
 import Lists from './Components/Lists';
 import Button from '../../components/Button';
-// import Button from '../';
 import { PRODUCT_API } from '../../config';
 
 import './Products.scss';
@@ -114,15 +113,12 @@ class Products extends Component {
             toggleModalAlert={this.toggleModalAlert}
             toggleModalCart={this.toggleModalCart}
           />
-          <button
-            type="submit"
-            className="loadMore"
-            onClick={this.handleLoadMoreBtn}
-          >
-            <span>Load More</span>
-          </button>
 
-          <Button />
+          <Button
+            info="loadMore"
+            name="Load More"
+            onClick={this.handleLoadMoreBtn}
+          />
         </section>
         {isModalCartOpen && (
           <Modal onClose={this.toggleModalAlert}>
