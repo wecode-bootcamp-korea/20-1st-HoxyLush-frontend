@@ -40,13 +40,13 @@ export default class OrderInfo extends Component {
     return (
       <>
         <header className="orderInfo">
-          <h1 className="productName">로즈 골드</h1>
+          <h1 className="productName">{selectedProduct.name}</h1>
           <div className="icons">
             <i className="fas fa-share-alt"></i>
             <i className="far fa-heart"></i>
           </div>
         </header>
-        <div className="hashTags">#배스밤#놀라운배쓰아트</div>
+        <div className="hashTags">{selectedProduct.hashtag}</div>
         <div className="infoWrap">
           <div className="row">
             <span className="col-1">판매가</span>
@@ -59,7 +59,7 @@ export default class OrderInfo extends Component {
           </div>
           <div className="row">
             <span className="col-1">용량</span>
-            <span>75g</span>
+            <span>{selectedProduct.weight}</span>
           </div>
           <div className="row">
             <span className="col-1">구매수량</span>

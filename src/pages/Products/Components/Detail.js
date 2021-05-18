@@ -16,7 +16,7 @@ export default class Detail extends Component {
   detailRef = React.createRef();
 
   componentDidMount() {
-    fetch(`PRODUCT_API_yo/products/1`)
+    fetch(`${PRODUCT_API_yo}/products/1`)
       .then(res => res.json())
       .then(data =>
         this.setState({
@@ -52,7 +52,7 @@ export default class Detail extends Component {
     return (
       <section className="detail">
         <main className="detailUpperMain">
-          <DetailImages />
+          <DetailImages selectedProduct={selectedProduct} />
           <DetailInfo
             selectedProduct={selectedProduct}
             toggleModalAlert={this.toggleModalAlert}
@@ -61,6 +61,7 @@ export default class Detail extends Component {
         </main>
         <article className="detailLowerMain">
           <DetailMiddle
+            selectedProduct={selectedProduct}
             moveToReviewSection={this.moveToReviewSection}
             detailRef={this.detailRef}
           />

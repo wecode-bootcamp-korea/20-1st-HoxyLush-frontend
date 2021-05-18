@@ -3,11 +3,13 @@ import './DetailImages.scss';
 
 export default class DetailImages extends Component {
   render() {
+    const { selectedProduct } = this.props;
+    console.log(selectedProduct.product_images);
     return (
       <div className="detailImage">
         <img
           className="productImage"
-          src="https://lush.co.kr/data/goods/11/01/20/79/79_detail_085.jpg"
+          src={selectedProduct.product_images}
           alt="러쉬"
         />
         <div className="slider">
@@ -15,12 +17,12 @@ export default class DetailImages extends Component {
           <div>
             <img
               className="productImage small"
-              src="https://lush.co.kr/data/goods/11/01/20/79/79_detail_085.jpg"
+              src={selectedProduct.product_images}
               alt="러쉬"
             />
             <img
               className="productImage small"
-              src="https://lush.co.kr/data/goods/11/01/20/37/t50_37_detail_161.jpg"
+              src={selectedProduct.product_images}
               alt="러쉬"
             />
           </div>
