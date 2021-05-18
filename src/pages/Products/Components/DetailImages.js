@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { hasObjData } from '../../../UtililtyFunc';
 import './DetailImages.scss';
 
 export default class DetailImages extends Component {
@@ -6,7 +7,7 @@ export default class DetailImages extends Component {
     const { selectedProduct } = this.props;
     return (
       <>
-        {selectedProduct.product_images !== undefined ? (
+        {hasObjData ? (
           <div className="detailImage">
             <img
               className="productImage"
