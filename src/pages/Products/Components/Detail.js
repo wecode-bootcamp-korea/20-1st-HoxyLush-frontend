@@ -3,6 +3,7 @@ import DetailImages from './DetailImages';
 import DetailInfo from './DetailInfo';
 import DetailMiddle from './DetailMiddle';
 import DetailReview from './DetailReview';
+import { API_URL_yo } from '../../../config';
 import './Detail.scss';
 
 export default class Detail extends Component {
@@ -15,13 +16,11 @@ export default class Detail extends Component {
   detailRef = React.createRef();
 
   componentDidMount() {
-    const url = '/data/selectedProduct.json';
-    fetch(url)
+    fetch(API_URL_yo)
       .then(res => res.json())
-      .then(data => data.product[0])
-      .then(selectedProduct =>
+      .then(data =>
         this.setState({
-          selectedProduct,
+          selectedProduct: data.product,
         })
       );
   }
