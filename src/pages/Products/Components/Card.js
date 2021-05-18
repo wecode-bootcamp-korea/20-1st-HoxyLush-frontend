@@ -13,8 +13,12 @@ class Card extends Component {
 
     return (
       <div className="card">
-        <li className="cardWrapper" data-num={list.product_id}>
-          <Link to={`/product/${list.id}`}>
+        <li
+          className="cardWrapper"
+          data-num={list.product_id}
+          onClick={() => this.props.history.push()}
+        >
+          <Link to={`/product/${list.product_id}`}>
             <img
               src={list.image_url}
               alt="러쉬"
