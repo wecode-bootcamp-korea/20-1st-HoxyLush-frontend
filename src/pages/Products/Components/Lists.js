@@ -4,11 +4,9 @@ import './Lists.scss';
 
 class Lists extends Component {
   render() {
-    const { productLists, toggleModalAlert, toggleModalCart, visibleCards } =
-      this.props;
+    const { productLists, toggleModalAlert, toggleModalCart } = this.props;
     return (
       <ul className="lists">
-        {/* {productLists.slice(0, visibleCards).map(list => { */}
         {productLists.map(list => {
           return (
             <Card

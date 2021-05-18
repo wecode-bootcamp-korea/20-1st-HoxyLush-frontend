@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ProductInCart from './ProductInCart';
-import BasicButton from '../../../components/BasicButton';
+import Button from '../../../components/Button';
 import './CartList.scss';
 
 export default class CartList extends Component {
@@ -144,8 +144,8 @@ export default class CartList extends Component {
           장바구니 비우기
         </button>
         <div className="btnWrapperInCart">
-          <BasicButton buttonName="쇼핑 계속하기" buttonInfo="shoppingMore" />
-          <BasicButton buttonName="주문하기" buttonInfo="order" />
+          <Button name="쇼핑 계속하기" info="shoppingMore" />
+          <Button name="주문하기" info="order" />
         </div>
       </section>
     );

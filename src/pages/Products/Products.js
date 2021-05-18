@@ -9,12 +9,11 @@ import './Products.scss';
 
 class Products extends Component {
   state = {
-    selectedOption: '베스트',
+    selectedOption: '베스트', //수정 예정
     productLists: [],
-    visibleCards: 8,
+    selectedProduct: [],
     isModalAlertOpen: false,
     isModalCartOpen: false,
-    selectedProduct: [],
   };
 
   componentDidMount() {
@@ -25,7 +24,7 @@ class Products extends Component {
       .then(data =>
         this.setState({
           // productLists: data.product_info,
-          productLists: data,
+          productLists: data.product_info,
         })
       );
   }
@@ -53,36 +52,32 @@ class Products extends Component {
     const url = '/data/selectedProduct.json'; //전달받은 id로 데이터 받아오기
     fetch(url)
       .then(res => res.json())
-      .then(data => data.product[0])
-      .then(selectedProduct =>
+      .then(data =>
         this.setState({
-          selectedProduct,
+          selectedProduct: data.product[0],
         })
       );
   };
 
   handleIncreaseCount = e => {
-    const { selectedCount } = this.state;
-    if (selectedCount < 4) {
-      this.setState({
-        selectedCount: selectedCount + 1,
-      });
-    } else {
-      this.setState({
-        selectedCount: 4,
-      });
+    const { selectedCount, selectedProduct } = this.state;
 
+    if (selectedCount === selectedProduct.option[0].stock) {
       this.toggleModalAlertAlert();
+      return;
     }
+
+    this.setState({
+      selectedCount: selectedCount + 1,
+    });
   };
 
   handleDecreaseCount = e => {
     const { selectedCount } = this.state;
     if (selectedCount - 1 < 1) return;
 
-    const revisedCount = selectedCount - 1;
     this.setState({
-      selectedCount: revisedCount,
+      selectedCount: selectedCount - 1,
     });
   };
 
@@ -100,7 +95,6 @@ class Products extends Component {
     const {
       productLists,
       selectedOption,
-      visibleCards,
       selectedProduct,
       isModalCartOpen,
       isModalAlertOpen,
@@ -122,11 +116,10 @@ class Products extends Component {
           </ul>
           <Lists
             productLists={productLists}
-            visibleCards={visibleCards}
             toggleModalAlert={this.toggleModalAlert}
             toggleModalCart={this.toggleModalCart}
           />
-          <button id="loadMore" onClick={this.handleLoadMoreBtn}>
+          <button className="loadMore" onClick={this.handleLoadMoreBtn}>
             <span>Load More</span>
           </button>
         </section>

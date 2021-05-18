@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import BasicButton from '../../../components/BasicButton';
+import Button from '../../../components/Button';
 import Modal from '../../../components/Modal';
 import OrderCountControler from '../../../components/OrderCountControler';
 import './AddToCart.scss';
@@ -10,7 +10,12 @@ export default class AddToCart extends Component {
   };
 
   increaseCount = () => {
-    const { selectedCount } = this.state;
+    const { selectedCount, selectedProduct, toggleModalAlert } = this.state;
+    console.log(selectedProduct.option);
+    // if (selectedCount === selectedProduct.option[0].quantity) {
+    //   toggleModalAlert();
+    //   return;
+    // }
     this.setState({
       selectedCount: selectedCount + 1,
     });
@@ -18,6 +23,7 @@ export default class AddToCart extends Component {
 
   decreaseCount = () => {
     const { selectedCount } = this.state;
+    if (selectedCount < 1) return;
     this.setState({
       selectedCount: selectedCount - 1,
     });
@@ -74,8 +80,8 @@ export default class AddToCart extends Component {
           </article>
         </section>
         <div className="btns">
-          <BasicButton buttonName="취소하기" buttonInfo="cancel" />
-          <BasicButton buttonName="담기" buttonInfo="putInCart" />
+          <Button name="취소하기" info="cancel" event={toggleModalCart} />
+          <Button name="담기" info="putInCart" />
         </div>
 
         {isModalAlertOpen && (
@@ -86,11 +92,14 @@ export default class AddToCart extends Component {
                 className="fas fa-times"
                 onClick={toggleModalAlert}
               ></i>
-              <h1>잔여 재고 : {selectedProduct.option} 개</h1>
-              <p>현재 {selectedProduct.stock}개 이상 주문이 어렵습니다.</p>
+              <h1>잔여 재고 : {selectedProduct.option[0].quantity} 개</h1>
+              <p>
+                현재 {selectedProduct.option[0].quantity}개 이상 주문이
+                어렵습니다.
+              </p>
               <button
                 type="button"
-                id="outOfStockBtn"
+                className="outOfStockBtn"
                 onClick={toggleModalAlert}
               >
                 확인하기

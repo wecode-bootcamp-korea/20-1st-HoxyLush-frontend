@@ -2,6 +2,8 @@
   "cart_info": [
     {
       "id": 0,
+      "order_id": 1,
+      "option_id": 1,
       "name": "오렌지 330g/665g",
       "sub_category": "스크럽&버터",
       "product_image": "https://lush.co.kr/data/goods/20/09/39/1000001344/1000001344_detail_012.jpg",
@@ -9,17 +11,21 @@
       "price": 28000,
       "total_price": 56000,
       "quantity": 2,
+      "stock": 10,
       "is_checked": true
     },
     {
       "id": 1,
+      "order_id": 1,
+      "option_id": 5,
       "name": "더티",
       "sub_category": "배쓰 밤",
       "product_image": "https://lush.co.kr/data/goods/21/03/13/1000001745/1000001745_magnify_073.jpg",
       "weight": "180g",
       "price": 17000,
       "total_price": 17000,
-      "quantity": 1,
+      "quantity": 2,
+      "stock": 5,
       "is_checked": true
     }
   ]

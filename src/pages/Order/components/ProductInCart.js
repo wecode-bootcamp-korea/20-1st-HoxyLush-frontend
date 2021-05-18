@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import OrderCountControler from '../../../components/OrderCountControler';
 
 export default class ProductInCart extends Component {
   render() {
@@ -19,8 +20,8 @@ export default class ProductInCart extends Component {
         </td>
         <td className="ProductNameInCart">{product.name}</td>
         <td>
-          <form>
-            <button type="button">
+          {/* <form>
+            <button type="button" onClick={}>
               <i className="fas fa-minus"></i>
             </button>
             <input
@@ -31,7 +32,8 @@ export default class ProductInCart extends Component {
             <button type="button">
               <i className="fas fa-plus"></i>
             </button>
-          </form>
+          </form> */}
+          <OrderCountControler />
         </td>
         <td className="unitPrice">
           {new Intl.NumberFormat('ko-KR', {
