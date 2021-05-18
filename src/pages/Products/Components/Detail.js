@@ -16,7 +16,7 @@ export default class Detail extends Component {
   detailRef = React.createRef();
 
   componentDidMount() {
-    fetch(`${PRODUCT_API_yo}/products/1`)
+    fetch(`${PRODUCT_API_yo}/products/2`)
       .then(res => res.json())
       .then(data =>
         this.setState({
