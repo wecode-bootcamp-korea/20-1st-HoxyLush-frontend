@@ -113,12 +113,13 @@ class Products extends Component {
             toggleModalAlert={this.toggleModalAlert}
             toggleModalCart={this.toggleModalCart}
           />
-
-          <Button
-            info="loadMore"
-            name="Load More"
-            onClick={this.handleLoadMoreBtn}
-          />
+          <div className="loadMoreBtnWrapper">
+            <Button
+              info="loadMore"
+              name="Load More"
+              onClick={this.handleLoadMoreBtn}
+            />
+          </div>
         </section>
         {isModalCartOpen && (
           <Modal onClose={this.toggleModalAlert}>
