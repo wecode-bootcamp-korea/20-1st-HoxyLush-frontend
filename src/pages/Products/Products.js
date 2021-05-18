@@ -27,13 +27,19 @@ class Products extends Component {
   }
 
   handleLoadMoreBtn = () => {
-    // const option = {
-    //   method: 'POST',
-    //   body: JSON.stringify({
-    //     categories_id:4
-    //   })
-    // }
-    // fetch(`${}/`, option)
+    const { productLists } = this.state;
+    const option = {
+      method: 'GET',
+      // headers: {},
+      body: JSON.stringify({ pagination: 1 }),
+    };
+    fetch(`${PRODUCT_API}/products`, option)
+      .then(res => res.JSON())
+      .then(data =>
+        this.setState({
+          productLists: [...productLists, ...data.product_info],
+        })
+      );
   };
 
   toggleModalAlert = () => {
@@ -44,7 +50,6 @@ class Products extends Component {
   };
 
   toggleModalCart = id => {
-    console.log(id);
     const { isModalCartOpen, productLists } = this.state;
     this.setState({
       isModalCartOpen: !isModalCartOpen,
