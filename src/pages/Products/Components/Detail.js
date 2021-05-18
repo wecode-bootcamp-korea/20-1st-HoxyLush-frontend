@@ -17,8 +17,9 @@ export default class Detail extends Component {
 
   componentDidMount() {
     console.log(this.props);
-    const id = this.props.match.params.id;
-    fetch(`${DETAIL_API}/products/${id}`)
+    // const id = this.props.match.params.id;
+    // fetch(`${DETAIL_API}/products/${id}`)
+    fetch(`${DETAIL_API}/products/12`)
       .then(res => res.json())
       .then(data =>
         this.setState({

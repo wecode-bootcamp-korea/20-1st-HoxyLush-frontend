@@ -13,16 +13,26 @@ export default class DetailImages extends Component {
             <div className="slider">
               <i className="fas fa-chevron-left"></i>
               <div>
-                <img
-                  className="productImage small"
-                  src={product_images[1]}
-                  alt="러쉬"
-                />
-                <img
-                  className="productImage small"
-                  src={product_images[2]}
-                  alt="러쉬"
-                />
+                {product_images[1] ? (
+                  <img
+                    className="productImage small"
+                    src={product_images[1]}
+                    alt="러쉬"
+                  />
+                ) : (
+                  <img
+                    className="productImage small"
+                    src={product_images[0]}
+                    alt="러쉬"
+                  />
+                )}
+                {product_images[2] && (
+                  <img
+                    className="productImage small"
+                    src={product_images[2]}
+                    alt="러쉬"
+                  />
+                )}
               </div>
               <i className="fas fa-chevron-right"></i>
             </div>
