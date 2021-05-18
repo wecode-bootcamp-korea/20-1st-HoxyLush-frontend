@@ -26,7 +26,7 @@ export default class OrderInfo extends Component {
     const { selectedCount } = this.state;
     const { selectedProduct } = this.props;
 
-    const total = selectedCount * selectedProduct[0].option[0].price;
+    const total = selectedCount * selectedProduct.option[0].price;
     return new Intl.NumberFormat('ko-KR', {
       style: 'currency',
       currency: 'KRW',
@@ -54,7 +54,7 @@ export default class OrderInfo extends Component {
               {new Intl.NumberFormat('ko-KR', {
                 style: 'currency',
                 currency: 'KRW',
-              }).format(selectedProduct[0].option[0].price)}
+              }).format(selectedProduct.option[0].price)}
             </span>
           </div>
           <div className="row">

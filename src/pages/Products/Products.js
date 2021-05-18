@@ -13,7 +13,7 @@ class Products extends Component {
   state = {
     selectedOption: '베스트', //수정 예정
     productLists: [],
-    selectedProduct: '',
+    selectedProduct: {},
     isModalAlertOpen: false,
     isModalCartOpen: false,
   };
@@ -50,7 +50,7 @@ class Products extends Component {
     const { isModalCartOpen, productLists } = this.state;
     this.setState({
       isModalCartOpen: !isModalCartOpen,
-      selectedProduct: productLists.filter(product => product.id === id),
+      selectedProduct: productLists.find(product => product.id === id),
     });
   };
 

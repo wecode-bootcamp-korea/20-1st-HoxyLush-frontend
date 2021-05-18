@@ -13,9 +13,8 @@ export default class AddToCart extends Component {
     const { selectedCount } = this.state;
     const { selectedProduct, toggleModalAlert } = this.props;
 
-    const isOutOfStock = selectedProduct[0].option[0].quantity;
-    const isLimitedStock =
-      selectedCount === selectedProduct[0].option[0].quantity;
+    const isOutOfStock = selectedProduct.option[0].quantity;
+    const isLimitedStock = selectedCount === selectedProduct.option[0].quantity;
     if (isOutOfStock || isLimitedStock) return toggleModalAlert();
 
     this.setState({
@@ -34,7 +33,7 @@ export default class AddToCart extends Component {
   calculatePrice = () => {
     const { selectedCount } = this.state;
     const { selectedProduct } = this.props;
-    const total = selectedCount * selectedProduct[0].option[0].price;
+    const total = selectedCount * selectedProduct.option[0].price;
     return new Intl.NumberFormat('ko-KR', {
       style: 'currency',
       currency: 'KRW',
@@ -55,10 +54,10 @@ export default class AddToCart extends Component {
         <h2>장바구니 담기</h2>
         <i className="fas fa-times modalClose" onClick={toggleModalCart}></i>
         <section className="cartModal">
-          <img alt="러쉬" src={selectedProduct[0].image_url} />
+          <img alt="러쉬" src={selectedProduct.image_url} />
           <article>
-            <div className="productName">{selectedProduct[0].name}</div>
-            <div className="productHashTags">{selectedProduct[0].hashtag}</div>
+            <div className="productName">{selectedProduct.name}</div>
+            <div className="productHashTags">{selectedProduct.hashtag}</div>
             <div className="underline"></div>
             <div className="orderNumberForm">
               <OrderCountControler
@@ -84,9 +83,9 @@ export default class AddToCart extends Component {
                 className="fas fa-times modalClose"
                 onClick={toggleModalAlert}
               ></i>
-              <h1>잔여 재고 : {selectedProduct[0].option[0].quantity} 개</h1>
+              <h1>잔여 재고 : {selectedProduct.option[0].quantity} 개</h1>
               <p>
-                현재 {selectedProduct[0].option[0].quantity}개 이상 주문이
+                현재 {selectedProduct.option[0].quantity}개 이상 주문이
                 어렵습니다.
               </p>
               <button
