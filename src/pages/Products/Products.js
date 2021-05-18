@@ -3,11 +3,11 @@ import Modal from '../../components/Modal';
 import AddToCart from './Components/AddToCart';
 import Headers from './Components/Headers';
 import Lists from './Components/Lists';
+import Button from '../../components/Button';
 // import Button from '../';
 import { PRODUCT_API } from '../../config';
 
 import './Products.scss';
-import Button from '../../components/Button';
 
 class Products extends Component {
   state = {
@@ -19,7 +19,7 @@ class Products extends Component {
   };
 
   componentDidMount() {
-    fetch(`${PRODUCT_API}/products`, { method: 'POST' })
+    fetch(`${PRODUCT_API}/products`)
       .then(res => res.json())
       .then(data =>
         this.setState({
@@ -30,11 +30,7 @@ class Products extends Component {
 
   handleLoadMoreBtn = () => {
     const { productLists } = this.state;
-    const option = {
-      method: 'POST',
-      body: JSON.stringify({ pagination: '1', limit: '8' }), //설정값 체크하기
-    };
-    fetch(`${PRODUCT_API}/products`, option)
+    fetch(`${PRODUCT_API}/products?pagination=1&limit=13`)
       .then(res => res.json())
       .then(data =>
         this.setState({
