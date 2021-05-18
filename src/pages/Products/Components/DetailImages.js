@@ -9,7 +9,7 @@ export default class DetailImages extends Component {
 
     return (
       <>
-        {hasObject && (
+        {hasObject(product_images) && (
           <div className="detailImage">
             <img className="productImage" src={mainImg} alt="러쉬" />
             <div className="slider">
