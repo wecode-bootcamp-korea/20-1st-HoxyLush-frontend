@@ -18,10 +18,9 @@ export default class Detail extends Component {
     const url = '/data/selectedProduct.json';
     fetch(url)
       .then(res => res.json())
-      .then(data => data.product[0])
-      .then(selectedProduct =>
+      .then(data =>
         this.setState({
-          selectedProduct,
+          selectedProduct: data.product[0],
         })
       );
   }

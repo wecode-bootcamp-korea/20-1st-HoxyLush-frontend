@@ -17,13 +17,10 @@ class Products extends Component {
   };
 
   componentDidMount() {
-    const url = '/data/productList.json';
-    // fetch(`${PRODUCT_API}/products`)
-    fetch(url)
+    fetch(`${PRODUCT_API}/products`)
       .then(res => res.json())
       .then(data =>
         this.setState({
-          // productLists: data.product_info,
           productLists: data.product_info,
         })
       );
@@ -44,19 +41,12 @@ class Products extends Component {
   };
 
   toggleModalCart = id => {
-    const { isModalCartOpen } = this.state;
+    console.log(id);
+    const { isModalCartOpen, productLists } = this.state;
     this.setState({
       isModalCartOpen: !isModalCartOpen,
+      selectedProduct: productLists.filter(product => product.id === id),
     });
-
-    const url = '/data/selectedProduct.json'; //전달받은 id로 데이터 받아오기
-    fetch(url)
-      .then(res => res.json())
-      .then(data =>
-        this.setState({
-          selectedProduct: data.product[0],
-        })
-      );
   };
 
   handleIncreaseCount = e => {
@@ -128,7 +118,6 @@ class Products extends Component {
             <AddToCart
               increase={this.handleIncreaseCount}
               decrease={this.handleDecreaseCount}
-              // calculate={this.calculatePrice}
               selectedProduct={selectedProduct}
               toggleModalCart={this.toggleModalCart}
               toggleModalAlert={this.toggleModalAlert}
