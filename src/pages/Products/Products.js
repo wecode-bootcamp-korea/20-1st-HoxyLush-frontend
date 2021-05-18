@@ -27,10 +27,13 @@ class Products extends Component {
   }
 
   handleLoadMoreBtn = () => {
-    const { visibleCards } = this.state;
-    this.setState({
-      visibleCards: visibleCards + 8,
-    });
+    // const option = {
+    //   method: 'POST',
+    //   body: JSON.stringify({
+    //     categories_id:4
+    //   })
+    // }
+    // fetch(`${}/`, option)
   };
 
   toggleModalAlert = () => {
@@ -109,7 +112,11 @@ class Products extends Component {
             toggleModalAlert={this.toggleModalAlert}
             toggleModalCart={this.toggleModalCart}
           />
-          <button className="loadMore" onClick={this.handleLoadMoreBtn}>
+          <button
+            type="submit"
+            className="loadMore"
+            onClick={this.handleLoadMoreBtn}
+          >
             <span>Load More</span>
           </button>
         </section>
