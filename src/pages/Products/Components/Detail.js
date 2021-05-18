@@ -8,7 +8,7 @@ import './Detail.scss';
 
 export default class Detail extends Component {
   state = {
-    selectedProduct: [],
+    selectedProduct: {},
     isModalAlertOpen: false,
   };
 
