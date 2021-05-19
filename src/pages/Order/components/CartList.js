@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ProductInCart from './ProductInCart';
 import Button from '../../../components/Button';
+import { Link } from 'react-router-dom';
 import './CartList.scss';
 
 export default class CartList extends Component {
@@ -72,7 +73,7 @@ export default class CartList extends Component {
                     style: 'currency',
                     currency: 'KRW',
                   }).format(this.calculateTotalPriceInCart())
-                : 0}
+                : `₩ 0`}
             </strong>
           </span>
           <span>+</span>
@@ -91,7 +92,7 @@ export default class CartList extends Component {
                     style: 'currency',
                     currency: 'KRW',
                   }).format(this.calculateTotalPriceInCart())
-                : 0}
+                : `₩ 0`}
             </strong>
           </span>
         </div>
@@ -107,7 +108,9 @@ export default class CartList extends Component {
           장바구니 비우기
         </button>
         <div className="btnWrapperInCart">
-          <Button name="쇼핑 계속하기" info="shoppingMore" />
+          <Link to="/products">
+            <Button name="쇼핑 계속하기" info="shoppingMore" />
+          </Link>
           <Button name="주문하기" info="order" />
         </div>
       </section>
