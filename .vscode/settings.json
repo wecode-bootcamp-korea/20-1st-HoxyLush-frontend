@@ -9,5 +9,6 @@
   "workbench.colorCustomizations": {
     "titleBar.activeBackground": "#7441b8",
     "titleBar.inactiveBackground": "#7441b8"
-  }
+  },
+  "compile-hero.disable-compile-files-on-did-save-code": false
 }

@@ -16,7 +16,6 @@ export default class DetailInfo extends Component {
         <div className="btnWrapperInDetail">
           <Button name="장바구니" info="cart" />
           <Button name="주문하기" info="order" />
-          {/* type:submit */}
         </div>
       </div>
     );
