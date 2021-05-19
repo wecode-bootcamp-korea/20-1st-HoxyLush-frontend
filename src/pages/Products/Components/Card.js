@@ -35,7 +35,10 @@ class Card extends Component {
         </li>
         <div className="cardIcons">
           <i className="far fa-heart"></i>
-          <i className="fas fa-cart-arrow-down" onClick={toggleModalCart}></i>
+          <i
+            className="fas fa-cart-arrow-down"
+            onClick={() => toggleModalCart(list.id)}
+          ></i>
         </div>
       </div>
     );

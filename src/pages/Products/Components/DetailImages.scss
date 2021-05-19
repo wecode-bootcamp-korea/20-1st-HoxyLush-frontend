@@ -2,6 +2,7 @@
 
 .detailImage {
   @include flexCenter(column);
+  width: 380px;
   margin-right: 130px;
 
   .productImage {

@@ -5,11 +5,12 @@ export default class OrderCountControler extends Component {
     const { selectedProduct, selectedCount, increaseCount, toggleModalAlert } =
       this.props;
 
-    if (selectedCount < selectedProduct.stock) {
-      increaseCount();
-    } else {
+    if (selectedCount === selectedProduct.stock) {
       toggleModalAlert();
+      return;
     }
+
+    increaseCount();
   };
 
   handleDecreaseCount = e => {
