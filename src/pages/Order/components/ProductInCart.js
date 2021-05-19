@@ -56,7 +56,6 @@ export default class ProductInCart extends Component {
   render() {
     const { product, handleCheckBox } = this.props;
     const { selectedProductQtyInCart, isModalAlertOpen } = this.state;
-    console.log({ product });
     return (
       <>
         <tr>

@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import CartList from './components/CartList';
 import Like from './components/Like';
 import OrderHeader from './components/OrderHeader';
-// import { CART_API, LIKE_API } from '../../config';
-import { LIKE_API } from '../../config';
+import { CART_API, LIKE_API } from '../../config';
+import { CART_UPDATE_API } from '../../config';
 import './Order.scss';
 
 export default class Order extends Component {
@@ -13,27 +13,28 @@ export default class Order extends Component {
   };
 
   componentDidMount() {
-    const CART_URL = '/data/cart.json';
-    // const LIKE_URL = '/data/likeProduct.json';
+    // const CART_URL = '/data/cart.json';
+    const LIKE_URL = '/data/likeProduct.json';
 
-    // const fetchCartOption = {
-    //   method: 'GET',
-    //   headers: {
-    //     Authorization: localStorage.getItem('Authorization'),
-    //   },
-    // };
-
-    const fecthLikeOption = {
+    const fetchCartOption = {
       method: 'GET',
       headers: {
         Authorization: localStorage.getItem('Authorization'),
       },
     };
 
+    // const fecthLikeOption = {
+    //   method: 'GET',
+    //   headers: {
+    //     Authorization: localStorage.getItem('Authorization'),
+    //   },
+    // };
+
     Promise.all([
-      // fetch(`${CART_API}/orders/cart`, fetchCartOption),
-      fetch(CART_URL),
-      fetch(`${LIKE_API}/products/like`, fecthLikeOption),
+      fetch(`${CART_API}/orders/cart`, fetchCartOption),
+      // fetch(`${LIKE_API}/products/like`, fecthLikeOption),
+      // fetch(CART_URL),
+      fetch(LIKE_URL),
     ])
       .then(responses =>
         Promise.all(responses.map(response => response.json()))
@@ -51,7 +52,7 @@ export default class Order extends Component {
 
   handleCheckBox = e => {
     const { productInCart } = this.state;
-    const arr = productInCart.map(item => {
+    const nextProductInCart = productInCart.map(item => {
       if (item.name === e.target.value) {
         return { ...item, is_checked: !item.is_checked };
       } else {
@@ -59,37 +60,84 @@ export default class Order extends Component {
       }
     });
 
-    this.setState({ productInCart: arr });
+    this.setState({ productInCart: nextProductInCart });
   };
 
-  removeProduct = () => {
+  handleAllCheckedBox = () => {
+    const { productInCart } = this.state;
+    const updatedProductStatusInCart = productInCart.map(item => {
+      return { ...item, is_checked: !item.is_checked };
+    });
+    this.setState({ productInCart: updatedProductStatusInCart });
+  };
+
+  removeProduct = e => {
     const { productInCart } = this.state;
     this.setState({
-      productInCart: productInCart.filter(item => !item.is_checked),
+      productInCart: productInCart?.filter(item => !item.is_checked),
     });
+
+    //장바구니에 남은 제품의 option_id 뽑아오기
+    console.log(e.target.value);
+    const fetchUpdateOption = {
+      method: 'DELETE',
+      headers: {
+        Authorization: localStorage.getItem('Authorization'),
+      },
+    };
+
+    const fetchCartOption = {
+      method: 'GET',
+      headers: {
+        Authorization: localStorage.getItem('Authorization'),
+      },
+    };
+
+    fetch(`${CART_UPDATE_API}/orders/cart?option-id=5`, fetchUpdateOption)
+      .then(fetch(`${CART_API}/orders/cart`, fetchCartOption))
+      .then(res => res.json())
+      .then(data =>
+        this.setState({
+          productInCart: data.selectedQty,
+        })
+      );
   };
 
   clearCart = () => {
-    const { productInCart } = this.state;
-    // const option = {
-    //   method: 'GET',
-    //   headers: {
-    //     Authorization: localStorage.getItem('access_token'),
-    //   },
-    // };
+    // const { productInCart } = this.state;
+    //장바구니에 담긴 제품의 option_id 뽑아오기
+    const fetchUpdateOption = {
+      method: 'DELETE',
+      headers: {
+        Authorization: localStorage.getItem('Authorization'),
+      },
+    };
 
-    // fetch(CART_UPDATE_API, option)
-    //   .then(res => res.json())
-    //   .then(data => {
-    //     this.setState({
-    //       productInCart: [],
-    //     });
-    //   });
+    const fetchCartOption = {
+      method: 'GET',
+      headers: {
+        Authorization: localStorage.getItem('Authorization'),
+      },
+    };
 
-    productInCart.length &&
-      this.setState({
-        productInCart: [],
+    fetch(
+      `${CART_UPDATE_API}/orders/cart?option-id=1&option-id=5`,
+      fetchUpdateOption
+    )
+      .then(res => res.json())
+      .then(data => {
+        this.setState({
+          productInCart: data,
+        });
       });
+
+    fetch(`${CART_API}/orders/cart`, fetchCartOption)
+      .then(res => res.json())
+      .then(data =>
+        this.setState({
+          productInCart: data.selectedQty,
+        })
+      );
   };
 
   render() {
@@ -102,8 +150,9 @@ export default class Order extends Component {
           handleCheckBox={this.handleCheckBox}
           removeProduct={this.removeProduct}
           clearCart={this.clearCart}
+          handleAllCheckedBox={this.handleAllCheckedBox}
         />
-        <Like likeProducts={likeProducts} />
+        {/* <Like likeProducts={likeProducts} /> */}
       </main>
     );
   }

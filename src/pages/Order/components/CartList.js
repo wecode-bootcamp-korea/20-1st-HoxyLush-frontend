@@ -14,8 +14,13 @@ export default class CartList extends Component {
   };
 
   render() {
-    const { productInCart, handleCheckBox, clearCart, removeProduct } =
-      this.props;
+    const {
+      productInCart,
+      handleCheckBox,
+      clearCart,
+      removeProduct,
+      handleAllCheckedBox,
+    } = this.props;
     return (
       <section className="cartList">
         <div className="cartListProduct">제품</div>
@@ -25,7 +30,7 @@ export default class CartList extends Component {
               <tr>
                 <th>
                   <input
-                    onChange={this.handleAllCheckedBox}
+                    onChange={handleAllCheckedBox}
                     type="checkbox"
                     className="checkbox"
                     value="checkedAll"
@@ -63,10 +68,12 @@ export default class CartList extends Component {
           </span>
           <span className="totalPriceInCart price">
             <strong>
-              {new Intl.NumberFormat('ko-KR', {
-                style: 'currency',
-                currency: 'KRW',
-              }).format(this.calculateTotalPriceInCart())}
+              {productInCart.length
+                ? new Intl.NumberFormat('ko-KR', {
+                    style: 'currency',
+                    currency: 'KRW',
+                  }).format(this.calculateTotalPriceInCart())
+                : 0}
             </strong>
           </span>
           <span>+</span>
@@ -80,10 +87,12 @@ export default class CartList extends Component {
           </span>
           <span className="totalOrderPrice">
             <strong>
-              {new Intl.NumberFormat('ko-KR', {
-                style: 'currency',
-                currency: 'KRW',
-              }).format(this.calculateTotalPriceInCart())}
+              {productInCart.length
+                ? new Intl.NumberFormat('ko-KR', {
+                    style: 'currency',
+                    currency: 'KRW',
+                  }).format(this.calculateTotalPriceInCart())
+                : 0}
             </strong>
           </span>
         </div>

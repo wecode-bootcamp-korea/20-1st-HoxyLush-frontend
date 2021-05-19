@@ -1,9 +1,0 @@
-.lists {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: row;
-  flex-wrap: wrap;
-  max-width: 1220px;
-  margin: 0 auto;
-}
