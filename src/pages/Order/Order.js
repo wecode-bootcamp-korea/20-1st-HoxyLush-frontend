@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import CartList from './components/CartList';
 import Like from './components/Like';
 import OrderHeader from './components/OrderHeader';
+// import { CART_API, LIKE_API } from '../../config';
+import { LIKE_API } from '../../config';
 import './Order.scss';
 
 export default class Order extends Component {
@@ -12,15 +14,34 @@ export default class Order extends Component {
 
   componentDidMount() {
     const CART_URL = '/data/cart.json';
-    const LIKE_URL = '/data/likeProduct.json';
-    Promise.all([fetch(CART_URL), fetch(LIKE_URL)])
+    // const LIKE_URL = '/data/likeProduct.json';
+
+    // const fetchCartOption = {
+    //   method: 'GET',
+    //   headers: {
+    //     Authorization: localStorage.getItem('Authorization'),
+    //   },
+    // };
+
+    const fecthLikeOption = {
+      method: 'GET',
+      headers: {
+        Authorization: localStorage.getItem('Authorization'),
+      },
+    };
+
+    Promise.all([
+      // fetch(`${CART_API}/orders/cart`, fetchCartOption),
+      fetch(CART_URL),
+      fetch(`${LIKE_API}/products/like`, fecthLikeOption),
+    ])
       .then(responses =>
         Promise.all(responses.map(response => response.json()))
       )
       .then(lists =>
         lists.map((list, i) => {
           const stateKeys = ['productInCart', 'likeProducts'];
-          const fetchDataKeys = ['cart_info', 'like_info'];
+          const fetchDataKeys = ['selectedQty', 'like_items'];
           return this.setState({
             [stateKeys[i]]: list[fetchDataKeys[i]],
           });
@@ -51,13 +72,10 @@ export default class Order extends Component {
   clearCart = () => {
     const { productInCart } = this.state;
     // const option = {
-    //   method: 'POST',
+    //   method: 'GET',
     //   headers: {
     //     Authorization: localStorage.getItem('access_token'),
     //   },
-    //   body: JSON.stringify({
-    //     order_id: order_id,
-    //   }),
     // };
 
     // fetch(CART_UPDATE_API, option)

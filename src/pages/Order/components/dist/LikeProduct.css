@@ -1,0 +1,71 @@
+.Likecard {
+  position: relative;
+  max-width: 285px;
+}
+.Likecard .LikecardWrapper {
+  width: 100%;
+  margin: 10px;
+  text-align: center;
+}
+.Likecard .LikecardWrapper img {
+  width: 285px;
+  height: 285px;
+  object-fit: cover;
+}
+.Likecard .LikecardWrapper img.opacity {
+  filter: opacity(40%);
+}
+.Likecard .LikecardWrapper .tags {
+  margin-bottom: 10px;
+}
+.Likecard .LikecardWrapper .tags .new,
+.Likecard .LikecardWrapper .tags .vegan,
+.Likecard .LikecardWrapper .tags .best,
+.Likecard .LikecardWrapper .tags .soldOut {
+  display: inline-block;
+  width: 80px;
+  height: 23px;
+  padding: 3px;
+  margin: 0 3px;
+  color: #ffffff;
+  border-radius: 15px;
+  font-size: 12px;
+  font-weight: bold;
+  line-height: 1.4em;
+}
+.Likecard .LikecardWrapper .tags .new {
+  background-color: #007929;
+}
+.Likecard .LikecardWrapper .tags .vegan {
+  background-color: #92ad00;
+}
+.Likecard .LikecardWrapper .tags .best {
+  background-color: #000000;
+}
+.Likecard .LikecardWrapper .tags .soldOut {
+  background-color: #ff8a00;
+}
+.Likecard .LikecardWrapper .title {
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+.Likecard .LikecardWrapper .hashTags {
+  margin-bottom: 20px;
+  color: #8f8f8f;
+  font-size: 14px;
+}
+.Likecard .LikecardWrapper .price {
+  font-weight: bold;
+}
+.Likecard .cardIcons {
+  position: absolute;
+  top: 30px;
+  left: 20px;
+  color: #8f8f8f;
+  font-size: 22px;
+}
+.Likecard .cardIcons i {
+  margin-bottom: 15px;
+  color: tomato;
+  cursor: pointer;
+}
