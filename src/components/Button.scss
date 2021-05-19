@@ -21,7 +21,8 @@
     }
 
     &.order,
-    &.putInCart {
+    &.putInCart,
+    &.loadMore {
       background-color: $color-black;
       color: $color-white;
     }
@@ -31,6 +32,21 @@
     &.putInCart {
       width: 160px;
       margin: 0 10px;
+    }
+
+    &.loadMore {
+      padding: 5px 20px 10px;
+      margin: 30px auto;
+      color: $color-white;
+      font-size: $fs-l;
+      letter-spacing: 1.5px;
+      cursor: pointer;
+      transition: transform 200ms ease-in;
+      will-change: transform;
+
+      &:hover {
+        transform: scale(1.02);
+      }
     }
   }
 }

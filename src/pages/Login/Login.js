@@ -20,11 +20,24 @@ class Login extends Component {
   handleSubmit = e => {
     e.preventDefault();
     const { id, pw } = this.state;
+    const checkSpace = /\s/;
+    const checkSpecial = /[~!@#$%^&*()_+|<>?:;`,{}\]\[\/\'\"\.\₩\\\=\-]/;
+    const checkKorean = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/;
+    const checkPassword = /^(?=.*[a-zA-Z])(?=.*[0-9]).{8,}/;
 
     if (!id) {
-      alert('아이디를 입력해주세요');
+      alert('아이디를 입력해주세요.');
+    } else if (
+      id.search(checkSpace) !== -1 ||
+      id.search(checkSpecial) !== -1 ||
+      id.search(checkKorean) !== -1 ||
+      id.length < 8
+    ) {
+      alert('잘못된 아이디 입니다.');
     } else if (!pw) {
-      alert('패스워드를 입력해주세요');
+      alert('패스워드를 입력해주세요.');
+    } else if (checkPassword.test(pw) || pw.search(checkSpace) !== -1) {
+      alert('잘못된 패스워드 입니다.');
     } else {
       fetch(`${API}/users/login`, {
         method: 'POST',
@@ -68,6 +81,7 @@ class Login extends Component {
               onChange={handleInput}
               name="id"
               value={id}
+              pattern="/^[A-Za-z0-9+]*$/"
             />
           </div>
           <div className="inputLogin">
