@@ -4,50 +4,6 @@ import Button from '../../../components/Button';
 import './CartList.scss';
 
 export default class CartList extends Component {
-  // state = {
-  //   productInCart: [],
-  // };
-
-  // componentDidMount() {
-  //   const url = '/data/cart.json';
-  //   fetch(url)
-  //     .then(res => res.json())
-  //     .then(data =>
-  //       this.setState({
-  //         productInCart: data.cart_info,
-  //       })
-  //     );
-  // }
-
-  // handleCheckBox = e => {
-  //   const { productInCart } = this.state;
-  //   const arr = productInCart.map(item => {
-  //     if (item.name === e.target.value) {
-  //       return { ...item, is_checked: !item.is_checked };
-  //     } else {
-  //       return item;
-  //     }
-  //   });
-
-  //   this.setState({ productInCart: arr });
-  // };
-
-  // removeProduct = () => {
-  //   const { productInCart } = this.state;
-  //   this.setState({
-  //     productInCart: productInCart.filter(item => !item.is_checked),
-  //   });
-  // };
-
-  // clearCart = () => {
-  //   const { productInCart } = this.state;
-
-  //   productInCart.length &&
-  //     this.setState({
-  //       productInCart: [],
-  //     });
-  // };
-
   calculateTotalPriceInCart = () => {
     const { productInCart } = this.props;
     const checkedProduct = [];
