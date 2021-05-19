@@ -4,52 +4,52 @@ import Button from '../../../components/Button';
 import './CartList.scss';
 
 export default class CartList extends Component {
-  state = {
-    productInCart: [],
-  };
+  // state = {
+  //   productInCart: [],
+  // };
 
-  componentDidMount() {
-    const url = '/data/cart.json';
-    fetch(url)
-      .then(res => res.json())
-      .then(data =>
-        this.setState({
-          productInCart: data.cart_info,
-        })
-      );
-  }
+  // componentDidMount() {
+  //   const url = '/data/cart.json';
+  //   fetch(url)
+  //     .then(res => res.json())
+  //     .then(data =>
+  //       this.setState({
+  //         productInCart: data.cart_info,
+  //       })
+  //     );
+  // }
 
-  handleCheckBox = e => {
-    const { productInCart } = this.state;
-    const arr = productInCart.map(item => {
-      if (item.name === e.target.value) {
-        return { ...item, is_checked: !item.is_checked };
-      } else {
-        return item;
-      }
-    });
+  // handleCheckBox = e => {
+  //   const { productInCart } = this.state;
+  //   const arr = productInCart.map(item => {
+  //     if (item.name === e.target.value) {
+  //       return { ...item, is_checked: !item.is_checked };
+  //     } else {
+  //       return item;
+  //     }
+  //   });
 
-    this.setState({ productInCart: arr });
-  };
+  //   this.setState({ productInCart: arr });
+  // };
 
-  removeProduct = () => {
-    const { productInCart } = this.state;
-    this.setState({
-      productInCart: productInCart.filter(item => !item.is_checked),
-    });
-  };
+  // removeProduct = () => {
+  //   const { productInCart } = this.state;
+  //   this.setState({
+  //     productInCart: productInCart.filter(item => !item.is_checked),
+  //   });
+  // };
 
-  clearCart = () => {
-    const { productInCart } = this.state;
+  // clearCart = () => {
+  //   const { productInCart } = this.state;
 
-    productInCart.length &&
-      this.setState({
-        productInCart: [],
-      });
-  };
+  //   productInCart.length &&
+  //     this.setState({
+  //       productInCart: [],
+  //     });
+  // };
 
   calculateTotalPriceInCart = () => {
-    const { productInCart } = this.state;
+    const { productInCart } = this.props;
     const checkedProduct = [];
     productInCart.forEach(item => item.is_checked && checkedProduct.push(item));
 
@@ -57,7 +57,8 @@ export default class CartList extends Component {
   };
 
   render() {
-    const { productInCart } = this.state;
+    const { productInCart, handleCheckBox, clearCart, removeProduct } =
+      this.props;
     return (
       <section className="cartList">
         <div className="cartListProduct">제품</div>
@@ -87,7 +88,7 @@ export default class CartList extends Component {
                   <ProductInCart
                     product={product}
                     key={product.id}
-                    handleCheckBox={this.handleCheckBox}
+                    handleCheckBox={handleCheckBox}
                     productCount={productInCart.length}
                     calculateTotalPriceInCart={this.calculateTotalPriceInCart}
                   />
@@ -133,11 +134,11 @@ export default class CartList extends Component {
         <button
           type="button"
           className="removeProductBtn"
-          onClick={this.removeProduct}
+          onClick={removeProduct}
         >
           삭제하기
         </button>
-        <button type="button" className="resetCartBtn" onClick={this.clearCart}>
+        <button type="button" className="resetCartBtn" onClick={clearCart}>
           장바구니 비우기
         </button>
         <div className="btnWrapperInCart">
