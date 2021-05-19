@@ -103,6 +103,7 @@ class Products extends Component {
       isModalCartOpen,
       isModalAlertOpen,
     } = this.state;
+    console.log(productLists);
     return (
       <>
         <section className="products">
@@ -115,9 +116,13 @@ class Products extends Component {
             toggleModalAlert={this.toggleModalAlert}
             toggleModalCart={this.toggleModalCart}
           />
-          <button id="loadMore" onClick={this.handleLoadMoreBtn}>
-            <span>Load More</span>
-          </button>
+          {productLists.length ? (
+            <button id="loadMore" onClick={this.handleLoadMoreBtn}>
+              <span>Load More</span>
+            </button>
+          ) : (
+            <p className="resultNothing">상품이 존재하지 않습니다.</p>
+          )}
         </section>
         {isModalCartOpen && (
           <Modal onClose={this.toggleModalAlert}>
