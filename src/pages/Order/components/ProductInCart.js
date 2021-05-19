@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import OrderCountControler from '../../../components/OrderCountControler';
 import Modal from '../../../components/Modal';
+import { CART_UPDATE_API } from '../../../config';
 
 export default class ProductInCart extends Component {
   state = {
@@ -15,21 +16,37 @@ export default class ProductInCart extends Component {
     });
   }
 
+  sendToSever = count => {
+    const fetchUpdateOption = {
+      method: 'PUT',
+      headers: {
+        Authorization: localStorage.getItem('Authorization'),
+      },
+      body: JSON.stringify({
+        option_id: 1,
+        quantity: count,
+      }),
+    };
+
+    fetch(`${CART_UPDATE_API}/orders/cart`, fetchUpdateOption);
+  };
+
   increaseCount = () => {
     const { selectedProductQtyInCart } = this.state;
+    const updateCount = selectedProductQtyInCart + 1;
     this.setState({
       selectedProductQtyInCart: selectedProductQtyInCart + 1,
     });
-    // updateOrder();
+    this.sendToSever(updateCount);
   };
 
   decreaseCount = () => {
     const { selectedProductQtyInCart } = this.state;
-
+    const updateCount = selectedProductQtyInCart - 1;
     this.setState({
       selectedProductQtyInCart: selectedProductQtyInCart - 1,
     });
-    // updateOrder();
+    this.sendToSever(updateCount);
   };
 
   calculatePrice = () => {
@@ -54,15 +71,15 @@ export default class ProductInCart extends Component {
   };
 
   render() {
-    const { selectedProductQtyInCart, isModalAlertOpen } = this.state;
     const { product, handleCheckBox } = this.props;
+    const { selectedProductQtyInCart, isModalAlertOpen } = this.state;
     return (
       <>
         <tr>
           <td>
             <input
               type="checkbox"
-              id="checkbox"
+              className="checkbox"
               onChange={handleCheckBox}
               value={product.name}
               checked={product.is_checked}
