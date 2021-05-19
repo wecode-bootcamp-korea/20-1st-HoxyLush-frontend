@@ -16,12 +16,20 @@ export default class Main extends Component {
       currentSlide: 0,
       currentAsideSlide: 0,
       slidestatus: '',
+      slideProductsList: [],
     };
   }
 
   componentDidMount() {
     const { topBannerImageId } = this.state;
-    const test = () => {
+
+    fetch('http://192.168.255.253:8000/products?limit=12')
+      .then(result => result.json())
+      .then(slideProduct => {
+        this.setState({ slideProductsList: slideProduct.product_info });
+      });
+
+    const topBanner = () => {
       if (topBannerImageId === 4) {
         this.setState({
           topBannerImageId: 1,
@@ -32,7 +40,7 @@ export default class Main extends Component {
         });
       }
     };
-    setInterval(test, 4000);
+    setInterval(topBanner, 4000);
   }
 
   goToBannerImage = id => {
@@ -124,8 +132,13 @@ export default class Main extends Component {
   };
 
   render() {
-    const { topBannerImageId, currentSlide, slidestatus, currentAsideSlide } =
-      this.state;
+    const {
+      topBannerImageId,
+      currentSlide,
+      slidestatus,
+      currentAsideSlide,
+      slideProductsList,
+    } = this.state;
     return (
       <div className="mainContainer">
         <Nav />
@@ -151,56 +164,62 @@ export default class Main extends Component {
           </ul>
         </section>
         <section className="mainPageProducts">
-          <div className="recommendProductTitle">나만 알고 싶은 향기</div>
+          <div className="recommendProductTitle">고된 하루를 날리는 향기</div>
           <section className="recommendProducts">
-            <div className="bigbigcont">
+            <div className="recommendProductSlide">
               <div className="recommendProductInfoContainer">
-                {PRODATA.slice(PRODATA.length - 3, PRODATA.length).map(
-                  recommendProductdata => {
+                {slideProductsList
+                  .slice(slideProductsList.length - 3, slideProductsList.length)
+                  .map(sildeProduct => {
                     return (
                       <div
                         className="recommendProductInfo"
                         style={this.isMovedSlide()}
-                        key={recommendProductdata.id}
+                        key={sildeProduct.id}
                       >
-                        <img src={recommendProductdata.url} />
-                        <div>{recommendProductdata.title}</div>
-                        <div>{recommendProductdata.description}</div>
+                        <img src={sildeProduct.image_url} />
+                        <div>{sildeProduct.name}</div>
+                        <div>{sildeProduct.hashtag}</div>
                         <div className="recommendProductPrice">
-                          {`₩ ${recommendProductdata.price.toLocaleString()}`}
+                          {`₩ ${Number(
+                            sildeProduct.option[0].price
+                          ).toLocaleString()}`}
                         </div>
                       </div>
                     );
-                  }
-                )}
-                {PRODATA.map(recommendProductdata => {
+                  })}
+                {slideProductsList.map(sildeProduct => {
                   return (
                     <div
                       className="recommendProductInfo"
                       style={this.isMovedSlide()}
-                      key={recommendProductdata.id}
+                      key={sildeProduct.id}
                     >
-                      <img src={recommendProductdata.url} />
-                      <div>{recommendProductdata.title}</div>
-                      <div>{recommendProductdata.description}</div>
+                      <img src={sildeProduct.image_url} />
+                      <div>{sildeProduct.name}</div>
+                      <div>{sildeProduct.hashtag}</div>
                       <div className="recommendProductPrice">
-                        {`₩ ${recommendProductdata.price.toLocaleString()}`}
+                        {`₩ ${Number(
+                          sildeProduct.option[0].price
+                        ).toLocaleString()}`}
                       </div>
                     </div>
                   );
                 })}
-                {PRODATA.slice(0, 3).map(recommendProductdata => {
+                {slideProductsList.slice(0, 3).map(sildeProduct => {
                   return (
                     <div
                       className="recommendProductInfo"
                       style={this.isMovedSlide()}
-                      key={recommendProductdata.id}
+                      key={sildeProduct.id}
                     >
-                      <img src={recommendProductdata.url} />
-                      <div>{recommendProductdata.title}</div>
-                      <div>{recommendProductdata.description}</div>
+                      <img src={sildeProduct.image_url} />
+                      <div>{sildeProduct.name}</div>
+                      <div>{sildeProduct.hashtag}</div>
                       <div className="recommendProductPrice">
-                        {`₩ ${recommendProductdata.price.toLocaleString()}`}
+                        {`₩ ${Number(
+                          sildeProduct.option[0].price
+                        ).toLocaleString()}`}
                       </div>
                     </div>
                   );
