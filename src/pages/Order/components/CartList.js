@@ -6,15 +6,20 @@ import './CartList.scss';
 export default class CartList extends Component {
   calculateTotalPriceInCart = () => {
     const { productInCart } = this.props;
-    const checkedProduct = [];
-    productInCart.forEach(item => item.is_checked && checkedProduct.push(item));
-
-    return checkedProduct.reduce((acc, cur) => acc + cur.total_price, 0);
+    const totalPrice = productInCart
+      .filter(item => item.is_checked)
+      .reduce((acc, { total_price }) => acc + total_price, 0);
+    return totalPrice;
   };
 
   render() {
-    const { productInCart, handleCheckBox, clearCart, removeProduct } =
-      this.props;
+    const {
+      productInCart,
+      handleCheckBox,
+      clearCart,
+      removeProduct,
+      handleAllCheckedBox,
+    } = this.props;
     return (
       <section className="cartList">
         <div className="cartListProduct">제품</div>
@@ -24,7 +29,7 @@ export default class CartList extends Component {
               <tr>
                 <th>
                   <input
-                    onChange={this.handleAllCheckedBox}
+                    onChange={handleAllCheckedBox}
                     type="checkbox"
                     className="checkbox"
                     value="checkedAll"
@@ -34,7 +39,7 @@ export default class CartList extends Component {
                 <th colspan="2">제품정보</th>
                 <th>수량</th>
                 <th>금액</th>
-                <th>합계금액</th>
+                <th className="priceCol">합계금액</th>
                 <th>배송비</th>
               </tr>
             </thead>
@@ -62,10 +67,12 @@ export default class CartList extends Component {
           </span>
           <span className="totalPriceInCart price">
             <strong>
-              {new Intl.NumberFormat('ko-KR', {
-                style: 'currency',
-                currency: 'KRW',
-              }).format(this.calculateTotalPriceInCart())}
+              {productInCart.length
+                ? new Intl.NumberFormat('ko-KR', {
+                    style: 'currency',
+                    currency: 'KRW',
+                  }).format(this.calculateTotalPriceInCart())
+                : 0}
             </strong>
           </span>
           <span>+</span>
@@ -79,10 +86,12 @@ export default class CartList extends Component {
           </span>
           <span className="totalOrderPrice">
             <strong>
-              {new Intl.NumberFormat('ko-KR', {
-                style: 'currency',
-                currency: 'KRW',
-              }).format(this.calculateTotalPriceInCart())}
+              {productInCart.length
+                ? new Intl.NumberFormat('ko-KR', {
+                    style: 'currency',
+                    currency: 'KRW',
+                  }).format(this.calculateTotalPriceInCart())
+                : 0}
             </strong>
           </span>
         </div>
