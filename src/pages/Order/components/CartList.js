@@ -39,7 +39,7 @@ export default class CartList extends Component {
   };
 
   handleCheckBox = e => {
-    const { productInCart } = this.state;
+    const { productInCart } = this.props;
 
     productInCart.forEach(product => {
       if (product.name === e.target.value) {

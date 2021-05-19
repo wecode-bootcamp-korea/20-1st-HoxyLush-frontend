@@ -10,7 +10,7 @@ export default class Order extends Component {
       <main className="cart">
         <OrderHeader />
         <CartList />
-        {/* <Favorit /> */}
+        {/* <Favorit productInCart={productInCart} /> */}
       </main>
     );
   }
