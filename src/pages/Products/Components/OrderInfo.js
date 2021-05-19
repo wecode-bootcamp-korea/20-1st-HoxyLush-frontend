@@ -26,7 +26,7 @@ export default class OrderInfo extends Component {
     const { selectedCount } = this.state;
     const { selectedProduct } = this.props;
 
-    const total = selectedCount * selectedProduct.price;
+    const total = selectedCount * selectedProduct.option[0].price;
     return new Intl.NumberFormat('ko-KR', {
       style: 'currency',
       currency: 'KRW',
@@ -54,7 +54,7 @@ export default class OrderInfo extends Component {
               {new Intl.NumberFormat('ko-KR', {
                 style: 'currency',
                 currency: 'KRW',
-              }).format(selectedProduct.price)}
+              }).format(selectedProduct.option[0].price)}
             </span>
           </div>
           <div className="row">
@@ -82,13 +82,12 @@ export default class OrderInfo extends Component {
           <Modal>
             <div className="outOfStockModal">
               <i
-                id="modalClose"
-                className="fas fa-times"
+                className="fas fa-times modalClose"
                 onClick={toggleModalAlert}
               ></i>
               <h1>잔여 재고 : {selectedProduct.quantity}개</h1>
               <p>현재 {selectedProduct.quantity}개 이상 주문이 어렵습니다.</p>
-              <button id="outOfStockBtn" onClick={toggleModalAlert}>
+              <button className="outOfStockBtn" onClick={toggleModalAlert}>
                 확인하기
               </button>
             </div>
