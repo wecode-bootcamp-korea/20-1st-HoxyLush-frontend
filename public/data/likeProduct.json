@@ -1,0 +1,52 @@
+{
+  "like_info": [
+    {
+      "id": 1,
+      "name": "코스메틱 워리어",
+      "hashtag": ["#피부야달래줄게", "#입소문템", "#에그프리"],
+      "image_url": "https://lush.co.kr/data/goods/11/01/20/79/79_detail_085.jpg",
+      "imgAlt": "러쉬",
+      "tag": [
+        { "id": 1, "tag": "BEST" },
+        { "id": 2, "tag": "NEW" },
+        { "id": 3, "tag": "VEGAN" }
+      ],
+      "option": [
+        { "price": 25000, "weight": "75g", "stock": 4 },
+        { "price": 45000, "weight": "155g", "stock": 5 }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "럽 럽 럽",
+      "hashtag": ["#샤워스크럽", "#구석구석소금롤링"],
+      "image_url": "https://lush.co.kr/data/goods/11/08/03/93/93_detail_090.jpg",
+      "imgAlt": "러쉬",
+      "tag": [
+        { "id": 1, "tag": "BEST" },
+        { "id": 2, "tag": "NEW" },
+        { "id": 3, "tag": "VEGAN" }
+      ],
+      "option": [
+        { "price": 25000, "weight": "75g", "stock": 4 },
+        { "price": 45000, "weight": "155g", "stock": 5 }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "러쉬 뷰티 슬립",
+      "hashtag": ["#아름다움의비결", "#골저스한영양", "#라벤더"],
+      "image_url": "https://lush.co.kr/data/goods/20/10/43/1000001455/1000001455_detail_057.jpg",
+      "imgAlt": "러쉬",
+      "tag": [
+        { "id": 1, "tag": "BEST" },
+        { "id": 2, "tag": "NEW" },
+        { "id": 3, "tag": "VEGAN" }
+      ],
+      "option": [
+        { "price": 25000, "weight": "75g", "stock": 4 },
+        { "price": 45000, "weight": "155g", "stock": 5 }
+      ]
+    }
+  ]
+}

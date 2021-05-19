@@ -1,21 +1,29 @@
 import React, { Component } from 'react';
 import CartList from './components/CartList';
-import Favorit from './components/Favorit';
+import Like from './components/Like';
 import OrderHeader from './components/OrderHeader';
 import './Order.scss';
 
 export default class Order extends Component {
   state = {
     productInCart: [],
+    likeProducts: [],
   };
 
   componentDidMount() {
-    const url = '/data/cart.json';
-    fetch(url)
-      .then(res => res.json())
-      .then(data =>
-        this.setState({
-          productInCart: data.cart_info,
+    const CART_URL = '/data/cart.json';
+    const LIKE_URL = '/data/likeProduct.json';
+    Promise.all([fetch(CART_URL), fetch(LIKE_URL)])
+      .then(responses =>
+        Promise.all(responses.map(response => response.json()))
+      )
+      .then(lists =>
+        lists.map((list, i) => {
+          const stateKeys = ['productInCart', 'likeProducts'];
+          const fetchDataKeys = ['cart_info', 'like_info'];
+          return this.setState({
+            [stateKeys[i]]: list[fetchDataKeys[i]],
+          });
         })
       );
   }
@@ -67,7 +75,7 @@ export default class Order extends Component {
   };
 
   render() {
-    const { productInCart } = this.state;
+    const { productInCart, likeProducts } = this.state;
     return (
       <main className="cart">
         <OrderHeader />
@@ -77,7 +85,7 @@ export default class Order extends Component {
           removeProduct={this.removeProduct}
           clearCart={this.clearCart}
         />
-        <Favorit />
+        <Like likeProducts={likeProducts} />
       </main>
     );
   }

@@ -78,7 +78,7 @@ export default class CartList extends Component {
                 <th colspan="2">제품정보</th>
                 <th>수량</th>
                 <th>금액</th>
-                <th>합계금액</th>
+                <th className="priceCol">합계금액</th>
                 <th>배송비</th>
               </tr>
             </thead>
