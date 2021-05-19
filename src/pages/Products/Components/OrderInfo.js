@@ -4,37 +4,16 @@ import OrderCountControler from '../../../components/OrderCountControler';
 import './OrderInfo.scss';
 
 export default class OrderInfo extends Component {
-  // state = {
-  //   selectedCount: 1,
-  // };
-
-  // increaseCount = () => {
-  //   const { selectedCount } = this.state;
-  //   this.setState({
-  //     selectedCount: selectedCount + 1,
-  //   });
-  // };
-
-  // decreaseCount = () => {
-  //   const { selectedCount } = this.state;
-  //   this.setState({
-  //     selectedCount: selectedCount - 1,
-  //   });
-  // };
-
   calculatePrice = () => {
-    // const { selectedCount } = this.state;
     const { selectedCount, selectedProduct } = this.props;
-
-    const total = selectedCount * selectedProduct.option[0].price;
-    return new Intl.NumberFormat('ko-KR', {
-      style: 'currency',
-      currency: 'KRW',
-    }).format(total);
+    // const total = selectedCount * selectedProduct.product_options[0].price;
+    // return new Intl.NumberFormat('ko-KR', {
+    //   style: 'currency',
+    //   currency: 'KRW',
+    // }).format(total);
   };
 
   render() {
-    // const { selectedCount } = this.state;
     const {
       selectedProduct,
       toggleModalAlert,
@@ -58,15 +37,15 @@ export default class OrderInfo extends Component {
           <div className="row">
             <span className="col-1">판매가</span>
             <span className="price">
-              {new Intl.NumberFormat('ko-KR', {
+              {/* {new Intl.NumberFormat('ko-KR', {
                 style: 'currency',
                 currency: 'KRW',
-              }).format(selectedProduct.option[0].price)}
+              }).format(selectedProduct.product_options[0].price)} */}
             </span>
           </div>
           <div className="row">
             <span className="col-1">용량</span>
-            <span>{selectedProduct.weight}</span>
+            {/* <span>{selectedProduct.product_options[0].weight}</span> */}
           </div>
           <div className="row">
             <span className="col-1">구매수량</span>
@@ -92,8 +71,13 @@ export default class OrderInfo extends Component {
                 className="fas fa-times modalClose"
                 onClick={toggleModalAlert}
               ></i>
-              <h1>잔여 재고 : {selectedProduct.quantity}개</h1>
-              <p>현재 {selectedProduct.quantity}개 이상 주문이 어렵습니다.</p>
+              <h1>
+                잔여 재고 : {selectedProduct[0].product_options[0].quantity}개
+              </h1>
+              <p>
+                현재 {selectedProduct[0].product_options.quantity}개 이상 주문이
+                어렵습니다.
+              </p>
               <button className="outOfStockBtn" onClick={toggleModalAlert}>
                 확인하기
               </button>

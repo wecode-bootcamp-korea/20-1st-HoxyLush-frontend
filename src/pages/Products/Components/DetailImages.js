@@ -1,21 +1,22 @@
 import React, { Component } from 'react';
-// import { hasObject } from '../../../utilityFunc';
+import { hasObject } from '../../../utilityFunc';
 import './DetailImages.scss';
 
 export default class DetailImages extends Component {
   render() {
-    const { product_images } = this.props.selectedProduct;
-    const [mainImg, secondImg, thirdImg] = product_images || []; //selectedProduct이 undefine일 때 오류 나는 것을 대비
+    const { selectedProduct } = this.props;
+    console.log(selectedProduct);
+    // const [mainImg, secondImg, thirdImg] = selectedProduct.product_images || []; //selectedProduct이 undefine일 때 오류 나는 것을 대비
 
     return (
       <>
-        {/* {hasObject(product_images) && ( */}
+        {/* {hasObject(selectedProduct.product_images) && ( */}
         <div className="detailImage">
-          <img className="productImage" src={mainImg} alt="러쉬" />
+          {/* <img className="productImage" src={mainImg} alt="러쉬" /> */}
           <div className="slider">
             <i className="fas fa-chevron-left"></i>
             <div>
-              {secondImg ? (
+              {/* {secondImg ? (
                 <img
                   className="productImage small"
                   src={secondImg}
@@ -26,12 +27,12 @@ export default class DetailImages extends Component {
               )}
               {thirdImg && (
                 <img className="productImage small" src={thirdImg} alt="러쉬" />
-              )}
+              )}*/}
             </div>
             <i className="fas fa-chevron-right"></i>
           </div>
         </div>
-        ){/* } */}
+        {/* )} */}
       </>
     );
   }

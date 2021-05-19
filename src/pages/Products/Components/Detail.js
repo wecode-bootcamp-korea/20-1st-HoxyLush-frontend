@@ -3,26 +3,28 @@ import DetailImages from './DetailImages';
 import DetailInfo from './DetailInfo';
 import DetailMiddle from './DetailMiddle';
 import DetailReview from './DetailReview';
-import { DETAIL_API } from '../../../config';
+// import { DETAIL_API } from '../../../config';
 import './Detail.scss';
 
 export default class Detail extends Component {
   state = {
-    selectedProduct: {},
+    selectedProduct: '',
     isModalAlertOpen: false,
   };
 
   reviewRef = React.createRef();
   detailRef = React.createRef();
 
-  componentDidMount() 
+  componentDidMount() {
     // const id = this.props.match.params.id;
     // fetch(`${DETAIL_API}/products/${id}`)
-    fetch(`${DETAIL_API}/products/12`)
+    // fetch(`${DETAIL_API}/products/12`)
+    const url = '/data/selectedProduct.json';
+    fetch(url)
       .then(res => res.json())
       .then(data =>
         this.setState({
-          selectedProduct: data.product_list,
+          selectedProduct: data.result[0],
         })
       );
   }
@@ -34,7 +36,7 @@ export default class Detail extends Component {
     });
   };
 
-  closeModalAlert = () => {
+  toggleModalAlert = () => {
     const { isModalAlertOpen } = this.state;
     this.setState({
       isModalAlertOpen: !isModalAlertOpen,
