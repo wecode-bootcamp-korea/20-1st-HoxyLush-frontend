@@ -21,7 +21,7 @@
   .cartTable {
     width: 100%;
 
-    #checkbox {
+    .checkbox {
       width: 20px;
       height: 20px;
     }
@@ -117,8 +117,9 @@
     }
   }
 
-  #resetCartBtn {
-    margin-top: 10px;
+  .resetCartBtn,
+  .removeProductBtn {
+    margin: 10px;
     border-bottom: 1px solid $color-border-dark;
     font-size: $fs-m;
     color: $color-border-dark;
@@ -129,5 +130,12 @@
       color: $color-black;
       cursor: pointer;
     }
+  }
+
+  .btnWrapperInCart {
+    display: flex;
+    justify-content: center;
+    padding-top: 30px;
+    margin-bottom: 60px;
   }
 }

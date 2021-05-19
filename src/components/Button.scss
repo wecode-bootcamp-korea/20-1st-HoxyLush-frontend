@@ -1,0 +1,36 @@
+@import '../styles/variables.scss';
+
+.basicButton {
+  display: inline-block;
+  margin-top: 30px;
+
+  .btn {
+    height: 50px;
+    margin: 5px;
+    background-color: transparent;
+    font-size: inherit;
+    font-weight: bold;
+    border: 1px solid;
+    cursor: pointer;
+
+    &.cart,
+    &.order,
+    &.shoppingMore {
+      width: 285px;
+      // margin: 0 10px;
+    }
+
+    &.order,
+    &.putInCart {
+      background-color: $color-black;
+      color: $color-white;
+    }
+
+    &.cancel,
+    &.close,
+    &.putInCart {
+      width: 160px;
+      margin: 0 10px;
+    }
+  }
+}

@@ -15,15 +15,14 @@ export default class Detail extends Component {
   reviewRef = React.createRef();
   detailRef = React.createRef();
 
-  componentDidMount() {
-    console.log(this.props);
+  componentDidMount() 
     // const id = this.props.match.params.id;
     // fetch(`${DETAIL_API}/products/${id}`)
     fetch(`${DETAIL_API}/products/12`)
       .then(res => res.json())
       .then(data =>
         this.setState({
-          selectedProduct: data.result,
+          selectedProduct: data.product_list,
         })
       );
   }

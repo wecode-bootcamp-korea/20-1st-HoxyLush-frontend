@@ -2,7 +2,7 @@
 
 .orderInfo {
   @include flexBtw();
-  margin-bottom: 15px;
+  margin: 30px 0 15px;
 
   .productName {
     font-size: 28px;
@@ -94,7 +94,7 @@
   padding: 80px;
 }
 
-#outOfStockBtn {
+.outOfStockBtn {
   border: none;
   width: 160px;
   height: 54px;
