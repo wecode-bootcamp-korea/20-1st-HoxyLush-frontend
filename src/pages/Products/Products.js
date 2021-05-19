@@ -88,7 +88,10 @@ class Products extends Component {
     }).format(total);
   };
 
-  filterByCategory = () => {
+  filterByCategory = category => {
+    this.setState({
+      selectedOption: category,
+    });
     //경래님 API 확인
   };
 
@@ -101,19 +104,32 @@ class Products extends Component {
       isModalAlertOpen,
     } = this.state;
 
+    const categories = [
+      '베스트',
+      '주간베스트',
+      '별 다섯개 후기',
+      '온라인 전용',
+      '국내제조',
+      '네이키드',
+      '리틀 러쉬',
+    ];
+
     return (
       <>
         <section className="products">
           <Headers selectedOption={selectedOption} />
           <div className="selectedOption"> {selectedOption}</div>
-          <ul className="subCategories">
-            <li>전체</li>
-            <li onClick={this.filterByCategory}>주간베스트</li>
-            <li>별 다섯개 후기</li>
-            <li>온라인 전용</li>
-            <li>국내제조</li>
-            <li>네이키드</li>
-            <li>리틀 러쉬</li>
+          <ul className="categories">
+            {categories.map(category => {
+              return (
+                <li
+                  onClick={e => this.filterByCategory(e.target.dataset.name)}
+                  data-name={category}
+                >
+                  {category}
+                </li>
+              );
+            })}
           </ul>
           <Lists
             productLists={productLists}
