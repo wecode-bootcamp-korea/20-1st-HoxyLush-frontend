@@ -39,7 +39,7 @@ export default class OrderInfo extends Component {
 
     return (
       <>
-        <header className="orderInfo">
+        {/* <header className="orderInfo">
           <h1 className="productName">{selectedProduct.name}</h1>
           <div className="icons">
             <i className="fas fa-share-alt"></i>
@@ -92,7 +92,7 @@ export default class OrderInfo extends Component {
               </button>
             </div>
           </Modal>
-        ) : null}
+        ) : null} */}
       </>
     );
   }

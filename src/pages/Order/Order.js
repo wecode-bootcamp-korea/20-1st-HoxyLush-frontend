@@ -73,20 +73,6 @@ export default class Order extends Component {
 
   removeProduct = e => {
     const { productInCart } = this.state;
-<<<<<<< HEAD
-    const option = {
-      method: 'PUT',
-      headers: {
-        Authorization: localStorage.getItem('access_token'),
-      },
-      body: JSON.stringify({
-        order_id: 1,
-        quantity:
-      }),
-    };
-
-    fetch(CART_UPDATE_API, option)
-=======
 
     //장바구니에 남은 제품의 option_id 뽑아오기
     const fetchDeleteOption = {
@@ -133,20 +119,11 @@ export default class Order extends Component {
       `${CART_DELETE_API}/orders/cart?option-id=1&option-id=5`,
       fetchDeleteOption
     )
->>>>>>> master
       .then(res => res.json())
       .then(data => {
         this.setState({
           productInCart: [],
         });
-<<<<<<< HEAD
-      });
-
-    productInCart.length &&
-      this.setState({
-        productInCart: [],
-=======
->>>>>>> master
       });
   };
 

@@ -37,10 +37,7 @@ export default class ProductInCart extends Component {
     this.setState({
       selectedProductQtyInCart: selectedProductQtyInCart + 1,
     });
-<<<<<<< HEAD
-=======
     this.sendToSever(updateCount);
->>>>>>> master
   };
 
   decreaseCount = () => {
@@ -49,10 +46,7 @@ export default class ProductInCart extends Component {
     this.setState({
       selectedProductQtyInCart: selectedProductQtyInCart - 1,
     });
-<<<<<<< HEAD
-=======
     this.sendToSever(updateCount);
->>>>>>> master
   };
 
   calculatePrice = () => {

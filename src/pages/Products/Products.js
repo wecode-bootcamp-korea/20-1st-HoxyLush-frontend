@@ -10,11 +10,12 @@ import './Products.scss';
 
 class Products extends Component {
   state = {
-    selectedOption: '베스트', //수정 예정
+    selectedOption: '베스트',
     productLists: [],
     selectedProduct: {},
     isModalAlertOpen: false,
     isModalCartOpen: false,
+    currentPagination: 1,
   };
 
   componentDidMount() {
@@ -28,12 +29,14 @@ class Products extends Component {
   }
 
   handleLoadMoreBtn = () => {
-    const { productLists } = this.state;
-    fetch(`${PRODUCT_API}/products?pagination=1&limit=13`)
+    const { productLists, currentPagination } = this.state;
+    const nextPagination = currentPagination + 1;
+    fetch(`${PRODUCT_API}/products?pagination=${nextPagination}&limit=13`)
       .then(res => res.json())
       .then(data =>
         this.setState({
           productLists: [...productLists, ...data.product_info],
+          currentPagination: nextPagination,
         })
       );
   };
@@ -85,6 +88,10 @@ class Products extends Component {
     }).format(total);
   };
 
+  filterByCategory = () => {
+    //경래님 API 확인
+  };
+
   render() {
     const {
       productLists,
@@ -101,7 +108,7 @@ class Products extends Component {
           <div className="selectedOption"> {selectedOption}</div>
           <ul className="subCategories">
             <li>전체</li>
-            <li>주간베스트</li>
+            <li onClick={this.filterByCategory}>주간베스트</li>
             <li>별 다섯개 후기</li>
             <li>온라인 전용</li>
             <li>국내제조</li>
