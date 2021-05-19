@@ -6,10 +6,11 @@ import './CartList.scss';
 export default class CartList extends Component {
   calculateTotalPriceInCart = () => {
     const { productInCart } = this.props;
-    const checkedProduct = [];
-    productInCart.forEach(item => item.is_checked && checkedProduct.push(item));
-
-    return checkedProduct.reduce((acc, cur) => acc + cur.total_price, 0);
+    const totalPrice = productInCart
+      .filter(item => item.is_checked)
+      .reduce((acc, { total_price }) => acc + total_price, 0);
+    // .reduce((acc, cur) => acc + cur.total_price, 0);
+    return totalPrice;
   };
 
   render() {
