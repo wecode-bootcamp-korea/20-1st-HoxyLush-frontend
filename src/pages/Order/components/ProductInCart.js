@@ -20,7 +20,6 @@ export default class ProductInCart extends Component {
     this.setState({
       selectedProductQtyInCart: selectedProductQtyInCart + 1,
     });
-    // updateOrder();
   };
 
   decreaseCount = () => {
@@ -29,7 +28,6 @@ export default class ProductInCart extends Component {
     this.setState({
       selectedProductQtyInCart: selectedProductQtyInCart - 1,
     });
-    // updateOrder();
   };
 
   calculatePrice = () => {
