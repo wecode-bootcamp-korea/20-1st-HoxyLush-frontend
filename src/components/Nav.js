@@ -4,7 +4,7 @@ import './Nav.scss';
 import PRODUCT_CATEGORYS from './productCategories';
 import INTRODUCE_LUSH from './introduceLush';
 import { BASCKET_API } from '../config';
-import Modal from './Modal';
+import NavSearchModal from './NavSearchModal';
 
 export default class Nav extends Component {
   constructor() {
@@ -13,38 +13,31 @@ export default class Nav extends Component {
       productCategoryWatch: '',
       introduceLushWatch: '',
       basketProductCount: '',
+      navSearchModal: false,
     };
   }
+  // 현재 장바구니 담긴 상품 갯수 렌더링 로직, 문법에러나서 주석처리
+  // componentDidMount() {
+  //   if (localStorage.getItem('accessToken')) {
+  //     fetch(`${BASCKET_API}/orders/cart`, {
+  //       method: 'GET',
+  //       headers: {
+  //         Authorization: localStorage.getItem('accessToken'),
+  //       },
+  //     })
+  //       .then(response => response.json())
+  //       .then(loginUserInfo => {
+  //         this.setState({
+  //           basketProductCount: loginUserInfo.selectedQty.length,
+  //         });
+  //       });
+  //   }
+  // }
 
-  componentDidMount() {
-    if (localStorage.getItem('accessToken')) {
-      fetch(`${BASCKET_API}/orders/cart`, {
-        method: 'GET',
-        headers: {
-          Authorization: localStorage.getItem('accessToken'),
-        },
-      })
-        .then(response => response.json())
-        .then(loginUserInfo => {
-          this.setState({
-            basketProductCount: loginUserInfo.selectedQty.length,
-          });
-        });
-    }
-  }
-
-  // gettoken = e => {
-  //   fetch(`${API}/users/login`)
-  //     .then(res => res.json())
-  //     .then(submitResult => {
-  //       if (submitResult.MESSAGE === 'SUCCESS') {
-  //         localStorage.setItem('wtwToken', submitResult.token);
-  //         // this.props.history.push('/');
-  //       } else {
-  //         alert('회원정보를 찾을 수 없습니다.');
-  //       }
-  //     });
-  // };
+  closeNavSearchModal = e => {
+    const { navSearchModal } = this.state;
+    this.setState({ navSearchModal: !navSearchModal });
+  };
 
   mouseOnProductCategory = e => {
     this.setState({ productCategoryWatch: 'visible' });
@@ -69,7 +62,9 @@ export default class Nav extends Component {
       <nav className="nav">
         <div className="topNav">
           <div className="siteTitle">
-            <Link className="goMain">HOXY LUSH</Link>
+            <Link className="goMain" to="/">
+              HOXY LUSH
+            </Link>
           </div>
           <ul className="navMenu">
             <li
@@ -151,7 +146,7 @@ export default class Nav extends Component {
             </li>
           </ul>
           <div className="navIcons">
-            <Link>
+            <Link onClick={this.closeNavSearchModal}>
               <i className="fas fa-search"></i>
             </Link>
             <Link className="shoppingBasket">
@@ -169,7 +164,10 @@ export default class Nav extends Component {
             <Link className="goToEvent">이벤트 참여하기</Link>
           </div>
         </div>
-        <Modal />
+        <NavSearchModal
+          closeNavSearchModal={this.closeNavSearchModal}
+          closeStatus={this.state.navSearchModal}
+        />
       </nav>
     );
   }

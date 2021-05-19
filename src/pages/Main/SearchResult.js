@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
 import Modal from '../../components/Modal';
-import AddToCart from './Components/AddToCart';
-import Headers from './Components/Headers';
-import Lists from './Components/Lists';
+import AddToCart from '../Products/Components/AddToCart';
+import Lists from '../Products/Components/Lists';
 import { PRODUCT_API } from '../../config';
-import './Products.scss';
+import Nav from '../../components/Nav';
+
+import './SearchResult.scss';
 
 class Products extends Component {
   state = {
-    selectedOption: '베스트',
+    selectedOption: '',
     productLists: [],
     visibleCards: 8,
     isModalAlertOpen: false,
@@ -17,12 +18,13 @@ class Products extends Component {
   };
 
   componentDidMount() {
-    // const url = '/data/productList.json';
-    fetch(`${PRODUCT_API}/products`)
+    const keyword = this.props.location.search;
+    this.setState({ selectedOption: keyword.slice(9, keyword.length) });
+    fetch(`${PRODUCT_API}/products${keyword}`)
       .then(res => res.json())
-      .then(data =>
+      .then(searchdata =>
         this.setState({
-          productLists: data.product_info,
+          productLists: searchdata.product_info,
         })
       );
   }
@@ -86,7 +88,6 @@ class Products extends Component {
   calculatePrice = () => {
     const { selectedCount, selectedProduct } = this.state;
     const total = selectedCount * selectedProduct.price;
-    console.log(total);
     return new Intl.NumberFormat('ko-KR', {
       style: 'currency',
       currency: 'KRW',
@@ -102,21 +103,12 @@ class Products extends Component {
       isModalCartOpen,
       isModalAlertOpen,
     } = this.state;
-
     return (
       <>
         <section className="products">
-          <Headers selectedOption={selectedOption} />
-          <div className="selectedOption"> {selectedOption}</div>
-          <ul className="subCategories">
-            <li>전체</li>
-            <li>주간베스트</li>
-            <li>별 다섯개 후기</li>
-            <li>온라인 전용</li>
-            <li>국내제조</li>
-            <li>네이키드</li>
-            <li>리틀 러쉬</li>
-          </ul>
+          <Nav />
+          <div className="selectedOption">{`[${selectedOption}] 검색결과`}</div>
+
           <Lists
             productLists={productLists}
             visibleCards={visibleCards}

@@ -23,10 +23,6 @@ export default class AddToCart extends Component {
   };
 
   calculatePrice = () => {
-    // const { selectedCount } = this.state;
-    // const { selectedProduct } = this.props;
-    // console.log(selectedCount);
-    // const total = selectedCount * selectedProduct.option;
     const total = 10_000;
     return new Intl.NumberFormat('ko-KR', {
       style: 'currency',
