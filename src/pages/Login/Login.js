@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import './Login.scss';
 import { API } from '../../config';
+import Nav from '../../components/Nav';
 
 class Login extends Component {
   constructor() {
@@ -20,20 +21,9 @@ class Login extends Component {
   handleSubmit = e => {
     e.preventDefault();
     const { id, pw } = this.state;
-    const checkSpace = /\s/;
-    const checkSpecial = /[~!@#$%^&*()_+|<>?:;`,{}\]\[\/\'\"\.\₩\\\=\-]/;
-    const checkKorean = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/;
-    const checkPassword = /^(?=.*[a-zA-Z])(?=.*[0-9]).{8,}/;
 
     if (!id) {
-      alert('아이디를 입력해주세요.');
-    } else if (
-      id.search(checkSpace) !== -1 ||
-      id.search(checkSpecial) !== -1 ||
-      id.search(checkKorean) !== -1 ||
-      id.length < 8
-    ) {
-      alert('잘못된 아이디 입니다.');
+      alert('아이디를 입력해주세요');
     } else if (!pw) {
       alert('패스워드를 입력해주세요.');
     } else if (!checkPassword.test(pw) || pw.search(checkSpace) !== -1) {
