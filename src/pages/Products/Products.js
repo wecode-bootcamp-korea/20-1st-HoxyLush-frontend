@@ -170,7 +170,7 @@ class Products extends Component {
         )}
 
         {isModalConfirmOpen && (
-          <Modal onClose={this.toggleModalAlert}>
+          <Modal type="AddToCart" onClose={this.toggleModalAlert}>
             <div className="orderSuccessModal">
               <h1>상품이 장바구니에 담겼습니다.</h1>
               <p>바로 확인하시겠습니까?</p>

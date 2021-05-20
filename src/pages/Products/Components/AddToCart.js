@@ -98,8 +98,8 @@ export default class AddToCart extends Component {
           />
         </div>
 
-        {/* {isModalAlertOpen && (
-          <Modal onClose={toggleModalAlert} Type={MODAL_TYPE}>
+        {isModalAlertOpen && (
+          <Modal onClose={toggleModalAlert} type={MODAL_TYPE}>
             <div className="outOfStockModal">
               <i
                 className="fas fa-times modalClose"
@@ -119,7 +119,7 @@ export default class AddToCart extends Component {
               </button>
             </div>
           </Modal>
-        )} */}
+        )}
       </div>
     );
   }

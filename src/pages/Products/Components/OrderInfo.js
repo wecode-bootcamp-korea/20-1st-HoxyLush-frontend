@@ -63,7 +63,7 @@ export default class OrderInfo extends Component {
           </>
         ) : null}
         {isModalOpen ? (
-          <Modal>
+          <Modal type={MODAL_TYPE}>
             <div className="outOfStockModal">
               <i
                 className="fas fa-times modalClose"
@@ -86,3 +86,5 @@ export default class OrderInfo extends Component {
     );
   }
 }
+
+const MODAL_TYPE = 'AddToCart';
