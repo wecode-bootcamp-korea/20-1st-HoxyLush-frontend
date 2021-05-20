@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './Card.scss';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 
 class Card extends Component {
   render() {
@@ -13,25 +13,29 @@ class Card extends Component {
 
     return (
       <div className="card">
-        <li className="cardWrapper" data-num={list.product_id}>
-          <Link to={`/product/${list.id}`}>
-            <img
-              src={list.image_url}
-              alt="러쉬"
-              className={list.option[0].quantity ? '' : 'opacity'}
-            />
-            <div className="tags">
-              {list.option[0].quantity ? showTagList : showSoldOut}
-            </div>
-            <h2 className="title">{list.name}</h2>
-            <div className="hashTags small">{list.hashtag}</div>
-            <div className="price">
-              {new Intl.NumberFormat('ko-KR', {
-                style: 'currency',
-                currency: 'KRW',
-              }).format(list.option[0].price)}
-            </div>
-          </Link>
+        <li
+          className="cardWrapper"
+          data-num={list.product_id}
+          onClick={() => this.props.history.push()}
+        >
+          {/* <Link to={`/product/${list.product_id}`}> */}
+          <img
+            src={list.image_url}
+            alt="러쉬"
+            className={list.option[0].quantity ? '' : 'opacity'}
+          />
+          <div className="tags">
+            {list.option[0].quantity ? showTagList : showSoldOut}
+          </div>
+          <h2 className="title">{list.name}</h2>
+          <div className="hashTags small">{list.hashtag}</div>
+          <div className="price">
+            {new Intl.NumberFormat('ko-KR', {
+              style: 'currency',
+              currency: 'KRW',
+            }).format(list.option[0].price)}
+          </div>
+          {/* </Link> */}
         </li>
         <div className="cardIcons">
           <i className="far fa-heart"></i>

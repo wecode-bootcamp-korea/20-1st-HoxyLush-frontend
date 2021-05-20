@@ -1,40 +1,38 @@
 import React, { Component } from 'react';
 import Modal from '../../components/Modal';
-import AddToCart from './Components/AddToCart';
-import Headers from './Components/Headers';
-import Lists from './Components/Lists';
-import Button from '../../components/Button';
+import AddToCart from '../Products/Components/AddToCart';
+import Lists from '../Products/Components/Lists';
 import { PRODUCT_API } from '../../config';
-import './Products.scss';
+import Nav from '../../components/Nav';
+
+import './SearchResult.scss';
 
 class Products extends Component {
   state = {
-    selectedOption: '베스트', //수정 예정
     productLists: [],
-    selectedProduct: {},
+    visibleCards: 8,
     isModalAlertOpen: false,
     isModalCartOpen: false,
+    selectedProduct: [],
   };
 
   componentDidMount() {
-    fetch(`${PRODUCT_API}/products`)
+    const keyword = this.props.location.search;
+    this.setState({ selectedOption: keyword.slice(9, keyword.length) });
+    fetch(`${PRODUCT_API}/products${keyword}`)
       .then(res => res.json())
-      .then(data =>
+      .then(searchdata =>
         this.setState({
-          productLists: data.product_info,
+          productLists: searchdata.product_info,
         })
       );
   }
 
   handleLoadMoreBtn = () => {
-    const { productLists } = this.state;
-    fetch(`${PRODUCT_API}/products?pagination=1&limit=13`)
-      .then(res => res.json())
-      .then(data =>
-        this.setState({
-          productLists: [...productLists, ...data.product_info],
-        })
-      );
+    const { visibleCards } = this.state;
+    this.setState({
+      visibleCards: visibleCards + 8,
+    });
   };
 
   toggleModalAlert = () => {
@@ -45,32 +43,43 @@ class Products extends Component {
   };
 
   toggleModalCart = id => {
-    const { isModalCartOpen, productLists } = this.state;
+    const { isModalCartOpen } = this.state;
     this.setState({
       isModalCartOpen: !isModalCartOpen,
-      selectedProduct: productLists.find(product => product.id === id),
     });
+
+    const url = '/data/selectedProduct.json'; //전달받은 id로 데이터 받아오기
+    fetch(url)
+      .then(res => res.json())
+      .then(data =>
+        this.setState({
+          selectedProduct: data.product[0],
+        })
+      );
   };
 
   handleIncreaseCount = e => {
-    const { selectedCount, selectedProduct } = this.state;
+    const { selectedCount } = this.state;
+    if (selectedCount < 4) {
+      this.setState({
+        selectedCount: selectedCount + 1,
+      });
+    } else {
+      this.setState({
+        selectedCount: 4,
+      });
 
-    if (selectedCount === selectedProduct.option[0].stock) {
       this.toggleModalAlertAlert();
-      return;
     }
-
-    this.setState({
-      selectedCount: selectedCount + 1,
-    });
   };
 
   handleDecreaseCount = e => {
     const { selectedCount } = this.state;
     if (selectedCount - 1 < 1) return;
 
+    const revisedCount = selectedCount - 1;
     this.setState({
-      selectedCount: selectedCount - 1,
+      selectedCount: revisedCount,
     });
   };
 
@@ -87,43 +96,46 @@ class Products extends Component {
     const {
       productLists,
       selectedOption,
+      visibleCards,
       selectedProduct,
       isModalCartOpen,
       isModalAlertOpen,
     } = this.state;
+    const keyword = this.props.location.search;
 
     return (
       <>
         <section className="products">
-          <Headers selectedOption={selectedOption} />
-          <div className="selectedOption"> {selectedOption}</div>
-          <ul className="subCategories">
-            <li>전체</li>
-            <li>주간베스트</li>
-            <li>별 다섯개 후기</li>
-            <li>온라인 전용</li>
-            <li>국내제조</li>
-            <li>네이키드</li>
-            <li>리틀 러쉬</li>
-          </ul>
+          <Nav />
+          <div className="selectedOption">{`[${keyword.slice(
+            9,
+            keyword.length
+          )}] 검색결과`}</div>
+
           <Lists
             productLists={productLists}
+            visibleCards={visibleCards}
             toggleModalAlert={this.toggleModalAlert}
             toggleModalCart={this.toggleModalCart}
           />
-          <div className="loadMoreBtnWrapper">
-            <Button
-              info="loadMore"
-              name="Load More"
+          {productLists.length ? (
+            <button
+              ClassName="loadMore"
               onClick={this.handleLoadMoreBtn}
-            />
-          </div>
+              type="button"
+            >
+              <span>Load More</span>
+            </button>
+          ) : (
+            <p className="resultNothing">상품이 존재하지 않습니다.</p>
+          )}
         </section>
         {isModalCartOpen && (
-          <Modal onClose={this.toggleModalAlert} type={MODAL_TYPE}>
+          <Modal onClose={this.toggleModalAlert}>
             <AddToCart
               increase={this.handleIncreaseCount}
               decrease={this.handleDecreaseCount}
+              // calculate={this.calculatePrice}
               selectedProduct={selectedProduct}
               toggleModalCart={this.toggleModalCart}
               toggleModalAlert={this.toggleModalAlert}
@@ -137,4 +149,3 @@ class Products extends Component {
 }
 
 export default Products;
-const MODAL_TYPE = 'AddToCart';
