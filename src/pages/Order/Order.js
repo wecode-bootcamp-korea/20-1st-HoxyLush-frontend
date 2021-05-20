@@ -92,9 +92,9 @@ export default class Order extends Component {
       },
     };
 
-    fetch(`${CART_DELETE_API}/orders/cart?${id}`, fetchDeleteOption).then(res =>
+    fetch(`${CART_DELETE_API}/orders/cart?${id}`, fetchDeleteOption).then(() =>
       this.setState({
-        productInCart: productInCart.filter(item => item.is_checked === true),
+        productInCart: productInCart.filter(item => item.is_checked === false),
       })
     );
   };
@@ -106,7 +106,7 @@ export default class Order extends Component {
       .map(item => {
         return item.option_id;
       });
-
+    console.log(optionId);
     const queryString = optionId.map(item => `option-id=${item}`).join('&');
 
     this.sendToDeleteInfo(queryString);
