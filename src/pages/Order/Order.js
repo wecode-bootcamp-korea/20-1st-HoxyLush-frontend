@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import CartList from './components/CartList';
 import Like from './components/Like';
 import OrderHeader from './components/OrderHeader';
-import { CART_API, LIKE_API } from '../../config';
-import { CART_DELETE_API } from '../../config';
+import { CART_API, LIKE_API, CART_DELETE_API } from '../../config';
+import { hasObject } from '../../uitilityFunc';
 import './Order.scss';
 
 export default class Order extends Component {
@@ -132,10 +132,11 @@ export default class Order extends Component {
 
   render() {
     const { productInCart, likeProducts } = this.state;
+    console.log(productInCart);
     return (
       <main className="cart">
         <OrderHeader />
-        {/* {productInCart.length && ( */}
+
         <CartList
           productInCart={productInCart}
           handleCheckBox={this.handleCheckBox}
@@ -143,7 +144,7 @@ export default class Order extends Component {
           clearCart={this.clearCart}
           handleAllCheckedBox={this.handleAllCheckedBox}
         />
-        {/* )} */}
+
         {/* <Like likeProducts={likeProducts} /> */}
       </main>
     );

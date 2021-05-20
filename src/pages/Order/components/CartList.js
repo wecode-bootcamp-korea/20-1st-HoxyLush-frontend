@@ -22,10 +22,11 @@ export default class CartList extends Component {
       removeProduct,
       handleAllCheckedBox,
     } = this.props;
+
     return (
       <section className="cartList">
         <div className="cartListProduct">제품</div>
-        {hasObject(productInCart.length) ? (
+        {hasObject(productInCart) ? (
           <table className="cartTable">
             <thead className="cartTableHead">
               <tr>
