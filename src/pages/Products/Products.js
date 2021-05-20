@@ -5,6 +5,7 @@ import Headers from './Components/Headers';
 import Lists from './Components/Lists';
 import Button from '../../components/Button';
 import { PRODUCT_API, FILTER_API } from '../../config';
+import { exchangeCurrency } from '../../utilityFunc';
 
 import './Products.scss';
 
@@ -91,10 +92,7 @@ class Products extends Component {
     const { selectedCount, selectedProduct } = this.state;
     const total = selectedCount * selectedProduct.price;
     console.log(total);
-    return new Intl.NumberFormat('ko-KR', {
-      style: 'currency',
-      currency: 'KRW',
-    }).format(total);
+    return exchangeCurrency(total);
   };
 
   filterByCategory = category => {

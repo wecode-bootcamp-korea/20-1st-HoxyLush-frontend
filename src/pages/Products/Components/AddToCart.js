@@ -4,6 +4,7 @@ import Modal from '../../../components/Modal';
 import OrderCountControler from '../../../components/OrderCountControler';
 import { Link } from 'react-router-dom';
 import { CART_UPDATE_API } from '../../../config';
+import { exchangeCurrency } from '../../../utilityFunc';
 import './AddToCart.scss';
 
 export default class AddToCart extends Component {
@@ -56,10 +57,7 @@ export default class AddToCart extends Component {
     const { selectedCount } = this.state;
     const { selectedProduct } = this.props;
     const total = selectedCount * selectedProduct.option[0].price;
-    return new Intl.NumberFormat('ko-KR', {
-      style: 'currency',
-      currency: 'KRW',
-    }).format(total);
+    return exchangeCurrency(total);
   };
 
   render() {

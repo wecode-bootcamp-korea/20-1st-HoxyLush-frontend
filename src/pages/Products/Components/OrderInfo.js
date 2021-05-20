@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Modal from '../../../components/Modal';
 import OrderCountControler from '../../../components/OrderCountControler';
+import { exchangeCurrency } from '../../../utilityFunc';
 import './OrderInfo.scss';
 
 export default class OrderInfo extends Component {
@@ -27,10 +28,7 @@ export default class OrderInfo extends Component {
     const { selectedProduct } = this.props;
 
     const total = selectedCount * selectedProduct.option[0].price;
-    return new Intl.NumberFormat('ko-KR', {
-      style: 'currency',
-      currency: 'KRW',
-    }).format(total);
+    return exchangeCurrency(total);
   };
 
   render() {
