@@ -49,7 +49,7 @@ class Login extends Component {
         .then(res => res.json())
         .then(submitResult => {
           if (submitResult.MESSAGE === 'SUCCESS') {
-            localStorage.setItem('wtwToken', submitResult.token);
+            localStorage.setItem('accessToken', submitResult.token);
             this.props.history.push('/');
           } else {
             alert('회원정보를 찾을 수 없습니다.');
@@ -72,7 +72,7 @@ class Login extends Component {
         </ul>
 
         <div className="loginInfo">
-          <div className="inputLogin">
+          <div className="inputLoginInfo">
             <i class="fas fa-user-circle fa-lg"></i>
             <input
               className="id"
@@ -84,12 +84,12 @@ class Login extends Component {
               pattern="/^[A-Za-z0-9+]*$/"
             />
           </div>
-          <div className="inputLogin">
+          <div className="inputLoginInfo">
             <i class="fas fa-lock fa-lg"></i>
             <input
               className="pw"
               type="text"
-              placeholder="패스워드"
+              placeholder="비밀번호"
               onChange={handleInput}
               name="pw"
               value={pw}
@@ -106,7 +106,7 @@ class Login extends Component {
             로그인
           </button>
           <div className="loginMenu">
-            <Link to="/Login-signup">
+            <Link to="/signup">
               <button className="signUp">회원가입</button>
             </Link>
             <button className="findId">아이디 찾기</button>
