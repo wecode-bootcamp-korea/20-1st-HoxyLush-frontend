@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import OrderCountControler from '../../../components/OrderCountControler';
 import Modal from '../../../components/Modal';
-import { exchangeCurrency } from '../../../utilityFunc';
 import { CART_UPDATE_API } from '../../../config';
+import { exchangeCurrency } from '../../../utilityFunc';
 
 export default class ProductInCart extends Component {
   state = {
@@ -18,13 +18,15 @@ export default class ProductInCart extends Component {
   }
 
   sendToSever = count => {
+    const { product } = this.props;
+
     const fetchUpdateOption = {
       method: 'PUT',
       headers: {
         Authorization: localStorage.getItem('Authorization'),
       },
       body: JSON.stringify({
-        option_id: 1,
+        option_id: product.option_id,
         quantity: count,
       }),
     };

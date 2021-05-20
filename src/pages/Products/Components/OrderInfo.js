@@ -82,7 +82,6 @@ export default class OrderInfo extends Component {
             </div>
           </Modal>
         ) : null}{' '}
-        */}
       </>
     );
   }
