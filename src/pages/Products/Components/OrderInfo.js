@@ -62,7 +62,6 @@ export default class OrderInfo extends Component {
             </div>
           </>
         ) : null}
-
         {isModalOpen ? (
           <Modal>
             <div className="outOfStockModal">
@@ -82,7 +81,7 @@ export default class OrderInfo extends Component {
               </button>
             </div>
           </Modal>
-        ) : null} */}
+        ) : null}
       </>
     );
   }
