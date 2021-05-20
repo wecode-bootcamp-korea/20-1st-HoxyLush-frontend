@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ProductInCart from './ProductInCart';
 import Button from '../../../components/Button';
+import { exchangeCurrency } from '../../../uitilityFunc';
 import { Link } from 'react-router-dom';
 import './CartList.scss';
 
@@ -24,7 +25,7 @@ export default class CartList extends Component {
     return (
       <section className="cartList">
         <div className="cartListProduct">제품</div>
-        {productInCart.length ? (
+        {hasObject(productIncCart.length) ? (
           <table className="cartTable">
             <thead className="cartTableHead">
               <tr>
@@ -69,10 +70,7 @@ export default class CartList extends Component {
           <span className="totalPriceInCart price">
             <strong>
               {productInCart.length
-                ? new Intl.NumberFormat('ko-KR', {
-                    style: 'currency',
-                    currency: 'KRW',
-                  }).format(this.calculateTotalPriceInCart())
+                ? exchangeCurrency(this.calculateTotalPriceInCart())
                 : `₩ 0`}
             </strong>
           </span>
@@ -88,10 +86,7 @@ export default class CartList extends Component {
           <span className="totalOrderPrice">
             <strong>
               {productInCart.length
-                ? new Intl.NumberFormat('ko-KR', {
-                    style: 'currency',
-                    currency: 'KRW',
-                  }).format(this.calculateTotalPriceInCart())
+                ? exchangeCurrency(this.calculateTotalPriceInCart())
                 : `₩ 0`}
             </strong>
           </span>
