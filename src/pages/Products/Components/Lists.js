@@ -10,14 +10,13 @@ class Lists extends Component {
       <ul className="lists">
         {productLists.map(list => {
           return (
-            <Link to={`/products/${1}`}>
-              <Card
-                key={list.product_id}
-                list={list}
-                toggleModalAlert={toggleModalAlert}
-                toggleModalCart={toggleModalCart}
-              />
-            </Link>
+            <Card
+              key={list.product_id}
+              id={list.product_id}
+              list={list}
+              toggleModalAlert={toggleModalAlert}
+              toggleModalCart={toggleModalCart}
+            />
           );
         })}
       </ul>
