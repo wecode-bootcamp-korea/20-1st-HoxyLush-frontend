@@ -17,7 +17,7 @@ class Card extends Component {
         <li
           className="cardWrapper"
           data-num={list.product_id}
-          onClick={() => this.props.history.push()}
+          // onClick={() => this.props.history.push()}
         >
           {/* <Link to={`/product/${list.product_id}`}> */}
           <img

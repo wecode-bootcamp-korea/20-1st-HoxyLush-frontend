@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Card from './Card';
+import { Link } from 'react-router-dom';
 import './Lists.scss';
 
 class Lists extends Component {
@@ -9,12 +10,14 @@ class Lists extends Component {
       <ul className="lists">
         {productLists.map(list => {
           return (
-            <Card
-              key={list.product_id}
-              list={list}
-              toggleModalAlert={toggleModalAlert}
-              toggleModalCart={toggleModalCart}
-            />
+            <Link to={`/products/${1}`}>
+              <Card
+                key={list.product_id}
+                list={list}
+                toggleModalAlert={toggleModalAlert}
+                toggleModalCart={toggleModalCart}
+              />
+            </Link>
           );
         })}
       </ul>
