@@ -102,11 +102,11 @@ export default class ProductInCart extends Component {
         </tr>
 
         {isModalAlertOpen && (
-          <Modal>
+          <Modal type="AddToCart">
             <div className="outOfStockModal">
               <i
                 className="fas fa-times modalClose"
-                onClick={this.closeModalAlert}
+                onClick={this.toggleModalAlert}
               ></i>
               <h1>잔여 재고 : {product.stock}개</h1>
               <p>현재 {product.stock}개 이상 주문이 어렵습니다.</p>
