@@ -150,10 +150,10 @@ export default class Nav extends Component {
           </ul>
           <div className="navIcons">
             <i className="fas fa-search" onClick={this.closeNavSearchModal}></i>
-            <div className="shoppingBasket">
+            <Link className="shoppingBasket" to="orders">
               <i className="fas fa-shopping-cart"></i>
               <div className="basketProductNumber">{basketProductCount}</div>
-            </div>
+            </Link>
             <i className="fas fa-user-circle"></i>
           </div>
         </div>

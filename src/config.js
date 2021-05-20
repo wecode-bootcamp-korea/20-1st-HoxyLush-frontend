@@ -2,7 +2,7 @@ export const API = 'http://192.168.255.139:8000';
 
 export const PRODUCT_API = 'https://hoxylush-gjeik.run.goorm.io';
 
-export const BASCKET_API = 'http://10.58.2.179:8000';
+export const BASCKET_API = 'https://hoxylush-gjeik.run.goorm.io';
 
 export const CART_API = 'https://hoxylush-gjeik.run.goorm.io';
 
