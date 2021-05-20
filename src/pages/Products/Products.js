@@ -4,7 +4,7 @@ import AddToCart from './Components/AddToCart';
 import Headers from './Components/Headers';
 import Lists from './Components/Lists';
 import Button from '../../components/Button';
-import { PRODUCT_API } from '../../config';
+import { PRODUCT_API, FILTER_API } from '../../config';
 
 import './Products.scss';
 
@@ -102,6 +102,7 @@ class Products extends Component {
       selectedOption: category,
     });
     //경래님 API 확인
+    fetch(`$FILTER_API`).then().then();
   };
 
   render() {
