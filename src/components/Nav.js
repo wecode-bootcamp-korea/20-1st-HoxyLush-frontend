@@ -5,6 +5,7 @@ import PRODUCT_CATEGORYS from './productCategories';
 import INTRODUCE_LUSH from './introduceLush';
 import { BASCKET_API } from '../config';
 import NavSearchModal from './NavSearchModal';
+import Modal from '../components/Modal';
 
 export default class Nav extends Component {
   constructor() {
@@ -58,12 +59,14 @@ export default class Nav extends Component {
   render() {
     const { productCategoryWatch, introduceLushWatch, basketProductCount } =
       this.state;
+    console.log(this.state.navSearchModal);
     return (
       <nav className="nav">
         <div className="topNav">
           <div className="siteTitle">
             <Link className="goMain" to="/">
-              HOXY LUSH
+              <span className="mainTitle">HOXY</span>
+              <span className="mainTitle">LUSH</span>
             </Link>
           </div>
           <ul className="navMenu">
@@ -146,16 +149,12 @@ export default class Nav extends Component {
             </li>
           </ul>
           <div className="navIcons">
-            <Link onClick={this.closeNavSearchModal}>
-              <i className="fas fa-search"></i>
-            </Link>
-            <Link className="shoppingBasket">
+            <i className="fas fa-search" onClick={this.closeNavSearchModal}></i>
+            <div className="shoppingBasket">
               <i className="fas fa-shopping-cart"></i>
               <div className="basketProductNumber">{basketProductCount}</div>
-            </Link>
-            <Link>
-              <i className="fas fa-user-circle"></i>
-            </Link>
+            </div>
+            <i className="fas fa-user-circle"></i>
           </div>
         </div>
         <div className="eventBannerContainer">
@@ -164,10 +163,11 @@ export default class Nav extends Component {
             <Link className="goToEvent">이벤트 참여하기</Link>
           </div>
         </div>
-        <NavSearchModal
-          closeNavSearchModal={this.closeNavSearchModal}
-          closeStatus={this.state.navSearchModal}
-        />
+        {this.state.navSearchModal && (
+          <Modal>
+            <NavSearchModal closeNavSearchModal={this.closeNavSearchModal} />
+          </Modal>
+        )}
       </nav>
     );
   }

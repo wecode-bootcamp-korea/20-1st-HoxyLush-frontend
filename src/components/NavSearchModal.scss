@@ -1,12 +1,6 @@
 @import '../styles/variables.scss';
 
 .navSearchModal {
-  // @include flexCenter(column);
-  // position: fixed;
-  // top: 0;
-  // right: 0;
-  // bottom: 0;
-  // left: 0;
   z-index: 100;
   position: fixed;
   top: 0;
@@ -15,12 +9,11 @@
   left: 0;
   background-color: rgba(0, 0, 0, 0.9);
   display: flex;
-  // display: none;
+
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  // padding: auto;
-  // filter: blur(3px);
+
   .modalCloseButton {
     position: fixed;
     top: 66px;
@@ -29,9 +22,8 @@
     font-size: 50px;
   }
   .modalContainer {
-    .modalBackdrop {
+    .navSearchBackdrop {
       display: inline-block;
-      // margin: 300px 100px 0px auto;
       width: 650px;
       height: 78px;
       border-bottom: 1px solid white;
@@ -43,13 +35,6 @@
         font-size: 24px;
         text-align: center;
       }
-      // position: fixed;
-      // top: 0;
-      // right: 0;
-      // bottom: 0;
-      // left: 0;
-      // background-color: rgba(0, 0, 0, 0.4);
-      // filter: blur(3px);
     }
     .fas {
       margin-left: 14px;
@@ -59,13 +44,6 @@
     }
 
     .modalBox {
-      // @include flexCenter(column);
-      // position: relative;
-      // min-width: 460px;
-      // min-height: 310px;
-      // background-color: $color-white;
-      // text-align: center;
-
       h1 {
         font-size: 22px;
         margin-bottom: 20px;
@@ -93,7 +71,4 @@
       }
     }
   }
-}
-.navModalClose {
-  display: none;
 }

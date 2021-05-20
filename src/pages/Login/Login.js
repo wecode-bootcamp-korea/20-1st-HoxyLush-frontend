@@ -106,7 +106,7 @@ class Login extends Component {
             로그인
           </button>
           <div className="loginMenu">
-            <Link to="/Login-signup">
+            <Link to="/signup">
               <button className="signUp">회원가입</button>
             </Link>
             <button className="findId">아이디 찾기</button>

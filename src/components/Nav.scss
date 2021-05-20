@@ -21,6 +21,9 @@
       .goMain {
         color: white;
         text-align: center;
+        .mainTitle {
+          display: block;
+        }
       }
     }
 
@@ -124,14 +127,6 @@
         margin: 0 0 0 0;
       }
 
-      // a {
-      //   all: unset;
-      //   color: white;
-      //   font-size: 22px;
-      //   @media screen and (max-width: 768px) {
-      //     padding-left: 15px;
-      //   }
-      // }
       .fas {
         color: white;
         font-size: 22px;

@@ -1,7 +1,6 @@
 @import './../../styles/variables.scss';
 
 .products {
-  width: 100%;
   margin: 0 auto;
   overflow-x: hidden;
   -ms-overflow-style: none;
@@ -70,7 +69,7 @@
     }
   }
   .resultNothing {
-    margin: 0 auto;
+    margin: 100px auto 0;
     text-align: center;
   }
 }

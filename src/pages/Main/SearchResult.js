@@ -9,7 +9,6 @@ import './SearchResult.scss';
 
 class Products extends Component {
   state = {
-    selectedOption: '',
     productLists: [],
     visibleCards: 8,
     isModalAlertOpen: false,
@@ -52,10 +51,9 @@ class Products extends Component {
     const url = '/data/selectedProduct.json'; //전달받은 id로 데이터 받아오기
     fetch(url)
       .then(res => res.json())
-      .then(data => data.product[0])
-      .then(selectedProduct =>
+      .then(data =>
         this.setState({
-          selectedProduct,
+          selectedProduct: data.product[0],
         })
       );
   };
@@ -103,12 +101,16 @@ class Products extends Component {
       isModalCartOpen,
       isModalAlertOpen,
     } = this.state;
-    console.log(productLists);
+    const keyword = this.props.location.search;
+
     return (
       <>
         <section className="products">
           <Nav />
-          <div className="selectedOption">{`[${selectedOption}] 검색결과`}</div>
+          <div className="selectedOption">{`[${keyword.slice(
+            9,
+            keyword.length
+          )}] 검색결과`}</div>
 
           <Lists
             productLists={productLists}
@@ -117,7 +119,11 @@ class Products extends Component {
             toggleModalCart={this.toggleModalCart}
           />
           {productLists.length ? (
-            <button id="loadMore" onClick={this.handleLoadMoreBtn}>
+            <button
+              ClassName="loadMore"
+              onClick={this.handleLoadMoreBtn}
+              type="button"
+            >
               <span>Load More</span>
             </button>
           ) : (

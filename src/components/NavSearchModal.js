@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { createPortal } from 'react-dom';
+
 import { withRouter } from 'react-router-dom';
 
 import './NavSearchModal.scss';
@@ -17,42 +17,34 @@ class NavSearchModal extends Component {
     this.props.history.push(`/search?keyword=${this.state.searchkeyword}`);
   };
 
-  inputHanddle = e => {
+  inputHandle = e => {
     const { name, value } = e.target;
     this.setState({ [name]: value });
   };
 
   render() {
-    const { children } = this.props;
-    return createPortal(
-      <div
-        className={this.props.closeStatus ? 'navSearchModal' : 'navModalClose'}
-      >
-        <button
-          className="modalCloseButton"
-          onClick={this.props.closeNavSearchModal}
-        >
+    const { closeNavSearchModal } = this.props;
+    const { navSearch, inputHandle } = this;
+
+    return (
+      <div className="navSearchModal">
+        <button className="modalCloseButton" onClick={closeNavSearchModal}>
           <i class="fas fa-times"></i>
         </button>
-        <form className="modalContainer" onSubmit={this.navSearch}>
+        <form className="modalContainer" onSubmit={navSearch}>
           <input
-            className="modalBackdrop"
+            className="navSearchBackdrop"
             placeholder="더 풍성하게 돌아온 NEW 기프트"
             name="searchkeyword"
-            onChange={this.inputHanddle}
+            onChange={inputHandle}
           />
           <button>
             <i className="fas fa-search" />
           </button>
         </form>
-        <ul className="modalBox">
-          <div>{children}</div>
-        </ul>
-      </div>,
-      modalRoot
+      </div>
     );
   }
 }
 
-const modalRoot = document.querySelector('#modalRoot');
 export default withRouter(NavSearchModal);
