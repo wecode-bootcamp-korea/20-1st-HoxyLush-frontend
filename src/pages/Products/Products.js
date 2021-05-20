@@ -23,7 +23,7 @@ class Products extends Component {
       .then(res => res.json())
       .then(data =>
         this.setState({
-          productLists: data.product_info,
+          productLists: data.Product_Info,
         })
       );
   }
@@ -31,11 +31,12 @@ class Products extends Component {
   handleLoadMoreBtn = () => {
     const { productLists, currentPagination } = this.state;
     const nextPagination = currentPagination + 1;
-    fetch(`${PRODUCT_API}/products?pagination=${nextPagination}&limit=13`)
+    console.log(nextPagination);
+    fetch(`${PRODUCT_API}/products?pagination=${nextPagination}&limit=4`)
       .then(res => res.json())
       .then(data =>
         this.setState({
-          productLists: [...productLists, ...data.product_info],
+          productLists: [...productLists, ...data.Product_Info],
           currentPagination: nextPagination,
         })
       );
@@ -140,7 +141,7 @@ class Products extends Component {
             <Button
               info="loadMore"
               name="Load More"
-              onClick={this.handleLoadMoreBtn}
+              handleLoadMoreBtn={this.handleLoadMoreBtn}
             />
           </div>
         </section>

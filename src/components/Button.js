@@ -3,10 +3,14 @@ import './Button.scss';
 
 export default class Button extends Component {
   render() {
-    const { info, name, event } = this.props;
+    const { info, name, handleLoadMoreBtn } = this.props;
     return (
       <div className="basicButton">
-        <button type="button" className={`btn ${info}`} onClick={event}>
+        <button
+          type="button"
+          className={`btn ${info}`}
+          onClick={handleLoadMoreBtn}
+        >
           {name}
         </button>
       </div>

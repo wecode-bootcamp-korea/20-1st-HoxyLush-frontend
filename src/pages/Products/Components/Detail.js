@@ -3,7 +3,7 @@ import DetailImages from './DetailImages';
 import DetailInfo from './DetailInfo';
 import DetailMiddle from './DetailMiddle';
 import DetailReview from './DetailReview';
-import { DETAIL_API } from '../../../config';
+// import { DETAIL_API } from '../../../config';
 import './Detail.scss';
 
 export default class Detail extends Component {
@@ -19,13 +19,13 @@ export default class Detail extends Component {
     console.log(this.props);
     // const id = this.props.match.params.id;
     // fetch(`${DETAIL_API}/products/${id}`)
-    fetch(`${DETAIL_API}/products/12`)
-      .then(res => res.json())
-      .then(data =>
-        this.setState({
-          selectedProduct: data.result,
-        })
-      );
+    // fetch(`${DETAIL_API}/products/12`)
+    //   .then(res => res.json())
+    //   .then(data =>
+    //     this.setState({
+    //       selectedProduct: data.result,
+    //     })
+    //   );
   }
 
   toggleModalAlert = () => {
