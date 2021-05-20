@@ -1,9 +1,16 @@
 .footer {
+  display: flex;
+  flex-direction: column;
   .footerBannerImage {
     width: 100%;
     height: 170px;
   }
   .footerContainer {
+    display: flex;
+    justify-content: center;
+    background-color: black;
+    color: white;
+    padding: 50px 0 100px 0;
     .leftFooterContainer {
       display: inline-block;
       width: 200px;
@@ -16,20 +23,26 @@
         }
         .hoxylushOperationInfo {
           margin-top: 30px;
-          li:nth-child(1) {
-          }
           li:nth-child(2) {
             margin-top: 8px;
             text-decoration: underline;
+            font-size: 14px;
           }
           li:nth-child(3) {
-            margin-top: 10px;
+            margin-top: 20px;
+            font-size: 14px;
           }
           li:nth-child(4) {
-            margin-top: 4px;
+            margin-top: 10px;
+            font-size: 14px;
           }
           li:nth-child(5) {
-            margin-top: 30px;
+            margin-top: 40px;
+          }
+          li:nth-child(6) {
+            margin-top: 10px;
+            text-decoration: underline;
+            font-size: 14px;
           }
         }
       }
@@ -42,6 +55,57 @@
         .companyInfoList {
           .companyInfo {
             display: inline-block;
+            margin-left: 48px;
+            font-size: 14px;
+          }
+        }
+        .lushSubscribe {
+          position: relative;
+          margin-top: 60px;
+          margin: 60px 0px 0px 48px;
+          background-color: white;
+          height: 40px;
+          width: 540px;
+          padding: 12px 0 14px 20px;
+          .subscribeInputSpace {
+            width: 340px;
+          }
+          .subscribeButton {
+            position: absolute;
+            right: 1px;
+            bottom: 1px;
+            color: white;
+            background-color: black;
+            width: 100px;
+            height: 38px;
+            font-size: 14px;
+          }
+        }
+        .companyLocation {
+          margin-left: 48px;
+          div:nth-child(1) {
+            margin-top: 20px;
+          }
+          div:nth-child(2) {
+            margin-top: 12px;
+          }
+          div:nth-child(3) {
+            margin-top: 30px;
+            font-size: 14px;
+            color: #979797;
+            letter-spacing: -1px;
+          }
+          div:nth-child(4) {
+            margin-top: 12px;
+            font-size: 14px;
+            color: #979797;
+            letter-spacing: -1px;
+          }
+          div:nth-child(5) {
+            margin-top: 40px;
+            font-size: 14px;
+            color: #979797;
+            letter-spacing: -1px;
           }
         }
       }

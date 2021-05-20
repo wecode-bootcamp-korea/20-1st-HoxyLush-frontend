@@ -36,23 +36,26 @@ export default class Footer extends Component {
                 <li className="companyInfo">이용약관</li>
                 <li className="companyInfo">고객센터</li>
               </ul>
-              <div>
+              <div className="lushSubscribe">
                 <input
+                  className="subscribeInputSpace"
                   type="text"
                   placeholder="이메일 주소를 입력해 주세요."
                 ></input>
-                <button>구독하기</button>
+                <button className="subscribeButton">구독하기</button>
               </div>
-              <div>
-                매주 금요일 오후, 구독자님을 위한 제품과 브랜드 이야기를
-                전해드립니다.
+              <div className="companyLocation">
+                <div>
+                  매주 금요일 오후, 구독자님을 위한 제품과 브랜드 이야기를
+                  전해드립니다.
+                </div>
+                <div>
+                  구독은 언제든지 해지하실 수 있습니다. <span>미리보기</span>
+                </div>
+                <div>{`서울특별시 서초구 서운로 138(서초동아타워) 6층 | 사이트 운영자 : 주식회사 러쉬코리아 | 대표이사 : 우미령`}</div>
+                <div>{`사업자 등록번호 : 201-81-77964 사업자정보확인 | 통신판매업 신고번호 : 2012-서울서초-0647 | 개인정보보호책임자 : 우승용`}</div>
+                <div>COPYRIGHT ⓒ LUSHKOREA CO. LTD. ALL RIGHTS RESERVED.</div>
               </div>
-              <div>
-                구독은 언제든지 해지하실 수 있습니다. <span>미리보기</span>
-              </div>
-              <div>{`서울특별시 서초구 서운로 138(서초동아타워) 6층 | 사이트 운영자 : 주식회사 러쉬코리아 | 대표이사 : 우미령`}</div>
-              <div>{`사업자 등록번호 : 201-81-77964 사업자정보확인 | 통신판매업 신고번호 : 2012-서울서초-0647 | 개인정보보호책임자 : 우승용`}</div>
-              <div>COPYRIGHT ⓒ LUSHKOREA CO. LTD. ALL RIGHTS RESERVED.</div>
             </div>
           </div>
         </section>

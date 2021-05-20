@@ -6,11 +6,14 @@ import Products from './pages/Products/Products';
 import Detail from './pages/Products/Components/Detail';
 import Order from './pages/Order/Order';
 import Signup from './pages/Login/Signup';
+import Nav from '../src/components/Nav';
+import Footer from './components/Footer';
 
 class Routes extends Component {
   render() {
     return (
       <Router>
+        <Nav />
         <Switch>
           <Route exact path="/" component={Main} />
           <Route exact path="/login" component={Login} />
@@ -20,6 +23,7 @@ class Routes extends Component {
           <Route exact path="/products/:id" component={Detail} />
           <Route exact path="/order" component={Order} />
         </Switch>
+        <Footer />
       </Router>
     );
   }
