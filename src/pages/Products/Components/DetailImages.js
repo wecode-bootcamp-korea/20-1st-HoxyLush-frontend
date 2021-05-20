@@ -5,34 +5,40 @@ import './DetailImages.scss';
 export default class DetailImages extends Component {
   render() {
     const { selectedProduct } = this.props;
-    console.log(selectedProduct);
-    // const [mainImg, secondImg, thirdImg] = selectedProduct.product_images || []; //selectedProduct이 undefine일 때 오류 나는 것을 대비
-
+    const [mainImg, secondImg, thirdImg] = selectedProduct.product_images || []; //selectedProduct이 undefine일 때 오류 나는 것을 대비
     return (
       <>
-        {/* {hasObject(selectedProduct.product_images) && ( */}
-        <div className="detailImage">
-          {/* <img className="productImage" src={mainImg} alt="러쉬" /> */}
-          <div className="slider">
-            <i className="fas fa-chevron-left"></i>
-            <div>
-              {/* {secondImg ? (
-                <img
-                  className="productImage small"
-                  src={secondImg}
-                  alt="러쉬"
-                />
-              ) : (
-                <img className="productImage small" src={mainImg} alt="러쉬" />
-              )}
-              {thirdImg && (
-                <img className="productImage small" src={thirdImg} alt="러쉬" />
-              )}*/}
+        {hasObject(selectedProduct) && (
+          <div className="detailImage">
+            <img className="productImage" src={mainImg} alt="러쉬" />
+            <div className="slider">
+              <i className="fas fa-chevron-left"></i>
+              <div>
+                {secondImg ? (
+                  <img
+                    className="productImage small"
+                    src={secondImg}
+                    alt="러쉬"
+                  />
+                ) : (
+                  <img
+                    className="productImage small"
+                    src={mainImg}
+                    alt="러쉬"
+                  />
+                )}
+                {thirdImg && (
+                  <img
+                    className="productImage small"
+                    src={thirdImg}
+                    alt="러쉬"
+                  />
+                )}
+              </div>
+              <i className="fas fa-chevron-right"></i>
             </div>
-            <i className="fas fa-chevron-right"></i>
           </div>
-        </div>
-        {/* )} */}
+        )}
       </>
     );
   }

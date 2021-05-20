@@ -33,6 +33,9 @@ export default class DetailInfo extends Component {
       }),
     };
     fetch(`${CART_UPDATE_API}/orders/cart`, fetchUpdateOption);
+    this.setState({
+      selectedCount: 1,
+    });
   };
 
   render() {

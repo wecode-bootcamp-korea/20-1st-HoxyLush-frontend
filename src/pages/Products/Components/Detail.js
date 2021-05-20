@@ -44,7 +44,10 @@ export default class Detail extends Component {
   };
 
   moveToReviewSection = () => {
-    this.reviewRef.current.scrollIntoView({ behavior: 'smooth' });
+    this.reviewRef.current.scrollIntoView({
+      block: 'nearest',
+      behavior: 'smooth',
+    });
   };
 
   moveToDetailSection = () => {

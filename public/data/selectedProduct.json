@@ -4,7 +4,11 @@
       "id": 1,
       "name": "코스메틱 워리어",
       "hashtag": ["#피부야달래줄게", "#입소문템", "#에그프리"],
-      "product_images": "https://lush.co.kr/data/goods/11/01/20/79/79_detail_085.jpg",
+      "product_images": [
+        "https://lush.co.kr/data/goods/11/01/20/79/79_detail_085.jpg",
+        "https://lush.co.kr/data/goods/11/01/20/79/79_detail_085.jpg",
+        "https://lush.co.kr/data/goods/11/01/20/79/79_detail_085.jpg"
+      ],
       "imgAlt": "러쉬",
       "tag": [
         { "id": 1, "tag": "BEST" },
