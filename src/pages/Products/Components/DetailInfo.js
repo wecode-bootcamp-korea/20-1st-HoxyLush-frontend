@@ -27,7 +27,9 @@ export default class DetailInfo extends Component {
     const { selectedProduct, toggleModalConfirm } = this.props;
     const fetchUpdateOption = {
       method: 'PATCH',
-      Authorization: localStorage.getItem('Authorization'),
+      headers: {
+        Authorization: localStorage.getItem('Authorization'),
+      },
       body: JSON.stringify({
         // option_id: selectedProduct.option_id,//BE data 수정 중
         quantity: selectedCount,
