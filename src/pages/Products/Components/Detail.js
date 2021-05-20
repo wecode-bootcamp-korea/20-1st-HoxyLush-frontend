@@ -20,9 +20,8 @@ export default class Detail extends Component {
   detailRef = React.createRef();
 
   componentDidMount() {
-    // const id = this.props.match.params.id;
-    // fetch(`${DETAIL_API}/products/${id}`)
-    fetch(`${DETAIL_API}/products/11`)
+    const id = this.props.match.params.id;
+    fetch(`${DETAIL_API}/products/${id}`)
       .then(res => res.json())
       .then(data =>
         this.setState({
