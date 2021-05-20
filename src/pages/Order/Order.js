@@ -33,8 +33,6 @@ export default class Order extends Component {
     Promise.all([
       fetch(`${CART_API}/orders/cart`, fetchCartOption),
       fetch(`${LIKE_API}/products/like`, fecthLikeOption),
-      // fetch(CART_URL),
-      // fetch(LIKE_URL),
     ])
       .then(responses =>
         Promise.all(responses.map(response => response.json()))
@@ -42,7 +40,7 @@ export default class Order extends Component {
       .then(lists =>
         lists.map((list, i) => {
           const stateKeys = ['productInCart', 'likeProducts'];
-          const fetchDataKeys = ['selectedQty', 'like_items'];
+          const fetchDataKeys = ['selectedQty', 'Like_Items'];
           return this.setState({
             [stateKeys[i]]: list[fetchDataKeys[i]],
           });
@@ -132,20 +130,21 @@ export default class Order extends Component {
 
   render() {
     const { productInCart, likeProducts } = this.state;
-    console.log(productInCart);
     return (
       <main className="cart">
         <OrderHeader />
 
-        <CartList
-          productInCart={productInCart}
-          handleCheckBox={this.handleCheckBox}
-          removeProduct={this.removeProduct}
-          clearCart={this.clearCart}
-          handleAllCheckedBox={this.handleAllCheckedBox}
-        />
+        {hasObject(productInCart) ? (
+          <CartList
+            productInCart={productInCart}
+            handleCheckBox={this.handleCheckBox}
+            removeProduct={this.removeProduct}
+            clearCart={this.clearCart}
+            handleAllCheckedBox={this.handleAllCheckedBox}
+          />
+        ) : null}
 
-        {/* <Like likeProducts={likeProducts} /> */}
+        <Like likeProducts={likeProducts} />
       </main>
     );
   }
