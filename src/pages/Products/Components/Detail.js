@@ -88,7 +88,7 @@ export default class Detail extends Component {
         </section>
 
         {isModalConfirmOpen && (
-          <Modal onClose={this.toggleModalConfirm} type={MODAL_TYPE}>
+          <Modal onClose={this.toggleModalConfirm}>
             <div className="outOfStockModal">
               <h1>상품이 장바구니에 담겼습니다.</h1>
               <p>바로 확인하시겠습니까?</p>
@@ -105,5 +105,3 @@ export default class Detail extends Component {
     );
   }
 }
-
-const MODAL_TYPE = 'AddToCart';
