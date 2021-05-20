@@ -155,7 +155,7 @@ class Products extends Component {
           </div>
         </section>
         {isModalCartOpen && (
-          <Modal onClose={this.toggleModalAlert}>
+          <Modal onClose={this.toggleModalAlert} type={MODAL_TYPE}>
             <AddToCart
               increase={this.handleIncreaseCount}
               decrease={this.handleDecreaseCount}
@@ -193,3 +193,4 @@ class Products extends Component {
 }
 
 export default Products;
+const MODAL_TYPE = 'AddToCart';

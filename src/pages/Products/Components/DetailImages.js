@@ -4,12 +4,11 @@ import './DetailImages.scss';
 
 export default class DetailImages extends Component {
   render() {
-    const { product_images } = this.props.selectedProduct;
-    const [mainImg, secondImg, thirdImg] = product_images || []; //selectedProduct이 undefine일 때 오류 나는 것을 대비
-
+    const { selectedProduct } = this.props;
+    const [mainImg, secondImg, thirdImg] = selectedProduct.product_images || []; //selectedProduct이 undefine일 때 오류 나는 것을 대비
     return (
       <>
-        {hasObject(product_images) && (
+        {hasObject(selectedProduct) && (
           <div className="detailImage">
             <img className="productImage" src={mainImg} alt="러쉬" />
             <div className="slider">

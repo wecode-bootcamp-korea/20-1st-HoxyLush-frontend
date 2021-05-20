@@ -69,7 +69,7 @@ class Signup extends Component {
       });
     }
   };
-  // 비밀번호 수정해야함
+
   pwValidCheck = e => {
     const { pw } = this.state;
     const checkSpace = /\s/;

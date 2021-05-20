@@ -17,19 +17,20 @@
     &.order,
     &.shoppingMore {
       width: 285px;
-      // margin: 0 10px;
     }
 
     &.order,
     &.putInCart,
-    &.loadMore {
+    &.loadMore,
+    &.confirm {
       background-color: $color-black;
       color: $color-white;
     }
 
     &.cancel,
     &.close,
-    &.putInCart {
+    &.putInCart,
+    &.confirm {
       width: 160px;
       margin: 0 10px;
     }

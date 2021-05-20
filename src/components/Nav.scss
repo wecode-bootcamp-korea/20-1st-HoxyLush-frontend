@@ -21,6 +21,9 @@
       .goMain {
         color: white;
         text-align: center;
+        .mainTitle {
+          display: block;
+        }
       }
     }
 
@@ -37,7 +40,7 @@
           letter-spacing: 3px;
           line-height: 96px;
         }
-        .test222 {
+        .categoryContainer {
           display: flex;
           justify-content: center;
 
@@ -116,6 +119,7 @@
       }
     }
     .navIcons {
+      // position: relative;
       @include flexBtw();
       width: 150px;
       margin-left: 116px;
@@ -123,12 +127,24 @@
         margin: 0 0 0 0;
       }
 
-      a {
-        all: unset;
+      .fas {
         color: white;
         font-size: 22px;
-        @media screen and (max-width: 768px) {
-          padding-left: 15px;
+      }
+      .shoppingBasket {
+        position: relative;
+        .basketProductNumber {
+          position: absolute;
+          bottom: -6px;
+          right: -6px;
+          width: 16px;
+          height: 16px;
+          padding-top: 4px;
+          border-radius: 50%;
+          background-color: white;
+          color: black;
+          font-size: 12px;
+          text-align: center;
         }
       }
     }

@@ -57,11 +57,7 @@ export default class ProductInCart extends Component {
     const totalPrice = selectedProductQtyInCart * product.price;
     calculateTotalPriceInCart(totalPrice);
 
-    const finalPrice = new Intl.NumberFormat('ko-KR', {
-      style: 'currency',
-      currency: 'KRW',
-    }).format(totalPrice);
-    return finalPrice;
+    return exchangeCurrency(totalPrice);
   };
 
   toggleModalAlert = () => {
