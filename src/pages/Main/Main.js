@@ -23,10 +23,10 @@ export default class Main extends Component {
   componentDidMount() {
     const { topBannerImageId } = this.state;
 
-    fetch('http://192.168.255.253:8000/products?limit=12')
+    fetch('http://10.58.2.179:8000/products?limit=12&hit=hit')
       .then(result => result.json())
       .then(slideProduct => {
-        this.setState({ slideProductsList: slideProduct.product_info });
+        this.setState({ slideProductsList: slideProduct.Product_Info });
       });
 
     const topBanner = () => {
@@ -132,6 +132,7 @@ export default class Main extends Component {
   };
 
   render() {
+    console.log(this.state.slideProductsList);
     const {
       topBannerImageId,
       currentSlide,
@@ -164,7 +165,9 @@ export default class Main extends Component {
           </ul>
         </section>
         <section className="mainPageProducts">
-          <div className="recommendProductTitle">고된 하루를 날리는 향기</div>
+          <div className="recommendProductTitle">
+            러쉬가 추천하는 베스트 상품
+          </div>
           <section className="recommendProducts">
             <div className="recommendProductSlide">
               <div className="recommendProductInfoContainer">
