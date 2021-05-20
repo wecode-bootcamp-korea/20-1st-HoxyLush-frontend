@@ -2,11 +2,32 @@ import React, { Component } from 'react';
 import Button from '../../../components/Button';
 import Modal from '../../../components/Modal';
 import OrderCountControler from '../../../components/OrderCountControler';
+import { Link } from 'react-router-dom';
+import { CART_UPDATE_API } from '../../../config';
 import './AddToCart.scss';
 
 export default class AddToCart extends Component {
   state = {
     selectedCount: 1,
+  };
+
+  sendToServerFromList = count => {
+    const { selectedCount } = this.state;
+    const { selectedProduct, toggleModalConfirm } = this.props;
+
+    const fetchUpdateOption = {
+      method: 'PATCH',
+      headers: {
+        Authorization: localStorage.getItem('Authorization'),
+      },
+      body: JSON.stringify({
+        option_id: selectedProduct.option[0].option_id,
+        quantity: selectedCount,
+      }),
+    };
+
+    fetch(`${CART_UPDATE_API}/orders/cart`, fetchUpdateOption);
+    toggleModalConfirm();
   };
 
   increaseCount = () => {
@@ -47,6 +68,8 @@ export default class AddToCart extends Component {
       selectedProduct,
       toggleModalCart,
       toggleModalAlert,
+      toggleModalConfirm,
+      isModalConfirmOpen,
       isModalAlertOpen,
     } = this.props;
 
@@ -74,7 +97,11 @@ export default class AddToCart extends Component {
         </section>
         <div className="btns">
           <Button name="취소하기" info="cancel" event={toggleModalCart} />
-          <Button name="담기" info="putInCart" />
+          <Button
+            name="담기"
+            info="putInCart"
+            event={this.sendToServerFromList}
+          />
         </div>
 
         {isModalAlertOpen && (
@@ -96,6 +123,25 @@ export default class AddToCart extends Component {
               >
                 확인하기
               </button>
+            </div>
+          </Modal>
+        )}
+
+        {isModalConfirmOpen && (
+          <Modal onClose={toggleModalAlert}>
+            <div className="orderSuccessModal">
+              <h1>상품이 장바구니에 담겼습니다.</h1>
+              <p>바로 확인하시겠습니까?</p>
+              <div className="btns">
+                <Button
+                  name="계속 쇼핑하기"
+                  info="close"
+                  event={toggleModalConfirm}
+                />
+                <Link to="/order">
+                  <Button name="확인하기" info="putInCart" />
+                </Link>
+              </div>
             </div>
           </Modal>
         )}

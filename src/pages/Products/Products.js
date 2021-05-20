@@ -15,6 +15,7 @@ class Products extends Component {
     selectedProduct: {},
     isModalAlertOpen: false,
     isModalCartOpen: false,
+    isModalConfirmOpen: false,
     currentPagination: 1,
   };
 
@@ -54,6 +55,13 @@ class Products extends Component {
     this.setState({
       isModalCartOpen: !isModalCartOpen,
       selectedProduct: productLists.find(product => product.id === id),
+    });
+  };
+
+  toggleModalConfirm = () => {
+    const { isModalConfirmOpen } = this.state;
+    this.setState({
+      isModalConfirmOpen: !isModalConfirmOpen,
     });
   };
 
@@ -103,6 +111,7 @@ class Products extends Component {
       selectedProduct,
       isModalCartOpen,
       isModalAlertOpen,
+      isModalConfirmOpen,
     } = this.state;
 
     const categories = [
@@ -141,7 +150,7 @@ class Products extends Component {
             <Button
               info="loadMore"
               name="Load More"
-              handleLoadMoreBtn={this.handleLoadMoreBtn}
+              event={this.handleLoadMoreBtn}
             />
           </div>
         </section>
@@ -153,7 +162,9 @@ class Products extends Component {
               selectedProduct={selectedProduct}
               toggleModalCart={this.toggleModalCart}
               toggleModalAlert={this.toggleModalAlert}
+              toggleModalConfirm={this.toggleModalConfirm}
               isModalAlertOpen={isModalAlertOpen}
+              isModalConfirmOpen={isModalConfirmOpen}
             />
           </Modal>
         )}
