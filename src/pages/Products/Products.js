@@ -6,6 +6,7 @@ import Lists from './Components/Lists';
 import Button from '../../components/Button';
 import { PRODUCT_API, FILTER_API } from '../../config';
 import { exchangeCurrency } from '../../utilityFunc';
+import { Link } from 'react-router-dom';
 
 import './Products.scss';
 
@@ -165,6 +166,25 @@ class Products extends Component {
               isModalAlertOpen={isModalAlertOpen}
               isModalConfirmOpen={isModalConfirmOpen}
             />
+          </Modal>
+        )}
+
+        {isModalConfirmOpen && (
+          <Modal onClose={this.toggleModalAlert}>
+            <div className="orderSuccessModal">
+              <h1>상품이 장바구니에 담겼습니다.</h1>
+              <p>바로 확인하시겠습니까?</p>
+              <div className="btns">
+                <Button
+                  name="계속 쇼핑하기"
+                  info="close"
+                  event={this.toggleModalConfirm}
+                />
+                <Link to="/order">
+                  <Button name="확인하기" info="putInCart" />
+                </Link>
+              </div>
+            </div>
           </Modal>
         )}
       </>
