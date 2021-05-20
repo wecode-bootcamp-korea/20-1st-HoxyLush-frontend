@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import './Login.scss';
 import { API } from '../../config';
-import Nav from '../../components/Nav';
+import './Login.scss';
 
 class Login extends Component {
   constructor() {
@@ -82,15 +81,14 @@ class Login extends Component {
               onChange={handleInput}
               name="id"
               value={id}
-              pattern="/^[A-Za-z0-9+]*$/"
             />
           </div>
           <div className="inputLoginInfo">
             <i class="fas fa-lock fa-lg"></i>
             <input
               className="pw"
-              type="text"
-              placeholder="비밀번호"
+              type="password"
+              placeholder="패스워드"
               onChange={handleInput}
               name="pw"
               value={pw}
