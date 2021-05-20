@@ -106,7 +106,6 @@ export default class Order extends Component {
       .map(item => {
         return item.option_id;
       });
-    console.log(optionId);
     const queryString = optionId.map(item => `option-id=${item}`).join('&');
 
     this.sendToDeleteInfo(queryString);
@@ -127,7 +126,6 @@ export default class Order extends Component {
 
   render() {
     const { productInCart, likeProducts } = this.state;
-    console.log(productInCart);
     return (
       <main className="cart">
         <OrderHeader />
