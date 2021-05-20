@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Nav from '../../components/Nav';
-import './Main.scss';
 import PRODATA from './mainproductdata';
 import ASIDEDATA from './mainasideproductdata';
 import { exchangeCurrency } from '../../utilityFunc';
+import './Main.scss';
 
 const topBannerImageIdList = [1, 2, 3, 4];
 const recommendProductSliderIDList = [0, 1, 2, 3];
@@ -185,9 +185,7 @@ export default class Main extends Component {
                         <div>{sildeProduct.name}</div>
                         <div>{sildeProduct.hashtag}</div>
                         <div className="recommendProductPrice">
-                          {`₩ ${Number(
-                            sildeProduct.option[0].price
-                          ).toLocaleString()}`}
+                          {exchangeCurrency(sildeProduct.price)}
                         </div>
                       </div>
                     );
@@ -203,9 +201,7 @@ export default class Main extends Component {
                       <div>{sildeProduct.name}</div>
                       <div>{sildeProduct.hashtag}</div>
                       <div className="recommendProductPrice">
-                        {`₩ ${Number(
-                          sildeProduct.option[0].price
-                        ).toLocaleString()}`}
+                        {exchangeCurrency(sildeProduct.price)}
                       </div>
                     </div>
                   );
@@ -221,9 +217,7 @@ export default class Main extends Component {
                       <div>{sildeProduct.name}</div>
                       <div>{sildeProduct.hashtag}</div>
                       <div className="recommendProductPrice">
-                        {`₩ ${Number(
-                          sildeProduct.option[0].price
-                        ).toLocaleString()}`}
+                        {exchangeCurrency(sildeProduct.price)}
                       </div>
                     </div>
                   );

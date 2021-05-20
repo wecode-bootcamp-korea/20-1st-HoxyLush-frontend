@@ -90,11 +90,13 @@
   }
 }
 
-.outOfStockModal {
+.outOfStockModal,
+.orderSuccessModal {
   padding: 80px;
 }
 
-.outOfStockBtn {
+.outOfStockBtn,
+.orderSuccessBtn {
   border: none;
   width: 160px;
   height: 54px;
