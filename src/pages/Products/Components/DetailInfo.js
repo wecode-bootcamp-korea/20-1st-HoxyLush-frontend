@@ -29,7 +29,7 @@ export default class DetailInfo extends Component {
       method: 'PATCH',
       Authorization: localStorage.getItem('Authorization'),
       body: JSON.stringify({
-        // option_id: selectedProduct.option_id,//BE data 수정 중
+        option_id: selectedProduct.product_options.option_id,
         quantity: selectedCount,
       }),
     };
