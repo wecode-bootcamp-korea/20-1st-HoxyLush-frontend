@@ -28,7 +28,9 @@ export default class DetailInfo extends Component {
     console.log(selectedProduct.product_options[0].option_id, selectedCount);
     const fetchUpdateOption = {
       method: 'PATCH',
-      Authorization: localStorage.getItem('Authorization'),
+      headers: {
+        Authorization: localStorage.getItem('Authorization'),
+      },
       body: JSON.stringify({
         option_id: selectedProduct.product_options[0].option_id,
         quantity: selectedCount,
