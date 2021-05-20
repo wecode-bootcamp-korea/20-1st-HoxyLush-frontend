@@ -15,4 +15,3 @@ export const LIKE_API = 'https://hoxylush-gjeik.run.goorm.io';
 export const LIKE_UPDATE_API = 'https://hoxylush-gjeik.run.goorm.io';
 
 export const DETAIL_API = 'https://hoxylush-gjeik.run.goorm.io';
-
