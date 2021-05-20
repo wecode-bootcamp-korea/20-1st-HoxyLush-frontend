@@ -97,11 +97,7 @@ export default class Detail extends Component {
                 <Button info="close" name="계속 쇼핑하기" />
               </Link>
               <Link to="/order">
-                <Button
-                  info="confirm"
-                  name="확인하기"
-                  // event={this.toggleModalConfirm}
-                />
+                <Button info="confirm" name="확인하기" />
               </Link>
             </div>
           </Modal>

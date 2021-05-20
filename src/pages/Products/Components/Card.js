@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import './Card.scss';
 // import { Link } from 'react-router-dom';
+import { exchangeCurrency } from '../../../utilityFunc';
+import './Card.scss';
 
 class Card extends Component {
   render() {
@@ -29,12 +30,7 @@ class Card extends Component {
           </div>
           <h2 className="title">{list.name}</h2>
           <div className="hashTags small">{list.hashtag}</div>
-          <div className="price">
-            {new Intl.NumberFormat('ko-KR', {
-              style: 'currency',
-              currency: 'KRW',
-            }).format(list.option[0].price)}
-          </div>
+          <div className="price">{exchangeCurrency(list.option[0].price)}</div>
           {/* </Link> */}
         </li>
         <div className="cardIcons">

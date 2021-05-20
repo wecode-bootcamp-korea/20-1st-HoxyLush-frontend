@@ -4,6 +4,7 @@ import Nav from '../../components/Nav';
 import './Main.scss';
 import PRODATA from './mainproductdata';
 import ASIDEDATA from './mainasideproductdata';
+import { exchangeCurrency } from '../../utilityFunc';
 
 const topBannerImageIdList = [1, 2, 3, 4];
 const recommendProductSliderIDList = [0, 1, 2, 3];
@@ -161,10 +162,7 @@ export default class Main extends Component {
                         <div>{recommendProductdata.title}</div>
                         <div>{recommendProductdata.description}</div>
                         <div className="recommendProductPrice">
-                          {new Intl.NumberFormat('en-US', {
-                            style: 'currency',
-                            currency: 'KRW',
-                          }).format(recommendProductdata.price)}
+                          {exchangeCurrency(recommendProductdata.price)}
                         </div>
                       </div>
                     );

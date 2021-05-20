@@ -1,17 +1,14 @@
 import React, { Component } from 'react';
 import Modal from '../../../components/Modal';
 import OrderCountControler from '../../../components/OrderCountControler';
-import { hasObject } from '../../../utilityFunc';
+import { hasObject, exchangeCurrency } from '../../../utilityFunc';
 import './OrderInfo.scss';
 
 export default class OrderInfo extends Component {
   calculatePrice = () => {
     const { selectedCount, selectedProduct } = this.props;
     const total = selectedCount * selectedProduct.product_options[0].price;
-    return new Intl.NumberFormat('ko-KR', {
-      style: 'currency',
-      currency: 'KRW',
-    }).format(total);
+    return exchangeCurrency(total);
   };
 
   render() {
@@ -40,10 +37,7 @@ export default class OrderInfo extends Component {
               <div className="row">
                 <span className="col-1">판매가</span>
                 <span className="price">
-                  {new Intl.NumberFormat('ko-KR', {
-                    style: 'currency',
-                    currency: 'KRW',
-                  }).format(selectedProduct.product_options[0].price)}
+                  {exchangeCurrency(selectedProduct.product_options[0].price)}
                 </span>
               </div>
               <div className="row">
