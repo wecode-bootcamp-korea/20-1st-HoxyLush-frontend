@@ -25,16 +25,18 @@ export default class DetailInfo extends Component {
   sendToServerFromList = () => {
     const { selectedCount } = this.state;
     const { selectedProduct, toggleModalConfirm } = this.props;
+    console.log(selectedProduct.product_options[0].option_id, selectedCount);
     const fetchUpdateOption = {
       method: 'PATCH',
       Authorization: localStorage.getItem('Authorization'),
       body: JSON.stringify({
-        option_id: selectedProduct.product_options.option_id,
+        option_id: selectedProduct.product_options[0].option_id,
         quantity: selectedCount,
       }),
     };
 
     fetch(`${CART_UPDATE_API}/orders/cart`, fetchUpdateOption);
+
     this.setState({
       selectedCount: 1,
     });
