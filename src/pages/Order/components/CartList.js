@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ProductInCart from './ProductInCart';
 import Button from '../../../components/Button';
-import { exchangeCurrency, hasObject } from '../../../uitilityFunc';
+import { exchangeCurrency, hasObject } from '../../../utilityFunc';
 import { Link } from 'react-router-dom';
 import './CartList.scss';
 

@@ -3,7 +3,7 @@ import CartList from './components/CartList';
 import Like from './components/Like';
 import OrderHeader from './components/OrderHeader';
 import { CART_API, LIKE_API, CART_DELETE_API } from '../../config';
-import { hasObject } from '../../uitilityFunc';
+import { hasObject } from '../../utilityFunc';
 import './Order.scss';
 
 export default class Order extends Component {
