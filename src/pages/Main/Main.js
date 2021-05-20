@@ -185,7 +185,7 @@ export default class Main extends Component {
                         <div>{sildeProduct.name}</div>
                         <div>{sildeProduct.hashtag}</div>
                         <div className="recommendProductPrice">
-                          {exchangeCurrency(recommendProductdata.price)}
+                          {exchangeCurrency(sildeProduct.price)}
                         </div>
                       </div>
                     );
@@ -201,7 +201,7 @@ export default class Main extends Component {
                       <div>{sildeProduct.name}</div>
                       <div>{sildeProduct.hashtag}</div>
                       <div className="recommendProductPrice">
-                        {exchangeCurrency(recommendProductdata.price)}
+                        {exchangeCurrency(sildeProduct.price)}
                       </div>
                     </div>
                   );
@@ -217,7 +217,7 @@ export default class Main extends Component {
                       <div>{sildeProduct.name}</div>
                       <div>{sildeProduct.hashtag}</div>
                       <div className="recommendProductPrice">
-                        {exchangeCurrency(recommendProductdata.price)}
+                        {exchangeCurrency(sildeProduct.price)}
                       </div>
                     </div>
                   );
