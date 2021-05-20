@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Card from './Card';
+import { Link } from 'react-router-dom';
 import './Lists.scss';
 
 class Lists extends Component {
@@ -11,6 +12,7 @@ class Lists extends Component {
           return (
             <Card
               key={list.product_id}
+              id={list.product_id}
               list={list}
               toggleModalAlert={toggleModalAlert}
               toggleModalCart={toggleModalCart}
