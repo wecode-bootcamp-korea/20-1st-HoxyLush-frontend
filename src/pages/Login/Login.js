@@ -36,7 +36,7 @@ class Login extends Component {
       alert('잘못된 아이디 입니다.');
     } else if (!pw) {
       alert('패스워드를 입력해주세요.');
-    } else if (checkPassword.test(pw) || pw.search(checkSpace) !== -1) {
+    } else if (!checkPassword.test(pw) || pw.search(checkSpace) !== -1) {
       alert('잘못된 패스워드 입니다.');
     } else {
       fetch(`${API}/users/login`, {
@@ -49,7 +49,7 @@ class Login extends Component {
         .then(res => res.json())
         .then(submitResult => {
           if (submitResult.MESSAGE === 'SUCCESS') {
-            localStorage.setItem('wtwToken', submitResult.token);
+            localStorage.setItem('ACCESS_TOKEN', submitResult.token);
             this.props.history.push('/');
           } else {
             alert('회원정보를 찾을 수 없습니다.');
@@ -106,7 +106,7 @@ class Login extends Component {
             로그인
           </button>
           <div className="loginMenu">
-            <Link to="/Login-signup">
+            <Link to="/signup">
               <button className="signUp">회원가입</button>
             </Link>
             <button className="findId">아이디 찾기</button>
