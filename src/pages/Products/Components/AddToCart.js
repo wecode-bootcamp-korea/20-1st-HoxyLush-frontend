@@ -13,8 +13,9 @@ export default class AddToCart extends Component {
     const { selectedCount } = this.state;
     const { selectedProduct, toggleModalAlert } = this.props;
 
-    const isOutOfStock = selectedProduct.option[0].quantity;
+    const isOutOfStock = selectedProduct.option[0].quantity === 0;
     const isLimitedStock = selectedCount === selectedProduct.option[0].quantity;
+    console.log(isOutOfStock, isLimitedStock);
     if (isOutOfStock || isLimitedStock) return toggleModalAlert();
 
     this.setState({
