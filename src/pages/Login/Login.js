@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import './Login.scss';
 import { API } from '../../config';
+import Nav from '../../components/Nav';
 
 class Login extends Component {
   constructor() {
@@ -26,7 +27,7 @@ class Login extends Component {
     const checkPassword = /^(?=.*[a-zA-Z])(?=.*[0-9]).{8,}/;
 
     if (!id) {
-      alert('아이디를 입력해주세요.');
+      alert('아이디를 입력해주세요');
     } else if (
       id.search(checkSpace) !== -1 ||
       id.search(checkSpecial) !== -1 ||
@@ -35,9 +36,9 @@ class Login extends Component {
     ) {
       alert('잘못된 아이디 입니다.');
     } else if (!pw) {
-      alert('패스워드를 입력해주세요.');
-    } else if (checkPassword.test(pw) || pw.search(checkSpace) !== -1) {
-      alert('잘못된 패스워드 입니다.');
+      alert('패스워드를 입력해주세요');
+    } else if (!checkPassword.test(pw) || pw.search(checkSpace) !== -1) {
+      alert('잘못된 패스워드입니다.');
     } else {
       fetch(`${API}/users/login`, {
         method: 'POST',
@@ -49,7 +50,7 @@ class Login extends Component {
         .then(res => res.json())
         .then(submitResult => {
           if (submitResult.MESSAGE === 'SUCCESS') {
-            localStorage.setItem('wtwToken', submitResult.token);
+            localStorage.setItem('ACCESS_TOKEN', submitResult.token);
             this.props.history.push('/');
           } else {
             alert('회원정보를 찾을 수 없습니다.');
@@ -72,7 +73,7 @@ class Login extends Component {
         </ul>
 
         <div className="loginInfo">
-          <div className="inputLogin">
+          <div className="inputLoginInfo">
             <i class="fas fa-user-circle fa-lg"></i>
             <input
               className="id"
@@ -84,12 +85,12 @@ class Login extends Component {
               pattern="/^[A-Za-z0-9+]*$/"
             />
           </div>
-          <div className="inputLogin">
+          <div className="inputLoginInfo">
             <i class="fas fa-lock fa-lg"></i>
             <input
               className="pw"
               type="text"
-              placeholder="패스워드"
+              placeholder="비밀번호"
               onChange={handleInput}
               name="pw"
               value={pw}
@@ -106,7 +107,7 @@ class Login extends Component {
             로그인
           </button>
           <div className="loginMenu">
-            <Link to="/Login-signup">
+            <Link to="/signup">
               <button className="signUp">회원가입</button>
             </Link>
             <button className="findId">아이디 찾기</button>

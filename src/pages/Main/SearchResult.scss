@@ -1,7 +1,6 @@
 @import './../../styles/variables.scss';
 
 .products {
-  width: 100%;
   margin: 0 auto;
   overflow-x: hidden;
   -ms-overflow-style: none;
@@ -14,6 +13,7 @@
     margin: 10px auto;
     font-size: 28px;
     font-weight: bold;
+    margin-top: 200px;
 
     &::after {
       content: '';
@@ -26,7 +26,7 @@
     }
   }
 
-  .categories {
+  .subCategories {
     display: flex;
     max-width: 1220px;
     margin: 0 auto;
@@ -43,17 +43,33 @@
       font-weight: bold;
     }
 
+    li:first-child,
     li:hover {
       color: $color-black;
       cursor: pointer;
     }
-
-    .selected {
-      color: $color-black;
-    }
   }
 
-  .loadMoreBtnWrapper {
-    @include flexCenter();
+  #loadMore {
+    display: block;
+    padding: 5px 20px 10px;
+    margin: 30px auto;
+    color: $color-white;
+    background-color: $color-grey;
+    border: none;
+    border-radius: 3px;
+    font-size: $fs-l;
+    letter-spacing: 1.5px;
+    cursor: pointer;
+    transition: transform 200ms ease-in;
+    will-change: transform;
+
+    &:hover {
+      transform: scale(1.02);
+    }
+  }
+  .resultNothing {
+    margin: 100px auto 0;
+    text-align: center;
   }
 }

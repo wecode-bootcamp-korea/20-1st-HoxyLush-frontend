@@ -1,20 +1,22 @@
 import React, { Component } from 'react';
-import './Card.scss';
 import { Link } from 'react-router-dom';
+import { exchangeCurrency } from '../../../utilityFunc';
+import './Card.scss';
 
 class Card extends Component {
   render() {
-    const { list, toggleModalCart } = this.props;
+    const { id, list, toggleModalCart } = this.props;
     const tagArr = list.tag.map(item => item.tag);
     const showTagList = tagArr.map(tag => {
       return <span className={tag.toLowerCase()}>{tag}</span>;
     });
     const showSoldOut = <span className="soldOut">Sold Out</span>;
 
+    console.log(list);
     return (
       <div className="card">
-        <li className="cardWrapper" data-num={list.product_id}>
-          <Link to={`/product/${list.id}`}>
+        <li className="cardWrapper" data-num={list.id}>
+          <Link to={`/products/${list.id}`}>
             <img
               src={list.image_url}
               alt="러쉬"
@@ -26,10 +28,7 @@ class Card extends Component {
             <h2 className="title">{list.name}</h2>
             <div className="hashTags small">{list.hashtag}</div>
             <div className="price">
-              {new Intl.NumberFormat('ko-KR', {
-                style: 'currency',
-                currency: 'KRW',
-              }).format(list.option[0].price)}
+              {exchangeCurrency(list.option[0].price)}
             </div>
           </Link>
         </li>

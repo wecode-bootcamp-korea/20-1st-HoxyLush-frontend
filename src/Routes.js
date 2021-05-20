@@ -7,7 +7,7 @@ import Detail from './pages/Products/Components/Detail';
 import Order from './pages/Order/Order';
 import Signup from './pages/Login/Signup';
 import Nav from '../src/components/Nav';
-import Footer from './components/Footer';
+import Footer from './components/footer';
 
 class Routes extends Component {
   render() {

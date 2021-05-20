@@ -4,13 +4,19 @@ import './Modal.scss';
 
 export default class Modal extends Component {
   render() {
-    const { children } = this.props;
+    const { children, type } = this.props;
     return createPortal(
       <div class="modal">
-        <div className="modalBackdrop"></div>
-        <div className="modalBox">
+        {type === 'AddToCart' ? (
+          <>
+            <div className="modalBackdrop"></div>
+            <div className="modalBox">
+              <div>{children}</div>
+            </div>
+          </>
+        ) : (
           <div>{children}</div>
-        </div>
+        )}
       </div>,
       modalRoot
     );

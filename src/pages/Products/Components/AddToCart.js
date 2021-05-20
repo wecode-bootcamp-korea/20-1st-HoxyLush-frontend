@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import Button from '../../../components/Button';
 import Modal from '../../../components/Modal';
 import OrderCountControler from '../../../components/OrderCountControler';
+import { CART_UPDATE_API } from '../../../config';
+import { exchangeCurrency } from '../../../utilityFunc';
 import './AddToCart.scss';
 
 export default class AddToCart extends Component {
@@ -9,11 +11,30 @@ export default class AddToCart extends Component {
     selectedCount: 1,
   };
 
+  sendToServerFromList = count => {
+    const { selectedCount } = this.state;
+    const { selectedProduct, toggleModalConfirm, toggleModalCart } = this.props;
+
+    const fetchUpdateOption = {
+      method: 'PATCH',
+      headers: {
+        Authorization: localStorage.getItem('Authorization'),
+      },
+      body: JSON.stringify({
+        option_id: selectedProduct.option[0].option_id,
+        quantity: selectedCount,
+      }),
+    };
+
+    fetch(`${CART_UPDATE_API}/orders/cart`, fetchUpdateOption);
+    toggleModalConfirm();
+    toggleModalCart();
+  };
+
   increaseCount = () => {
     const { selectedCount } = this.state;
     const { selectedProduct, toggleModalAlert } = this.props;
-
-    const isOutOfStock = selectedProduct.option[0].quantity;
+    const isOutOfStock = selectedProduct.option[0].quantity === 0;
     const isLimitedStock = selectedCount === selectedProduct.option[0].quantity;
     if (isOutOfStock || isLimitedStock) return toggleModalAlert();
 
@@ -34,10 +55,7 @@ export default class AddToCart extends Component {
     const { selectedCount } = this.state;
     const { selectedProduct } = this.props;
     const total = selectedCount * selectedProduct.option[0].price;
-    return new Intl.NumberFormat('ko-KR', {
-      style: 'currency',
-      currency: 'KRW',
-    }).format(total);
+    return exchangeCurrency(total);
   };
 
   render() {
@@ -73,7 +91,11 @@ export default class AddToCart extends Component {
         </section>
         <div className="btns">
           <Button name="취소하기" info="cancel" event={toggleModalCart} />
-          <Button name="담기" info="putInCart" />
+          <Button
+            name="담기"
+            info="putInCart"
+            event={this.sendToServerFromList}
+          />
         </div>
 
         {isModalAlertOpen && (

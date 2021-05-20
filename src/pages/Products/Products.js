@@ -4,8 +4,8 @@ import AddToCart from './Components/AddToCart';
 import Headers from './Components/Headers';
 import Lists from './Components/Lists';
 import Button from '../../components/Button';
+import { exchangeCurrency } from '../../utilityFunc';
 import { PRODUCT_API } from '../../config';
-
 import './Products.scss';
 
 class Products extends Component {
@@ -78,11 +78,7 @@ class Products extends Component {
   calculatePrice = () => {
     const { selectedCount, selectedProduct } = this.state;
     const total = selectedCount * selectedProduct.price;
-    console.log(total);
-    return new Intl.NumberFormat('ko-KR', {
-      style: 'currency',
-      currency: 'KRW',
-    }).format(total);
+    return exchangeCurrency(total);
   };
 
   render() {
@@ -122,7 +118,7 @@ class Products extends Component {
           </div>
         </section>
         {isModalCartOpen && (
-          <Modal onClose={this.toggleModalAlert}>
+          <Modal onClose={this.toggleModalAlert} type={MODAL_TYPE}>
             <AddToCart
               increase={this.handleIncreaseCount}
               decrease={this.handleDecreaseCount}
@@ -139,3 +135,4 @@ class Products extends Component {
 }
 
 export default Products;
+const MODAL_TYPE = 'AddToCart';

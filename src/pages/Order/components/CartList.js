@@ -1,94 +1,48 @@
 import React, { Component } from 'react';
 import ProductInCart from './ProductInCart';
 import Button from '../../../components/Button';
+import { exchangeCurrency, hasObject } from '../../../uitilityFunc';
+import { Link } from 'react-router-dom';
 import './CartList.scss';
 
 export default class CartList extends Component {
-  state = {
-    productInCart: [],
-    isAllChecked: true,
-  };
-
-  componentDidMount() {
-    const url = '/data/cart.json';
-    fetch(url)
-      .then(res => res.json())
-      .then(data =>
-        this.setState({
-          productInCart: data.cart_info,
-        })
-      );
-  }
-
-  handleBoxStatusCheck = () => {
-    const { productInCart } = this.state;
-
-    const isAllChecked = productInCart.every(product => !!product.is_checked);
-
-    this.setState({ isAllChecked });
-  };
-
-  handleAllCheckedBox = e => {
-    const { productInCart, isAllChecked } = this.state;
-
-    productInCart.forEach(product => (product.is_checked = e.target.checked));
-    this.setState({
-      productInCart,
-      isAllChecked: !isAllChecked,
-    });
-  };
-
-  handleCheckBox = e => {
-    const { productInCart } = this.state;
-
-    productInCart.forEach(product => {
-      if (product.name === e.target.value) {
-        product.is_checked = e.target.checked;
-      }
-    });
-
-    this.setState({ productInCart });
-
-    this.handleBoxStatusCheck();
-  };
-
-  clearCart = () => {
-    const { productInCart } = this.state;
-
-    productInCart.length &&
-      this.setState({
-        productInCart: [],
-      });
-  };
-
   calculateTotalPriceInCart = () => {
-    const { productInCart } = this.state;
-    return productInCart.reduce((acc, cur) => acc + cur.total_price, 0);
+    const { productInCart } = this.props;
+    const totalPrice = productInCart
+      .filter(item => item.is_checked)
+      .reduce((acc, { total_price }) => acc + total_price, 0);
+    return totalPrice;
   };
 
   render() {
-    const { productInCart, isAllChecked } = this.state;
+    const {
+      productInCart,
+      handleCheckBox,
+      clearCart,
+      removeProduct,
+      handleAllCheckedBox,
+    } = this.props;
 
     return (
       <section className="cartList">
         <div className="cartListProduct">제품</div>
-        {productInCart.length ? (
+        {hasObject(productInCart) ? (
           <table className="cartTable">
             <thead className="cartTableHead">
               <tr>
                 <th>
                   <input
-                    onChange={this.handleAllCheckedBox}
+                    onChange={handleAllCheckedBox}
                     type="checkbox"
-                    id="checkbox"
+                    className="checkbox"
                     value="checkedAll"
-                    checked={isAllChecked}
+                    checked={productInCart.every(product => product.is_checked)}
                   />
                 </th>
                 <th colspan="2">제품정보</th>
                 <th>수량</th>
                 <th>금액</th>
-                <th>합계금액</th>
+                <th className="priceCol">합계금액</th>
                 <th>배송비</th>
               </tr>
             </thead>
@@ -98,7 +52,7 @@ export default class CartList extends Component {
                   <ProductInCart
                     product={product}
                     key={product.id}
-                    handleCheckBox={this.handleCheckBox}
+                    handleCheckBox={handleCheckBox}
                     productCount={productInCart.length}
                     calculateTotalPriceInCart={this.calculateTotalPriceInCart}
                   />
@@ -109,17 +63,15 @@ export default class CartList extends Component {
         ) : (
           <div className="emptyCart">장바구니에 담겨있는 상품이 없습니다.</div>
         )}
-
         <div className="totalPriceInCart">
           <span>
             총 <strong>{productInCart.length} </strong>개의 금액
           </span>
           <span className="totalPriceInCart price">
             <strong>
-              {new Intl.NumberFormat('ko-KR', {
-                style: 'currency',
-                currency: 'KRW',
-              }).format(this.calculateTotalPriceInCart())}
+              {productInCart.length
+                ? exchangeCurrency(this.calculateTotalPriceInCart())
+                : `₩ 0`}
             </strong>
           </span>
           <span>+</span>
@@ -133,19 +85,26 @@ export default class CartList extends Component {
           </span>
           <span className="totalOrderPrice">
             <strong>
-              {new Intl.NumberFormat('ko-KR', {
-                style: 'currency',
-                currency: 'KRW',
-              }).format(this.calculateTotalPriceInCart())}
+              {productInCart.length
+                ? exchangeCurrency(this.calculateTotalPriceInCart())
+                : `₩ 0`}
             </strong>
           </span>
         </div>
-
-        <button type="button" className="resetCartBtn" onClick={this.clearCart}>
+        <button
+          type="button"
+          className="removeProductBtn"
+          onClick={removeProduct}
+        >
+          삭제하기
+        </button>
+        <button type="button" className="resetCartBtn" onClick={clearCart}>
           장바구니 비우기
         </button>
         <div className="btnWrapperInCart">
-          <Button name="쇼핑 계속하기" info="shoppingMore" />
+          <Link to="/products">
+            <Button name="쇼핑 계속하기" info="shoppingMore" />
+          </Link>
           <Button name="주문하기" info="order" />
         </div>
       </section>

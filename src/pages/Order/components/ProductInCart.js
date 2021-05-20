@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import OrderCountControler from '../../../components/OrderCountControler';
 import Modal from '../../../components/Modal';
+import { CART_UPDATE_API } from '../../../config';
+import { exchangeCurrency } from '../../../utilityFunc';
 
 export default class ProductInCart extends Component {
   state = {
@@ -15,21 +17,39 @@ export default class ProductInCart extends Component {
     });
   }
 
+  sendToSever = count => {
+    const { product } = this.props;
+
+    const fetchUpdateOption = {
+      method: 'PUT',
+      headers: {
+        Authorization: localStorage.getItem('Authorization'),
+      },
+      body: JSON.stringify({
+        option_id: product.option_id,
+        quantity: count,
+      }),
+    };
+
+    fetch(`${CART_UPDATE_API}/orders/cart`, fetchUpdateOption);
+  };
+
   increaseCount = () => {
     const { selectedProductQtyInCart } = this.state;
+    const updateCount = selectedProductQtyInCart + 1;
     this.setState({
       selectedProductQtyInCart: selectedProductQtyInCart + 1,
     });
-    // updateOrder();
+    this.sendToSever(updateCount);
   };
 
   decreaseCount = () => {
     const { selectedProductQtyInCart } = this.state;
-
+    const updateCount = selectedProductQtyInCart - 1;
     this.setState({
       selectedProductQtyInCart: selectedProductQtyInCart - 1,
     });
-    // updateOrder();
+    this.sendToSever(updateCount);
   };
 
   calculatePrice = () => {
@@ -39,11 +59,7 @@ export default class ProductInCart extends Component {
     const totalPrice = selectedProductQtyInCart * product.price;
     calculateTotalPriceInCart(totalPrice);
 
-    const finalPrice = new Intl.NumberFormat('ko-KR', {
-      style: 'currency',
-      currency: 'KRW',
-    }).format(totalPrice);
-    return finalPrice;
+    return exchangeCurrency(totalPrice);
   };
 
   toggleModalAlert = () => {
@@ -54,15 +70,15 @@ export default class ProductInCart extends Component {
   };
 
   render() {
-    const { selectedProductQtyInCart, isModalAlertOpen } = this.state;
     const { product, handleCheckBox } = this.props;
+    const { selectedProductQtyInCart, isModalAlertOpen } = this.state;
     return (
       <>
         <tr>
           <td>
             <input
               type="checkbox"
-              id="checkbox"
+              className="checkbox"
               onChange={handleCheckBox}
               value={product.name}
               checked={product.is_checked}
@@ -81,12 +97,7 @@ export default class ProductInCart extends Component {
               decreaseCount={this.decreaseCount}
             />
           </td>
-          <td className="unitPrice">
-            {new Intl.NumberFormat('ko-KR', {
-              style: 'currency',
-              currency: 'KRW',
-            }).format(product.price)}
-          </td>
+          <td className="unitPrice">{exchangeCurrency(product.price)}</td>
           <td className="totalPrice">{this.calculatePrice()}</td>
         </tr>
 
