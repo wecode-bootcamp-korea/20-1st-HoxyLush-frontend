@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import LikeProduct from './LikeProduct.js';
 import './Like.scss';
-import { hasObject } from '../../../uitilityFunc';
+import { hasObject } from '../../../utilityFunc';
 
 export default class Like extends Component {
   render() {
