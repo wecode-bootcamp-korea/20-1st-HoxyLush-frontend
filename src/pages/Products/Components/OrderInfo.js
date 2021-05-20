@@ -6,11 +6,11 @@ import './OrderInfo.scss';
 export default class OrderInfo extends Component {
   calculatePrice = () => {
     const { selectedCount, selectedProduct } = this.props;
-    const total = selectedCount * selectedProduct.product_options[0].price;
-    return new Intl.NumberFormat('ko-KR', {
-      style: 'currency',
-      currency: 'KRW',
-    }).format(total);
+    // const total = selectedCount * selectedProduct.product_options[0].price;
+    // return new Intl.NumberFormat('ko-KR', {
+    //   style: 'currency',
+    //   currency: 'KRW',
+    // }).format(total);
   };
 
   render() {
@@ -36,16 +36,16 @@ export default class OrderInfo extends Component {
         <div className="infoWrap">
           <div className="row">
             <span className="col-1">판매가</span>
-            <span className="price">
+            {/* <span className="price">
               {new Intl.NumberFormat('ko-KR', {
                 style: 'currency',
                 currency: 'KRW',
               }).format(selectedProduct.product_options[0].price)}
-            </span>
+            </span> */}
           </div>
           <div className="row">
             <span className="col-1">용량</span>
-            <span>{selectedProduct.product_options[0].weight}</span>
+            {/* <span>{selectedProduct.product_options[0].weight}</span> */}
           </div>
           <div className="row">
             <span className="col-1">구매수량</span>

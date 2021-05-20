@@ -3,12 +3,12 @@ import DetailImages from './DetailImages';
 import DetailInfo from './DetailInfo';
 import DetailMiddle from './DetailMiddle';
 import DetailReview from './DetailReview';
-// import { DETAIL_API } from '../../../config';
+import { DETAIL_API } from '../../../config';
 import './Detail.scss';
 
 export default class Detail extends Component {
   state = {
-    selectedProduct: '',
+    selectedProduct: {},
     isModalAlertOpen: false,
   };
 
@@ -16,15 +16,14 @@ export default class Detail extends Component {
   detailRef = React.createRef();
 
   componentDidMount() {
+    console.log(this.props);
     // const id = this.props.match.params.id;
     // fetch(`${DETAIL_API}/products/${id}`)
-    // fetch(`${DETAIL_API}/products/12`)
-    const url = '/data/selectedProduct.json';
-    fetch(url)
+    fetch(`${DETAIL_API}/products/12`)
       .then(res => res.json())
       .then(data =>
         this.setState({
-          selectedProduct: data.result[0],
+          selectedProduct: data.result,
         })
       );
   }
@@ -36,7 +35,7 @@ export default class Detail extends Component {
     });
   };
 
-  toggleModalAlert = () => {
+  closeModalAlert = () => {
     const { isModalAlertOpen } = this.state;
     this.setState({
       isModalAlertOpen: !isModalAlertOpen,
@@ -44,10 +43,7 @@ export default class Detail extends Component {
   };
 
   moveToReviewSection = () => {
-    this.reviewRef.current.scrollIntoView({
-      block: 'nearest',
-      behavior: 'smooth',
-    });
+    this.reviewRef.current.scrollIntoView({ behavior: 'smooth' });
   };
 
   moveToDetailSection = () => {
