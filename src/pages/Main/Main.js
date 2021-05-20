@@ -6,7 +6,6 @@ import ASIDEDATA from './mainasideproductdata';
 import { exchangeCurrency } from '../../utilityFunc';
 import './Main.scss';
 
-
 const topBannerImageIdList = [1, 2, 3, 4];
 const recommendProductSliderIDList = [0, 1, 2, 3];
 
@@ -186,7 +185,7 @@ export default class Main extends Component {
                         <div>{sildeProduct.name}</div>
                         <div>{sildeProduct.hashtag}</div>
                         <div className="recommendProductPrice">
-                          {exchangeCurrency(recommendProductdata.price)}
+                          {exchangeCurrency(sildeProduct.price)}
                         </div>
                       </div>
                     );
@@ -202,7 +201,7 @@ export default class Main extends Component {
                       <div>{sildeProduct.name}</div>
                       <div>{sildeProduct.hashtag}</div>
                       <div className="recommendProductPrice">
-                        {exchangeCurrency(recommendProductdata.price)}
+                        {exchangeCurrency(sildeProduct.price)}
                       </div>
                     </div>
                   );
@@ -218,7 +217,7 @@ export default class Main extends Component {
                       <div>{sildeProduct.name}</div>
                       <div>{sildeProduct.hashtag}</div>
                       <div className="recommendProductPrice">
-                        {exchangeCurrency(recommendProductdata.price)}
+                        {exchangeCurrency(sildeProduct.price)}
                       </div>
                     </div>
                   );
