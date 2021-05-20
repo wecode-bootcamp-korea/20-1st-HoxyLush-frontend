@@ -3,7 +3,7 @@ import './DetailMiddle.scss';
 
 export default class DetailMiddle extends Component {
   render() {
-    const { moveToReviewSection, detailRef } = this.props;
+    const { moveToReviewSection, detailRef, selectedProduct } = this.props;
 
     return (
       <div className="detailMiddle">
@@ -20,16 +20,15 @@ export default class DetailMiddle extends Component {
           className="youtube"
           width="1100"
           height="551"
-          src="https://www.youtube.com/embed/q7dqUHYraJ0"
+          src={selectedProduct.video_url}
           title="YouTube video player"
           frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowfullscreen
         ></iframe>
         <div className="productName">
-          <span className="productType">페이스 앤 보디 마스크</span>
-          <span className="productNameKR">로즈 골드</span>
-          <span className="productNameENG">Rose Gold</span>
+          <span className="productType">{selectedProduct.hashtag}</span>
+          <span className="productNameKR">{selectedProduct.name}</span>
         </div>
         <div className="bestReview">
           <img

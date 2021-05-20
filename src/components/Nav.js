@@ -3,6 +3,9 @@ import { Link } from 'react-router-dom';
 import './Nav.scss';
 import PRODUCT_CATEGORYS from './productCategories';
 import INTRODUCE_LUSH from './introduceLush';
+import { BASCKET_API } from '../config';
+import NavSearchModal from './NavSearchModal';
+import Modal from '../components/Modal';
 
 export default class Nav extends Component {
   constructor() {
@@ -10,8 +13,32 @@ export default class Nav extends Component {
     this.state = {
       productCategoryWatch: '',
       introduceLushWatch: '',
+      basketProductCount: '',
+      navSearchModal: false,
     };
   }
+  // 현재 장바구니 담긴 상품 갯수 렌더링 로직, 문법에러나서 주석처리
+  // componentDidMount() {
+  //   if (localStorage.getItem('accessToken')) {
+  //     fetch(`${BASCKET_API}/orders/cart`, {
+  //       method: 'GET',
+  //       headers: {
+  //         Authorization: localStorage.getItem('accessToken'),
+  //       },
+  //     })
+  //       .then(response => response.json())
+  //       .then(loginUserInfo => {
+  //         this.setState({
+  //           basketProductCount: loginUserInfo.selectedQty.length,
+  //         });
+  //       });
+  //   }
+  // }
+
+  closeNavSearchModal = e => {
+    const { navSearchModal } = this.state;
+    this.setState({ navSearchModal: !navSearchModal });
+  };
 
   mouseOnProductCategory = e => {
     this.setState({ productCategoryWatch: 'visible' });
@@ -30,12 +57,16 @@ export default class Nav extends Component {
   };
 
   render() {
+    const { productCategoryWatch, introduceLushWatch, basketProductCount } =
+      this.state;
+    console.log(this.state.navSearchModal);
     return (
       <nav className="nav">
         <div className="topNav">
           <div className="siteTitle">
             <Link className="goMain" to="/">
-              HOXY LUSH
+              <span className="mainTitle">HOXY</span>
+              <span className="mainTitle">LUSH</span>
             </Link>
           </div>
           <ul className="navMenu">
@@ -44,15 +75,13 @@ export default class Nav extends Component {
               onMouseOver={this.mouseOnProductCategory}
               onMouseOut={this.mouseOutProductCategory}
             >
-              <div className="test222">
+              <div className="categoryContainer">
                 <div
-                  className={`categorySelectArrow ${this.state.productCategoryWatch}`}
+                  className={`categorySelectArrow ${productCategoryWatch}`}
                 />
                 <Link className="categoryLink">제품</Link>
               </div>
-              <div
-                className={`dropMenuContainer ${this.state.productCategoryWatch}`}
-              >
+              <div className={`dropMenuContainer ${productCategoryWatch}`}>
                 <div className="productDropMenu">
                   {PRODUCT_CATEGORYS.map(productCategorydata => {
                     return (
@@ -80,15 +109,11 @@ export default class Nav extends Component {
               onMouseOver={this.mouseOnIntroduceLushCategory}
               onMouseOut={this.mouseOutIntroduceLushCategory}
             >
-              <div className="test222">
-                <div
-                  className={`categorySelectArrow ${this.state.introduceLushWatch}`}
-                />
+              <div className="categoryContainer">
+                <div className={`categorySelectArrow ${introduceLushWatch}`} />
                 <Link className="categoryLink">러쉬 소개</Link>
               </div>
-              <div
-                className={`dropMenuContainer ${this.state.introduceLushWatch}`}
-              >
+              <div className={`dropMenuContainer ${introduceLushWatch}`}>
                 <div className="productDropMenu">
                   {INTRODUCE_LUSH.map(introduction => {
                     return (
@@ -124,15 +149,12 @@ export default class Nav extends Component {
             </li>
           </ul>
           <div className="navIcons">
-            <Link>
-              <i className="fas fa-search"></i>
-            </Link>
-            <Link>
+            <i className="fas fa-search" onClick={this.closeNavSearchModal}></i>
+            <div className="shoppingBasket">
               <i className="fas fa-shopping-cart"></i>
-            </Link>
-            <Link>
-              <i className="fas fa-user-circle"></i>
-            </Link>
+              <div className="basketProductNumber">{basketProductCount}</div>
+            </div>
+            <i className="fas fa-user-circle"></i>
           </div>
         </div>
         <div className="eventBannerContainer">
@@ -141,6 +163,11 @@ export default class Nav extends Component {
             <Link className="goToEvent">이벤트 참여하기</Link>
           </div>
         </div>
+        {this.state.navSearchModal && (
+          <Modal>
+            <NavSearchModal closeNavSearchModal={this.closeNavSearchModal} />
+          </Modal>
+        )}
       </nav>
     );
   }

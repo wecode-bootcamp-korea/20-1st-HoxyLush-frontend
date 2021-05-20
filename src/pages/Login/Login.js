@@ -50,64 +50,58 @@ class Login extends Component {
     const { id, pw } = this.state;
     const { handleInput, handleSubmit } = this;
     return (
-      <>
-        <Nav />
-        <div className="loginContainer">
-          <div className="Title">
-            <h1>로그인</h1>
-          </div>
-          <ul className="userType">
-            <li className="member">회원</li>
-            <li className="noMember">비회원</li>
-          </ul>
+      <div className="loginContainer">
+        <div className="Title">
+          <h1>로그인</h1>
+        </div>
+        <ul className="userType">
+          <li className="member">회원</li>
+          <li className="noMember">비회원</li>
+        </ul>
 
-          <div className="loginInfo">
-            <div className="inputLogin">
-              <i class="fas fa-user-circle fa-lg"></i>
-              <input
-                className="id"
-                type="text"
-                placeholder="아이디"
-                onChange={handleInput}
-                name="id"
-                value={id}
-              />
-            </div>
-            <div className="inputLogin">
-              <i class="fas fa-lock fa-lg"></i>
-              <input
-                className="pw"
-                type="text"
-                placeholder="패스워드"
-                onChange={handleInput}
-                name="pw"
-                value={pw}
-              />
-            </div>
-            <div className="saveIdBox">
-              <label>
-                <input type="checkbox" className="saveId" />
-                <span className="styledCheckBox"></span>
-              </label>
-              아이디 저장
-            </div>
-            <button
-              onClick={handleSubmit}
-              className="loginButton"
-              type="submit"
-            >
-              로그인
-            </button>
-            <div className="loginMenu">
-              <Link to="/signup">
-                <button className="signUp">회원가입</button>
-              </Link>
-              <button className="findId">아이디 찾기</button>
-              <button className="findPw">비밀번호 찾기</button>
-            </div>
+        <div className="loginInfo">
+          <div className="inputLoginInfo">
+            <i class="fas fa-user-circle fa-lg"></i>
+            <input
+              className="id"
+              type="text"
+              placeholder="아이디"
+              onChange={handleInput}
+              name="id"
+              value={id}
+              pattern="/^[A-Za-z0-9+]*$/"
+            />
+          </div>
+          <div className="inputLoginInfo">
+            <i class="fas fa-lock fa-lg"></i>
+            <input
+              className="pw"
+              type="text"
+              placeholder="비밀번호"
+              onChange={handleInput}
+              name="pw"
+              value={pw}
+            />
+          </div>
+          <div className="saveIdBox">
+            <label>
+              <input type="checkbox" className="saveId" />
+              <span className="styledCheckBox"></span>
+            </label>
+            아이디 저장
+          </div>
+          <button onClick={handleSubmit} className="loginButton" type="submit">
+            로그인
+          </button>
+          <div className="loginMenu">
+            <Link to="/signup">
+              <button className="signUp">회원가입</button>
+            </Link>
+            <button className="findId">아이디 찾기</button>
+            <button className="findPw">비밀번호 찾기</button>
           </div>
         </div>
-      </>
+      </div>
     );
   }
 }
