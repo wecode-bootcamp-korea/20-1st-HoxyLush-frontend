@@ -16,22 +16,31 @@ export default class Main extends Component {
       currentSlide: 0,
       currentAsideSlide: 0,
       slidestatus: '',
+      slideProductsList: [],
     };
   }
 
   componentDidMount() {
-    const test = () => {
-      if (this.state.topBannerImageId === 4) {
+    const { topBannerImageId } = this.state;
+
+    fetch('http://10.58.2.179:8000/products?limit=12&hit=hit')
+      .then(result => result.json())
+      .then(slideProduct => {
+        this.setState({ slideProductsList: slideProduct.Product_Info });
+      });
+
+    const topBanner = () => {
+      if (topBannerImageId === 4) {
         this.setState({
           topBannerImageId: 1,
         });
       } else {
         this.setState({
-          topBannerImageId: this.state.topBannerImageId + 1,
+          topBannerImageId: topBannerImageId + 1,
         });
       }
     };
-    setInterval(test, 4000);
+    setInterval(topBanner, 4000);
   }
 
   goToBannerImage = id => {
@@ -43,8 +52,9 @@ export default class Main extends Component {
   };
 
   nextSlide = () => {
-    if (this.state.currentAsideSlide >= ASIDEDATA.length - 1) {
-      this.setState({ currentAsideSlide: this.state.currentAsideSlide + 1 });
+    const { currentAsideSlide } = this.state;
+    if (currentAsideSlide >= ASIDEDATA.length - 1) {
+      this.setState({ currentAsideSlide: currentAsideSlide + 1 });
       setTimeout(() => {
         this.setState({ slidestatus: 'minus' });
       }, 501);
@@ -55,11 +65,12 @@ export default class Main extends Component {
         this.setState({ slidestatus: '' });
       }, 540);
     } else {
-      this.setState({ currentAsideSlide: this.state.currentAsideSlide + 1 });
+      this.setState({ currentAsideSlide: currentAsideSlide + 1 });
     }
   };
   prevSlide = () => {
-    if (this.state.currentAsideSlide === 0) {
+    const { currentAsideSlide } = this.state;
+    if (currentAsideSlide === 0) {
       this.setState({ currentAsideSlide: -1 });
       setTimeout(() => {
         this.setState({ slidestatus: 'minus' });
@@ -71,55 +82,64 @@ export default class Main extends Component {
         this.setState({ slidestatus: '' });
       }, 540);
     } else {
-      this.setState({ currentAsideSlide: this.state.currentAsideSlide - 1 });
+      this.setState({ currentAsideSlide: currentAsideSlide - 1 });
     }
   };
 
   isMovedSlide = () => {
-    if (this.state.currentSlide === 0) {
+    const { currentSlide } = this.state;
+    if (currentSlide === 0) {
       return {
         transform: `translateX(-300%)`,
         transition: 'all 0.5s ease-in-out',
       };
-    } else if (this.state.currentSlide === -1) {
+    } else if (currentSlide === -1) {
       return {
         transform: `translateX(0%)`,
         transition: 'all 0.5s ease-in-out',
       };
-    } else if (this.state.currentSlide >= PRODATA.length / 3 - 1) {
+    } else if (currentSlide >= PRODATA.length / 3 - 1) {
       return {
-        transform: `translateX(-${this.state.currentSlide * 3 + 3}00%)`,
+        transform: `translateX(-${currentSlide * 3 + 3}00%)`,
         transition: 'all 0.5s ease-in-out',
       };
     } else {
       return {
-        transform: `translateX(-${this.state.currentSlide * 3 + 3}00%)`,
+        transform: `translateX(-${currentSlide * 3 + 3}00%)`,
         transition: 'all 0.5s ease-in-out',
       };
     }
   };
 
   isMovedAsideSlide = () => {
-    if (this.state.currentAsideSlide === 0) {
+    const { currentAsideSlide } = this.state;
+    if (currentAsideSlide === 0) {
       return {
         transform: `translateX(-100%)`,
         transition: 'all 0.5s ease-in-out',
       };
-    } else if (this.state.currentAsideSlide === -1) {
+    } else if (currentAsideSlide === -1) {
       return {
         transform: `translateX(0%)`,
         transition: 'all 0.5s ease-in-out',
       };
     } else {
       return {
-        transform: `translateX(-${this.state.currentAsideSlide + 1}00%)`,
+        transform: `translateX(-${currentAsideSlide + 1}00%)`,
         transition: 'all 0.5s ease-in-out',
       };
     }
   };
 
   render() {
-    const { topBannerImageId } = this.state;
+    console.log(this.state.slideProductsList);
+    const {
+      topBannerImageId,
+      currentSlide,
+      slidestatus,
+      currentAsideSlide,
+      slideProductsList,
+    } = this.state;
     return (
       <div className="mainContainer">
         <Nav />
@@ -145,65 +165,64 @@ export default class Main extends Component {
           </ul>
         </section>
         <section className="mainPageProducts">
-          <div className="recommendProductTitle">나만 알고 싶은 향기</div>
+          <div className="recommendProductTitle">
+            러쉬가 추천하는 베스트 상품
+          </div>
           <section className="recommendProducts">
-            <div className="bigbigcont">
+            <div className="recommendProductSlide">
               <div className="recommendProductInfoContainer">
-                {PRODATA.slice(PRODATA.length - 3, PRODATA.length).map(
-                  recommendProductdata => {
+                {slideProductsList
+                  .slice(slideProductsList.length - 3, slideProductsList.length)
+                  .map(sildeProduct => {
                     return (
                       <div
                         className="recommendProductInfo"
                         style={this.isMovedSlide()}
-                        key={recommendProductdata.id}
+                        key={sildeProduct.id}
                       >
-                        <img src={recommendProductdata.url} />
-                        <div>{recommendProductdata.title}</div>
-                        <div>{recommendProductdata.description}</div>
+                        <img src={sildeProduct.image_url} />
+                        <div>{sildeProduct.name}</div>
+                        <div>{sildeProduct.hashtag}</div>
                         <div className="recommendProductPrice">
-                          {new Intl.NumberFormat('en-US', {
-                            style: 'currency',
-                            currency: 'KRW',
-                          }).format(recommendProductdata.price)}
+                          {`₩ ${Number(
+                            sildeProduct.option[0].price
+                          ).toLocaleString()}`}
                         </div>
                       </div>
                     );
-                  }
-                )}
-                {PRODATA.map(recommendProductdata => {
+                  })}
+                {slideProductsList.map(sildeProduct => {
                   return (
                     <div
                       className="recommendProductInfo"
                       style={this.isMovedSlide()}
-                      key={recommendProductdata.id}
+                      key={sildeProduct.id}
                     >
-                      <img src={recommendProductdata.url} />
-                      <div>{recommendProductdata.title}</div>
-                      <div>{recommendProductdata.description}</div>
+                      <img src={sildeProduct.image_url} />
+                      <div>{sildeProduct.name}</div>
+                      <div>{sildeProduct.hashtag}</div>
                       <div className="recommendProductPrice">
-                        {new Intl.NumberFormat('en-US', {
-                          style: 'currency',
-                          currency: 'KRW',
-                        }).format(recommendProductdata.price)}
+                        {`₩ ${Number(
+                          sildeProduct.option[0].price
+                        ).toLocaleString()}`}
                       </div>
                     </div>
                   );
                 })}
-                {PRODATA.slice(0, 3).map(recommendProductdata => {
+                {slideProductsList.slice(0, 3).map(sildeProduct => {
                   return (
                     <div
                       className="recommendProductInfo"
                       style={this.isMovedSlide()}
-                      key={recommendProductdata.id}
+                      key={sildeProduct.id}
                     >
-                      <img src={recommendProductdata.url} />
-                      <div>{recommendProductdata.title}</div>
-                      <div>{recommendProductdata.description}</div>
+                      <img src={sildeProduct.image_url} />
+                      <div>{sildeProduct.name}</div>
+                      <div>{sildeProduct.hashtag}</div>
                       <div className="recommendProductPrice">
-                        {new Intl.NumberFormat('en-US', {
-                          style: 'currency',
-                          currency: 'KRW',
-                        }).format(recommendProductdata.price)}
+                        {`₩ ${Number(
+                          sildeProduct.option[0].price
+                        ).toLocaleString()}`}
                       </div>
                     </div>
                   );
@@ -215,7 +234,7 @@ export default class Main extends Component {
                     <li
                       key={index}
                       className={`recommendProductSliderButton ${
-                        this.state.currentSlide === sliderId &&
+                        currentSlide === sliderId &&
                         'selectedRecommendProductSliderButton'
                       }`}
                       onClick={() => {
@@ -236,7 +255,7 @@ export default class Main extends Component {
                   <img
                     alt="main page aside product"
                     key={asideProductdata.id}
-                    className={`${this.state.slidestatus} asideProduct`}
+                    className={`${slidestatus} asideProduct`}
                     style={this.isMovedAsideSlide()}
                     src={asideProductdata.url}
                   />
@@ -248,7 +267,7 @@ export default class Main extends Component {
                 <img
                   alt="main page aside product"
                   key={asideProductdata.id}
-                  className={`${this.state.slidestatus} asideProduct`}
+                  className={`${slidestatus} asideProduct`}
                   style={this.isMovedAsideSlide()}
                   src={asideProductdata.url}
                 />
@@ -273,11 +292,11 @@ export default class Main extends Component {
             </button>
             <span className="currentAsideSlideNumber">
               {`${
-                this.state.currentAsideSlide === -1
+                currentAsideSlide === -1
                   ? 7
-                  : this.state.currentAsideSlide === 7
+                  : currentAsideSlide === 7
                   ? 1
-                  : this.state.currentAsideSlide + 1
+                  : currentAsideSlide + 1
               } / ${ASIDEDATA.length}`}
             </span>
             <button onClick={this.nextSlide}>
