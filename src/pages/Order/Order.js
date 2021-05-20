@@ -14,7 +14,7 @@ export default class Order extends Component {
 
   componentDidMount() {
     // const CART_URL = '/data/cart.json';
-    const LIKE_URL = '/data/likeProduct.json';
+    // const LIKE_URL = '/data/likeProduct.json';
 
     const fetchCartOption = {
       method: 'GET',
@@ -23,18 +23,18 @@ export default class Order extends Component {
       },
     };
 
-    // const fecthLikeOption = {
-    //   method: 'GET',
-    //   headers: {
-    //     Authorization: localStorage.getItem('Authorization'),
-    //   },
-    // };
+    const fecthLikeOption = {
+      method: 'GET',
+      headers: {
+        Authorization: localStorage.getItem('Authorization'),
+      },
+    };
 
     Promise.all([
       fetch(`${CART_API}/orders/cart`, fetchCartOption),
-      // fetch(`${LIKE_API}/products/like`, fecthLikeOption),
+      fetch(`${LIKE_API}/products/like`, fecthLikeOption),
       // fetch(CART_URL),
-      fetch(LIKE_URL),
+      // fetch(LIKE_URL),
     ])
       .then(responses =>
         Promise.all(responses.map(response => response.json()))
