@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { exchangeCurrency } from '../../../utilityFunc';
 import './Card.scss';
+import { PRODUCT_API } from '../../../config';
 
 class Card extends Component {
   thisProductLike = e => {
