@@ -1,16 +1,17 @@
 import React, { Component } from 'react';
 import Modal from '../../../components/Modal';
 import OrderCountControler from '../../../components/OrderCountControler';
+import { hasObject } from '../../../utilityFunc';
 import './OrderInfo.scss';
 
 export default class OrderInfo extends Component {
   calculatePrice = () => {
     const { selectedCount, selectedProduct } = this.props;
-    // const total = selectedCount * selectedProduct.product_options[0].price;
-    // return new Intl.NumberFormat('ko-KR', {
-    //   style: 'currency',
-    //   currency: 'KRW',
-    // }).format(total);
+    const total = selectedCount * selectedProduct.product_options[0].price;
+    return new Intl.NumberFormat('ko-KR', {
+      style: 'currency',
+      currency: 'KRW',
+    }).format(total);
   };
 
   render() {
@@ -25,44 +26,48 @@ export default class OrderInfo extends Component {
 
     return (
       <>
-        <header className="orderInfo">
-          <h1 className="productName">{selectedProduct.name}</h1>
-          <div className="icons">
-            <i className="fas fa-share-alt"></i>
-            <i className="far fa-heart"></i>
-          </div>
-        </header>
-        <div className="hashTags">{selectedProduct.hashtag}</div>
-        <div className="infoWrap">
-          <div className="row">
-            <span className="col-1">판매가</span>
-            {/* <span className="price">
-              {new Intl.NumberFormat('ko-KR', {
-                style: 'currency',
-                currency: 'KRW',
-              }).format(selectedProduct.product_options[0].price)}
-            </span> */}
-          </div>
-          <div className="row">
-            <span className="col-1">용량</span>
-            {/* <span>{selectedProduct.product_options[0].weight}</span> */}
-          </div>
-          <div className="row">
-            <span className="col-1">구매수량</span>
-            <OrderCountControler
-              selectedProduct={selectedProduct}
-              selectedCount={selectedCount}
-              toggleModalAlert={toggleModalAlert}
-              increaseCount={increaseCount}
-              decreaseCount={decreaseCount}
-            />
-            <span className="sum">{this.calculatePrice()}</span>
-          </div>
-        </div>
-        <div className="total">
-          <span className="">총 제품 금액</span>
-          <span className="totalPrice">{this.calculatePrice()}</span>
-        </div>
+        {hasObject(selectedProduct) ? (
+          <>
+            <header className="orderInfo">
+              <h1 className="productName">{selectedProduct.name}</h1>
+              <div className="icons">
+                <i className="fas fa-share-alt"></i>
+                <i className="far fa-heart"></i>
+              </div>
+            </header>
+            <div className="hashTags">{selectedProduct.hashtag}</div>
+            <div className="infoWrap">
+              <div className="row">
+                <span className="col-1">판매가</span>
+                <span className="price">
+                  {new Intl.NumberFormat('ko-KR', {
+                    style: 'currency',
+                    currency: 'KRW',
+                  }).format(selectedProduct.product_options[0].price)}
+                </span>
+              </div>
+              <div className="row">
+                <span className="col-1">용량</span>
+                <span>{selectedProduct.product_options[0].weight}g</span>
+              </div>
+              <div className="row">
+                <span className="col-1">구매수량</span>
+                <OrderCountControler
+                  selectedProduct={selectedProduct}
+                  selectedCount={selectedCount}
+                  toggleModalAlert={toggleModalAlert}
+                  increaseCount={increaseCount}
+                  decreaseCount={decreaseCount}
+                />
+                <span className="sum">{this.calculatePrice()}</span>
+              </div>
+            </div>
+            <div className="total">
+              <span className="">총 제품 금액</span>
+              <span className="totalPrice">{this.calculatePrice()}</span>
+            </div>
+          </>
+        ) : null}
 
         {isModalOpen ? (
           <Modal>
