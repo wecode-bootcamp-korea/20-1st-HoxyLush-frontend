@@ -22,20 +22,24 @@ export default class DetailInfo extends Component {
     });
   };
 
-  saveOnCart = () => {
+  sendToServerFromList = () => {
     const { selectedCount } = this.state;
+    const { selectedProduct, toggleModalConfirm } = this.props;
     const fetchUpdateOption = {
       method: 'PATCH',
       Authorization: localStorage.getItem('Authorization'),
       body: JSON.stringify({
-        option_id: 1,
+        // option_id: selectedProduct.product_id,//BE data 수정 중
         quantity: selectedCount,
       }),
     };
+
     fetch(`${CART_UPDATE_API}/orders/cart`, fetchUpdateOption);
     this.setState({
       selectedCount: 1,
     });
+
+    toggleModalConfirm();
   };
 
   render() {
@@ -53,7 +57,11 @@ export default class DetailInfo extends Component {
           decreaseCount={this.decreaseCount}
         />
         <div className="btnWrapperInDetail">
-          <Button name="장바구니" info="cart" event={this.saveOnCart} />
+          <Button
+            name="장바구니"
+            info="cart"
+            event={this.sendToServerFromList}
+          />
           <Button name="주문하기" info="order" />
         </div>
       </div>
