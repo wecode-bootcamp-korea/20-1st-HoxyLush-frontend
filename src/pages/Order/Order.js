@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import CartList from './components/CartList';
 import Like from './components/Like';
 import OrderHeader from './components/OrderHeader';
-import { CART_API, LIKE_API } from '../../config';
-import { CART_DELETE_API } from '../../config';
+import { CART_API, LIKE_API, CART_DELETE_API } from '../../config';
+import { hasObject } from '../../uitilityFunc';
 import './Order.scss';
 
 export default class Order extends Component {
@@ -14,7 +14,7 @@ export default class Order extends Component {
 
   componentDidMount() {
     // const CART_URL = '/data/cart.json';
-    const LIKE_URL = '/data/likeProduct.json';
+    // const LIKE_URL = '/data/likeProduct.json';
 
     const fetchCartOption = {
       method: 'GET',
@@ -23,18 +23,16 @@ export default class Order extends Component {
       },
     };
 
-    // const fecthLikeOption = {
-    //   method: 'GET',
-    //   headers: {
-    //     Authorization: localStorage.getItem('Authorization'),
-    //   },
-    // };
+    const fecthLikeOption = {
+      method: 'GET',
+      headers: {
+        Authorization: localStorage.getItem('Authorization'),
+      },
+    };
 
     Promise.all([
       fetch(`${CART_API}/orders/cart`, fetchCartOption),
-      // fetch(`${LIKE_API}/products/like`, fecthLikeOption),
-      // fetch(CART_URL),
-      fetch(LIKE_URL),
+      fetch(`${LIKE_API}/products/like`, fecthLikeOption),
     ])
       .then(responses =>
         Promise.all(responses.map(response => response.json()))
@@ -42,7 +40,7 @@ export default class Order extends Component {
       .then(lists =>
         lists.map((list, i) => {
           const stateKeys = ['productInCart', 'likeProducts'];
-          const fetchDataKeys = ['selectedQty', 'like_items'];
+          const fetchDataKeys = ['selectedQty', 'Like_Items'];
           return this.setState({
             [stateKeys[i]]: list[fetchDataKeys[i]],
           });
@@ -71,24 +69,7 @@ export default class Order extends Component {
     this.setState({ productInCart: updatedProductStatusInCart });
   };
 
-  removeProduct = e => {
-    const { productInCart } = this.state;
-
-    //장바구니에 남은 제품의 option_id 뽑아오기
-    const fetchDeleteOption = {
-      method: 'DELETE',
-      headers: {
-        Authorization: localStorage.getItem('Authorization'),
-      },
-    };
-
-    fetch(`${CART_DELETE_API}/orders/cart?option-id=5`, fetchDeleteOption).then(
-      res =>
-        this.setState({
-          productInCart: productInCart.filter(item => item.is_checked === true),
-        })
-    );
-
+  getDataFromServer = () => {
     const fetchCartOption = {
       method: 'GET',
       headers: {
@@ -105,9 +86,8 @@ export default class Order extends Component {
       );
   };
 
-  clearCart = () => {
-    // const { productInCart } = this.state;
-    //장바구니에 담긴 제품의 option_id 뽑아오기
+  sendToDeleteInfo = id => {
+    const { productInCart } = this.state;
     const fetchDeleteOption = {
       method: 'DELETE',
       headers: {
@@ -115,16 +95,37 @@ export default class Order extends Component {
       },
     };
 
-    fetch(
-      `${CART_DELETE_API}/orders/cart?option-id=1&option-id=5`,
-      fetchDeleteOption
-    )
-      .then(res => res.json())
-      .then(data => {
-        this.setState({
-          productInCart: [],
-        });
+    fetch(`${CART_DELETE_API}/orders/cart?${id}`, fetchDeleteOption).then(res =>
+      this.setState({
+        productInCart: productInCart.filter(item => item.is_checked === true),
+      })
+    );
+  };
+
+  removeProduct = () => {
+    const { productInCart } = this.state;
+    const optionId = productInCart
+      .filter(item => item.is_checked === true)
+      .map(item => {
+        return item.option_id;
       });
+
+    const queryString = optionId.map(item => `option-id=${item}`).join('&');
+
+    this.sendToDeleteInfo(queryString);
+    this.getDataFromServer();
+  };
+
+  clearCart = () => {
+    const { productInCart } = this.state;
+    const optionId = productInCart
+      .filter(item => item.is_checked === true)
+      .map(item => {
+        return item.option_id;
+      });
+
+    const queryString = optionId.map(item => `option-id=${item}`).join('&');
+    this.sendToDeleteInfo(queryString);
   };
 
   render() {
@@ -132,14 +133,18 @@ export default class Order extends Component {
     return (
       <main className="cart">
         <OrderHeader />
-        <CartList
-          productInCart={productInCart}
-          handleCheckBox={this.handleCheckBox}
-          removeProduct={this.removeProduct}
-          clearCart={this.clearCart}
-          handleAllCheckedBox={this.handleAllCheckedBox}
-        />
-        {/* <Like likeProducts={likeProducts} /> */}
+
+        {hasObject(productInCart) ? (
+          <CartList
+            productInCart={productInCart}
+            handleCheckBox={this.handleCheckBox}
+            removeProduct={this.removeProduct}
+            clearCart={this.clearCart}
+            handleAllCheckedBox={this.handleAllCheckedBox}
+          />
+        ) : null}
+
+        <Like likeProducts={likeProducts} />
       </main>
     );
   }

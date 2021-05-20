@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import ProductInCart from './ProductInCart';
 import Button from '../../../components/Button';
+import { exchangeCurrency, hasObject } from '../../../uitilityFunc';
+import { Link } from 'react-router-dom';
 import './CartList.scss';
 
 export default class CartList extends Component {
@@ -20,10 +22,11 @@ export default class CartList extends Component {
       removeProduct,
       handleAllCheckedBox,
     } = this.props;
+
     return (
       <section className="cartList">
         <div className="cartListProduct">제품</div>
-        {productInCart.length ? (
+        {hasObject(productInCart) ? (
           <table className="cartTable">
             <thead className="cartTableHead">
               <tr>
@@ -60,7 +63,6 @@ export default class CartList extends Component {
         ) : (
           <div className="emptyCart">장바구니에 담겨있는 상품이 없습니다.</div>
         )}
-
         <div className="totalPriceInCart">
           <span>
             총 <strong>{productInCart.length} </strong>개의 금액
@@ -68,11 +70,8 @@ export default class CartList extends Component {
           <span className="totalPriceInCart price">
             <strong>
               {productInCart.length
-                ? new Intl.NumberFormat('ko-KR', {
-                    style: 'currency',
-                    currency: 'KRW',
-                  }).format(this.calculateTotalPriceInCart())
-                : 0}
+                ? exchangeCurrency(this.calculateTotalPriceInCart())
+                : `₩ 0`}
             </strong>
           </span>
           <span>+</span>
@@ -87,15 +86,11 @@ export default class CartList extends Component {
           <span className="totalOrderPrice">
             <strong>
               {productInCart.length
-                ? new Intl.NumberFormat('ko-KR', {
-                    style: 'currency',
-                    currency: 'KRW',
-                  }).format(this.calculateTotalPriceInCart())
-                : 0}
+                ? exchangeCurrency(this.calculateTotalPriceInCart())
+                : `₩ 0`}
             </strong>
           </span>
         </div>
-
         <button
           type="button"
           className="removeProductBtn"
@@ -107,7 +102,9 @@ export default class CartList extends Component {
           장바구니 비우기
         </button>
         <div className="btnWrapperInCart">
-          <Button name="쇼핑 계속하기" info="shoppingMore" />
+          <Link to="/products">
+            <Button name="쇼핑 계속하기" info="shoppingMore" />
+          </Link>
           <Button name="주문하기" info="order" />
         </div>
       </section>
