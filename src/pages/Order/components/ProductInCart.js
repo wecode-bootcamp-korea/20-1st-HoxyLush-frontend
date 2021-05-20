@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import OrderCountControler from '../../../components/OrderCountControler';
 import Modal from '../../../components/Modal';
 import { CART_UPDATE_API } from '../../../config';
-import { exchangeCurrency } from '../../../uitilityFunc';
+import { exchangeCurrency } from '../../../utilityFunc';
 
 export default class ProductInCart extends Component {
   state = {
