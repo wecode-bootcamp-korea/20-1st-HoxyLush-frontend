@@ -37,7 +37,7 @@ class Login extends Component {
         .then(res => res.json())
         .then(submitResult => {
           if (submitResult.MESSAGE === 'SUCCESS') {
-            localStorage.setItem('wtwToken', submitResult.token);
+            localStorage.setItem('ACCESS_TOKEN', submitResult.token);
             this.props.history.push('/');
           } else {
             alert('회원정보를 찾을 수 없습니다.');
@@ -99,7 +99,7 @@ class Login extends Component {
               로그인
             </button>
             <div className="loginMenu">
-              <Link to="/Login-signup">
+              <Link to="/signup">
                 <button className="signUp">회원가입</button>
               </Link>
               <button className="findId">아이디 찾기</button>
