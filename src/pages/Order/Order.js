@@ -135,6 +135,7 @@ export default class Order extends Component {
     return (
       <main className="cart">
         <OrderHeader />
+        {/* {productInCart.length && ( */}
         <CartList
           productInCart={productInCart}
           handleCheckBox={this.handleCheckBox}
@@ -142,6 +143,7 @@ export default class Order extends Component {
           clearCart={this.clearCart}
           handleAllCheckedBox={this.handleAllCheckedBox}
         />
+        {/* )} */}
         {/* <Like likeProducts={likeProducts} /> */}
       </main>
     );

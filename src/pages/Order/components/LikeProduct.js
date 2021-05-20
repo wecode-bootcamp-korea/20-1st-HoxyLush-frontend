@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import exchangeCurrency from '../../../uitilityFunc';
+import { exchangeCurrency } from '../../../uitilityFunc';
 import './LikeProduct.scss';
 
 export default class LikeProduct extends Component {

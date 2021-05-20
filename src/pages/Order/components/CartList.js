@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ProductInCart from './ProductInCart';
 import Button from '../../../components/Button';
-import { exchangeCurrency } from '../../../uitilityFunc';
+import { exchangeCurrency, hasObject } from '../../../uitilityFunc';
 import { Link } from 'react-router-dom';
 import './CartList.scss';
 
@@ -25,7 +25,7 @@ export default class CartList extends Component {
     return (
       <section className="cartList">
         <div className="cartListProduct">제품</div>
-        {hasObject(productIncCart.length) ? (
+        {hasObject(productInCart.length) ? (
           <table className="cartTable">
             <thead className="cartTableHead">
               <tr>
@@ -62,7 +62,6 @@ export default class CartList extends Component {
         ) : (
           <div className="emptyCart">장바구니에 담겨있는 상품이 없습니다.</div>
         )}
-
         <div className="totalPriceInCart">
           <span>
             총 <strong>{productInCart.length} </strong>개의 금액
@@ -91,7 +90,6 @@ export default class CartList extends Component {
             </strong>
           </span>
         </div>
-
         <button
           type="button"
           className="removeProductBtn"
