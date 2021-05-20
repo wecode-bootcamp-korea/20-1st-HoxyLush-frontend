@@ -1,7 +1,7 @@
 @import '../../styles/variables.scss';
 
 .loginContainer {
-  width: 24%;
+  width: 340px;
   margin: 288px auto 0 auto;
   .Title {
     h1 {
@@ -34,7 +34,7 @@
 
 .loginInfo {
   margin: 66px auto auto 0;
-  .inputLogin {
+  .inputLoginInfo {
     position: relative;
     margin: 10px auto auto 0px;
     height: 50px;
@@ -54,6 +54,9 @@
       color: #8c8c8c;
       outline: none;
       border: none;
+      &::placeholder {
+        letter-spacing: 1px;
+      }
     }
 
     .pw {
@@ -64,6 +67,9 @@
       color: #8c8c8c;
       outline: none;
       border: none;
+      &::placeholder {
+        letter-spacing: 1px;
+      }
     }
   }
 

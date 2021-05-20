@@ -3,11 +3,12 @@ import DetailImages from './DetailImages';
 import DetailInfo from './DetailInfo';
 import DetailMiddle from './DetailMiddle';
 import DetailReview from './DetailReview';
+import { DETAIL_API } from '../../../config';
 import './Detail.scss';
 
 export default class Detail extends Component {
   state = {
-    selectedProduct: [],
+    selectedProduct: {},
     isModalAlertOpen: false,
   };
 
@@ -15,14 +16,16 @@ export default class Detail extends Component {
   detailRef = React.createRef();
 
   componentDidMount() {
-    const url = '/data/selectedProduct.json';
-    fetch(url)
-      .then(res => res.json())
-      .then(data =>
-        this.setState({
-          selectedProduct: data.product[0],
-        })
-      );
+    console.log(this.props);
+    // const id = this.props.match.params.id;
+    // fetch(`${DETAIL_API}/products/${id}`)
+    // fetch(`${DETAIL_API}/products/12`)
+    //   .then(res => res.json())
+    //   .then(data =>
+    //     this.setState({
+    //       selectedProduct: data.result,
+    //     })
+    //   );
   }
 
   toggleModalAlert = () => {
@@ -52,7 +55,7 @@ export default class Detail extends Component {
     return (
       <section className="detail">
         <main className="detailUpperMain">
-          <DetailImages />
+          <DetailImages selectedProduct={selectedProduct} />
           <DetailInfo
             selectedProduct={selectedProduct}
             toggleModalAlert={this.toggleModalAlert}
@@ -61,6 +64,7 @@ export default class Detail extends Component {
         </main>
         <article className="detailLowerMain">
           <DetailMiddle
+            selectedProduct={selectedProduct}
             moveToReviewSection={this.moveToReviewSection}
             detailRef={this.detailRef}
           />
