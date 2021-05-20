@@ -71,24 +71,7 @@ export default class Order extends Component {
     this.setState({ productInCart: updatedProductStatusInCart });
   };
 
-  removeProduct = e => {
-    const { productInCart } = this.state;
-
-    //장바구니에 남은 제품의 option_id 뽑아오기
-    const fetchDeleteOption = {
-      method: 'DELETE',
-      headers: {
-        Authorization: localStorage.getItem('Authorization'),
-      },
-    };
-
-    fetch(`${CART_DELETE_API}/orders/cart?option-id=5`, fetchDeleteOption).then(
-      res =>
-        this.setState({
-          productInCart: productInCart.filter(item => item.is_checked === true),
-        })
-    );
-
+  getDataFromServer = () => {
     const fetchCartOption = {
       method: 'GET',
       headers: {
@@ -105,9 +88,8 @@ export default class Order extends Component {
       );
   };
 
-  clearCart = () => {
-    // const { productInCart } = this.state;
-    //장바구니에 담긴 제품의 option_id 뽑아오기
+  sendToDeleteInfo = id => {
+    const { productInCart } = this.state;
     const fetchDeleteOption = {
       method: 'DELETE',
       headers: {
@@ -115,16 +97,37 @@ export default class Order extends Component {
       },
     };
 
-    fetch(
-      `${CART_DELETE_API}/orders/cart?option-id=1&option-id=5`,
-      fetchDeleteOption
-    )
-      .then(res => res.json())
-      .then(data => {
-        this.setState({
-          productInCart: [],
-        });
+    fetch(`${CART_DELETE_API}/orders/cart?${id}`, fetchDeleteOption).then(res =>
+      this.setState({
+        productInCart: productInCart.filter(item => item.is_checked === true),
+      })
+    );
+  };
+
+  removeProduct = () => {
+    const { productInCart } = this.state;
+    const optionId = productInCart
+      .filter(item => item.is_checked === true)
+      .map(item => {
+        return item.option_id;
       });
+
+    const queryString = optionId.map(item => `option-id=${item}`).join('&');
+
+    this.sendToDeleteInfo(queryString);
+    this.getDataFromServer();
+  };
+
+  clearCart = () => {
+    const { productInCart } = this.state;
+    const optionId = productInCart
+      .filter(item => item.is_checked === true)
+      .map(item => {
+        return item.option_id;
+      });
+
+    const queryString = optionId.map(item => `option-id=${item}`).join('&');
+    this.sendToDeleteInfo(queryString);
   };
 
   render() {

@@ -17,13 +17,15 @@ export default class ProductInCart extends Component {
   }
 
   sendToSever = count => {
+    const { product } = this.props;
+
     const fetchUpdateOption = {
       method: 'PUT',
       headers: {
         Authorization: localStorage.getItem('Authorization'),
       },
       body: JSON.stringify({
-        option_id: 1,
+        option_id: product.option_id,
         quantity: count,
       }),
     };

@@ -78,7 +78,6 @@ class Products extends Component {
   calculatePrice = () => {
     const { selectedCount, selectedProduct } = this.state;
     const total = selectedCount * selectedProduct.price;
-    console.log(total);
     return new Intl.NumberFormat('ko-KR', {
       style: 'currency',
       currency: 'KRW',
