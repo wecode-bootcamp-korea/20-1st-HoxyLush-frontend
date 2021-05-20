@@ -25,7 +25,9 @@ class Login extends Component {
     if (!id) {
       alert('아이디를 입력해주세요');
     } else if (!pw) {
-      alert('패스워드를 입력해주세요');
+      alert('패스워드를 입력해주세요.');
+    } else if (!checkPassword.test(pw) || pw.search(checkSpace) !== -1) {
+      alert('잘못된 패스워드 입니다.');
     } else {
       fetch(`${API}/users/login`, {
         method: 'POST',
