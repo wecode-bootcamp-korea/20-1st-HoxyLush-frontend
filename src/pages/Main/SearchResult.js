@@ -135,7 +135,6 @@ class Products extends Component {
             <AddToCart
               increase={this.handleIncreaseCount}
               decrease={this.handleDecreaseCount}
-              // calculate={this.calculatePrice}
               selectedProduct={selectedProduct}
               toggleModalCart={this.toggleModalCart}
               toggleModalAlert={this.toggleModalAlert}

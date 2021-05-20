@@ -6,7 +6,6 @@ import { hasObject } from '../../../utilityFunc';
 export default class Like extends Component {
   render() {
     const { likeProducts } = this.props;
-    console.log(likeProducts);
     return (
       <>
         <section className="favorit">

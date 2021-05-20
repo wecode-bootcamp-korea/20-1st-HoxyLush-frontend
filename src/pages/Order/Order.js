@@ -8,14 +8,11 @@ import './Order.scss';
 
 export default class Order extends Component {
   state = {
-    productInCart: [],
+    productInCart: '',
     likeProducts: [],
   };
 
   componentDidMount() {
-    // const CART_URL = '/data/cart.json';
-    // const LIKE_URL = '/data/likeProduct.json';
-
     const fetchCartOption = {
       method: 'GET',
       headers: {
@@ -130,11 +127,12 @@ export default class Order extends Component {
 
   render() {
     const { productInCart, likeProducts } = this.state;
+    console.log(productInCart);
     return (
       <main className="cart">
         <OrderHeader />
 
-        {hasObject(productInCart) ? (
+        {productInCart ? (
           <CartList
             productInCart={productInCart}
             handleCheckBox={this.handleCheckBox}

@@ -59,7 +59,6 @@ export default class Nav extends Component {
   render() {
     const { productCategoryWatch, introduceLushWatch, basketProductCount } =
       this.state;
-    console.log(this.state.navSearchModal);
     return (
       <nav className="nav">
         <div className="topNav">
