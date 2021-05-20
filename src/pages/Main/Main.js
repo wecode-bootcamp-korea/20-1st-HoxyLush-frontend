@@ -4,6 +4,7 @@ import Nav from '../../components/Nav';
 import './Main.scss';
 import PRODATA from './mainproductdata';
 import ASIDEDATA from './mainasideproductdata';
+import { exchangeCurrency } from '../../utilityFunc';
 
 const topBannerImageIdList = [1, 2, 3, 4];
 const recommendProductSliderIDList = [0, 1, 2, 3];

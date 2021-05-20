@@ -6,12 +6,14 @@ import Products from './pages/Products/Products';
 import Detail from './pages/Products/Components/Detail';
 import Order from './pages/Order/Order';
 import Signup from './pages/Login/Signup';
+import Nav from './components/Nav';
 import SearchReseult from './pages/Main/SearchResult';
 
 class Routes extends Component {
   render() {
     return (
       <Router>
+        <Nav />
         <Switch>
           <Route exact path="/" component={Main} />
           <Route exact path="/login" component={Login} />

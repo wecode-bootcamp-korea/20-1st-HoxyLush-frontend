@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import OrderCountControler from '../../../components/OrderCountControler';
 import Modal from '../../../components/Modal';
 import { CART_UPDATE_API } from '../../../config';
+import { exchangeCurrency } from '../../../utilityFunc';
 
 export default class ProductInCart extends Component {
   state = {
@@ -98,12 +99,7 @@ export default class ProductInCart extends Component {
               decreaseCount={this.decreaseCount}
             />
           </td>
-          <td className="unitPrice">
-            {new Intl.NumberFormat('ko-KR', {
-              style: 'currency',
-              currency: 'KRW',
-            }).format(product.price)}
-          </td>
+          <td className="unitPrice">{exchangeCurrency(product.price)}</td>
           <td className="totalPrice">{this.calculatePrice()}</td>
         </tr>
 
