@@ -18,22 +18,22 @@ export default class Nav extends Component {
     };
   }
   // 현재 장바구니 담긴 상품 갯수 렌더링 로직, 문법에러나서 주석처리
-  // componentDidMount() {
-  //   if (localStorage.getItem('accessToken')) {
-  //     fetch(`${BASCKET_API}/orders/cart`, {
-  //       method: 'GET',
-  //       headers: {
-  //         Authorization: localStorage.getItem('accessToken'),
-  //       },
-  //     })
-  //       .then(response => response.json())
-  //       .then(loginUserInfo => {
-  //         this.setState({
-  //           basketProductCount: loginUserInfo.selectedQty.length,
-  //         });
-  //       });
-  //   }
-  // }
+  componentDidMount() {
+    if (localStorage.getItem('Authorization')) {
+      fetch(`${BASCKET_API}/orders/cart`, {
+        method: 'GET',
+        headers: {
+          Authorization: localStorage.getItem('Authorization'),
+        },
+      })
+        .then(response => response.json())
+        .then(loginUserInfo => {
+          this.setState({
+            basketProductCount: loginUserInfo.selectedQty.length,
+          });
+        });
+    }
+  }
 
   closeNavSearchModal = e => {
     const { navSearchModal } = this.state;
@@ -78,7 +78,9 @@ export default class Nav extends Component {
                 <div
                   className={`categorySelectArrow ${productCategoryWatch}`}
                 />
-                <Link className="categoryLink">제품</Link>
+                <Link to="/products" className="categoryLink">
+                  제품
+                </Link>
               </div>
               <div className={`dropMenuContainer ${productCategoryWatch}`}>
                 <div className="productDropMenu">
@@ -149,11 +151,13 @@ export default class Nav extends Component {
           </ul>
           <div className="navIcons">
             <i className="fas fa-search" onClick={this.closeNavSearchModal}></i>
-            <div className="shoppingBasket">
+            <Link to="/order" className="shoppingBasket">
               <i className="fas fa-shopping-cart"></i>
               <div className="basketProductNumber">{basketProductCount}</div>
-            </div>
-            <i className="fas fa-user-circle"></i>
+            </Link>
+            <Link to="/login">
+              <i className="fas fa-user-circle"></i>
+            </Link>
           </div>
         </div>
         <div className="eventBannerContainer">

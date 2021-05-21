@@ -4,6 +4,7 @@ import Nav from '../../components/Nav';
 import PRODATA from './mainproductdata';
 import ASIDEDATA from './mainasideproductdata';
 import { exchangeCurrency } from '../../utilityFunc';
+import { API } from '../../config';
 import './Main.scss';
 
 const topBannerImageIdList = [1, 2, 3, 4];
@@ -24,7 +25,7 @@ export default class Main extends Component {
   componentDidMount() {
     const { topBannerImageId } = this.state;
 
-    fetch('http://10.58.2.179:8000/products?limit=12&hit=hit')
+    fetch(`${API}/products?limit=12&hit=hit`)
       .then(result => result.json())
       .then(slideProduct => {
         this.setState({ slideProductsList: slideProduct.Product_Info });
@@ -181,10 +182,10 @@ export default class Main extends Component {
                         key={sildeProduct.id}
                       >
                         <img src={sildeProduct.image_url} />
-                        <div>{sildeProduct.name}</div>
-                        <div>{sildeProduct.hashtag}</div>
+                        <div className="text">{sildeProduct.name}</div>
+                        <div className="subText">{sildeProduct.hashtag}</div>
                         <div className="recommendProductPrice">
-                          {exchangeCurrency(sildeProduct.price)}
+                          {exchangeCurrency(sildeProduct.option[0].price)}
                         </div>
                       </div>
                     );
@@ -197,10 +198,10 @@ export default class Main extends Component {
                       key={sildeProduct.id}
                     >
                       <img src={sildeProduct.image_url} />
-                      <div>{sildeProduct.name}</div>
-                      <div>{sildeProduct.hashtag}</div>
+                      <div className="text">{sildeProduct.name}</div>
+                      <div className="subText">{sildeProduct.hashtag}</div>
                       <div className="recommendProductPrice">
-                        {exchangeCurrency(sildeProduct.price)}
+                        {exchangeCurrency(sildeProduct.option[0].price)}
                       </div>
                     </div>
                   );
@@ -213,10 +214,10 @@ export default class Main extends Component {
                       key={sildeProduct.id}
                     >
                       <img src={sildeProduct.image_url} />
-                      <div>{sildeProduct.name}</div>
-                      <div>{sildeProduct.hashtag}</div>
+                      <div className="text">{sildeProduct.name}</div>
+                      <div className="subText">{sildeProduct.hashtag}</div>
                       <div className="recommendProductPrice">
-                        {exchangeCurrency(sildeProduct.price)}
+                        {exchangeCurrency(sildeProduct.option[0].price)}
                       </div>
                     </div>
                   );

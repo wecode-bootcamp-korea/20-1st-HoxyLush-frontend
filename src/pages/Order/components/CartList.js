@@ -21,6 +21,7 @@ export default class CartList extends Component {
       clearCart,
       removeProduct,
       handleAllCheckedBox,
+      getDataFromServer,
     } = this.props;
 
     return (
@@ -54,6 +55,7 @@ export default class CartList extends Component {
                     key={product.id}
                     handleCheckBox={handleCheckBox}
                     productCount={productInCart.length}
+                    getDataFromServer={getDataFromServer}
                     calculateTotalPriceInCart={this.calculateTotalPriceInCart}
                   />
                 );

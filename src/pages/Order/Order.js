@@ -10,7 +10,7 @@ import './Order.scss';
 export default class Order extends Component {
   state = {
     productInCart: '',
-    likeProducts: [],
+    likeProducts: '',
   };
 
   componentDidMount() {
@@ -129,7 +129,6 @@ export default class Order extends Component {
     return (
       <main className="cart">
         <OrderHeader />
-
         <section className="cartList">
           {productInCart ? (
             <CartList
@@ -138,6 +137,7 @@ export default class Order extends Component {
               removeProduct={this.removeProduct}
               clearCart={this.clearCart}
               handleAllCheckedBox={this.handleAllCheckedBox}
+              getDataFromServer={this.getDataFromServer}
             />
           ) : (
             <>
@@ -146,8 +146,11 @@ export default class Order extends Component {
             </>
           )}
         </section>
-
-        <Like likeProducts={likeProducts} />
+        {likeProducts ? (
+          <Like likeProducts={likeProducts} />
+        ) : (
+          <span> Hey</span>
+        )}
       </main>
     );
   }

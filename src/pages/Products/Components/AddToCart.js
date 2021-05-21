@@ -117,6 +117,11 @@ export default class AddToCart extends Component {
               >
                 확인하기
               </button>
+              {/* <Button
+                name="확인하기"
+                info="outOfStockBtn"
+                event={toggleModalAlert}
+              /> */}
             </div>
           </Modal>
         )}

@@ -49,7 +49,7 @@ class Login extends Component {
         .then(res => res.json())
         .then(submitResult => {
           if (submitResult.MESSAGE === 'SUCCESS') {
-            localStorage.setItem('ACCESS_TOKEN', submitResult.token);
+            localStorage.setItem('Authorization', submitResult.ACCESS_TOKEN);
             this.props.history.push('/');
           } else {
             alert('회원정보를 찾을 수 없습니다.');

@@ -49,5 +49,14 @@
         transform: scale(1.02);
       }
     }
+
+    &.outOfStockBtn {
+      border: none;
+      width: 160px;
+      height: 54px;
+      color: $color-white;
+      background-color: $color-black;
+      font-size: $fs-m;
+    }
   }
 }
