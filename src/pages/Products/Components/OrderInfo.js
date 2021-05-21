@@ -42,7 +42,7 @@ export default class OrderInfo extends Component {
               </div>
               <div className="row">
                 <span className="col-1">용량</span>
-                <span>{selectedProduct.product_options[0].weight}g</span>
+                <span>{selectedProduct.product_options[0].weight}</span>
               </div>
               <div className="row">
                 <span className="col-1">구매수량</span>

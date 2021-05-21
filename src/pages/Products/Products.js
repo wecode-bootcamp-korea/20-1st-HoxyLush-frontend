@@ -34,7 +34,6 @@ class Products extends Component {
   handleLoadMoreBtn = () => {
     const { productLists, currentPagination } = this.state;
     const nextPagination = currentPagination + 1;
-    console.log(nextPagination);
     fetch(`${PRODUCT_API}/products?pagination=${nextPagination}&limit=4`)
       .then(res => res.json())
       .then(data =>
@@ -92,7 +91,6 @@ class Products extends Component {
   calculatePrice = () => {
     const { selectedCount, selectedProduct } = this.state;
     const total = selectedCount * selectedProduct.price;
-    console.log(total);
     return exchangeCurrency(total);
   };
 

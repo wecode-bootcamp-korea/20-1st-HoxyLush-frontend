@@ -6,7 +6,6 @@ export default class Modal extends Component {
   render() {
     const { children, type } = this.props;
 
-    console.log('TYPE', this.props);
     return createPortal(
       <div className="modal">
         {type === 'AddToCart' ? (

@@ -8,14 +8,11 @@ import './Order.scss';
 
 export default class Order extends Component {
   state = {
-    productInCart: [],
+    productInCart: '',
     likeProducts: [],
   };
 
   componentDidMount() {
-    // const CART_URL = '/data/cart.json';
-    // const LIKE_URL = '/data/likeProduct.json';
-
     const fetchCartOption = {
       method: 'GET',
       headers: {
@@ -95,9 +92,9 @@ export default class Order extends Component {
       },
     };
 
-    fetch(`${CART_DELETE_API}/orders/cart?${id}`, fetchDeleteOption).then(res =>
+    fetch(`${CART_DELETE_API}/orders/cart?${id}`, fetchDeleteOption).then(() =>
       this.setState({
-        productInCart: productInCart.filter(item => item.is_checked === true),
+        productInCart: productInCart.filter(item => item.is_checked === false),
       })
     );
   };
@@ -109,7 +106,6 @@ export default class Order extends Component {
       .map(item => {
         return item.option_id;
       });
-
     const queryString = optionId.map(item => `option-id=${item}`).join('&');
 
     this.sendToDeleteInfo(queryString);
@@ -134,7 +130,7 @@ export default class Order extends Component {
       <main className="cart">
         <OrderHeader />
 
-        {hasObject(productInCart) ? (
+        {productInCart ? (
           <CartList
             productInCart={productInCart}
             handleCheckBox={this.handleCheckBox}

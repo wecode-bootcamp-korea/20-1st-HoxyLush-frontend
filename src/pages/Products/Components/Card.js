@@ -18,14 +18,13 @@ class Card extends Component {
   };
 
   render() {
-    const { id, list, toggleModalCart } = this.props;
+    const { list, toggleModalCart } = this.props;
     const tagArr = list.tag.map(item => item.tag);
     const showTagList = tagArr.map(tag => {
       return <span className={tag.toLowerCase()}>{tag}</span>;
     });
     const showSoldOut = <span className="soldOut">Sold Out</span>;
 
-    console.log(list);
     return (
       <div className="card">
         <li className="cardWrapper" data-num={list.id}>

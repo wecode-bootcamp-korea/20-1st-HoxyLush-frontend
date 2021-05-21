@@ -25,7 +25,6 @@ export default class DetailInfo extends Component {
   sendToServerFromList = () => {
     const { selectedCount } = this.state;
     const { selectedProduct, toggleModalConfirm } = this.props;
-    console.log(selectedProduct.product_options[0].option_id, selectedCount);
     const fetchUpdateOption = {
       method: 'PATCH',
       headers: {
