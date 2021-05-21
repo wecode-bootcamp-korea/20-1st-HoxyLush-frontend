@@ -5,6 +5,7 @@ import { PRODUCT_API } from '../../../config';
 import Modal from '../../../components/Modal';
 import Button from '../../../components/Button';
 import './Card.scss';
+import { PRODUCT_API } from '../../../config';
 
 class Card extends Component {
   state = {
@@ -18,6 +19,7 @@ class Card extends Component {
     });
   };
 
+
   thisProductLike = e => {
     fetch(`${PRODUCT_API}/products/like`, {
       method: 'POST',
@@ -28,7 +30,9 @@ class Card extends Component {
         product_id: this.props.list.id,
       }),
     });
+
     this.toggleModalLike();
+
   };
 
   render() {
