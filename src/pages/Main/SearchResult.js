@@ -23,7 +23,7 @@ class Products extends Component {
       .then(res => res.json())
       .then(searchdata =>
         this.setState({
-          productLists: searchdata.product_info,
+          productLists: searchdata.Product_Info,
         })
       );
   }

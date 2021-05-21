@@ -8,6 +8,7 @@ import Order from './pages/Order/Order';
 import Signup from './pages/Login/Signup';
 import Nav from './components/Nav';
 import SearchReseult from './pages/Main/SearchResult';
+import Footer from '../src/components/footer';
 
 class Routes extends Component {
   render() {
@@ -23,6 +24,7 @@ class Routes extends Component {
           <Route exact path="/order" component={Order} />
           <Route exact path="/search" component={SearchReseult} />
         </Switch>
+        <Footer />
       </Router>
     );
   }

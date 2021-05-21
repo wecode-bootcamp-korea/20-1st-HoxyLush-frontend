@@ -105,3 +105,5 @@ export default class Detail extends Component {
     );
   }
 }
+
+const MODAL_TYPE = 'AddToCart';
