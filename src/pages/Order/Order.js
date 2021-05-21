@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import CartList from './components/CartList';
+// import EmptyCart from './components/EmptyCart';
 import Like from './components/Like';
 import OrderHeader from './components/OrderHeader';
 import { CART_API, LIKE_API, CART_DELETE_API } from '../../config';
@@ -66,6 +67,22 @@ export default class Order extends Component {
     this.setState({ productInCart: updatedProductStatusInCart });
   };
 
+  sendToDeleteInfo = id => {
+    const { productInCart } = this.state;
+    const fetchDeleteOption = {
+      method: 'DELETE',
+      headers: {
+        Authorization: localStorage.getItem('Authorization'),
+      },
+    };
+
+    fetch(`${CART_DELETE_API}/orders/cart?${id}`, fetchDeleteOption).then(() =>
+      this.setState({
+        productInCart: productInCart.filter(item => item.is_checked === false),
+      })
+    );
+  };
+
   getDataFromServer = () => {
     const fetchCartOption = {
       method: 'GET',
@@ -83,22 +100,6 @@ export default class Order extends Component {
       );
   };
 
-  sendToDeleteInfo = id => {
-    const { productInCart } = this.state;
-    const fetchDeleteOption = {
-      method: 'DELETE',
-      headers: {
-        Authorization: localStorage.getItem('Authorization'),
-      },
-    };
-
-    fetch(`${CART_DELETE_API}/orders/cart?${id}`, fetchDeleteOption).then(() =>
-      this.setState({
-        productInCart: productInCart.filter(item => item.is_checked === false),
-      })
-    );
-  };
-
   removeProduct = () => {
     const { productInCart } = this.state;
     const optionId = productInCart
@@ -109,7 +110,6 @@ export default class Order extends Component {
     const queryString = optionId.map(item => `option-id=${item}`).join('&');
 
     this.sendToDeleteInfo(queryString);
-    this.getDataFromServer();
   };
 
   clearCart = () => {
@@ -130,15 +130,22 @@ export default class Order extends Component {
       <main className="cart">
         <OrderHeader />
 
-        {productInCart ? (
-          <CartList
-            productInCart={productInCart}
-            handleCheckBox={this.handleCheckBox}
-            removeProduct={this.removeProduct}
-            clearCart={this.clearCart}
-            handleAllCheckedBox={this.handleAllCheckedBox}
-          />
-        ) : null}
+        <section className="cartList">
+          {productInCart ? (
+            <CartList
+              productInCart={productInCart}
+              handleCheckBox={this.handleCheckBox}
+              removeProduct={this.removeProduct}
+              clearCart={this.clearCart}
+              handleAllCheckedBox={this.handleAllCheckedBox}
+            />
+          ) : (
+            <>
+              <div className="cartListProduct">제품</div>
+              <div className="emptyCart"></div>
+            </>
+          )}
+        </section>
 
         <Like likeProducts={likeProducts} />
       </main>
