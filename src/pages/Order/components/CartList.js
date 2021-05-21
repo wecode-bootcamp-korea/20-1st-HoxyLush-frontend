@@ -24,7 +24,7 @@ export default class CartList extends Component {
     } = this.props;
 
     return (
-      <section className="cartList">
+      <>
         <div className="cartListProduct">제품</div>
         {hasObject(productInCart) ? (
           <table className="cartTable">
@@ -107,7 +107,7 @@ export default class CartList extends Component {
           </Link>
           <Button name="주문하기" info="order" />
         </div>
-      </section>
+      </>
     );
   }
 }
