@@ -2,8 +2,21 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { exchangeCurrency } from '../../../utilityFunc';
 import './Card.scss';
+import { PRODUCT_API } from '../../../config';
 
 class Card extends Component {
+  thisProductLike = e => {
+    fetch(`${PRODUCT_API}/products/like`, {
+      method: 'POST',
+      headers: {
+        Authorization: localStorage.getItem('ACCESS_TOKEN'),
+      },
+      body: JSON.stringify({
+        product_id: this.props.list.id,
+      }),
+    });
+  };
+
   render() {
     const { id, list, toggleModalCart } = this.props;
     const tagArr = list.tag.map(item => item.tag);
@@ -33,7 +46,7 @@ class Card extends Component {
           </Link>
         </li>
         <div className="cardIcons">
-          <i className="far fa-heart"></i>
+          <i className="far fa-heart" onClick={this.thisProductLike}></i>
           <i
             className="fas fa-cart-arrow-down"
             onClick={() => toggleModalCart(list.id)}
