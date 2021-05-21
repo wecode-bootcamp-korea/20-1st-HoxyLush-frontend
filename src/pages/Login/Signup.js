@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Nav from '../../components/Nav';
+import { API } from '../../config';
 import './Signup.scss';
 
 const EMAIL_LIST = [
@@ -151,7 +152,7 @@ class Signup extends Component {
       userEmail !== '' &&
       userPhoneNumber !== ''
     ) {
-      fetch('http://192.168.255.139:8000/users/signup', {
+      fetch(`${API}/users/signup`, {
         method: 'POST',
         body: JSON.stringify({
           account: id,

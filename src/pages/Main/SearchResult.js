@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import Modal from '../../components/Modal';
 import AddToCart from '../Products/Components/AddToCart';
 import Lists from '../Products/Components/Lists';
-import { PRODUCT_API } from '../../config';
+import Button from '../../components/Button';
+import { API } from '../../config';
 import Nav from '../../components/Nav';
 
 import './SearchResult.scss';
@@ -19,7 +20,7 @@ class Products extends Component {
   componentDidMount() {
     const keyword = this.props.location.search;
     this.setState({ selectedOption: keyword.slice(9, keyword.length) });
-    fetch(`${PRODUCT_API}/products${keyword}`)
+    fetch(`${API}/products${keyword}`)
       .then(res => res.json())
       .then(searchdata =>
         this.setState({
@@ -69,7 +70,7 @@ class Products extends Component {
         selectedCount: 4,
       });
 
-      this.toggleModalAlertAlert();
+      this.toggleModalAlert();
     }
   };
 
@@ -119,13 +120,13 @@ class Products extends Component {
             toggleModalCart={this.toggleModalCart}
           />
           {productLists.length ? (
-            <button
-              ClassName="loadMore"
-              onClick={this.handleLoadMoreBtn}
-              type="button"
-            >
-              <span>Load More</span>
-            </button>
+            <div className="loadMoreBtnWrapper">
+              <Button
+                info="loadMore"
+                name="Load More"
+                event={this.handleLoadMoreBtn}
+              />
+            </div>
           ) : (
             <p className="resultNothing">상품이 존재하지 않습니다.</p>
           )}

@@ -7,6 +7,7 @@ import Detail from './pages/Products/Components/Detail';
 import Order from './pages/Order/Order';
 import Signup from './pages/Login/Signup';
 import Nav from './components/Nav';
+import Footer from './components/footer';
 import SearchReseult from './pages/Main/SearchResult';
 import Footer from '../src/components/footer';
 

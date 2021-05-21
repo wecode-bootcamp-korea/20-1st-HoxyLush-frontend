@@ -1,4 +1,4 @@
-export const API = 'http://192.168.255.139:8000';
+export const API = 'https://hoxylush-gjeik.run.goorm.io';
 
 export const PRODUCT_API = 'https://hoxylush-gjeik.run.goorm.io';
 

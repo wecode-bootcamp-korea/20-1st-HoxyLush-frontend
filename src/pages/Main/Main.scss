@@ -63,8 +63,20 @@
               width: 330px;
               width: 260px;
             }
+
+            .text {
+              margin-bottom: 5px;
+              font-weight: bold;
+            }
+            .subText {
+              margin-bottom: 20px;
+              color: $color-border-dark;
+              font-size: 14px;
+            }
+
             .recommendProductPrice {
               margin-top: 20px;
+              font-weight: bold;
             }
           }
         }

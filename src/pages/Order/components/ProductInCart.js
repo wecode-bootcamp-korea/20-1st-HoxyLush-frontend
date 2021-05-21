@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import OrderCountControler from '../../../components/OrderCountControler';
 import Modal from '../../../components/Modal';
-import { CART_UPDATE_API } from '../../../config';
+import { CART_UPDATE_API, CART_API } from '../../../config';
 import { exchangeCurrency } from '../../../utilityFunc';
 
 export default class ProductInCart extends Component {
@@ -17,8 +17,8 @@ export default class ProductInCart extends Component {
     });
   }
 
-  sendToSever = count => {
-    const { product } = this.props;
+  sendToServer = count => {
+    const { product, getDataFromServer } = this.props;
 
     const fetchUpdateOption = {
       method: 'PUT',
@@ -32,6 +32,7 @@ export default class ProductInCart extends Component {
     };
 
     fetch(`${CART_UPDATE_API}/orders/cart`, fetchUpdateOption);
+    getDataFromServer();
   };
 
   increaseCount = () => {
@@ -40,7 +41,7 @@ export default class ProductInCart extends Component {
     this.setState({
       selectedProductQtyInCart: selectedProductQtyInCart + 1,
     });
-    this.sendToSever(updateCount);
+    this.sendToServer(updateCount);
   };
 
   decreaseCount = () => {
@@ -49,7 +50,7 @@ export default class ProductInCart extends Component {
     this.setState({
       selectedProductQtyInCart: selectedProductQtyInCart - 1,
     });
-    this.sendToSever(updateCount);
+    this.sendToServer(updateCount);
   };
 
   calculatePrice = () => {
